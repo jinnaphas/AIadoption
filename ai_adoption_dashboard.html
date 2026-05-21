@@ -61,9 +61,10 @@
   .level-badge{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:4px 10px;font-size:.74rem;font-weight:600;margin-bottom:14px;}
   .badge-3{background:var(--l3b);color:var(--l3c);border:1px solid #a7f3d0;}
   .badge-4{background:var(--l4b);color:var(--l4c);border:1px solid #fde68a;}
+  .badge-5{background:var(--l5b);color:var(--l5c);border:1px solid #fed7aa;}
   .badge-p3{background:var(--rose-bg);color:var(--rose);border:1px solid #fbcfe8;}
 
-  .new-badge{display:inline-flex;align-items:center;gap:3px;background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:1px 6px;font-size:.6rem;font-weight:700;margin-left:5px;vertical-align:middle;}
+  .new-badge{display:inline-flex;align-items:center;background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:1px 6px;font-size:.6rem;font-weight:700;margin-left:5px;vertical-align:middle;}
 
   .gauge-wrap{margin-bottom:14px;}
   .gauge-labels{display:flex;justify-content:space-between;font-size:.62rem;color:var(--text3);margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
@@ -71,6 +72,8 @@
   .seg{flex:1;border-radius:3px;background:var(--surface3);}
   .s3{background:var(--l3c)}.s3g{background:var(--l3c);box-shadow:0 0 7px rgba(5,150,105,.5);}
   .s4{background:var(--l4c)}.s4g{background:var(--l4c);box-shadow:0 0 7px rgba(217,119,6,.5);}
+  .s5{background:var(--l5c)}.s5g{background:var(--l5c);box-shadow:0 0 7px rgba(234,88,12,.5);}
+  .s7{background:var(--l7c)}.s7g{background:var(--l7c);box-shadow:0 0 7px rgba(124,58,237,.5);}
   .sr{background:var(--rose)}.srg{background:var(--rose);box-shadow:0 0 7px rgba(219,39,119,.5);}
 
   .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:13px;}
@@ -147,6 +150,7 @@
   .c3{background:var(--l3b);color:var(--l3c);}
   .c4{background:var(--l4b);color:var(--l4c);}
   .c5{background:var(--l5b);color:var(--l5c);}
+  .c7{background:var(--l7b);color:var(--l7c);}
   .uc-meta{display:flex;gap:14px;margin-bottom:9px;flex-wrap:wrap;}
   .uc-meta span{font-size:.7rem;color:var(--text2);display:flex;align-items:center;gap:4px;}
   .tool-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;}
@@ -169,36 +173,47 @@
       <h1>AI Adoption <span>Dashboard</span></h1>
       <p>PCC Group · AI-Knowledge-Vault · อัปเดต 21 พ.ค. 2569</p>
     </div>
-    <div class="live-badge"><div class="dot"></div>LIVE · Google Drive Sync</div>
+    <div class="live-badge"><div class="dot"></div>LIVE · GitHub Pages</div>
   </div>
 
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">3</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">11</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
-    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">60+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
-    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">3.7</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">13</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">65+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
+    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">4.2</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
 
   <div class="cards-grid">
+    <!-- นราวิช -->
     <div class="emp-card card-n" onclick="openModal('narawit')">
       <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิช</div><div class="emp-role">HR Strategy & Org Transformation · PCC Group</div></div></div>
-      <div class="level-badge badge-3">⚡ Level 3 — The Integrator</div>
+      <div class="level-badge badge-5">🚀 Level 5 — Task Automator <span class="new-badge">✦ Updated</span></div>
       <div class="gauge-wrap">
         <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-        <div class="gauge-track"><div class="seg s3"></div><div class="seg s3"></div><div class="seg s3g"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+        <div class="gauge-track">
+          <div class="seg s5"></div><div class="seg s5"></div><div class="seg s5"></div><div class="seg s5"></div><div class="seg s5g"></div>
+          <div class="seg" style="background:var(--l7c);opacity:.25"></div>
+          <div class="seg" style="background:var(--l7c);opacity:.45"></div>
+        </div>
       </div>
       <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">3</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v">3.7</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">5+</div><div class="mstat-l">ชม.ประหยัด</div></div>
+        <div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div>
+        <div class="mstat"><div class="mstat-v" style="color:var(--l5c)">4.8</div><div class="mstat-l">Avg Level</div></div>
+        <div class="mstat"><div class="mstat-v">7+</div><div class="mstat-l">ชม.ประหยัด</div></div>
       </div>
-      <div class="tags"><span class="tag tag-n">MCP Integration</span><span class="tag tag-n">Knowledge System</span><span class="tag tag-n">ROI Modeling</span></div>
+      <div class="tags">
+        <span class="tag tag-n">Jira API Automation</span>
+        <span class="tag tag-n">Chrome MCP</span>
+        <span class="tag tag-n">Scheduled Tasks</span>
+        <span class="tag tag-n">MCP Integration</span>
+      </div>
       <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 Drill Down →</button>
     </div>
 
+    <!-- Earth -->
     <div class="emp-card card-e" onclick="openModal('earth')">
       <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">Earth (Jinnaphas)</div><div class="emp-role">HR Manager & OD Strategy Lead · PCC / SBP</div></div></div>
-      <div class="level-badge badge-4">🔥 Level 4 — The Builder <span class="new-badge">✦ +2 UCs</span></div>
+      <div class="level-badge badge-4">🔥 Level 4 — The Builder</div>
       <div class="gauge-wrap">
         <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
         <div class="gauge-track"><div class="seg s4"></div><div class="seg s4"></div><div class="seg s4"></div><div class="seg s4g"></div><div class="seg" style="background:var(--l5c);opacity:.35"></div><div class="seg"></div><div class="seg"></div></div>
@@ -208,10 +223,11 @@
         <div class="mstat"><div class="mstat-v" style="color:var(--l5c)">4.2</div><div class="mstat-l">Avg Level</div></div>
         <div class="mstat"><div class="mstat-v">27+</div><div class="mstat-l">ชม.ประหยัด</div></div>
       </div>
-      <div class="tags"><span class="tag tag-e">GitHub Pages Deploy</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC Governance</span><span class="tag tag-e">Python</span></div>
+      <div class="tags"><span class="tag tag-e">GitHub Pages</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC Governance</span><span class="tag tag-e">Python</span></div>
       <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 Drill Down →</button>
     </div>
 
+    <!-- Pattaratida -->
     <div class="emp-card card-p" onclick="openModal('pattaratida')">
       <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">Pattaratida K.</div><div class="emp-role">B2B Sales Intelligence · PCC Group</div></div></div>
       <div class="level-badge badge-p3">🌟 Level 3 — The Integrator</div>
@@ -234,19 +250,18 @@
       <div class="section-title">AI Level Framework — ทีมอยู่ที่ไหน</div>
       <div class="lvl-row"><div class="lvl-num" style="background:var(--l1b);color:var(--l1c)">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div><div class="lvl-sub">ถาม-ตอบพื้นฐาน</div></div></div>
       <div class="lvl-row"><div class="lvl-num" style="background:var(--l2b);color:var(--l2c)">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div><div class="lvl-sub">Prompt มี Role & Context</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:var(--l3b);color:var(--l3c)">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div><div class="lvl-sub">เชื่อม AI กับ workflow อื่น</div></div><div class="mini-avs"><div class="mav mav-n">น</div><div class="mav mav-p">ภ</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:var(--l3b);color:var(--l3c)">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div><div class="lvl-sub">เชื่อม AI กับ workflow อื่น</div></div><div class="mini-avs"><div class="mav mav-p">ภ</div></div></div>
       <div class="lvl-row cur"><div class="lvl-num" style="background:var(--l4b);color:var(--l4c)">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div><div class="lvl-sub">สร้างเครื่องมือให้ทีมใช้</div></div><div class="mini-avs"><div class="mav mav-e">E</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l5b);color:var(--l5c)">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div><div class="lvl-sub">AI ทำงานแทน 100% มี Trigger</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:var(--l5b);color:var(--l5c)">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div><div class="lvl-sub">AI ทำงานแทน 100% มี Trigger</div></div><div class="mini-avs"><div class="mav mav-n">น</div></div></div>
       <div class="lvl-row"><div class="lvl-num" style="background:var(--l6b);color:var(--l6c)">6</div><div class="lvl-info"><div class="lvl-name">ปล่อยจอย — Agentic Operator</div><div class="lvl-sub">AI คิด วิเคราะห์ ตัดสินใจ</div></div></div>
       <div class="lvl-row"><div class="lvl-num" style="background:var(--l7b);color:var(--l7c)">7</div><div class="lvl-info"><div class="lvl-name">คบเด็กสร้างบ้าน — Architect</div><div class="lvl-sub">End-to-End Automated System</div></div></div>
     </div>
-
     <div class="panel">
       <div class="section-title">Roadmap — เส้นทางสู่ Level ถัดไป</div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>นราวิช → Level 4 (ปล่อยของ)</h4><p>สร้าง <strong>HR AI Assessment Dashboard</strong> ดึง Use Cases จาก Drive → generate HTML Report สรุป AI Adoption อัตโนมัติ</p><div class="rm-chip" style="color:var(--accent)">L3 → L4 · ~2 sessions</div></div></div>
+      <div class="rm-item"><div class="rm-icon" style="background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>นราวิช → Level 6 (ปล่อยจอย)</h4><p>Timesheet Schedule (L7) + Jira Migration (L5) แสดงว่าพร้อมแล้ว — ขั้นต่อไปคือให้ AI <strong>ตัดสินใจ</strong> เองว่าจะย้าย task ไหน, เมื่อไหร่ โดยไม่ต้องรับ prompt ครั้งเดียวกัน</p><div class="rm-chip" style="color:var(--accent)">L5 → L6 · Key: Multi-step Autonomous Decision · ~2 sessions</div></div></div>
       <div class="rm-item"><div class="rm-icon" style="background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 5 (ปล่อยมือ)</h4><p>ตั้ง <strong>GitHub Action</strong> ให้ HC Dashboard รันสคริปต์ Python อัตโนมัติเมื่อมี Excel ใหม่ใน Drive — Earth เปลี่ยนเป็น Reviewer ปลายทาง</p><div class="rm-chip" style="color:var(--gold)">L4 → L5 · Key: GitHub Action Trigger · ~1 session</div></div></div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--rose-bg)">💡</div><div class="rm-content"><h4>Pattaratida → Level 4 (ปล่อยของ)</h4><p>แปลง ICP Scoring เป็น <strong>Python/Apps Script อิสระ</strong> — ทีม Sales รันได้เองไม่ต้องผ่าน Claude Chat</p><div class="rm-chip" style="color:var(--rose)">L3 → L4 · ~1–2 sessions</div></div></div>
-      <div class="rm-item" style="border-color:#e9d5ff"><div class="rm-icon" style="background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026: Agentic Business System</h4><p>Earth L5 + นราวิช L4 + Pattaratida L4 → <strong>Agentic HR + Sales + Governance System L6</strong> ลด Manual Work 60%+</p><div class="rm-chip" style="color:var(--purple)">Team Target: L6 · Impact: -60% Manual Work</div></div></div>
+      <div class="rm-item"><div class="rm-icon" style="background:var(--rose-bg)">💡</div><div class="rm-content"><h4>Pattaratida → Level 4 (ปล่อยของ)</h4><p>แปลง ICP Scoring เป็น <strong>Python/Apps Script อิสระ</strong> — ทีม Sales รันได้เองโดยไม่ต้องผ่าน Claude Chat</p><div class="rm-chip" style="color:var(--rose)">L3 → L4 · ~1–2 sessions</div></div></div>
+      <div class="rm-item" style="border-color:#e9d5ff"><div class="rm-icon" style="background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026: Agentic Business System</h4><p>นราวิช L6 + Earth L5 + Pattaratida L4 → <strong>Agentic HR + PM + Sales System</strong> ลด Manual Work 70%+</p><div class="rm-chip" style="color:var(--purple)">Team Target: L6 avg · Impact: -70% Manual Work</div></div></div>
     </div>
   </div>
 </div>
@@ -254,17 +269,52 @@
 <!-- Modal: นราวิช -->
 <div class="overlay" id="ov-narawit">
   <div class="modal">
-    <div class="modal-head"><div><h2>🔍 Use Cases — นราวิช</h2><p>HR Strategy & Org Transformation · Level 3 — The Integrator</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
+    <div class="modal-head"><div><h2>🔍 Use Cases — นราวิช</h2><p>HR Strategy & Org Transformation · Level 5 — Task Automator · 5 UCs · Avg 4.8</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
     <div class="modal-body">
-      <div class="abox abox-n"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-        <li>มีความสามารถสร้าง AI System ซับซ้อนได้ (UC#1 = L5) แต่ใช้งานปกติที่ L3</li>
-        <li>จุดแข็ง: Strategic Thinking + MCP Integration → HR Analytics เชิงลึก</li>
-        <li>Gap สู่ L4: ยังไม่มี "เครื่องมือถาวร" ที่ทีมอื่นใช้ได้โดยไม่ต้องพึ่งนราวิช</li>
-        <li>คำแนะนำ: Dashboard นี้ที่กำลัง Deploy บน GitHub คือ ก้าวแรกสู่ L4 แล้ว</li>
+      <div class="abox abox-n"><h3>📊 การวิเคราะห์ภาพรวม (อัปเดต 21 พ.ค.)</h3><ul>
+        <li>UC#4 (Jira Migration via API) = L5 ชัดเจน — AI สร้าง 20 tasks ผ่าน Jira API โดยไม่ต้องทำทีละอัน</li>
+        <li>UC#5 (Auto Timesheet + Schedule) = L7! — ตั้ง Scheduled Task ให้ AI กรอกแทนทุกวันอัตโนมัติ</li>
+        <li>Avg Level กระโดดจาก 3.7 → 4.8 — พัฒนาเร็วที่สุดในทีมภายใน 1 วัน</li>
+        <li>จุดแข็งใหม่: Chrome MCP + Jira API + Scheduler = Agentic Workflow ครบวงจร</li>
       </ul></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~30 นาที</span></div><div class="tool-row"><span class="tool">MCP Server</span><span class="tool">Google Drive API</span><span class="tool">Template Design</span><span class="tool">README</span></div><div class="uc-output out-n"><strong>Output:</strong> Knowledge Logger ครบวงจร — Auto-save ลง Drive, folder structure (use-cases/assessments/_templates), Markdown templates, บันทึก UC แรกโดยไม่ต้อง manual</div><div class="uc-insight">💡 "สร้างระบบที่กำลังใช้อยู่ตอนนี้" — Meta UC สูงสุดในทีม ถ้าตั้ง Scheduled Auto-run ได้จะเป็น L6 ทันที</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-n">#2</div><div class="uc-title">วางแผนธุรกิจ AI ในงานบริการไฟฟ้า + Business Case & ROI Analysis</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–4 ชม.</span></div><div class="tool-row"><span class="tool">Multi-turn Chat</span><span class="tool">ROI Analysis</span><span class="tool">Strategic Planning</span><span class="tool">Industry Context</span></div><div class="uc-output out-n"><strong>Output:</strong> แผน 3 ระยะ + ROI 2 option — SaaS: 206K บาท / 1.92M return / ROI 832% / BE 5-6wk | Enterprise: 1.6M / ROI 95% / BE 6-7 เดือน</div><div class="uc-insight">💡 ใส่ Industry Context ชัดเจน แต่ยังเป็น one-session — สร้าง Claude Project ที่มีข้อมูลองค์กรพร้อมจะ upgrade L4 ทันที</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-n">#3</div><div class="uc-title">ประเมิน AI Level ของ Earth จาก Google Drive Knowledge Base</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~60–90 นาที</span></div><div class="tool-row"><span class="tool">Google Drive MCP</span><span class="tool">Multi-file Analysis</span><span class="tool">Assessment Framework</span><span class="tool">Auto Logging</span></div><div class="uc-output out-n"><strong>Output:</strong> ผลประเมิน Earth — Level 4 (ทบทวนจาก 5) พร้อม Rationale, Gap Analysis, คำแนะนำสู่ L5 + บันทึก 2 ไฟล์ลง Drive อัตโนมัติ</div><div class="uc-insight">💡 ใช้ AI เป็น HR Assessment Tool ดึงข้อมูลจาก Knowledge Base — Integrator ที่ชัดที่สุด</div></div>
+
+      <div class="uc uc-new">
+        <div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Schedule รายวัน (Chrome MCP) <span class="new-badge">✦ ใหม่</span></div><div class="chip c7">L7</div></div>
+        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~5–10 นาที/วัน (~200 นาที/เดือน)</span><span>🔁 Recurring daily</span></div>
+        <div class="tool-row"><span class="tool">Chrome MCP</span><span class="tool">Web Navigation</span><span class="tool">Form Fill</span><span class="tool">Scheduled Task</span><span class="tool">Duplicate Check</span></div>
+        <div class="uc-output out-n"><strong>Output:</strong> Scheduled Task "daily-timesheet-pde" ✅ รันทุกวันจันทร์–ศุกร์ 08:00 น. อัตโนมัติ — AI navigate ไปยัง cloud.precise.co.th/timesheet/pde, กรอก นราวิชญ์ สมนา (641815), PJ-DBTP EMS, 08:00–17:00, กด บันทึก โดยตรวจสอบก่อนว่ามีรายการซ้ำหรือไม่</div>
+        <div class="uc-insight">💡 L7 ชัดเจน — AI ทำงานแทนมนุษย์ได้อิสระทุกวันโดยไม่ต้องรับ prompt ซ้ำ Prompt เดียว ("ช่วยไปกรอก timesheet") → Scheduled System ที่รันไปตลอด</div>
+      </div>
+
+      <div class="uc uc-new">
+        <div class="uc-top"><div class="uc-num un-n">#4</div><div class="uc-title">Migrate Jira Tasks 20 รายการ จาก EMS Epic → IOTC Project ผ่าน API <span class="new-badge">✦ ใหม่</span></div><div class="chip c5">L5</div></div>
+        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~90 นาที</span><span>📋 20 tasks</span></div>
+        <div class="tool-row"><span class="tool">Jira REST API</span><span class="tool">Task Mapping Analysis</span><span class="tool">Cross-project Migration</span><span class="tool">Assignee/Date Transfer</span></div>
+        <div class="uc-output out-n"><strong>Output:</strong> สร้าง 20 tasks ใหม่ใน IOTC Project อัตโนมัติ — IOTC-1 (Core System, 16 tasks) + IOTC-2 (Dashboard & Widget, 4 tasks) พร้อม assignee, due date, epic link ครบ · API Limitation: delete ต้องทำผ่าน UI (Jira ไม่รองรับ DELETE via API)</div>
+        <div class="uc-insight">💡 L5 — AI สำรวจ Epic, วิเคราะห์ mapping, สร้าง tasks ผ่าน Jira API อัตโนมัติ 20 รายการ แทนการทำทีละอันใน UI (~90 นาที → ~5 นาที)</div>
+      </div>
+
+      <div class="uc">
+        <div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="chip c5">L5</div></div>
+        <div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~30 นาที</span></div>
+        <div class="tool-row"><span class="tool">MCP Server</span><span class="tool">Google Drive API</span><span class="tool">Template Design</span></div>
+        <div class="uc-output out-n"><strong>Output:</strong> Knowledge Logger ครบวงจร — Auto-save ลง Drive, folder structure (use-cases/assessments/_templates), บันทึก UC แรกโดยไม่ต้อง manual</div>
+        <div class="uc-insight">💡 สร้างระบบที่กำลังใช้อยู่ตอนนี้ — Meta UC ที่ทำให้ Knowledge Logging ทั้งหมดเป็นไปได้</div>
+      </div>
+      <div class="uc">
+        <div class="uc-top"><div class="uc-num un-n">#2</div><div class="uc-title">วางแผนธุรกิจ AI ในงานบริการไฟฟ้า + Business Case & ROI Analysis</div><div class="chip c3">L3</div></div>
+        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–4 ชม.</span></div>
+        <div class="tool-row"><span class="tool">Multi-turn Chat</span><span class="tool">ROI Analysis</span><span class="tool">Strategic Planning</span></div>
+        <div class="uc-output out-n"><strong>Output:</strong> แผน 3 ระยะ + ROI — SaaS: 206K / 1.92M return / ROI 832% / BE 5-6wk | Enterprise: 1.6M / ROI 95% / BE 6-7 เดือน</div>
+        <div class="uc-insight">💡 Industry Context ชัดเจน แต่ยังเป็น one-session — ฐานความคิดที่ดีสำหรับสร้าง Claude Project ต่อยอด</div>
+      </div>
+      <div class="uc">
+        <div class="uc-top"><div class="uc-num un-n">#3</div><div class="uc-title">ประเมิน AI Level ของ Earth จาก Google Drive Knowledge Base</div><div class="chip c3">L3</div></div>
+        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~60–90 นาที</span></div>
+        <div class="tool-row"><span class="tool">Google Drive MCP</span><span class="tool">Multi-file Analysis</span><span class="tool">Assessment Framework</span></div>
+        <div class="uc-output out-n"><strong>Output:</strong> ผลประเมิน Earth — Level 4 พร้อม Rationale, Gap Analysis, คำแนะนำสู่ L5 + บันทึก 2 ไฟล์ลง Drive อัตโนมัติ</div>
+        <div class="uc-insight">💡 ใช้ AI เป็น HR Assessment Tool ดึงข้อมูลจาก Knowledge Base — Integrator ที่ชัดที่สุด</div>
+      </div>
     </div>
   </div>
 </div>
@@ -274,32 +324,16 @@
   <div class="modal">
     <div class="modal-head"><div><h2>🔍 Use Cases — Earth (Jinnaphas)</h2><p>HR Manager & OD Strategy Lead · Level 4 — The Builder · 5 UCs · Avg 4.2</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
     <div class="modal-body">
-      <div class="abox abox-e"><h3>📊 การวิเคราะห์ภาพรวม (อัปเดต 21 พ.ค.)</h3><ul>
+      <div class="abox abox-e"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
         <li>5 UCs ทุกชิ้น Deliverable จับต้องได้ — L4 ที่แข็งแกร่งและหลากหลายที่สุดในทีม</li>
-        <li>UC#4 (HC Dashboard) + UC#5 (NRC System) = ครอบคลุมงานทั้ง HR Analytics และ Governance ด้วย AI</li>
-        <li>Gap สู่ L5: ทุก UC ยังต้อง Manual trigger — ถ้าตั้ง GitHub Action auto-deploy = L5 ทันที</li>
-        <li>NRC Project แสดงทักษะ Context Engineering ขั้นสูง — ฝัง Domain Knowledge ลง Claude Project</li>
+        <li>UC#4 (HC Dashboard on GitHub Pages) + UC#5 (NRC System) ครอบคลุม HR Analytics และ Governance</li>
+        <li>Gap สู่ L5: ทุก UC ยังต้อง manual trigger — ตั้ง GitHub Action auto-deploy = L5 ทันที</li>
       </ul></div>
-
-      <div class="uc uc-new">
-        <div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — NRC Management System + Knowledge Base + Board Context <span class="new-badge">✦ ใหม่</span></div><div class="chip c4">L4</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~3–5 ชม./ประชุม</span><span>📋 ประชุม 4–6 ครั้ง/ปี</span></div>
-        <div class="tool-row"><span class="tool">Claude Project Setup</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA (localStorage)</span><span class="tool">Board Knowledge Embed</span><span class="tool">NRC Glossary</span></div>
-        <div class="uc-output out-e"><strong>Output:</strong> Claude Project "NRC" พร้อมใช้งาน — Context files ครบ: company.md (PCC Board 12 คน), nrc.md (สมาชิก+หน้าที่เลขา), board-directors.md (12 directors ครบ), glossary.md (คำศัพท์ CG/NRC) + NRC Management System.html (CRUD ข้อมูลการประชุม, localStorage) รองรับงานเลขา NRC ทั้งปี</div>
-        <div class="uc-insight">💡 Context Engineering ขั้นสูง — ฝัง Domain Knowledge ของ NRC/CG ลง Claude Project ทำให้ไม่ต้องอธิบายบริบทใหม่ทุกครั้ง Earth รับบทบาทเลขา NRC ได้ทันทีด้วยความช่วยเหลือจาก AI ที่ "รู้จัก" กรรมการทั้ง 12 คนแล้ว</div>
-      </div>
-
-      <div class="uc uc-new">
-        <div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Extraction + 6-Tab Dashboard + GitHub Pages <span class="new-badge">✦ ใหม่</span></div><div class="chip c5">L4→5</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~15+ ชม./เดือน</span><span>🌐 Live: jinnaphas.github.io/HRdashboard</span></div>
-        <div class="tool-row"><span class="tool">Python (openpyxl)</span><span class="tool">HTML Multi-tab Build</span><span class="tool">GitHub Pages Deploy</span><span class="tool">v6→v7 Iteration</span><span class="tool">Period/Company Filter</span></div>
-        <div class="uc-output out-e"><strong>Output:</strong> HC_Analytics_Portal_v7.html — Live ✅ · 6 Tabs (HC/OT/Salary/Resign/Training/WFP) · 9 บริษัท 797 HC (May 2026) · v7 fixes: Period+Company filter ✓, WFP tab ✓, New Hire tracking ✓, EG reorder ✓ · Python (openpyxl) extract ข้อมูล</div>
-        <div class="uc-insight">💡 L4→L5 Borderline — Deploy บน GitHub Pages ให้ทีมเข้าถึงได้ทุกที่ แต่ data update ยังต้อง manual upload → ตั้ง GitHub Action = L5 ทันที</div>
-      </div>
-
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#1</div><div class="uc-title">Bamboo Supply Chain + China EV Supplier Interactive HTML Report</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~4.5 ชม.</span></div><div class="tool-row"><span class="tool">Web Search ×3</span><span class="tool">HTML Code Gen</span><span class="tool">JS Bug Fix</span><span class="tool">Drill-Down UX</span></div><div class="uc-output out-e"><strong>Output:</strong> bamboo_supply_chain_report_v2.html — 7 Stage Accordion, 40+ Tech Items, 24 China Suppliers พร้อมลิงก์, Bug fix: key collision renderItems() prefix 'm'/'d'</div><div class="uc-insight">💡 Orchestrate 3 เครื่องมือใน 1 Session + อธิบาย symptom ชัด → AI debug ตรงจุด ทักษะ L4 ชัดเจน</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20 (P1–P22)</span><span>⏱ หลายวันทำงาน</span></div><div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">JE Extraction</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span></div><div class="uc-output out-e"><strong>Output:</strong> 189 JDs ครบทุก Family, Excel 124+ entries, HTML Library v2.0 Cards/Table/Family + KR/KPI. Python: mk_l1→l5 + JE parser</div><div class="uc-insight">💡 สร้าง organizational tool 189 roles แบบ systematic ทีละ phase — Scale AI work ในงาน HR จริง</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#3</div><div class="uc-title">Agentic Org IC Framework × Digital Mindset Transformation Roadmap (.docx)</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~4–6 ชม.</span></div><div class="tool-row"><span class="tool">Multi-turn Brainstorm ×4</span><span class="tool">7 Frameworks</span><span class="tool">Word Doc</span><span class="tool">IC Design</span></div><div class="uc-output out-e"><strong>Output:</strong> PCC_Digital_Mindset_Roadmap.docx — IC 5 มิติ (Human/Structural/Relational/<strong>Agent Capital</strong>/<strong>Data Capital</strong>), Mental Model Pyramid, 3 Horizons Roadmap</div><div class="uc-insight">💡 สร้าง Framework ใหม่ (Agent + Data Capital) ไม่เคยมีในวรรณกรรม ใช้ 7 Frameworks พร้อมกัน</div></div>
+      <div class="uc uc-new"><div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — Management System + Board Knowledge Base + Context Engineering <span class="new-badge">✦ ใหม่</span></div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–5 ชม./ประชุม · 4–6 ครั้ง/ปี</span></div><div class="tool-row"><span class="tool">Claude Project Setup</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA localStorage</span><span class="tool">Board Knowledge Embed</span></div><div class="uc-output out-e"><strong>Output:</strong> Claude Project NRC พร้อมใช้ — Context ครบ: กรรมการ 12 คน, NRC 3 สมาชิก, หน้าที่เลขา, Glossary CG + NRC Management System.html (CRUD ข้อมูลการประชุม) รองรับงาน Transition เลขา NRC ทั้งปี</div><div class="uc-insight">💡 Context Engineering ขั้นสูง — AI รู้จักกรรมการทุกคนทันที ไม่ต้องอธิบายบริบทใหม่ทุก session</div></div>
+      <div class="uc uc-new"><div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Extraction + 6-Tab Dashboard + GitHub Pages Live <span class="new-badge">✦ ใหม่</span></div><div class="chip c5">L4→5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~15+ ชม./เดือน</span><span>🌐 Live on GitHub Pages</span></div><div class="tool-row"><span class="tool">Python (openpyxl)</span><span class="tool">HTML Multi-tab</span><span class="tool">GitHub Pages</span><span class="tool">v6→v7 Iteration</span></div><div class="uc-output out-e"><strong>Output:</strong> HC_Analytics_Portal_v7.html Live ✅ — 6 Tabs (HC/OT/Salary/Resign/Training/WFP), 9 บริษัท, 797 HC, Period+Company filter, Python extract จาก Excel</div><div class="uc-insight">💡 L4→L5 Borderline — ตั้ง GitHub Action trigger = L5 ทันที</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#1</div><div class="uc-title">Bamboo Supply Chain + China EV Supplier Interactive HTML Report</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~4.5 ชม.</span></div><div class="tool-row"><span class="tool">Web Search ×3</span><span class="tool">HTML Code Gen</span><span class="tool">JS Bug Fix</span></div><div class="uc-output out-e"><strong>Output:</strong> bamboo_supply_chain_report_v2.html — 7 Stage Accordion, 40+ Tech Items, 24 China Suppliers, Bug fix key collision</div><div class="uc-insight">💡 Orchestrate 3 เครื่องมือใน 1 Session + debug ตรงจุด ทักษะ L4 ชัดเจน</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20 (P1–P22)</span><span>⏱ หลายวันทำงาน</span></div><div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span></div><div class="uc-output out-e"><strong>Output:</strong> 189 JDs ครบทุก Family, HTML Library v2.0 Cards/Table/Family + KR/KPI, Python mk_l1→l5 + JE parser</div><div class="uc-insight">💡 สร้าง organizational tool 189 roles systematic — Scale AI work ในงาน HR จริง</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#3</div><div class="uc-title">Agentic Org IC Framework × Digital Mindset Transformation Roadmap (.docx)</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~4–6 ชม.</span></div><div class="tool-row"><span class="tool">Multi-turn Brainstorm ×4</span><span class="tool">7 Frameworks</span><span class="tool">Word Doc</span></div><div class="uc-output out-e"><strong>Output:</strong> PCC_Digital_Mindset_Roadmap.docx — IC 5 มิติ (<strong>Agent Capital</strong> + <strong>Data Capital</strong>), Mental Model Pyramid, 3 Horizons Roadmap</div><div class="uc-insight">💡 Framework ใหม่ไม่เคยมีในวรรณกรรม ใช้ 7 Frameworks พร้อมกัน</div></div>
     </div>
   </div>
 </div>
@@ -310,14 +344,13 @@
     <div class="modal-head"><div><h2>🔍 Use Cases — Pattaratida K.</h2><p>B2B Sales Intelligence · Level 3 — The Integrator · L4 Demonstrated</p></div><button class="close-btn" onclick="closeModal('pattaratida')">✕</button></div>
     <div class="modal-body">
       <div class="abox abox-p"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-        <li>UC#3 (Sales Intelligence) แสดงทักษะ L4 ชัดเจน — ทีม Sales ใช้ซ้ำได้ทุกเดือน</li>
-        <li>จุดแข็ง: Domain Knowledge Encoding (B2B Electrical) + Complex System Design + High ROI</li>
-        <li>Gap สู่ L4: tool ยังต้องรันผ่าน Claude Chat — แปลงเป็น Script อิสระ = L4 เต็ม</li>
-        <li>Impact สูงสุดในทีม: UC#3 ประหยัด 22–25 ชม./เดือน ongoing</li>
+        <li>UC#3 (Sales Intelligence) = L4 ชัดเจน — ทีม Sales ใช้ซ้ำได้ทุกเดือน Highest ongoing ROI</li>
+        <li>จุดแข็ง: Domain Knowledge Encoding (B2B Electrical) + Complex System Design</li>
+        <li>Gap สู่ L4: แปลง Claude Chat เป็น Script อิสระ → ทีมรันได้เองทันที</li>
       </ul></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Multi-scoring Framework</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~1–2 ชม./ครั้ง</span></div><div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Scoring Criteria</span><span class="tool">Excel Integration</span><span class="tool">Grade Definition</span></div><div class="uc-output out-p"><strong>Output:</strong> ICP Scoring System — 7 Dimensions (D1-D3 Demand + F1a/b/c-F2 Financial, 100 pts), Grade A★→D, 8 Industry Groups → ICP_Scoring_Form.xlsx 2 tabs</div><div class="uc-insight">💡 Multi-dimension Scoring encode domain knowledge ธุรกิจไฟฟ้าครบ — เหนือกว่า basic prompt ชัดเจน</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#2</div><div class="uc-title">Senior BA & Systems Engineer 7-Phase Framework + Knowledge Logger</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~5–7 ชม. (setup)</span></div><div class="tool-row"><span class="tool">7-Phase System Prompt</span><span class="tool">Knowledge Logger Embed</span><span class="tool">Drive Integration</span><span class="tool">Quick Commands</span></div><div class="uc-output out-p"><strong>Output:</strong> System Prompt ครบ 7 Phase (Needs→Requirements→Stakeholder→SOI→Solution→KPI→Pugh Matrix), Traceability N-xx→FR→CAP→KPI, auto-trigger logging</div><div class="uc-insight">💡 ฝัง Knowledge Logging workflow ใน System Prompt — ออกแบบ Workflow ให้คนอื่นใช้ได้ ใกล้ L4</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 22–25 ชม./เดือน 🔥</span></div><div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">Business Logic Encoding</span><span class="tool">4-Function Framework</span><span class="tool">Excel 17 cols</span></div><div class="uc-output out-p"><strong>Output:</strong> Sales Intelligence System — Phase 1: Filter/Dedup/Sort (2–3ชม.→10นาที) + Phase 2: HQ/PD/PQ/EMS Analysis (30–45นาที/ราย→2–3นาที) → Prospect_List_[YYYYmm]_.xlsx 17 cols</div><div class="uc-insight">💡 L4 ชัดเจน — encode PRECISE domain knowledge ทีม Sales ใช้ร่วมกันทุกเดือน Highest ongoing ROI ในทีม</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Scoring Framework</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~1–2 ชม./ครั้ง</span></div><div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Scoring Criteria</span><span class="tool">Excel Output</span></div><div class="uc-output out-p"><strong>Output:</strong> ICP Scoring 7 Dimensions (Demand + Financial, 100 pts), Grade A★→D, 8 Industry Groups → ICP_Scoring_Form.xlsx 2 tabs</div><div class="uc-insight">💡 Multi-dimension scoring encode domain knowledge ไฟฟ้าครบ</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#2</div><div class="uc-title">Senior BA & Systems Engineer 7-Phase Framework + Knowledge Logger</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~5–7 ชม. (setup)</span></div><div class="tool-row"><span class="tool">7-Phase System Prompt</span><span class="tool">Knowledge Logger Embed</span><span class="tool">Quick Commands</span></div><div class="uc-output out-p"><strong>Output:</strong> System Prompt 7 Phase (Needs→Pugh Matrix), Traceability N-xx→FR→CAP→KPI, auto-trigger logging</div><div class="uc-insight">💡 ฝัง Knowledge Logging ใน System Prompt — ออกแบบ Workflow ให้คนอื่นใช้ได้</div></div>
+      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ 22–25 ชม./เดือน 🔥</span></div><div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">4-Function Framework</span><span class="tool">Excel 17 cols</span></div><div class="uc-output out-p"><strong>Output:</strong> Phase 1: Filter/Dedup (2–3ชม.→10นาที) + Phase 2: HQ/PD/PQ/EMS Analysis (30–45นาที/ราย→2–3นาที) → Prospect_List_[YYYYmm]_.xlsx</div><div class="uc-insight">💡 L4 ชัดเจน — Highest ongoing ROI ในทีม ประหยัด 22–25 ชม./เดือน</div></div>
     </div>
   </div>
 </div>

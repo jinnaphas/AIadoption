@@ -6,7 +6,7 @@
 <title>AI Adoption Dashboard — PCC Group</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root{--bg:#f0f4f9;--surface:#fff;--surface2:#f5f8fc;--surface3:#eaf0f8;--border:#dae3ef;--border2:#c5d3e2;--text:#1a2b3c;--text2:#4a6278;--text3:#8aa0b4;--accent:#0077cc;--accent-bg:#e8f3ff;--gold:#d97706;--gold-bg:#fef9ec;--green:#16a34a;--green-bg:#edfaf3;--purple:#7c3aed;--purple-bg:#f3eeff;--rose:#db2777;--rose-bg:#fdf2f8;--teal:#0d9488;--teal-bg:#f0fdfa;}
+  :root{--bg:#f0f4f9;--surface:#fff;--surface2:#f5f8fc;--surface3:#eaf0f8;--border:#dae3ef;--border2:#c5d3e2;--text:#1a2b3c;--text2:#4a6278;--text3:#8aa0b4;--accent:#0077cc;--accent-bg:#e8f3ff;--gold:#d97706;--gold-bg:#fef9ec;--green:#16a34a;--green-bg:#edfaf3;--purple:#7c3aed;--purple-bg:#f3eeff;--rose:#db2777;--rose-bg:#fdf2f8;--teal:#0d9488;--teal-bg:#f0fdfa}
   *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
   body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#b8cfe0 1px,transparent 1px);background-size:28px 28px;opacity:.4;pointer-events:none;z-index:0}
   .container{max-width:1280px;margin:0 auto;padding:28px 24px;position:relative;z-index:1}
@@ -29,7 +29,6 @@
   .av-n{background:linear-gradient(135deg,#0ea5e9,#0369a1)}.av-e{background:linear-gradient(135deg,#f59e0b,#b45309)}.av-p{background:linear-gradient(135deg,#ec4899,#be185d)}.av-m{background:linear-gradient(135deg,#0d9488,#0f766e)}
   .emp-name{font-size:.95rem;font-weight:700}.emp-role{font-size:.68rem;color:var(--text2);margin-top:2px;line-height:1.4}
   .level-badge{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:4px 9px;font-size:.72rem;font-weight:600;margin-bottom:13px}
-  .badge-3n{background:var(--accent-bg);color:var(--accent);border:1px solid #bfdbfe}.badge-4{background:#fffbeb;color:#d97706;border:1px solid #fde68a}.badge-3p{background:var(--rose-bg);color:var(--rose);border:1px solid #fbcfe8}.badge-3m{background:var(--teal-bg);color:var(--teal);border:1px solid #99f6e4}
   .gauge-wrap{margin-bottom:13px}.gauge-labels{display:flex;justify-content:space-between;font-size:.6rem;color:var(--text3);margin-bottom:5px;font-family:'JetBrains Mono',monospace}
   .gauge-track{display:flex;gap:2px;height:6px}.seg{flex:1;border-radius:3px;background:var(--surface3)}
   .sn{background:var(--accent)}.sng{background:var(--accent);box-shadow:0 0 7px rgba(0,119,204,.6)}.se{background:var(--gold)}.seg_{background:var(--gold);box-shadow:0 0 7px rgba(217,119,6,.6)}.sr{background:var(--rose)}.srg{background:var(--rose);box-shadow:0 0 7px rgba(219,39,119,.6)}.sm{background:var(--teal)}.smg{background:var(--teal);box-shadow:0 0 7px rgba(13,148,136,.6)}
@@ -47,41 +46,48 @@
   .lvl-info{flex:1}.lvl-name{font-size:.8rem;font-weight:600}
   .mini-avs{display:flex;gap:4px}.mav{width:22px;height:22px;border-radius:5px;font-size:.58rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center}
   .mav-n{background:linear-gradient(135deg,#0ea5e9,#0369a1)}.mav-e{background:linear-gradient(135deg,#f59e0b,#b45309)}.mav-p{background:linear-gradient(135deg,#ec4899,#be185d)}.mav-m{background:linear-gradient(135deg,#0d9488,#0f766e)}
-  .rm-item{display:flex;gap:12px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:11px;margin-bottom:9px;transition:border-color .2s}.rm-item:hover{border-color:var(--border2)}
-  .rm-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
-  .rm-content h4{font-size:.8rem;font-weight:700;margin-bottom:3px}.rm-content p{font-size:.7rem;color:var(--text2);line-height:1.5}.rm-chip{display:inline-flex;font-size:.63rem;margin-top:6px;font-family:'JetBrains Mono',monospace;font-weight:600}
+  .rm-item{display:flex;gap:12px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:11px;margin-bottom:9px}.rm-content h4{font-size:.8rem;font-weight:700;margin-bottom:3px}.rm-content p{font-size:.7rem;color:var(--text2);line-height:1.5}.rm-chip{display:inline-flex;font-size:.63rem;margin-top:6px;font-family:'JetBrains Mono',monospace;font-weight:600}
+  /* ── Modal ── */
   .overlay{position:fixed;inset:0;background:rgba(15,30,50,.48);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}.overlay.open{opacity:1;pointer-events:all}
-  .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:740px;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .22s ease;box-shadow:0 20px 60px rgba(0,0,0,.18)}.overlay.open .modal{transform:translateY(0) scale(1)}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:760px;max-height:90vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .22s ease;box-shadow:0 20px 60px rgba(0,0,0,.18)}.overlay.open .modal{transform:translateY(0) scale(1)}
   .modal-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);border-radius:20px 20px 0 0;z-index:2}
   .modal-head h2{font-size:1rem;font-weight:700}.modal-head p{font-size:.72rem;color:var(--text2);margin-top:2px}
-  .close-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}.close-btn:hover{background:var(--surface3);color:var(--text)}
-  .modal-body{padding:20px 24px 26px}
-  .abox{border-radius:11px;padding:14px 16px;margin-bottom:16px}
+  .close-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center}.close-btn:hover{background:var(--surface3);color:var(--text)}
+  .modal-body{padding:20px 24px 28px}
+  .abox{border-radius:11px;padding:14px 16px;margin-bottom:18px}
   .abox-n{background:var(--accent-bg);border:1px solid #bfdbfe}.abox-e{background:var(--gold-bg);border:1px solid #fde68a}.abox-p{background:var(--rose-bg);border:1px solid #fbcfe8}.abox-m{background:var(--teal-bg);border:1px solid #99f6e4}
   .abox h3{font-size:.77rem;font-weight:700;margin-bottom:9px}.abox-n h3{color:var(--accent)}.abox-e h3{color:var(--gold)}.abox-p h3{color:var(--rose)}.abox-m h3{color:var(--teal)}
-  .abox ul{list-style:none}.abox li{font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55}
+  .abox ul{list-style:none}.abox li{font-size:.73rem;color:var(--text2);padding:3px 0 3px 14px;position:relative;line-height:1.6}
   .abox li::before{content:'→';position:absolute;left:0;font-size:.68rem;font-weight:700}.abox-n li::before{color:var(--accent)}.abox-e li::before{color:var(--gold)}.abox-p li::before{color:var(--rose)}.abox-m li::before{color:var(--teal)}
-  .uc{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;transition:box-shadow .18s,border-color .18s}.uc:hover{border-color:var(--border2);box-shadow:0 2px 10px rgba(0,0,0,.07)}
-  .uc-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
-  .uc-num{width:25px;height:25px;border-radius:6px;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  /* ── Use Case Card ── */
+  .uc{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:14px;transition:box-shadow .18s,border-color .18s}.uc:hover{border-color:var(--border2);box-shadow:0 3px 14px rgba(0,0,0,.08)}
+  .uc-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+  .uc-num{width:26px;height:26px;border-radius:7px;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace}
   .un-n{background:var(--accent-bg);border:1px solid #bfdbfe;color:var(--accent)}.un-e{background:var(--gold-bg);border:1px solid #fde68a;color:var(--gold)}.un-p{background:var(--rose-bg);border:1px solid #fbcfe8;color:var(--rose)}.un-m{background:var(--teal-bg);border:1px solid #99f6e4;color:var(--teal)}
-  .uc-title{font-size:.87rem;font-weight:600;flex:1;line-height:1.4}
-  .chip{font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-family:'JetBrains Mono',monospace}
-  .c3{background:#ecfdf5;color:#059669}.c4{background:#fffbeb;color:#d97706}.c5{background:#fff7ed;color:#ea580c}.c7{background:#f5f3ff;color:#7c3aed}
-  .uc-meta{display:flex;gap:14px;margin-bottom:9px;flex-wrap:wrap}.uc-meta span{font-size:.7rem;color:var(--text2)}
-  .tool-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}.tool{font-size:.63rem;padding:3px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border2);color:var(--text2);font-family:'JetBrains Mono',monospace}
-  .uc-output{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:9px}
+  .uc-title{font-size:.9rem;font-weight:700;flex:1;line-height:1.4;color:var(--text)}
+  .uc-badges{display:flex;align-items:center;gap:6px;flex-shrink:0}
+  .chip{font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;font-family:'JetBrains Mono',monospace}
+  .c2{background:#ecfeff;color:#0891b2}.c3{background:#ecfdf5;color:#059669}.c4{background:#fffbeb;color:#d97706}.c5{background:#fff7ed;color:#ea580c}.c7{background:#f5f3ff;color:#7c3aed}
+  .live-link{display:inline-flex;align-items:center;gap:4px;font-size:.65rem;font-weight:700;padding:3px 9px;border-radius:20px;background:var(--green-bg);border:1px solid #86efac;color:var(--green);text-decoration:none;white-space:nowrap;transition:all .15s}.live-link:hover{background:#bbf7d0;border-color:var(--green)}
+  .uc-meta{display:flex;gap:14px;margin-bottom:10px;flex-wrap:wrap;align-items:center}.uc-meta span{font-size:.7rem;color:var(--text2);display:flex;align-items:center;gap:4px}
+  .tool-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px}.tool{font-size:.63rem;padding:3px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border2);color:var(--text2);font-family:'JetBrains Mono',monospace}
+  /* ── Output & Analysis ── */
+  .uc-section-label{font-size:.63rem;text-transform:uppercase;letter-spacing:.8px;font-weight:700;color:var(--text3);margin-bottom:5px}
+  .uc-output{background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:11px 14px;font-size:.74rem;color:var(--text2);line-height:1.7;margin-bottom:10px}
   .out-n{border-left:3px solid var(--accent)}.out-e{border-left:3px solid var(--gold)}.out-p{border-left:3px solid var(--rose)}.out-m{border-left:3px solid var(--teal)}
-  .uc-insight{font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:8px;border-top:1px solid var(--border)}
+  .uc-analysis{background:rgba(0,0,0,.02);border:1px solid var(--border);border-radius:9px;padding:11px 14px;font-size:.74rem;color:var(--text2);line-height:1.7;margin-bottom:10px}
+  .uc-insight{font-size:.73rem;color:var(--text3);font-style:italic;line-height:1.65;padding:10px 14px;background:rgba(255,255,255,.6);border-radius:8px;border:1px dashed var(--border2)}
+  /* scrollbar */
   ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <div><h1>AI Adoption <span>Dashboard</span></h1><p>PCC Group · AI-Knowledge-Vault · อัปเดต 21 พ.ค. 2569</p></div>
-    <div class="live-badge"><div class="dot"></div>AUTO · Apps Script</div>
+    <div><h1>AI Adoption <span>Dashboard</span></h1><p>PCC Group · AI-Knowledge-Vault · อัปเดต 22 พ.ค. 2569</p></div>
+    <div class="live-badge"><div class="dot"></div>AUTO · Apps Script · <a href="https://jinnaphas.github.io/AIadoption/ai_adoption_dashboard.html" target="_blank" style="color:inherit;text-decoration:underline">Live URL</a></div>
   </div>
+
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">4</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
     <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">16</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
@@ -90,45 +96,41 @@
   </div>
 
   <div class="cards-grid">
-    <!-- นราวิช (Nick) -->
     <div class="emp-card card-n" onclick="openModal('narawit')">
       <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิช (Nick)</div><div class="emp-role">Agentic Transformation PCC Group</div></div></div>
-      <div class="level-badge badge-3n">🚀 Level 5 — Task Automator</div>
+      <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sng"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:var(--l5c,#ea580c)">4.6</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">18+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-n">GitHub Actions</span><span class="tag tag-n">Apps Script Auto</span><span class="tag tag-n">Jira API</span><span class="tag tag-n">Chrome MCP</span></div>
-      <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 Drill Down →</button>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.6</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">10+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-n">Jira API</span><span class="tag tag-n">Chrome MCP</span><span class="tag tag-n">Scheduled Task</span><span class="tag tag-n">MCP Integration</span></div>
+      <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
-    <!-- Earth -->
     <div class="emp-card card-e" onclick="openModal('earth')">
       <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">Earth (Jinnaphas)</div><div class="emp-role">HR Manager & OD Strategy Lead · PCC</div></div></div>
-      <div class="level-badge badge-4">🔥 Level 4 — The Builder</div>
+      <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">6</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">27+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-e">Apps Script Auto</span><span class="tag tag-e">GitHub Pages</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span></div>
-      <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 Drill Down →</button>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">6</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">30+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-e">Apps Script Auto</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span><span class="tag tag-e">Python</span></div>
+      <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
-    <!-- Pattaratida -->
     <div class="emp-card card-p" onclick="openModal('pattaratida')">
       <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">Pattaratida K.</div><div class="emp-role">B2B Sales Intelligence · PCC Group</div></div></div>
-      <div class="level-badge badge-3p">🌟 Level 3 — The Integrator</div>
+      <div class="level-badge" style="background:var(--rose-bg);color:var(--rose);border:1px solid #fbcfe8">🌟 Level 3 — The Integrator</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
       <div class="mini-stats"><div class="mstat"><div class="mstat-v">3</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">28+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
       <div class="tags"><span class="tag tag-p">Sales Intelligence</span><span class="tag tag-p">ICP Scoring</span><span class="tag tag-p">BA Framework</span></div>
-      <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 Drill Down →</button>
+      <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
-    <!-- มนพร NEW -->
     <div class="emp-card card-m" onclick="openModal('manaporn')">
       <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร (Belle)</div><div class="emp-role">Business Development · Switchgear · PCC Group</div></div></div>
-      <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a;">🔥 Level 4 — The Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
+      <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
       <div class="mini-stats"><div class="mstat"><div class="mstat-v">2</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">12+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
       <div class="tags"><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Switchgear AI</span><span class="tag tag-m">No-Code Builder</span></div>
-      <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 Drill Down →</button>
+      <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
   </div>
 
@@ -145,89 +147,260 @@
     </div>
     <div class="panel">
       <div class="section-title">Roadmap — เส้นทางสู่ Level ถัดไป</div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>นราวิช (Nick) → Level 6 (ปล่อยจอย)</h4><p>Auto Timesheet (L7) + Dashboard Auto-Update (L5) ทำแล้ว — ขั้นต่อไป: ให้ระบบ <strong>แจ้งเตือนอัตโนมัติ</strong> เมื่อพนักงานไม่มี UC ใหม่เกิน 2 สัปดาห์ หรือเมื่อ Level กระโดด</p><div class="rm-chip" style="color:var(--accent)">L5 → L6 · Key: Proactive AI Notification · ~1 session</div></div></div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 5 เต็ม (ปล่อยมือ)</h4><p>Apps Script Dashboard System ใกล้ L5 แล้ว — ให้ Setup สมบูรณ์ + ตั้ง Auto-trigger HC Dashboard เมื่อมี Excel ใหม่ใน Drive</p><div class="rm-chip" style="color:var(--gold)">L4.5 → L5 · Key: Complete Apps Script Setup · ~1 session</div></div></div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--teal-bg)">🏭</div><div class="rm-content"><h4>มนพร → Level 5 (ปล่อยมือ)</h4><p>สร้าง <strong>Python Script auto-update HTML</strong> เมื่อ Excel เปลี่ยน → generate isa95-combined.html ใหม่อัตโนมัติ ไม่ต้องสั่ง AI ทุกครั้ง</p><div class="rm-chip" style="color:var(--teal)">L4 → L5 · Key: Auto-trigger Script · ~1 session</div></div></div>
-      <div class="rm-item" style="border-color:#e9d5ff"><div class="rm-icon" style="background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026: Agentic Business System</h4><p>นราวิช (Nick) L6 + Earth L5 + Pattaratida L4 + มนพร L4 → <strong>Agentic HR + Sales + Manufacturing System</strong></p><div class="rm-chip" style="color:var(--purple)">Team Target: L5.5 avg · Impact: -70% Manual Work</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>Nick → Level 6 (ปล่อยจอย)</h4><p>ให้ระบบ <strong>แจ้งเตือนอัตโนมัติ</strong> เมื่อพนักงานไม่มี UC ใหม่เกิน 2 สัปดาห์ หรือเมื่อ Level กระโดด → ส่ง Line/Email แจ้ง HR Manager</p><div class="rm-chip" style="color:var(--accent)">L5 → L6 · Proactive AI Notification · ~1 session</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 5 เต็ม (ปล่อยมือ)</h4><p>Setup Apps Script ครบ + ตั้ง Auto-trigger HC Dashboard เมื่อมี Excel ใหม่ใน Drive</p><div class="rm-chip" style="color:var(--gold)">L4.5 → L5 · Complete Apps Script · ~1 session</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--teal-bg)">🏭</div><div class="rm-content"><h4>Belle → Level 5 (ปล่อยมือ)</h4><p>สร้าง <strong>Python Script auto-update HTML</strong> เมื่อ Excel เปลี่ยน → generate ISA-95 HTML ใหม่อัตโนมัติ ไม่ต้องสั่ง AI ทุกครั้ง</p><div class="rm-chip" style="color:var(--teal)">L4 → L5 · Auto-trigger Script · ~1 session</div></div></div>
+      <div class="rm-item" style="border-color:#e9d5ff"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026</h4><p>Nick L6 + Earth L5 + Pattaratida L4 + Belle L4 → <strong>Agentic HR + Sales + Manufacturing System</strong></p><div class="rm-chip" style="color:var(--purple)">Team Avg L5 · Impact: -70% Manual Work</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- Modal นราวิช (Nick) -->
+<!-- ══════════════ Modal: Nick ══════════════ -->
 <div class="overlay" id="ov-narawit"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 Use Cases — นราวิช (Nick)</h2><p>HR Strategy & Org Transformation · Level 5 — Task Automator · 5 UCs · Avg 4.6</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
+  <div class="modal-head"><div><h2>🔍 นราวิช (Nick) — Use Cases & การวิเคราะห์</h2><p>Agentic Transformation PCC Group · Level 5 — Task Automator · 5 UCs · Avg 4.6</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
   <div class="modal-body">
-    <div class="abox abox-n"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-      <li>พัฒนาเร็วที่สุดในทีม — จาก L3 สู่ L5 ภายใน 1 วัน (5 UCs)</li>
-      <li>UC#5 (Auto Timesheet + Schedule L7) และ UC#4 (Jira Migration L5) แสดงทักษะ Automation ครบวงจร</li>
-      <li>จุดแข็ง: MCP Integration + API Automation + System Building</li>
-      <li>คำแนะนำสู่ L6: เพิ่ม Proactive Notification ให้ระบบแจ้งเตือนเองโดยไม่ต้องรอให้คนถาม</li>
+    <div class="abox abox-n"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
+      <li>พัฒนาเร็วที่สุดในทีม — L3 → L5 ใน 1 วัน ผ่าน 5 Use Cases ที่หลากหลาย</li>
+      <li>จุดแข็ง: เชื่อมต่อ AI กับ External System (Jira API, Chrome MCP, Google Drive MCP) ได้คล่อง</li>
+      <li>UC#5 (Auto Timesheet L7) แสดงว่าสามารถสร้าง Fully Autonomous System ได้แล้ว</li>
+      <li>Gap สู่ L6: งานที่ทำยังเป็น Task-by-Task — ขั้นต่อไปคือให้ AI ตัดสินใจและ Action แบบ Multi-step โดยไม่รอ Prompt</li>
     </ul></div>
-<div class="uc"><div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Schedule รายวัน (Chrome MCP)</div><div class="chip c7">L7</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~5–10 นาที/วัน (~200 นาที/เดือน)</span></div><div class="tool-row"><span class="tool">Chrome MCP</span><span class="tool">Web Navigation</span><span class="tool">Form Fill Auto</span><span class="tool">Scheduled Task</span></div><div class="uc-output out-n"><strong>Output:</strong> Scheduled Task รันทุกวันจันทร์–ศุกร์ 08:00 น. — AI กรอก Timesheet PDE อัตโนมัติ ตรวจสอบ duplicate ก่อนกรอกทุกครั้ง</div><div class="uc-insight">💡 L7 — AI ทำงานแทนมนุษย์ได้อิสระทุกวัน Prompt เดียว → Scheduled System ที่รันตลอดไป</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#4</div><div class="uc-title">Migrate Jira Tasks 20 รายการ จาก EMS Epic → IOTC Project ผ่าน API</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~90 นาที</span></div><div class="tool-row"><span class="tool">Jira REST API</span><span class="tool">Task Mapping</span><span class="tool">Cross-project Migration</span></div><div class="uc-output out-n"><strong>Output:</strong> 20 tasks ใหม่ใน IOTC — IOTC-1 (Core, 16 tasks) + IOTC-2 (Dashboard, 4 tasks) พร้อม assignee + due date ครบ</div><div class="uc-insight">💡 L5 — API อัตโนมัติสร้าง 20 tasks แทนการทำทีละอันใน UI (~90 นาที → ~5 นาที)</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~30 นาที</span></div><div class="tool-row"><span class="tool">MCP Server</span><span class="tool">Google Drive API</span><span class="tool">Template Design</span></div><div class="uc-output out-n"><strong>Output:</strong> Knowledge Logger ครบวงจร — Auto-save ลง Drive, folder structure, templates, README</div><div class="uc-insight">💡 Meta UC สูงสุดในทีม — สร้างระบบที่กำลังใช้อยู่ตอนนี้</div></div>
-  </div>
-</div></div>
 
-<!-- Modal Earth -->
-<div class="overlay" id="ov-earth"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 Use Cases — Earth (Jinnaphas)</h2><p>HR Manager & OD Strategy Lead · Level 4 — The Builder · 6 UCs · Avg 4.3</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
-  <div class="modal-body">
-    <div class="abox abox-e"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-      <li>5 UCs ทุกชิ้น Deliverable จับต้องได้ แจกจ่ายได้จริง — Classic L4 ที่แข็งแกร่ง</li>
-      <li>UC#6 (Dashboard Auto-System) = L5 — Apps Script มี Daily Trigger + Change Detection ครบ</li>
-      <li>Gap สู่ L5 เต็ม: ให้ Apps Script setup สมบูรณ์ (เพิ่ม ANTHROPIC_API_KEY ใน Script Properties)</li>
-    </ul></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#6</div><div class="uc-title">สร้างระบบ AI Adoption Dashboard Auto-Update บน GitHub Pages ด้วย Google Apps Script</div><div class="chip c5">L5</div></div>
-    <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~10 ชม. setup + ประหยัดทุกครั้งในอนาคต</span><span>🌐 Live: jinnaphas.github.io/AIadoption</span></div>
-    <div class="tool-row"><span class="tool">Google Apps Script</span><span class="tool">GitHub API</span><span class="tool">Anthropic Claude API</span><span class="tool">Daily Trigger 09:00</span><span class="tool">Change Detection</span><span class="tool">PyNaCl Encryption</span></div>
-    <div class="uc-output out-e"><strong>Output:</strong> ระบบ Auto-Update ครบวงจร — Apps Script อ่าน Drive → วิเคราะห์ด้วย Claude API → Push GitHub Pages ทุกวัน 09:00 น. โดยอัตโนมัติ · ANTHROPIC_API_KEY ใส่ผ่าน GitHub Secrets API · Dashboard live สำหรับทีม 4 คน ไม่ต้อง Manual อีกเลย</div>
-    <div class="uc-insight">💡 L4→L5 Borderline — สร้างระบบ end-to-end ที่ AI ทำงานแทน 100% มี Daily Trigger + Change Detection อัตโนมัติ ถ้า Apps Script setup ครบ = L5 เต็ม</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — Management System + Board Knowledge Base + Context Engineering</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–5 ชม./ประชุม</span></div><div class="tool-row"><span class="tool">Claude Project</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA</span><span class="tool">Board Knowledge</span></div><div class="uc-output out-e"><strong>Output:</strong> Claude Project NRC — กรรมการ 12 คน, NRC 3 สมาชิก, Glossary CG + NRC Management System.html</div><div class="uc-insight">💡 Context Engineering ขั้นสูง — AI รู้จักกรรมการทุกคนทันที ไม่ต้องอธิบายบริบทใหม่ทุก session</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Extraction + 6-Tab Dashboard + GitHub Pages</div><div class="chip c5">L4→5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~15+ ชม./เดือน</span><span>🌐 Live on GitHub Pages</span></div><div class="tool-row"><span class="tool">Python openpyxl</span><span class="tool">HTML Multi-tab</span><span class="tool">GitHub Pages</span><span class="tool">v7 Iteration</span></div><div class="uc-output out-e"><strong>Output:</strong> HC_Analytics_Portal_v7.html Live ✅ — 6 Tabs, 9 บริษัท, 797 HC, Period+Company filter</div><div class="uc-insight">💡 L4→L5 Borderline — ตั้ง GitHub Action = L5 ทันที</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ หลายวันทำงาน</span></div><div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span></div><div class="uc-output out-e"><strong>Output:</strong> 189 JDs ครบทุก Family, HTML Library Cards/Table/Family + KR/KPI</div><div class="uc-insight">💡 งานใหญ่ที่สุดในทีม — Scale AI work 189 roles ในงาน HR จริง</div></div>
-  </div>
-</div></div>
-
-<!-- Modal Pattaratida -->
-<div class="overlay" id="ov-pattaratida"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 Use Cases — Pattaratida K.</h2><p>B2B Sales Intelligence · Level 3 — The Integrator · L4 Demonstrated</p></div><button class="close-btn" onclick="closeModal('pattaratida')">✕</button></div>
-  <div class="modal-body">
-    <div class="abox abox-p"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-      <li>UC#3 (Sales Intelligence) = L4 ชัดเจน — ทีม Sales ใช้ซ้ำทุกเดือน Highest ongoing ROI</li>
-      <li>จุดแข็ง: Domain Knowledge Encoding + Complex System Design</li>
-      <li>Gap สู่ L4: แปลง Claude Chat เป็น Script อิสระให้ทีมรันเอง</li>
-    </ul></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 22–25 ชม./เดือน 🔥</span></div><div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">4-Function Framework</span><span class="tool">Excel 17 cols</span></div><div class="uc-output out-p"><strong>Output:</strong> Phase 1: Filter/Dedup (2–3ชม.→10นาที) + Phase 2: HQ/PD/PQ/EMS Analysis (30–45นาที/ราย→2–3นาที)</div><div class="uc-insight">💡 L4 ชัดเจน — Highest ongoing ROI ในทีม ประหยัด 22–25 ชม./เดือน</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Scoring Framework</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~1–2 ชม./ครั้ง</span></div><div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Scoring Criteria</span><span class="tool">Excel Output</span></div><div class="uc-output out-p"><strong>Output:</strong> ICP Scoring 7 Dimensions (Demand + Financial, 100 pts), Grade A★→D → ICP_Scoring_Form.xlsx</div><div class="uc-insight">💡 Multi-dimension scoring encode domain knowledge B2B ไฟฟ้าครบ</div></div>
-  </div>
-</div></div>
-
-<!-- Modal Manaporn -->
-<div class="overlay" id="ov-manaporn"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 Use Cases — มนพร (Belle)</h2><p>Business Development · Switchgear Industry · Level 4 — The Builder · 2 UCs · Avg 3.5</p></div><button class="close-btn" onclick="closeModal('manaporn')">✕</button></div>
-  <div class="modal-body">
-    <div class="abox abox-m"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-      <li>UC ชิ้นเดียวแต่ครอบคลุม 17 Sub-use cases ตลอด Value Chain Switchgear — L2–L5 ขึ้นอยู่กับ UC</li>
-      <li>จุดแข็ง: Industry Domain Knowledge (IEC Standard, 3D CAD, AR, MES, PLM) + Systematic Mapping</li>
-      <li>UC#2 (ISA-95 HTML) = L4 แท้ — สร้าง Presentation Tool ที่ทีมใช้นำเสนอได้จริง ใช้ข้อมูลจาก Excel จริง</li>
-      <li>Gap สู่ L5: งานทั้ง 2 ชิ้นยังต้องสั่งทุกครั้ง → สร้าง Script auto-update HTML เมื่อ Excel เปลี่ยน</li>
-    </ul></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-m">#2</div><div class="uc-title">สร้าง HTML Presentation — ISA-95 Digital Architecture 5 Layers (Purdue Model) จาก Excel</div><div class="chip c4">L4</div></div>
-    <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด ~4–6 ชม. (manual ~5.5ชม. → AI ~10 นาที)</span></div>
-    <div class="tool-row"><span class="tool">HTML/CSS/JS Gen</span><span class="tool">SVG Pyramid</span><span class="tool">Excel→Base64 Image</span><span class="tool">Sticky Navigation</span><span class="tool">Interactive Tabs</span></div>
-    <div class="uc-output out-m"><strong>Output:</strong> isa95-combined.html — ไฟล์เดียวใช้ได้เลย · SVG Pyramid 5 Levels (IT/OT bracket) · Level Cards พร้อม Module/System tags (Odoo ERP, MES, IoT Platform) · Info Flow แต่ละ Level · Image Tabs 6 tab embed รูปจาก Excel เป็น Base64 · Sticky Nav "ISA-95 Overview ↔ ตัวอย่างภาพ"</div>
-    <div class="uc-insight">💡 L4 ชัดเจน — ไม่ได้แค่สรุป แต่สร้าง Interactive Tool ที่นำเสนอได้จริง ใช้ข้อมูลจาก Excel จริงขององค์กร Iterate ปรับแก้หลายรอบ (Dark→Light theme, เพิ่ม tab, embed images) โดยไม่ต้องเป็นโปรแกรมเมอร์</div></div>
-    <div class="uc"><div class="uc-top"><div class="uc-num un-m">#1</div><div class="uc-title">AI Use Cases Blueprint — ธุรกิจผลิต Switchgear (17 UCs ครบ Value Chain)</div><div class="chip c3">L3</div></div>
-    <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 60–120 นาที/วัน/คน (เมื่อ implement)</span></div>
-    <div class="tool-row"><span class="tool">Claude / ChatGPT</span><span class="tool">Python + Low-code</span><span class="tool">AR (Vuforia/PTC)</span><span class="tool">Computer Vision</span><span class="tool">SolidWorks AI Plugin</span><span class="tool">MES Integration</span></div>
-    <div class="uc-output out-m"><strong>Output:</strong> AI Use Case Map ครบ 4 กระบวนการ:<br>
-    • <strong>Pre-sales & Engineering:</strong> UC-01 อ่าน SLD→BOQ (L4), UC-02 ใบเสนอราคา (L3), UC-03 สรุป Requirement (L2), UC-04 ตรวจ IEC Compliance (L2)<br>
-    • <strong>Engineering Design:</strong> UC-05 AI Copilot 3D (L2–3), UC-06 คำนวณ Short Circuit (L3–4), UC-07 Review แบบ (L3), UC-08 Export BOM (L4)<br>
-    • <strong>Shop Floor:</strong> UC-09 Digital WI (L3–4), UC-10 Standard Time (L4–5), UC-11 Visual QC (L5), UC-12 Test Report (L4), UC-13–14 AR Inspection/Test (L5)<br>
-    • <strong>After-sales & Corporate:</strong> UC-15 Predictive Maintenance (L5), UC-16 RAG Knowledge Base (L3), UC-17 Smart Meeting (L2)
+    <!-- UC#5 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Scheduled Task รายวัน</div><div class="uc-badges"><div class="chip c7">L7</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~5–10 นาที/วัน (~200 นาที/เดือน)</span><span>🔁 Recurring ทุก Mon–Fri 08:00</span></div>
+      <div class="tool-row"><span class="tool">Chrome MCP</span><span class="tool">Web Navigation</span><span class="tool">Form Auto-fill</span><span class="tool">Scheduled Task</span><span class="tool">Duplicate Check</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n">Scheduled Task "daily-timesheet-pde" ✅ รันทุกวันจันทร์–ศุกร์ 08:00 น. อัตโนมัติ — AI navigate ไปยัง cloud.precise.co.th/timesheet/pde, กรอกข้อมูล นราวิชญ์ สมนา (641815), PJ-DBTP EMS, 08:00–17:00 พร้อมตรวจสอบ duplicate ก่อนกรอกทุกครั้ง</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Prompt เดียว ("ช่วยไปกรอก timesheet บันทึกงานประจำวัน") → ระบบรันเองทุกวันโดยไม่ต้องสั่งซ้ำ นี่คือ Level 7 ที่ชัดเจน — AI ทำงานแทนมนุษย์ได้อิสระ 100% มี Scheduled Trigger และ Idempotency Check (ป้องกันกรอกซ้ำ)</div>
+      <div class="uc-insight">💡 สูงสุดในทีม — Prompt เดียวสร้าง Autonomous System ที่รันไปตลอด ถ้าขยายให้ AI เลือกโปรเจกต์เองตาม context ของวัน = L7 เต็ม</div>
     </div>
-    <div class="uc-insight">💡 L3 ที่มีวิสัยทัศน์ L5+ — Blueprint ครบวงจรที่ไม่มีใครในทีมทำ ถ้า implement UC-01/02 จริงจะเป็น L4 ทันที และถ้า UC-11/13 (AR + Computer Vision) ทำได้จริงคือ L5–6</div></div>
+
+    <!-- UC#4 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#4</div><div class="uc-title">Migrate Jira Tasks 20 รายการ จาก EMS Epic → IOTC Project ผ่าน REST API</div><div class="uc-badges"><div class="chip c5">L5</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~90 นาที (manual 90 นาที → AI ~5 นาที)</span></div>
+      <div class="tool-row"><span class="tool">Jira REST API</span><span class="tool">Task Analysis</span><span class="tool">Cross-project Migration</span><span class="tool">Assignee Transfer</span><span class="tool">Due Date Copy</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n">สร้าง 20 tasks ใหม่ใน IOTC Project อัตโนมัติ — IOTC-1 (Core System & DevObs, 16 tasks: IOTC-17 ถึง IOTC-36) + IOTC-2 (Dashboard & Widget, 4 tasks: IOTC-21, 26, 30, 31) พร้อม assignee, due date, epic link ครบถ้วน · Limitation: Jira Cloud API ไม่รองรับ DELETE → ต้อง Archive ใน UI</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">AI สำรวจ Epic EMS-41, วิเคราะห์ลักษณะงานของ task แต่ละอัน และจัด mapping ไปยัง Epic ที่ถูกต้อง (Core vs Dashboard) โดยอัตโนมัติ — แสดงทักษะ Reasoning + API Automation พร้อมกัน แทนการทำทีละ task ใน Jira UI</div>
+      <div class="uc-insight">💡 L5 — AI ไม่ได้แค่ "ทำตามสั่ง" แต่วิเคราะห์และตัดสินใจ mapping เองก่อน แล้วค่อย Execute ผ่าน API อีก 20 ครั้ง</div>
+    </div>
+
+    <!-- UC#1 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="uc-badges"><div class="chip c5">L5</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ประหยัด ~30 นาที (setup)</span></div>
+      <div class="tool-row"><span class="tool">MCP Server Setup</span><span class="tool">Google Drive API</span><span class="tool">Folder Architecture</span><span class="tool">Markdown Templates</span><span class="tool">README</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n">AI Knowledge Logger ครบวงจร — Auto-save Use Cases ลง Google Drive · Folder structure (use-cases/[user]/, assessments/, _templates/) · Markdown templates พร้อม frontmatter · README อธิบายระบบให้ทีม · บันทึก UC แรกโดยไม่ต้อง manual</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">นี่คือ Meta Use Case — สร้างระบบที่ใช้บันทึก Use Cases ทั้งหมดในองค์กร (รวมถึง UC นี้เอง) เชื่อม AI เข้ากับ Google Drive โดยตรงผ่าน MCP ซึ่งเป็นการ Integrate AI เข้ากับ Workflow จริง ไม่ใช่แค่ Chat</div>
+      <div class="uc-insight">💡 ถ้าตั้ง Scheduled Auto-run ให้บันทึก UC อัตโนมัติทุกสิ้นวัน = L6 ทันที</div>
+    </div>
+
+    <!-- UC#2 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#2</div><div class="uc-title">วางแผนธุรกิจ AI ในงานบริการไฟฟ้า + Business Case & ROI Analysis</div><div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~3–4 ชั่วโมง</span></div>
+      <div class="tool-row"><span class="tool">Multi-turn Chat</span><span class="tool">ROI Modeling</span><span class="tool">Strategic Planning</span><span class="tool">Industry Context</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n">แผน AI 3 ระยะ (0–12 เดือน) + ROI Analysis 2 Option: Option A SaaS — ลงทุน 206K บาท, return 1.92M บาท, ROI 832%, Break-even 5–6 สัปดาห์ | Option B Enterprise — ลงทุน 1.6M บาท, ROI 95%, Break-even 6–7 เดือน · ประโยชน์รายด้าน: เอกสาร 630K/ปี, Maintenance 405K–505K/ปี, Call Center 840K/ปี, Energy Audit Service (รายได้ใหม่) 1.2M/ปี</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ใส่ Industry Context ชัดเจน ใช้ Multi-turn เพื่อ drill-down รายด้าน แต่ยังเป็น Session-based ไม่มี Template ถาวร — ถ้าสร้าง Claude Project ที่มีข้อมูลองค์กรพร้อม (Revenue Model, KPI, Cost Structure) จะได้ผลลัพธ์ที่แม่นยำกว่าโดยไม่ต้องอธิบายซ้ำ</div>
+      <div class="uc-insight">💡 ฐาน Strategic Thinking ที่ดี — ต่อยอดเป็น Claude Project สำหรับ Business Case Template ของทีม Agentic Transformation ได้ทันที</div>
+    </div>
+
+    <!-- UC#3 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#3</div><div class="uc-title">ประเมิน AI Level ของทีม จาก Use Cases ใน Google Drive Knowledge Base</div><div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~60–90 นาที</span></div>
+      <div class="tool-row"><span class="tool">Google Drive MCP</span><span class="tool">Multi-file Analysis</span><span class="tool">Assessment Framework</span><span class="tool">Auto Knowledge Logging</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n">ผลประเมิน Earth — Level 4 (ทบทวนจาก 5 เดิม) พร้อม Rationale จาก 3 Use Cases · วิเคราะห์ Gap สู่ L5 · คำแนะนำ Automated Trigger ที่เป็นรูปธรรม · บันทึก 2 ไฟล์ลง Drive อัตโนมัติ (use-case + assessment profile)</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ใช้ AI เป็น HR Assessment Tool แบบ Systematic — ไม่ใช่แค่ขอความเห็น แต่ให้ AI อ่านหลักฐานจริง (Use Case files) แล้ววิเคราะห์ตาม Framework 7 ระดับ พร้อมบันทึกผลลัพธ์กลับ Drive โดยอัตโนมัติ นี่คือการ Integrate AI เข้ากับ HR Process จริง</div>
+      <div class="uc-insight">💡 ถ้าตั้งเป็น Monthly Auto-Assessment ที่รันเองและส่ง Report ให้ HR Manager = L6</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ Modal: Earth ══════════════ -->
+<div class="overlay" id="ov-earth"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Earth (Jinnaphas) — Use Cases & การวิเคราะห์</h2><p>HR Manager & OD Strategy Lead · PCC · Level 4 — The Builder · 6 UCs · Avg 4.3</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-e"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
+      <li>6 UCs ครอบคลุม HR Analytics, Governance, Supply Chain, Org Design, และ IT Infrastructure — กว้างที่สุดในทีม</li>
+      <li>จุดแข็ง: สร้าง Deliverable จริงที่ Deploy บน Live Platform ได้ (GitHub Pages, HTML Tool)</li>
+      <li>UC#6 (Dashboard Auto-System) ใกล้ L5 มาก — มี Daily Trigger + Change Detection</li>
+      <li>Gap สู่ L5 เต็ม: Setup Apps Script Script Properties ให้ครบ แล้ว HC Dashboard ก็ trigger อัตโนมัติด้วย</li>
+    </ul></div>
+
+    <!-- UC#6 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#6</div><div class="uc-title">ระบบ AI Adoption Dashboard Auto-Update บน GitHub Pages ด้วย Google Apps Script</div><div class="uc-badges"><div class="chip c5">L5</div><a href="https://jinnaphas.github.io/AIadoption/ai_adoption_dashboard.html" target="_blank" class="live-link">🌐 Live</a></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~10 ชม. setup + ประหยัดทุกครั้งในอนาคต</span></div>
+      <div class="tool-row"><span class="tool">Google Apps Script</span><span class="tool">GitHub API</span><span class="tool">Anthropic Claude API</span><span class="tool">Daily Trigger 09:00</span><span class="tool">Change Detection</span><span class="tool">PyNaCl Encryption</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">ระบบ Auto-Update ครบวงจร — Apps Script อ่าน Drive → วิเคราะห์ด้วย Claude API → Push GitHub Pages ทุกวัน 09:00 น. · Change Detection: เปรียบ MD5 hash ก่อน trigger เพื่อไม่ update ถ้าไม่มีการเปลี่ยนแปลง · ANTHROPIC_API_KEY ใส่ผ่าน GitHub Secrets API (Encrypted PyNaCl) · Dashboard live สำหรับทีม 4 คน ไม่ต้อง Manual อีก</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">End-to-end Automation ครบ 4 ขั้นตอน (Read → Analyze → Generate → Deploy) โดยมี Daily Time Trigger และ Idempotency (Change Detection) — นี่คือ L5 ที่ชัดเจน ถ้า Apps Script setup ครบก็จะ Deploy ได้จริงโดยไม่ต้องสั่ง</div>
+      <div class="uc-insight">💡 Dashboard ที่กำลังดูอยู่ตอนนี้ถูก generate โดยระบบนี้ — Meta UC ระดับ L5 ที่ Deploy ตัวเองได้</div>
+    </div>
+
+    <!-- UC#4 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Data Extraction + 6-Tab Dashboard</div><div class="uc-badges"><div class="chip c5">L4→5</div><a href="https://jinnaphas.github.io/HRdashboard/HC_Analytics_Portal_v7.html" target="_blank" class="live-link">🌐 Live</a></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~15+ ชม./เดือน</span></div>
+      <div class="tool-row"><span class="tool">Python (openpyxl)</span><span class="tool">HTML Multi-tab Build</span><span class="tool">GitHub Pages Deploy</span><span class="tool">v6→v7 Iteration</span><span class="tool">Period/Company Filter</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">HC_Analytics_Portal_v7.html — Live ✅ · 6 Tabs (HC / OT / Salary / Resign / Training / WFP) · 9 บริษัท 797 HC (May 2026) · Period & Company filter ครบ · v7 fixes: Period+Company filter ✓, WFP tab ✓, New Hire tracking ✓, EG reorder ✓ · Python script (openpyxl data_only) extract ข้อมูลจาก Excel</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">สร้าง HR Analytics Tool ที่ทีมทุกคนเข้าถึงได้จาก URL โดยตรง โดยใช้ Python + AI ในการ Generate HTML ทั้งหมด Iterate จาก v6 → v7 แก้ Bug จริง (Period filter, EG reorder) แสดงทักษะ Debugging + Iterative Development ที่ชัดเจน</div>
+      <div class="uc-insight">💡 L4→L5 Borderline — ถ้าตั้ง GitHub Action auto-trigger เมื่อ Excel ใหม่เข้า Drive = L5 ทันที</div>
+    </div>
+
+    <!-- UC#5 NRC -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — NRC Management System + Board Knowledge Base</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~3–5 ชม./ประชุม · ประชุม 4–6 ครั้ง/ปี</span></div>
+      <div class="tool-row"><span class="tool">Claude Project Setup</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA (localStorage)</span><span class="tool">Board Knowledge Embed</span><span class="tool">CG Glossary</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">Claude Project "NRC" พร้อมใช้งาน — Context files ครบ: company.md (PCC Board 12 คน + คณะย่อย 5 ชุด), nrc.md (สมาชิก NRC 3 คน + หน้าที่เลขา 7 ข้อ), board-directors.md, glossary.md (CG/NRC terms) + NRC Management System.html (CRUD การประชุม, localStorage) รองรับงาน Transition เลขา NRC ทั้งปี</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Context Engineering ขั้นสูง — ฝัง Domain Knowledge ของ NRC/Corporate Governance ลง Claude Project ทำให้ AI "รู้จัก" กรรมการทั้ง 12 คน, สัดส่วน Independent Director (50%), เกณฑ์ CG ที่ NRC ดูแล โดยไม่ต้องอธิบายทุก Session ลด Cognitive Load ของ Earth ในฐานะเลขา NRC</div>
+      <div class="uc-insight">💡 Classic L4 — สร้างเครื่องมือ (Claude Project + HTML System) ที่ Earth ใช้งานได้ทันทีทุกครั้งที่มีประชุม NRC โดยไม่ต้อง Setup ใหม่</div>
+    </div>
+
+    <!-- UC#1 Bamboo -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#1</div><div class="uc-title">Bamboo Supply Chain + China EV Supplier Interactive HTML Report</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ประหยัด ~4.5 ชม. (manual 4.5ชม. → AI ~10 นาที)</span></div>
+      <div class="tool-row"><span class="tool">Web Search ×3</span><span class="tool">HTML Code Gen</span><span class="tool">JS Bug Fix</span><span class="tool">Light Theme Design</span><span class="tool">Drill-Down UX</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">bamboo_supply_chain_report_v2.html — 7 Stage Accordion (Seedling → CHP), 40+ Tech Items พร้อม Drill-Down, 24 China EV Suppliers พร้อมลิงก์กดได้จริง (DJI, XAG, Hesai, ESTUN, BYD, Kingdee ฯลฯ), Master Supplier Filter Table กรองตาม Stage ได้ · Bug fix: key collision ใน renderItems() แก้ด้วย prefix 'm'/'d'</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Orchestrate 3 เครื่องมือใน Session เดียว (Web Search → Code Gen → Debug) + อธิบาย Bug Symptom ชัดเจน ("กด digital item แต่เปิด machine item แทน") ทำให้ AI debug ตรงจุดโดยไม่ต้อง Trial & Error ทักษะ Symptom Description ที่ดีเป็น multiplier ของ L4</div>
+      <div class="uc-insight">💡 L4 ชัดเจน — ผลลัพธ์เป็น Interactive Tool ที่ทีม Sourcing ใช้งานได้จริง ไม่ใช่แค่ Summary Text</div>
+    </div>
+
+    <!-- UC#2 Job Role -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-20 (Multi-phase P1–P22)</span><span>⏱ ประหยัดหลายวันทำงาน</span></div>
+      <div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">JE Extraction Script</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span><span class="tool">Donut Chart</span><span class="tool">KR/KPI Cards</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">189 Active JDs ครบทุก Family ทุก Level (P1–P22), Excel Registry 124+ entries, PCC_Group_Job_Role_Library.html v2.0 — 3 View Modes (Cards / Table / Family), Drill-down modal + Donut Chart + KR/KPI data · Python functions: mk_l1, mk_l2, mk_l3, mk_l5 + JE parser regex (40≤score≤250) + parse_je() สำหรับ format "JE=44 ✓"</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">งานขนาดใหญ่ที่สุดในทีม — ทำ P1–P22 อย่างเป็น Systematic ทีละ Phase โดยใช้ Python functions ที่ AI สร้างให้เพื่อ Standardize format ของทุก JD ก่อน Generate HTML ผลลัพธ์เป็น Organizational Tool ระดับ 189 roles ที่ฝ่าย HR และ Executive ใช้ได้จริง</div>
+      <div class="uc-insight">💡 แสดงความสามารถ Scale AI-generated work — ถ้ามี JD ใหม่ เพิ่มแค่ Python function call แล้ว Regenerate Library ได้ทันที</div>
+    </div>
+
+    <!-- UC#3 IC Framework -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#3</div><div class="uc-title">Agentic Org IC Framework × Digital Mindset Transformation Roadmap</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~4–6 ชั่วโมง</span></div>
+      <div class="tool-row"><span class="tool">Multi-turn Brainstorm ×4</span><span class="tool">7 Frameworks Applied</span><span class="tool">Word Doc (.docx)</span><span class="tool">OD Strategy</span><span class="tool">IC Framework Design</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">PCC_Digital_Mindset_Transformation_Roadmap.docx — 6 ส่วน: (1) Executive Summary (Current vs Target State), (2) Expanded IC Framework 5 มิติ (Human / Structural / Relational / <strong>Agent Capital</strong> / <strong>Data Capital</strong>) พร้อม KPI, (3) Mental Model Pyramid 4 ชั้น + Identity Shift Model, (4) Roadmap Matrix 3 Horizons × 5 IC Components, (5) OD Interventions (Pull/Push/Embed), (6) IC Manager Role + Dashboard + CSF 5 ข้อ</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">สร้าง Framework ใหม่ 2 มิติ (Agent Capital + Data Capital) ที่ไม่เคยมีในวรรณกรรม IC ทั่วไป โดยใช้ 7 Frameworks พร้อมกัน (Lewin, Rogers, SECI, Cynefin, Schein, Ambidextrous Org, IC Theory) แสดงว่า Earth ใช้ AI เป็น Strategic Thinking Partner ไม่ใช่แค่ Drafting Tool</div>
+      <div class="uc-insight">💡 ถ้าสร้าง IC Diagnostic Template ที่รันได้ทุกไตรมาสโดยอัตโนมัติ = L5</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ Modal: Pattaratida ══════════════ -->
+<div class="overlay" id="ov-pattaratida"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Pattaratida K. — Use Cases & การวิเคราะห์</h2><p>B2B Sales Intelligence · Level 3 — The Integrator · L4 Demonstrated · 3 UCs</p></div><button class="close-btn" onclick="closeModal('pattaratida')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-p"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
+      <li>UC#3 (PRECISE Sales Intelligence) = L4 ชัดเจน — ทีม Sales ใช้ซ้ำทุกเดือน ROI สูงสุดในทีม</li>
+      <li>จุดแข็ง: Encode Domain Knowledge ของ B2B Electrical ลง System Prompt ได้ลึกมาก</li>
+      <li>Gap สู่ L4 เต็ม: เครื่องมือยังต้องรันผ่าน Claude Chat — แปลงเป็น Script อิสระที่ทีมรันเองได้</li>
+      <li>Impact ที่จับต้องได้: UC#3 ประหยัด 22–25 ชม./เดือน ต่อเนื่องทุกเดือน</li>
+    </ul></div>
+
+    <!-- UC#3 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 22–25 ชม./เดือน 🔥 (ongoing)</span></div>
+      <div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">Business Logic Encoding</span><span class="tool">4-Function Framework</span><span class="tool">Excel Output (17 cols)</span><span class="tool">Industry Proxy</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-p">Sales Intelligence System รันได้ทุกเดือน: Phase 1 — Filter/Dedup/Sort Buyer List (2–3 ชม. → ~10 นาที) + Phase 2 — 4-Function Analysis ต่อ Prospect (HQ: Company Profile, PD: Product-Market Fit, PQ: Procurement Signal, EMS: Electrical Management Signal) จาก 30–45 นาที/ราย → 2–3 นาที/ราย → Output: Prospect_List_[YYYYmm]_.xlsx ครบ 17 columns + Top Suspects tab</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Encode Domain Knowledge ของธุรกิจ PRECISE (Electrical Signal Logic, 8 Industry Groups A–H, Trigger Checklist เฉพาะอุตสาหกรรมไฟฟ้า) ลง System Prompt อย่างเป็นระบบ ทำให้ AI วิเคราะห์ได้เหมือน Senior Sales Manager ที่มีประสบการณ์ 10 ปี ไม่ใช่ General AI</div>
+      <div class="uc-insight">💡 Highest ROI ในทีม — ถ้าแปลงเป็น Python Script ที่รันได้โดยไม่ผ่าน Chat = L4 เต็ม และถ้าตั้ง Monthly Auto-run = L5</div>
+    </div>
+
+    <!-- UC#2 BA Framework -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-p">#2</div><div class="uc-title">Senior BA & Systems Engineer 7-Phase Framework + Knowledge Logger</div><div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~5–7 ชม. (setup)</span></div>
+      <div class="tool-row"><span class="tool">7-Phase System Prompt</span><span class="tool">Knowledge Logger Embed</span><span class="tool">Drive Integration</span><span class="tool">Quick Command Table</span><span class="tool">Traceability Chain</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-p">System Prompt ครบ 7 Phase: (1) Needs Analysis, (2) Requirements Definition, (3) Stakeholder Analysis, (4) Scope of Impact, (5) Solution Design (3 Scenarios), (6) KPI Definition, (7) Pugh Matrix Evaluation · Traceability Chain N-xx → FR → CAP → KPI ทุกขั้น · Knowledge Logger auto-trigger เมื่อ session จบ · Quick Command table (/next, /trace, /summary)</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ฝัง Knowledge Logging workflow ใน System Prompt เอง ทำให้ทุก BA Session บันทึกผลลัพธ์อัตโนมัติ — แสดงว่า Pattaratida เข้าใจ System Design ในระดับที่ออกแบบ Workflow ให้คนอื่นใช้ได้ ไม่ใช่แค่ใช้เอง</div>
+      <div class="uc-insight">💡 L3 ที่แข็งแกร่ง — ถ้าสร้างเป็น Claude Project ที่ทีม BA ทุกคนเข้าถึงได้ = L4</div>
+    </div>
+
+    <!-- UC#1 ICP -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Multi-scoring Framework</div><div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~1–2 ชม./ครั้ง</span></div>
+      <div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Multi-dimension Scoring</span><span class="tool">Grade Definition (A★→D)</span><span class="tool">Excel 2-tab Output</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-p">ICP Scoring System — 7 Dimensions: D1 (Core Need), D2 (Budget Signal), D3 (Decision Stage), F1a (Revenue Proxy), F1b (Growth Signal), F1c (Investment Pattern), F2 (Financial Health) รวม 100 pts · Grade A★ (90+) → A (75+) → B (60+) → C (45+) → D (&lt;45) · 8 Industry Groups (A–H) พร้อม weight ต่างกัน → Output: ICP_Scoring_Form.xlsx (ICP Summary + Top Suspects tabs)</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ออกแบบ Multi-dimension Scoring ที่ Encode Domain Knowledge ธุรกิจไฟฟ้าของ PRECISE ได้ครอบคลุม — การแยก Demand (D1–D3) และ Financial (F1–F2) แสดงความเข้าใจ B2B Sales Cycle ลึกกว่า Simple Scoring ทั่วไป</div>
+      <div class="uc-insight">💡 Foundation ที่ดี — UC#3 (PRECISE Sales Intelligence) ต่อยอดจาก Framework นี้</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ══════════════ Modal: มนพร (Belle) ══════════════ -->
+<div class="overlay" id="ov-manaporn"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 มนพร (Belle) — Use Cases & การวิเคราะห์</h2><p>Business Development · Switchgear · PCC Group · Level 4 — The Builder · 2 UCs · Avg 3.5</p></div><button class="close-btn" onclick="closeModal('manaporn')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-m"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
+      <li>UC#2 (ISA-95 HTML) = L4 ชัดเจน — สร้าง Interactive Presentation Tool จาก Excel จริง โดยไม่ต้องเป็น Programmer</li>
+      <li>UC#1 (Switchgear Blueprint 17 UCs) = L3 — เป็น Vision/Roadmap ที่ครอบคลุมมาก แต่ยังไม่ได้ Implement</li>
+      <li>จุดแข็ง: Domain Knowledge ลึก (IEC Standard, 3D CAD, AR/VR, MES, PLM) + Systematic Thinking</li>
+      <li>Gap สู่ L5: สร้าง Script auto-update HTML เมื่อ Excel เปลี่ยน → Implement 1 UC จาก Blueprint ให้ทำงานได้จริง</li>
+    </ul></div>
+
+    <!-- UC#2 ISA-95 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-m">#2</div><div class="uc-title">สร้าง HTML Presentation — ISA-95 Digital Architecture 5 Layers (Purdue Model)</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด ~5.5 ชม. (manual ~5.5ชม. → AI ~10 นาที)</span></div>
+      <div class="tool-row"><span class="tool">HTML/CSS/JS Generation</span><span class="tool">SVG Pyramid Design</span><span class="tool">Excel→Base64 Image</span><span class="tool">Sticky Navigation</span><span class="tool">Interactive Image Tabs</span><span class="tool">Multi-iteration</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-m">isa95-combined.html — ไฟล์เดียวพร้อมใช้งาน ไม่พึ่ง Server · SVG Pyramid 5 Levels (IT/OT bracket แยกชัด) · Level Cards ครบ Level 0–4 — ชื่อ, คำอธิบายภาษาไทย, Module/System tags (Odoo ERP, MES, IoT Platform, SCADA, PLC, Sensor) · Information Flow Section แต่ละ Level (Order to Plan → Produce to Deliver) · Image Tabs 6 tab (Level 0–4 + Overview) embed รูปจาก Excel เป็น Base64 · Sticky Nav "ISA-95 Overview ↔ ตัวอย่างภาพแต่ละ Level"</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Iterate 5 รอบ: สรุปเนื้อหา → สร้าง HTML → ปรับ Theme (Dark→Light) → ดึงข้อมูลจาก Excel → เพิ่ม Image Tab → รวมไฟล์ + Navigation แต่ละรอบ Belle อธิบาย Requirement ชัดเจน ทำให้ AI ทำได้ถูกตั้งแต่แรก Output เป็น Tool ที่แจกจ่ายให้ทีม Engineer และ Management ใช้นำเสนอได้จริง</div>
+      <div class="uc-insight">💡 L4 ชัดเจน — ไม่ใช่แค่ขอสรุป แต่ขอ "เครื่องมือ" ที่นำเสนอได้จริง ถ้าสร้าง Script auto-regenerate HTML เมื่อ Excel เปลี่ยน = L5</div>
+    </div>
+
+    <!-- UC#1 Switchgear Blueprint -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-m">#1</div><div class="uc-title">AI Use Cases Blueprint — ธุรกิจผลิต Switchgear ครบ 4 กระบวนการ (17 Sub-UCs)</div><div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 60–120 นาที/วัน/คน เมื่อ Implement ครบ</span></div>
+      <div class="tool-row"><span class="tool">Claude / ChatGPT</span><span class="tool">Python + Low-code</span><span class="tool">AR (Vuforia/PTC)</span><span class="tool">Computer Vision AI</span><span class="tool">SolidWorks AI Plugin</span><span class="tool">MES Integration</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-m">AI Use Case Map ครบ 4 กระบวนการ:
+        <br>• <strong>กระบวนการ 1 — Pre-sales & Engineering (AI1):</strong> UC-01 อ่าน SLD→BOQ (L4), UC-02 ใบเสนอราคาจาก BOQ (L3), UC-03 สรุป TOR/Requirement (L2), UC-04 ตรวจ IEC 61439 Compliance (L2)
+        <br>• <strong>กระบวนการ 2 — Engineering Design (AI2):</strong> UC-05 AI Copilot SolidWorks/BricsCAD (L2–3), UC-06 คำนวณ Short Circuit/Thermal (L3–4), UC-07 Review Drawing ก่อน Release (L3), UC-08 Export BOM → ERP (L4)
+        <br>• <strong>กระบวนการ 3 — Shop Floor (AI3):</strong> UC-09 Digital Work Instruction (L3–4), UC-10 Standard Time Analysis (L4–5), UC-11 Visual QC Camera (L5), UC-12 Auto Test Report (L4), UC-13 AR Inspection Vuforia (L5), UC-14 AR-Guided Routine Test (L5)
+        <br>• <strong>กระบวนการ 4 — After-sales & Corporate (AI4):</strong> UC-15 Predictive Maintenance (L5), UC-16 RAG Knowledge Base (L3), UC-17 Smart Meeting (L2)
+      </div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Blueprint ที่ครอบคลุมที่สุดในทีม — แสดง System Thinking ระดับสูงในการมองเห็น AI Application ตลอด Value Chain ของ Switchgear Manufacturing UC บางตัวถ้า Implement จริงจะเป็น L5 (UC-11 Computer Vision QC, UC-13 AR Inspection) หรือแม้แต่ L6 (UC-15 Predictive Maintenance + Auto Work Order)</div>
+      <div class="uc-insight">💡 L3 ที่มีวิสัยทัศน์ L5+ — ถ้าเลือก Implement 1 UC ที่ง่ายที่สุดก่อน (UC-02 ใบเสนอราคา = Google Sheets + Claude Prompt) = L4 ใน 1 session</div>
+    </div>
   </div>
 </div></div>
 

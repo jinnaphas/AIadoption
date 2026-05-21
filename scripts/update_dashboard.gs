@@ -311,7 +311,7 @@ function buildHtml(data) {
     + '<script>'
     + 'function openModal(id){document.getElementById("ov-"+id).classList.add("open");document.body.style.overflow="hidden";}'
     + 'function closeModal(id){document.getElementById("ov-"+id).classList.remove("open");document.body.style.overflow="";}'
-    + 'document.querySelectorAll(".overlay").forEach(function(el){el.addEventListener("click",function(e){if(e.target===el){el.classList.remove("open");document.body.style.overflow='';}});});'
+    + 'document.querySelectorAll(".overlay").forEach(function(el){el.addEventListener("click",function(e){if(e.target===el){el.classList.remove("open");document.body.style.overflow="";}});});'
     + '</script></body></html>';
 }
 

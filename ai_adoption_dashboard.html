@@ -90,9 +90,9 @@
 
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">4</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">16</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
-    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">80+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
-    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">4.0</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">18</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">130+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
+    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">3.9</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
 
   <div class="cards-grid">
@@ -128,8 +128,8 @@
       <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">2</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">12+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Switchgear AI</span><span class="tag tag-m">No-Code Builder</span></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-m">Demand Forecast</span><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Odoo Visual</span><span class="tag tag-m">Switchgear AI</span></div>
       <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
   </div>
@@ -364,16 +364,42 @@
 
 <!-- ══════════════ Modal: มนพร (Belle) ══════════════ -->
 <div class="overlay" id="ov-manaporn"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 มนพร (Belle) — Use Cases & การวิเคราะห์</h2><p>Business Development · Switchgear · PCC Group · Level 4 — The Builder · 2 UCs · Avg 3.5</p></div><button class="close-btn" onclick="closeModal('manaporn')">✕</button></div>
+  <div class="modal-head"><div><h2>🔍 มนพร (Belle) — Use Cases & การวิเคราะห์</h2><p>Business Development · Switchgear · PCC Group · Level 4 — The Builder · 4 UCs · Avg 3.3</p></div><button class="close-btn" onclick="closeModal('manaporn')">✕</button></div>
   <div class="modal-body">
     <div class="abox abox-m"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
       <li>UC#2 (ISA-95 HTML) = L4 ชัดเจน — สร้าง Interactive Presentation Tool จาก Excel จริง โดยไม่ต้องเป็น Programmer</li>
       <li>UC#1 (Switchgear Blueprint 17 UCs) = L3 — เป็น Vision/Roadmap ที่ครอบคลุมมาก แต่ยังไม่ได้ Implement</li>
       <li>จุดแข็ง: Domain Knowledge ลึก (IEC Standard, 3D CAD, AR/VR, MES, PLM) + Systematic Thinking</li>
-      <li>Gap สู่ L5: สร้าง Script auto-update HTML เมื่อ Excel เปลี่ยน → Implement 1 UC จาก Blueprint ให้ทำงานได้จริง</li>
+      <li>UC#4 (PDEM Forecast) = งานวิเคราะห์เชิงปริมาณที่ซับซ้อนที่สุดในทีม — 6 BUs, 5 Excel outputs, อ้างอิง PDF ราชการ 6 ฉบับ</li>
+      <li>Gap สู่ L5: สร้าง Script auto-update Forecast เมื่อตัวเลข External Factor ใหม่เข้า Drive</li>
     </ul></div>
 
     <!-- UC#2 ISA-95 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-m">#4</div><div class="uc-title">Derived Demand Forecast 2027–2030 — PDEM (Power Distribution &amp; Energy Management)</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด 40–60 ชม. 🔥🔥</span><span>⏳ ~4–5 ชม. multi-turn session</span></div>
+      <div class="tool-row"><span class="tool">PDF Upload (6 ฉบับ)</span><span class="tool">Excel Analysis</span><span class="tool">Correlation Mapping</span><span class="tool">Weighted Growth Rate</span><span class="tool">Derived Demand Method</span><span class="tool">Multi-phase Workflow</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-m">5 Excel Files: External_Factors_PDEM.xlsx (10 Thailand + 6 Cambodia factors), Source_Reference.xlsx (URL + Verified status), Correlation_Mapping_WeightedGrowth.xlsx (Factor × 70+ products), PDEM_Forecast_2026_2030.xlsx (Revenue/GP/Forecast ครบทุก product)
+        <br><br><strong>Forecast Summary (Million Baht):</strong><br>
+        PEM101: 560→733 (CAGR 6.9%) · PEM102: 401→645 (CAGR 12.6% 🔥 SF6-free) · PEM103: 1,196→1,558 (CAGR 6.8%) · PEM104: 512→663 (CAGR 6.7%) · CI101: 27→34 · PEMC Cambodia: 194→318 (CAGR 13.1%)<br>
+        <strong>TOTAL: 2,891 → 3,951 MB (CAGR 8.1%)</strong></div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">4-Phase Workflow ที่ซับซ้อนที่สุดในทีม: (1) Context Loading — Corporate Plan PDF + Product Portfolio Excel, (2) External Research — AI หา Factors จาก PEA/MEA Capex, RE Target, GDP, SF6 Regulation แล้ว Verify จาก PDF ราชการจริง, (3) Correlation Mapping — Matrix Factor × Product พร้อม Weight, (4) Forecast Build — Apply WGR% ต่อทุก row แยก Revenue Stream Type · ทุกตัวเลขมี Source Reference ชัดเจน</div>
+      <div class="uc-insight">💡 งานที่ประหยัดเวลาสูงสุดในทีม (40–60 ชม.) — Belle ใช้ AI เป็น Research + Quantitative Analyst Partner ไม่ใช่แค่ Drafting Tool ถ้าสร้าง Auto-update Script เมื่อ PEA/MEA งบประมาณใหม่ออก = L5</div>
+    </div>
+
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-m">#3</div><div class="uc-title">สร้าง Visual สำหรับนำเสนอแผน Odoo ERP Implementation — 6 บริษัท 4 Scope 14 Process</div><div class="uc-badges"><div class="chip c2">L2</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด ~3 ชม.</span></div>
+      <div class="tool-row"><span class="tool">Excel Analysis (pandas)</span><span class="tool">HTML + Chart.js</span><span class="tool">JPEG via Playwright</span><span class="tool">Iterative Design</span><span class="tool">PPT-ready (16:9)</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-m">5 Output Files: report_review_dashboard.html (สรุป 105 Reports + Chart.js), odoo_implementation_overview.jpg (1280×720px แผน 6 บริษัท 4 Scope 14 Process), odoo_14processes.jpg (Dark Theme), odoo_processes_v2.jpg (Light Theme Core+Supporting), odoo_pem_ci_comparison.jpg (ตาราง DB เดียว vs แยก DB) · ทุกภาพพร้อมใส่ PPT ได้ทันที</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ใช้ AI เป็นเครื่องมือออกแบบกราฟิก + วิเคราะห์ข้อมูล Excel พร้อมกัน — Iterate หลายรอบ (เพิ่มตัวเลข, เปลี่ยน Theme, ปรับขนาด) แต่ยังเป็น Manual Trigger ทุกครั้ง และ Output ยังไม่ได้แจกจ่ายเป็น Tool ให้ทีมอื่นใช้เอง จึงอยู่ที่ L2 (Prompt Engineer ที่มี Iteration)</div>
+      <div class="uc-insight">💡 ถ้าสร้าง Template HTML สำเร็จรูปที่ทีมวาง Excel แล้วได้ภาพออกมาทันที = L3 และถ้าเชื่อม Google Drive auto-save = L3+ ที่แข็งแรง</div>
+    </div>
+
     <div class="uc">
       <div class="uc-top"><div class="uc-num un-m">#2</div><div class="uc-title">สร้าง HTML Presentation — ISA-95 Digital Architecture 5 Layers (Purdue Model)</div><div class="uc-badges"><div class="chip c4">L4</div></div></div>
       <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด ~5.5 ชม. (manual ~5.5ชม. → AI ~10 นาที)</span></div>

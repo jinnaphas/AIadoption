@@ -102,32 +102,66 @@ function callAI(files) {
   for (var uid in USER_FOLDERS) {
     lines.push('=== ' + USER_FOLDERS[uid].name + ' (' + uid + ') ===');
     (files[uid]||[]).forEach(function(f) {
-      lines.push('File: ' + f.name + '\n' + f.content.slice(0,1500) + '\n---');
+      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 1200) + '\n---');
     });
   }
 
   var prompt = 'Analyze AI use cases for PCC Group. Return ONLY compact valid JSON, no markdown.\n\n'
     + lines.join('\n')
-    + '\n\nExact structure:\n'
-    + '{"team":{"total_ucs":<int>,"hours_saved":"<X+>","avg_level":<float>},'
-    + '"members":{"narawit":{"level":<int>,"avg":<float>,"hours":"<X+>","uc_count":<int>,'
-    + '"tags":["t1","t2","t3","t4"],"analysis":["p1","p2","p3","p4"],"next":"<recommendation>",'
-    + '"ucs":[{"title":"","level":<int>,"date":"YYYY-MM-DD","time_saved":"","tools":[""],"output":"","insight":"💡 "}]},'
-    + '"earth":{same},"pattaratida":{same}}}\n'
-    + 'Levels: 1=Basic 2=Prompt 3=Integrator 4=Builder 5=Automator 6=Agentic 7=Architect\n'
-    + 'Sort ucs date desc. Return ONLY JSON.';
+    + '\n\nReturn this EXACT JSON structure:\n'
+    + '{"team":{"total_ucs":0,"hours_saved":"0+","avg_level":0.0},'
+    + '"members":{"narawit":{"level":3,"avg":3.0,"hours":"5+","uc_count":5,'
+    + '"tags":["tag1","tag2","tag3","tag4"],'
+    + '"analysis":["point1","point2","point3","point4"],'
+    + '"next":"recommendation to next level",'
+    + '"ucs":[{"title":"UC title","level":3,"date":"2026-05-21","time_saved":"~1 hr","tools":["tool1"],"output":"output desc","insight":"insight text"}]},'
+    + '"earth":{"level":4,"avg":4.0,"hours":"27+","uc_count":5,"tags":[],"analysis":[],"next":"","ucs":[]},'
+    + '"pattaratida":{"level":3,"avg":3.3,"hours":"28+","uc_count":3,"tags":[],"analysis":[],"next":"","ucs":[]}}}\n'
+    + 'Rules: Levels 1-7. Sort ucs by date desc. Fill ALL fields. Return ONLY the JSON object.';
+
+  Logger.log('Calling API with key prefix: ' + (ANTH_KEY ? ANTH_KEY.slice(0,20) + '...' : 'NOT SET'));
 
   var resp = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
     method: 'post',
-    headers: { 'x-api-key': ANTH_KEY, 'anthropic-version': '2023-06-01', 'content-type': 'application/json' },
-    payload: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 4096,
-                              messages: [{role:'user', content: prompt}] }),
+    headers: {
+      'x-api-key': ANTH_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json'
+    },
+    payload: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 4096,
+      messages: [{ role: 'user', content: prompt }]
+    }),
     muteHttpExceptions: true
   });
 
-  var raw = JSON.parse(resp.getContentText()).content[0].text.trim()
-    .replace(/^```json?\n?/,'').replace(/\n?```$/,'');
-  return JSON.parse(raw);
+  var httpCode  = resp.getResponseCode();
+  var respText  = resp.getContentText();
+  Logger.log('API HTTP status: ' + httpCode);
+
+  if (httpCode !== 200) {
+    Logger.log('API Error body: ' + respText.slice(0, 500));
+    throw new Error('Anthropic API error ' + httpCode + ': ' + respText.slice(0, 200));
+  }
+
+  var respData = JSON.parse(respText);
+  if (!respData.content || !respData.content[0] || !respData.content[0].text) {
+    Logger.log('Unexpected response: ' + respText.slice(0, 500));
+    throw new Error('Unexpected API response — no content[0].text');
+  }
+
+  var raw = respData.content[0].text.trim()
+    .replace(/^```json?\n?/, '').replace(/\n?```$/, '');
+
+  Logger.log('Raw JSON preview: ' + raw.slice(0, 200));
+
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    Logger.log('JSON parse error: ' + e + ' | raw: ' + raw.slice(0, 300));
+    throw new Error('Failed to parse AI response as JSON: ' + e);
+  }
 }
 
 // ── HTML BUILDER ──────────────────────────────────────────────────────────────

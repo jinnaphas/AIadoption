@@ -6,354 +6,221 @@
 <title>AI Adoption Dashboard — PCC Group</title>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:#f0f4f9;--surface:#fff;--surface2:#f5f8fc;--surface3:#eaf0f8;
-    --border:#dae3ef;--border2:#c5d3e2;
-    --text:#1a2b3c;--text2:#4a6278;--text3:#8aa0b4;
-    --accent:#0077cc;--accent-bg:#e8f3ff;
-    --gold:#d97706;--gold-bg:#fef9ec;
-    --green:#16a34a;--green-bg:#edfaf3;
-    --purple:#7c3aed;--purple-bg:#f3eeff;
-    --rose:#db2777;--rose-bg:#fdf2f8;
-    --l1c:#3b82f6;--l1b:#eff6ff;--l2c:#0891b2;--l2b:#ecfeff;
-    --l3c:#059669;--l3b:#ecfdf5;--l4c:#d97706;--l4b:#fffbeb;
-    --l5c:#ea580c;--l5b:#fff7ed;--l6c:#dc2626;--l6b:#fef2f2;--l7c:#7c3aed;--l7b:#f5f3ff;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
-  body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#b8cfe0 1px,transparent 1px);background-size:28px 28px;opacity:.4;pointer-events:none;z-index:0;}
-  .container{max-width:1200px;margin:0 auto;padding:28px 24px;position:relative;z-index:1;}
-
-  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px;}
-  .header h1{font-size:1.85rem;font-weight:800;letter-spacing:-.5px;color:var(--text);}
-  .header h1 span{color:var(--accent);}
-  .header p{color:var(--text2);font-size:.84rem;margin-top:5px;}
-  .live-badge{display:flex;align-items:center;gap:8px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:20px;padding:7px 16px;font-size:.73rem;color:var(--green);font-family:'JetBrains Mono',monospace;white-space:nowrap;font-weight:600;}
-  .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
-  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-
-  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;}
-  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;align-items:center;gap:14px;}
-  .stat-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+  :root{--bg:#f0f4f9;--surface:#fff;--surface2:#f5f8fc;--surface3:#eaf0f8;--border:#dae3ef;--border2:#c5d3e2;--text:#1a2b3c;--text2:#4a6278;--text3:#8aa0b4;--accent:#0077cc;--accent-bg:#e8f3ff;--gold:#d97706;--gold-bg:#fef9ec;--green:#16a34a;--green-bg:#edfaf3;--purple:#7c3aed;--purple-bg:#f3eeff;--rose:#db2777;--rose-bg:#fdf2f8;--teal:#0d9488;--teal-bg:#f0fdfa;}
+  *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+  body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#b8cfe0 1px,transparent 1px);background-size:28px 28px;opacity:.4;pointer-events:none;z-index:0}
+  .container{max-width:1280px;margin:0 auto;padding:28px 24px;position:relative;z-index:1}
+  .header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:14px}
+  .header h1{font-size:1.85rem;font-weight:800;letter-spacing:-.5px;color:var(--text)}.header h1 span{color:var(--accent)}.header p{color:var(--text2);font-size:.84rem;margin-top:5px}
+  .live-badge{display:flex;align-items:center;gap:8px;background:var(--green-bg);border:1px solid #bbf7d0;border-radius:20px;padding:7px 16px;font-size:.73rem;color:var(--green);font-family:'JetBrains Mono',monospace;white-space:nowrap;font-weight:600}
+  .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite}@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;box-shadow:0 1px 4px rgba(0,0,0,.06);display:flex;align-items:center;gap:14px}
+  .stat-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
   .si1{background:var(--accent-bg)}.si2{background:var(--gold-bg)}.si3{background:var(--green-bg)}.si4{background:var(--purple-bg)}
-  .stat-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px;}
-  .stat-val{font-size:1.7rem;font-weight:800;line-height:1;}
-  .stat-sub{font-size:.68rem;color:var(--text3);margin-top:3px;}
-
-  .cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;}
-  .emp-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:22px;cursor:pointer;transition:all .22s ease;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative;overflow:hidden;}
-  .emp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0;}
-  .card-n::before{background:linear-gradient(90deg,var(--accent),#60b4ff);}
-  .card-e::before{background:linear-gradient(90deg,var(--gold),#fbbf24);}
-  .card-p::before{background:linear-gradient(90deg,var(--rose),#f472b6);}
-  .card-n:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,204,.12);}
-  .card-e:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,119,6,.12);}
-  .card-p:hover{border-color:var(--rose);transform:translateY(-2px);box-shadow:0 8px 28px rgba(219,39,119,.12);}
-
-  .emp-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
-  .avatar{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.15rem;font-weight:800;color:#fff;flex-shrink:0;}
-  .av-n{background:linear-gradient(135deg,#0ea5e9,#0369a1);}
-  .av-e{background:linear-gradient(135deg,#f59e0b,#b45309);}
-  .av-p{background:linear-gradient(135deg,#ec4899,#be185d);}
-  .emp-name{font-size:1rem;font-weight:700;}
-  .emp-role{font-size:.7rem;color:var(--text2);margin-top:2px;line-height:1.4;}
-
-  .level-badge{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:4px 10px;font-size:.74rem;font-weight:600;margin-bottom:14px;}
-  .badge-3{background:var(--l3b);color:var(--l3c);border:1px solid #a7f3d0;}
-  .badge-4{background:var(--l4b);color:var(--l4c);border:1px solid #fde68a;}
-  .badge-5{background:var(--l5b);color:var(--l5c);border:1px solid #fed7aa;}
-  .badge-p3{background:var(--rose-bg);color:var(--rose);border:1px solid #fbcfe8;}
-
-  .new-badge{display:inline-flex;align-items:center;background:#fef3c7;border:1px solid #fcd34d;color:#92400e;border-radius:6px;padding:1px 6px;font-size:.6rem;font-weight:700;margin-left:5px;vertical-align:middle;}
-
-  .gauge-wrap{margin-bottom:14px;}
-  .gauge-labels{display:flex;justify-content:space-between;font-size:.62rem;color:var(--text3);margin-bottom:6px;font-family:'JetBrains Mono',monospace;}
-  .gauge-track{display:flex;gap:3px;height:7px;}
-  .seg{flex:1;border-radius:3px;background:var(--surface3);}
-  .s3{background:var(--l3c)}.s3g{background:var(--l3c);box-shadow:0 0 7px rgba(5,150,105,.5);}
-  .s4{background:var(--l4c)}.s4g{background:var(--l4c);box-shadow:0 0 7px rgba(217,119,6,.5);}
-  .s5{background:var(--l5c)}.s5g{background:var(--l5c);box-shadow:0 0 7px rgba(234,88,12,.5);}
-  .s7{background:var(--l7c)}.s7g{background:var(--l7c);box-shadow:0 0 7px rgba(124,58,237,.5);}
-  .sr{background:var(--rose)}.srg{background:var(--rose);box-shadow:0 0 7px rgba(219,39,119,.5);}
-
-  .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:13px;}
-  .mstat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center;}
-  .mstat-v{font-size:1rem;font-weight:700;}
-  .mstat-l{font-size:.6rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;font-weight:600;}
-
-  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:13px;}
-  .tag{font-size:.65rem;padding:3px 8px;border-radius:20px;font-weight:500;}
-  .tag-n{background:var(--accent-bg);border:1px solid #bfdbfe;color:var(--accent);}
-  .tag-e{background:var(--gold-bg);border:1px solid #fde68a;color:var(--gold);}
-  .tag-p{background:var(--rose-bg);border:1px solid #fbcfe8;color:var(--rose);}
-
-  .drill-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:9px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);font-size:.78rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Outfit',sans-serif;}
-  .btn-n{color:var(--accent)}.btn-n:hover{background:var(--accent-bg);border-color:var(--accent);}
-  .btn-e{color:var(--gold)}.btn-e:hover{background:var(--gold-bg);border-color:var(--gold);}
-  .btn-p{color:var(--rose)}.btn-p:hover{background:var(--rose-bg);border-color:var(--rose);}
-
-  .bottom-grid{display:grid;grid-template-columns:1fr 1.45fr;gap:18px;}
-  .panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-  .section-title{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:16px;}
-
-  .lvl-row{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;margin-bottom:3px;}
-  .lvl-row.cur{background:var(--surface2);border:1px solid var(--border);}
-  .lvl-num{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
-  .lvl-info{flex:1;}
-  .lvl-name{font-size:.8rem;font-weight:600;}
-  .lvl-sub{font-size:.66rem;color:var(--text3);margin-top:1px;}
-  .mini-avs{display:flex;gap:4px;}
-  .mav{width:22px;height:22px;border-radius:5px;font-size:.58rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center;}
-  .mav-n{background:linear-gradient(135deg,#0ea5e9,#0369a1);}
-  .mav-e{background:linear-gradient(135deg,#f59e0b,#b45309);}
-  .mav-p{background:linear-gradient(135deg,#ec4899,#be185d);}
-
-  .rm-item{display:flex;gap:12px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:11px;margin-bottom:9px;transition:border-color .2s;}
-  .rm-item:hover{border-color:var(--border2);}
-  .rm-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;}
-  .rm-content h4{font-size:.8rem;font-weight:700;margin-bottom:3px;}
-  .rm-content p{font-size:.7rem;color:var(--text2);line-height:1.5;}
-  .rm-chip{display:inline-flex;font-size:.63rem;margin-top:6px;font-family:'JetBrains Mono',monospace;font-weight:600;}
-
-  .overlay{position:fixed;inset:0;background:rgba(15,30,50,.48);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s;}
-  .overlay.open{opacity:1;pointer-events:all;}
-  .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:740px;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .22s ease;box-shadow:0 20px 60px rgba(0,0,0,.18);}
-  .overlay.open .modal{transform:translateY(0) scale(1);}
-  .modal-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);border-radius:20px 20px 0 0;z-index:2;}
-  .modal-head h2{font-size:1rem;font-weight:700;}
-  .modal-head p{font-size:.72rem;color:var(--text2);margin-top:2px;}
-  .close-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;}
-  .close-btn:hover{background:var(--surface3);color:var(--text);}
-  .modal-body{padding:20px 24px 26px;}
-
-  .abox{border-radius:11px;padding:14px 16px;margin-bottom:16px;}
-  .abox-n{background:var(--accent-bg);border:1px solid #bfdbfe;}
-  .abox-e{background:var(--gold-bg);border:1px solid #fde68a;}
-  .abox-p{background:var(--rose-bg);border:1px solid #fbcfe8;}
-  .abox h3{font-size:.77rem;font-weight:700;margin-bottom:9px;}
-  .abox-n h3{color:var(--accent)}.abox-e h3{color:var(--gold)}.abox-p h3{color:var(--rose)}
-  .abox ul{list-style:none;}
-  .abox li{font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55;}
-  .abox li::before{content:'→';position:absolute;left:0;font-size:.68rem;font-weight:700;}
-  .abox-n li::before{color:var(--accent)}.abox-e li::before{color:var(--gold)}.abox-p li::before{color:var(--rose)}
-
-  .uc{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;transition:box-shadow .18s,border-color .18s;}
-  .uc:hover{border-color:var(--border2);box-shadow:0 2px 10px rgba(0,0,0,.07);}
-  .uc-new{border-color:#fcd34d !important;background:#fffdf5;}
-  .uc-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px;}
-  .uc-num{width:25px;height:25px;border-radius:6px;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
-  .un-n{background:var(--accent-bg);border:1px solid #bfdbfe;color:var(--accent);}
-  .un-e{background:var(--gold-bg);border:1px solid #fde68a;color:var(--gold);}
-  .un-p{background:var(--rose-bg);border:1px solid #fbcfe8;color:var(--rose);}
-  .uc-title{font-size:.87rem;font-weight:600;flex:1;line-height:1.4;}
-  .chip{font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-family:'JetBrains Mono',monospace;}
-  .c3{background:var(--l3b);color:var(--l3c);}
-  .c4{background:var(--l4b);color:var(--l4c);}
-  .c5{background:var(--l5b);color:var(--l5c);}
-  .c7{background:var(--l7b);color:var(--l7c);}
-  .uc-meta{display:flex;gap:14px;margin-bottom:9px;flex-wrap:wrap;}
-  .uc-meta span{font-size:.7rem;color:var(--text2);display:flex;align-items:center;gap:4px;}
-  .tool-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;}
-  .tool{font-size:.63rem;padding:3px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border2);color:var(--text2);font-family:'JetBrains Mono',monospace;}
-  .uc-output{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:9px;}
-  .out-n{border-left:3px solid var(--accent);}
-  .out-e{border-left:3px solid var(--gold);}
-  .out-p{border-left:3px solid var(--rose);}
-  .uc-insight{font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:8px;border-top:1px solid var(--border);}
-
-  ::-webkit-scrollbar{width:4px;}
-  ::-webkit-scrollbar-track{background:var(--surface2);}
-  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+  .stat-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.stat-val{font-size:1.7rem;font-weight:800;line-height:1}.stat-sub{font-size:.68rem;color:var(--text3);margin-top:3px}
+  .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+  .emp-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:20px;cursor:pointer;transition:all .22s ease;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative;overflow:hidden}
+  .emp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0}
+  .card-n::before{background:linear-gradient(90deg,var(--accent),#60b4ff)}.card-e::before{background:linear-gradient(90deg,var(--gold),#fbbf24)}.card-p::before{background:linear-gradient(90deg,var(--rose),#f472b6)}.card-m::before{background:linear-gradient(90deg,var(--teal),#2dd4bf)}
+  .card-n:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,204,.12)}.card-e:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 28px rgba(217,119,6,.12)}.card-p:hover{border-color:var(--rose);transform:translateY(-2px);box-shadow:0 8px 28px rgba(219,39,119,.12)}.card-m:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 8px 28px rgba(13,148,136,.12)}
+  .emp-header{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+  .avatar{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;color:#fff;flex-shrink:0}
+  .av-n{background:linear-gradient(135deg,#0ea5e9,#0369a1)}.av-e{background:linear-gradient(135deg,#f59e0b,#b45309)}.av-p{background:linear-gradient(135deg,#ec4899,#be185d)}.av-m{background:linear-gradient(135deg,#0d9488,#0f766e)}
+  .emp-name{font-size:.95rem;font-weight:700}.emp-role{font-size:.68rem;color:var(--text2);margin-top:2px;line-height:1.4}
+  .level-badge{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:4px 9px;font-size:.72rem;font-weight:600;margin-bottom:13px}
+  .badge-3n{background:var(--accent-bg);color:var(--accent);border:1px solid #bfdbfe}.badge-4{background:#fffbeb;color:#d97706;border:1px solid #fde68a}.badge-3p{background:var(--rose-bg);color:var(--rose);border:1px solid #fbcfe8}.badge-3m{background:var(--teal-bg);color:var(--teal);border:1px solid #99f6e4}
+  .gauge-wrap{margin-bottom:13px}.gauge-labels{display:flex;justify-content:space-between;font-size:.6rem;color:var(--text3);margin-bottom:5px;font-family:'JetBrains Mono',monospace}
+  .gauge-track{display:flex;gap:2px;height:6px}.seg{flex:1;border-radius:3px;background:var(--surface3)}
+  .sn{background:var(--accent)}.sng{background:var(--accent);box-shadow:0 0 7px rgba(0,119,204,.6)}.se{background:var(--gold)}.seg_{background:var(--gold);box-shadow:0 0 7px rgba(217,119,6,.6)}.sr{background:var(--rose)}.srg{background:var(--rose);box-shadow:0 0 7px rgba(219,39,119,.6)}.sm{background:var(--teal)}.smg{background:var(--teal);box-shadow:0 0 7px rgba(13,148,136,.6)}
+  .mini-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+  .mstat{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:8px;text-align:center}.mstat-v{font-size:.95rem;font-weight:700}.mstat-l{font-size:.58rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:2px;font-weight:600}
+  .tags{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}.tag{font-size:.63rem;padding:3px 8px;border-radius:20px;font-weight:500}
+  .tag-n{background:var(--accent-bg);border:1px solid #bfdbfe;color:var(--accent)}.tag-e{background:var(--gold-bg);border:1px solid #fde68a;color:var(--gold)}.tag-p{background:var(--rose-bg);border:1px solid #fbcfe8;color:var(--rose)}.tag-m{background:var(--teal-bg);border:1px solid #99f6e4;color:var(--teal)}
+  .drill-btn{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;padding:8px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface2);font-size:.76rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Outfit',sans-serif}
+  .btn-n{color:var(--accent)}.btn-n:hover{background:var(--accent-bg);border-color:var(--accent)}.btn-e{color:var(--gold)}.btn-e:hover{background:var(--gold-bg);border-color:var(--gold)}.btn-p{color:var(--rose)}.btn-p:hover{background:var(--rose-bg);border-color:var(--rose)}.btn-m{color:var(--teal)}.btn-m:hover{background:var(--teal-bg);border-color:var(--teal)}
+  .bottom-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:18px}
+  .panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .section-title{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:16px}
+  .lvl-row{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;margin-bottom:3px}.lvl-row.cur{background:var(--surface2);border:1px solid var(--border)}
+  .lvl-num{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .lvl-info{flex:1}.lvl-name{font-size:.8rem;font-weight:600}
+  .mini-avs{display:flex;gap:4px}.mav{width:22px;height:22px;border-radius:5px;font-size:.58rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center}
+  .mav-n{background:linear-gradient(135deg,#0ea5e9,#0369a1)}.mav-e{background:linear-gradient(135deg,#f59e0b,#b45309)}.mav-p{background:linear-gradient(135deg,#ec4899,#be185d)}.mav-m{background:linear-gradient(135deg,#0d9488,#0f766e)}
+  .rm-item{display:flex;gap:12px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:11px;margin-bottom:9px;transition:border-color .2s}.rm-item:hover{border-color:var(--border2)}
+  .rm-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+  .rm-content h4{font-size:.8rem;font-weight:700;margin-bottom:3px}.rm-content p{font-size:.7rem;color:var(--text2);line-height:1.5}.rm-chip{display:inline-flex;font-size:.63rem;margin-top:6px;font-family:'JetBrains Mono',monospace;font-weight:600}
+  .overlay{position:fixed;inset:0;background:rgba(15,30,50,.48);backdrop-filter:blur(4px);z-index:200;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;pointer-events:none;transition:opacity .22s}.overlay.open{opacity:1;pointer-events:all}
+  .modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:740px;max-height:88vh;overflow-y:auto;transform:translateY(20px) scale(.97);transition:transform .22s ease;box-shadow:0 20px 60px rgba(0,0,0,.18)}.overlay.open .modal{transform:translateY(0) scale(1)}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--surface);border-radius:20px 20px 0 0;z-index:2}
+  .modal-head h2{font-size:1rem;font-weight:700}.modal-head p{font-size:.72rem;color:var(--text2);margin-top:2px}
+  .close-btn{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text2);font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}.close-btn:hover{background:var(--surface3);color:var(--text)}
+  .modal-body{padding:20px 24px 26px}
+  .abox{border-radius:11px;padding:14px 16px;margin-bottom:16px}
+  .abox-n{background:var(--accent-bg);border:1px solid #bfdbfe}.abox-e{background:var(--gold-bg);border:1px solid #fde68a}.abox-p{background:var(--rose-bg);border:1px solid #fbcfe8}.abox-m{background:var(--teal-bg);border:1px solid #99f6e4}
+  .abox h3{font-size:.77rem;font-weight:700;margin-bottom:9px}.abox-n h3{color:var(--accent)}.abox-e h3{color:var(--gold)}.abox-p h3{color:var(--rose)}.abox-m h3{color:var(--teal)}
+  .abox ul{list-style:none}.abox li{font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55}
+  .abox li::before{content:'→';position:absolute;left:0;font-size:.68rem;font-weight:700}.abox-n li::before{color:var(--accent)}.abox-e li::before{color:var(--gold)}.abox-p li::before{color:var(--rose)}.abox-m li::before{color:var(--teal)}
+  .uc{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:12px;transition:box-shadow .18s,border-color .18s}.uc:hover{border-color:var(--border2);box-shadow:0 2px 10px rgba(0,0,0,.07)}
+  .uc-top{display:flex;align-items:flex-start;gap:10px;margin-bottom:10px}
+  .uc-num{width:25px;height:25px;border-radius:6px;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .un-n{background:var(--accent-bg);border:1px solid #bfdbfe;color:var(--accent)}.un-e{background:var(--gold-bg);border:1px solid #fde68a;color:var(--gold)}.un-p{background:var(--rose-bg);border:1px solid #fbcfe8;color:var(--rose)}.un-m{background:var(--teal-bg);border:1px solid #99f6e4;color:var(--teal)}
+  .uc-title{font-size:.87rem;font-weight:600;flex:1;line-height:1.4}
+  .chip{font-size:.67rem;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .c3{background:#ecfdf5;color:#059669}.c4{background:#fffbeb;color:#d97706}.c5{background:#fff7ed;color:#ea580c}.c7{background:#f5f3ff;color:#7c3aed}
+  .uc-meta{display:flex;gap:14px;margin-bottom:9px;flex-wrap:wrap}.uc-meta span{font-size:.7rem;color:var(--text2)}
+  .tool-row{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px}.tool{font-size:.63rem;padding:3px 8px;border-radius:4px;background:var(--surface);border:1px solid var(--border2);color:var(--text2);font-family:'JetBrains Mono',monospace}
+  .uc-output{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:9px}
+  .out-n{border-left:3px solid var(--accent)}.out-e{border-left:3px solid var(--gold)}.out-p{border-left:3px solid var(--rose)}.out-m{border-left:3px solid var(--teal)}
+  .uc-insight{font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:8px;border-top:1px solid var(--border)}
+  ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <div>
-      <h1>AI Adoption <span>Dashboard</span></h1>
-      <p>PCC Group · AI-Knowledge-Vault · อัปเดต 21 พ.ค. 2569</p>
-    </div>
-    <div class="live-badge"><div class="dot"></div>LIVE · GitHub Pages</div>
+    <div><h1>AI Adoption <span>Dashboard</span></h1><p>PCC Group · AI-Knowledge-Vault · อัปเดต 21 พ.ค. 2569</p></div>
+    <div class="live-badge"><div class="dot"></div>AUTO · Apps Script</div>
   </div>
-
   <div class="stats-row">
-    <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">3</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">13</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
-    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">65+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
-    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">4.2</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
+    <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">4</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">15</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">80+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
+    <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">3.8</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
 
   <div class="cards-grid">
     <!-- นราวิช -->
     <div class="emp-card card-n" onclick="openModal('narawit')">
       <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิช</div><div class="emp-role">HR Strategy & Org Transformation · PCC Group</div></div></div>
-      <div class="level-badge badge-5">🚀 Level 5 — Task Automator <span class="new-badge">✦ Updated</span></div>
-      <div class="gauge-wrap">
-        <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-        <div class="gauge-track">
-          <div class="seg s5"></div><div class="seg s5"></div><div class="seg s5"></div><div class="seg s5"></div><div class="seg s5g"></div>
-          <div class="seg" style="background:var(--l7c);opacity:.25"></div>
-          <div class="seg" style="background:var(--l7c);opacity:.45"></div>
-        </div>
-      </div>
-      <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v" style="color:var(--l5c)">4.8</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">7+</div><div class="mstat-l">ชม.ประหยัด</div></div>
-      </div>
-      <div class="tags">
-        <span class="tag tag-n">Jira API Automation</span>
-        <span class="tag tag-n">Chrome MCP</span>
-        <span class="tag tag-n">Scheduled Tasks</span>
-        <span class="tag tag-n">MCP Integration</span>
-      </div>
+      <div class="level-badge badge-3n">🚀 Level 5 — Task Automator</div>
+      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+      <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sng"></div><div class="seg"></div><div class="seg"></div></div></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">6</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:var(--l5c,#ea580c)">4.8</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">18+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-n">GitHub Actions</span><span class="tag tag-n">Apps Script Auto</span><span class="tag tag-n">Jira API</span><span class="tag tag-n">Chrome MCP</span></div>
       <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 Drill Down →</button>
     </div>
-
     <!-- Earth -->
     <div class="emp-card card-e" onclick="openModal('earth')">
       <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">Earth (Jinnaphas)</div><div class="emp-role">HR Manager & OD Strategy Lead · PCC / SBP</div></div></div>
       <div class="level-badge badge-4">🔥 Level 4 — The Builder</div>
-      <div class="gauge-wrap">
-        <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-        <div class="gauge-track"><div class="seg s4"></div><div class="seg s4"></div><div class="seg s4"></div><div class="seg s4g"></div><div class="seg" style="background:var(--l5c);opacity:.35"></div><div class="seg"></div><div class="seg"></div></div>
-      </div>
-      <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v" style="color:var(--l5c)">4.2</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">27+</div><div class="mstat-l">ชม.ประหยัด</div></div>
-      </div>
-      <div class="tags"><span class="tag tag-e">GitHub Pages</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC Governance</span><span class="tag tag-e">Python</span></div>
+      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+      <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.2</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">27+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-e">GitHub Pages</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span><span class="tag tag-e">Python</span></div>
       <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 Drill Down →</button>
     </div>
-
     <!-- Pattaratida -->
     <div class="emp-card card-p" onclick="openModal('pattaratida')">
       <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">Pattaratida K.</div><div class="emp-role">B2B Sales Intelligence · PCC Group</div></div></div>
-      <div class="level-badge badge-p3">🌟 Level 3 — The Integrator</div>
-      <div class="gauge-wrap">
-        <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-        <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
-      </div>
-      <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">3</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v">3.3</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">28+</div><div class="mstat-l">ชม.ประหยัด</div></div>
-      </div>
+      <div class="level-badge badge-3p">🌟 Level 3 — The Integrator</div>
+      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+      <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">3</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">28+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
       <div class="tags"><span class="tag tag-p">Sales Intelligence</span><span class="tag tag-p">ICP Scoring</span><span class="tag tag-p">BA Framework</span></div>
       <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 Drill Down →</button>
+    </div>
+    <!-- มนพร NEW -->
+    <div class="emp-card card-m" onclick="openModal('manaporn')">
+      <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร (Manaporn)</div><div class="emp-role">Business Development · Switchgear · PCC Group</div></div></div>
+      <div class="level-badge badge-3m">⚡ Level 3 — The Integrator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ New</span></div>
+      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+      <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">1</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v">3.0</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">8+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="tags"><span class="tag tag-m">Switchgear AI</span><span class="tag tag-m">17 Use Cases</span><span class="tag tag-m">Industry Mapping</span></div>
+      <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 Drill Down →</button>
     </div>
   </div>
 
   <div class="bottom-grid">
     <div class="panel">
       <div class="section-title">AI Level Framework — ทีมอยู่ที่ไหน</div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l1b);color:var(--l1c)">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div><div class="lvl-sub">ถาม-ตอบพื้นฐาน</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l2b);color:var(--l2c)">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div><div class="lvl-sub">Prompt มี Role & Context</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l3b);color:var(--l3c)">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div><div class="lvl-sub">เชื่อม AI กับ workflow อื่น</div></div><div class="mini-avs"><div class="mav mav-p">ภ</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:var(--l4b);color:var(--l4c)">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div><div class="lvl-sub">สร้างเครื่องมือให้ทีมใช้</div></div><div class="mini-avs"><div class="mav mav-e">E</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:var(--l5b);color:var(--l5c)">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div><div class="lvl-sub">AI ทำงานแทน 100% มี Trigger</div></div><div class="mini-avs"><div class="mav mav-n">น</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l6b);color:var(--l6c)">6</div><div class="lvl-info"><div class="lvl-name">ปล่อยจอย — Agentic Operator</div><div class="lvl-sub">AI คิด วิเคราะห์ ตัดสินใจ</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:var(--l7b);color:var(--l7c)">7</div><div class="lvl-info"><div class="lvl-name">คบเด็กสร้างบ้าน — Architect</div><div class="lvl-sub">End-to-End Automated System</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#eff6ff;color:#3b82f6">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#ecfeff;color:#0891b2">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#ecfdf5;color:#059669">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div></div><div class="mini-avs"><div class="mav mav-p">ภ</div><div class="mav mav-m">ม</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#fffbeb;color:#d97706">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div></div><div class="mini-avs"><div class="mav mav-e">E</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#fff7ed;color:#ea580c">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div></div><div class="mini-avs"><div class="mav mav-n">น</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#fef2f2;color:#dc2626">6</div><div class="lvl-info"><div class="lvl-name">ปล่อยจอย — Agentic Operator</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#f5f3ff;color:#7c3aed">7</div><div class="lvl-info"><div class="lvl-name">คบเด็กสร้างบ้าน — Architect</div></div></div>
     </div>
     <div class="panel">
       <div class="section-title">Roadmap — เส้นทางสู่ Level ถัดไป</div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>นราวิช → Level 6 (ปล่อยจอย)</h4><p>Timesheet Schedule (L7) + Jira Migration (L5) แสดงว่าพร้อมแล้ว — ขั้นต่อไปคือให้ AI <strong>ตัดสินใจ</strong> เองว่าจะย้าย task ไหน, เมื่อไหร่ โดยไม่ต้องรับ prompt ครั้งเดียวกัน</p><div class="rm-chip" style="color:var(--accent)">L5 → L6 · Key: Multi-step Autonomous Decision · ~2 sessions</div></div></div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 5 (ปล่อยมือ)</h4><p>ตั้ง <strong>GitHub Action</strong> ให้ HC Dashboard รันสคริปต์ Python อัตโนมัติเมื่อมี Excel ใหม่ใน Drive — Earth เปลี่ยนเป็น Reviewer ปลายทาง</p><div class="rm-chip" style="color:var(--gold)">L4 → L5 · Key: GitHub Action Trigger · ~1 session</div></div></div>
-      <div class="rm-item"><div class="rm-icon" style="background:var(--rose-bg)">💡</div><div class="rm-content"><h4>Pattaratida → Level 4 (ปล่อยของ)</h4><p>แปลง ICP Scoring เป็น <strong>Python/Apps Script อิสระ</strong> — ทีม Sales รันได้เองโดยไม่ต้องผ่าน Claude Chat</p><div class="rm-chip" style="color:var(--rose)">L3 → L4 · ~1–2 sessions</div></div></div>
-      <div class="rm-item" style="border-color:#e9d5ff"><div class="rm-icon" style="background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026: Agentic Business System</h4><p>นราวิช L6 + Earth L5 + Pattaratida L4 → <strong>Agentic HR + PM + Sales System</strong> ลด Manual Work 70%+</p><div class="rm-chip" style="color:var(--purple)">Team Target: L6 avg · Impact: -70% Manual Work</div></div></div>
+      <div class="rm-item"><div class="rm-icon" style="background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>นราวิช → Level 6 (ปล่อยจอย)</h4><p>Auto Timesheet (L7) + Dashboard Auto-Update (L5) ทำแล้ว — ขั้นต่อไป: ให้ระบบ <strong>แจ้งเตือนอัตโนมัติ</strong> เมื่อพนักงานไม่มี UC ใหม่เกิน 2 สัปดาห์ หรือเมื่อ Level กระโดด</p><div class="rm-chip" style="color:var(--accent)">L5 → L6 · Key: Proactive AI Notification · ~1 session</div></div></div>
+      <div class="rm-item"><div class="rm-icon" style="background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 5 (ปล่อยมือ)</h4><p>ตั้ง <strong>GitHub Action</strong> ให้ HC Dashboard อัปเดตอัตโนมัติเมื่อมี Excel ใหม่ใน Drive</p><div class="rm-chip" style="color:var(--gold)">L4 → L5 · Key: GitHub Action Trigger · ~1 session</div></div></div>
+      <div class="rm-item"><div class="rm-icon" style="background:var(--teal-bg)">🏭</div><div class="rm-content"><h4>มนพร → Level 4 (ปล่อยของ)</h4><p>สร้าง <strong>BOQ Auto-Generator</strong> จาก UC-01/02 ที่วางแผนไว้ — ให้ทีม Sales ใช้ได้จริงโดยไม่ต้องผ่านมนพร</p><div class="rm-chip" style="color:var(--teal)">L3 → L4 · Key: Deployable Tool · ~2 sessions</div></div></div>
+      <div class="rm-item" style="border-color:#e9d5ff"><div class="rm-icon" style="background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026: Agentic Business System</h4><p>นราวิช L6 + Earth L5 + Pattaratida L4 + มนพร L4 → <strong>Agentic HR + Sales + Manufacturing System</strong></p><div class="rm-chip" style="color:var(--purple)">Team Target: L5.5 avg · Impact: -70% Manual Work</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- Modal: นราวิช -->
-<div class="overlay" id="ov-narawit">
-  <div class="modal">
-    <div class="modal-head"><div><h2>🔍 Use Cases — นราวิช</h2><p>HR Strategy & Org Transformation · Level 5 — Task Automator · 5 UCs · Avg 4.8</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
-    <div class="modal-body">
-      <div class="abox abox-n"><h3>📊 การวิเคราะห์ภาพรวม (อัปเดต 21 พ.ค.)</h3><ul>
-        <li>UC#4 (Jira Migration via API) = L5 ชัดเจน — AI สร้าง 20 tasks ผ่าน Jira API โดยไม่ต้องทำทีละอัน</li>
-        <li>UC#5 (Auto Timesheet + Schedule) = L7! — ตั้ง Scheduled Task ให้ AI กรอกแทนทุกวันอัตโนมัติ</li>
-        <li>Avg Level กระโดดจาก 3.7 → 4.8 — พัฒนาเร็วที่สุดในทีมภายใน 1 วัน</li>
-        <li>จุดแข็งใหม่: Chrome MCP + Jira API + Scheduler = Agentic Workflow ครบวงจร</li>
-      </ul></div>
-
-      <div class="uc uc-new">
-        <div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Schedule รายวัน (Chrome MCP) <span class="new-badge">✦ ใหม่</span></div><div class="chip c7">L7</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~5–10 นาที/วัน (~200 นาที/เดือน)</span><span>🔁 Recurring daily</span></div>
-        <div class="tool-row"><span class="tool">Chrome MCP</span><span class="tool">Web Navigation</span><span class="tool">Form Fill</span><span class="tool">Scheduled Task</span><span class="tool">Duplicate Check</span></div>
-        <div class="uc-output out-n"><strong>Output:</strong> Scheduled Task "daily-timesheet-pde" ✅ รันทุกวันจันทร์–ศุกร์ 08:00 น. อัตโนมัติ — AI navigate ไปยัง cloud.precise.co.th/timesheet/pde, กรอก นราวิชญ์ สมนา (641815), PJ-DBTP EMS, 08:00–17:00, กด บันทึก โดยตรวจสอบก่อนว่ามีรายการซ้ำหรือไม่</div>
-        <div class="uc-insight">💡 L7 ชัดเจน — AI ทำงานแทนมนุษย์ได้อิสระทุกวันโดยไม่ต้องรับ prompt ซ้ำ Prompt เดียว ("ช่วยไปกรอก timesheet") → Scheduled System ที่รันไปตลอด</div>
-      </div>
-
-      <div class="uc uc-new">
-        <div class="uc-top"><div class="uc-num un-n">#4</div><div class="uc-title">Migrate Jira Tasks 20 รายการ จาก EMS Epic → IOTC Project ผ่าน API <span class="new-badge">✦ ใหม่</span></div><div class="chip c5">L5</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~90 นาที</span><span>📋 20 tasks</span></div>
-        <div class="tool-row"><span class="tool">Jira REST API</span><span class="tool">Task Mapping Analysis</span><span class="tool">Cross-project Migration</span><span class="tool">Assignee/Date Transfer</span></div>
-        <div class="uc-output out-n"><strong>Output:</strong> สร้าง 20 tasks ใหม่ใน IOTC Project อัตโนมัติ — IOTC-1 (Core System, 16 tasks) + IOTC-2 (Dashboard & Widget, 4 tasks) พร้อม assignee, due date, epic link ครบ · API Limitation: delete ต้องทำผ่าน UI (Jira ไม่รองรับ DELETE via API)</div>
-        <div class="uc-insight">💡 L5 — AI สำรวจ Epic, วิเคราะห์ mapping, สร้าง tasks ผ่าน Jira API อัตโนมัติ 20 รายการ แทนการทำทีละอันใน UI (~90 นาที → ~5 นาที)</div>
-      </div>
-
-      <div class="uc">
-        <div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="chip c5">L5</div></div>
-        <div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~30 นาที</span></div>
-        <div class="tool-row"><span class="tool">MCP Server</span><span class="tool">Google Drive API</span><span class="tool">Template Design</span></div>
-        <div class="uc-output out-n"><strong>Output:</strong> Knowledge Logger ครบวงจร — Auto-save ลง Drive, folder structure (use-cases/assessments/_templates), บันทึก UC แรกโดยไม่ต้อง manual</div>
-        <div class="uc-insight">💡 สร้างระบบที่กำลังใช้อยู่ตอนนี้ — Meta UC ที่ทำให้ Knowledge Logging ทั้งหมดเป็นไปได้</div>
-      </div>
-      <div class="uc">
-        <div class="uc-top"><div class="uc-num un-n">#2</div><div class="uc-title">วางแผนธุรกิจ AI ในงานบริการไฟฟ้า + Business Case & ROI Analysis</div><div class="chip c3">L3</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–4 ชม.</span></div>
-        <div class="tool-row"><span class="tool">Multi-turn Chat</span><span class="tool">ROI Analysis</span><span class="tool">Strategic Planning</span></div>
-        <div class="uc-output out-n"><strong>Output:</strong> แผน 3 ระยะ + ROI — SaaS: 206K / 1.92M return / ROI 832% / BE 5-6wk | Enterprise: 1.6M / ROI 95% / BE 6-7 เดือน</div>
-        <div class="uc-insight">💡 Industry Context ชัดเจน แต่ยังเป็น one-session — ฐานความคิดที่ดีสำหรับสร้าง Claude Project ต่อยอด</div>
-      </div>
-      <div class="uc">
-        <div class="uc-top"><div class="uc-num un-n">#3</div><div class="uc-title">ประเมิน AI Level ของ Earth จาก Google Drive Knowledge Base</div><div class="chip c3">L3</div></div>
-        <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~60–90 นาที</span></div>
-        <div class="tool-row"><span class="tool">Google Drive MCP</span><span class="tool">Multi-file Analysis</span><span class="tool">Assessment Framework</span></div>
-        <div class="uc-output out-n"><strong>Output:</strong> ผลประเมิน Earth — Level 4 พร้อม Rationale, Gap Analysis, คำแนะนำสู่ L5 + บันทึก 2 ไฟล์ลง Drive อัตโนมัติ</div>
-        <div class="uc-insight">💡 ใช้ AI เป็น HR Assessment Tool ดึงข้อมูลจาก Knowledge Base — Integrator ที่ชัดที่สุด</div>
-      </div>
-    </div>
+<!-- Modal นราวิช -->
+<div class="overlay" id="ov-narawit"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Use Cases — นราวิช</h2><p>HR Strategy & Org Transformation · Level 5 — Task Automator · 6 UCs · Avg 4.8</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-n"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
+      <li>พัฒนาเร็วที่สุดในทีม — จาก L3 สู่ L5 ภายใน 1 วัน (5 UCs)</li>
+      <li>UC#5 (Auto Timesheet + Schedule L7) และ UC#6 (Dashboard Auto-System L5) แสดงทักษะ Automation ครบวงจร</li>
+      <li>จุดแข็ง: MCP Integration + API Automation + System Building</li>
+      <li>คำแนะนำสู่ L6: เพิ่ม Proactive Notification ให้ระบบแจ้งเตือนเองโดยไม่ต้องรอให้คนถาม</li>
+    </ul></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#6</div><div class="uc-title">สร้างระบบ AI Adoption Dashboard + Auto-Update บน GitHub Pages ด้วย Apps Script</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~10 ชม. setup + ประหยัดทุกครั้งในอนาคต</span></div><div class="tool-row"><span class="tool">GitHub API</span><span class="tool">Google Apps Script</span><span class="tool">Anthropic Claude API</span><span class="tool">Daily Trigger</span><span class="tool">PyNaCl Encryption</span></div><div class="uc-output out-n"><strong>Output:</strong> jinnaphas.github.io/AIadoption — Dashboard อัปเดตอัตโนมัติทุก 09:00 น. ไม่ต้อง Prompt อีก · ระบบอ่าน Drive → วิเคราะห์ด้วย Claude API → Push GitHub Pages · ANTHROPIC_API_KEY encrypted ผ่าน GitHub Secrets API</div><div class="uc-insight">💡 L5 ชัดเจน — สร้างระบบที่ AI ทำงานแทน 100% มี Daily Trigger อัตโนมัติ ทีมทุกคนเข้าถึง Dashboard ได้ตลอดเวลา ไม่ต้องพึ่งนราวิชอีก</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Schedule รายวัน (Chrome MCP)</div><div class="chip c7">L7</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~5–10 นาที/วัน (~200 นาที/เดือน)</span></div><div class="tool-row"><span class="tool">Chrome MCP</span><span class="tool">Web Navigation</span><span class="tool">Form Fill Auto</span><span class="tool">Scheduled Task</span></div><div class="uc-output out-n"><strong>Output:</strong> Scheduled Task รันทุกวันจันทร์–ศุกร์ 08:00 น. — AI กรอก Timesheet PDE อัตโนมัติ ตรวจสอบ duplicate ก่อนกรอกทุกครั้ง</div><div class="uc-insight">💡 L7 — AI ทำงานแทนมนุษย์ได้อิสระทุกวัน Prompt เดียว → Scheduled System ที่รันตลอดไป</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#4</div><div class="uc-title">Migrate Jira Tasks 20 รายการ จาก EMS Epic → IOTC Project ผ่าน API</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~90 นาที</span></div><div class="tool-row"><span class="tool">Jira REST API</span><span class="tool">Task Mapping</span><span class="tool">Cross-project Migration</span></div><div class="uc-output out-n"><strong>Output:</strong> 20 tasks ใหม่ใน IOTC — IOTC-1 (Core, 16 tasks) + IOTC-2 (Dashboard, 4 tasks) พร้อม assignee + due date ครบ</div><div class="uc-insight">💡 L5 — API อัตโนมัติสร้าง 20 tasks แทนการทำทีละอันใน UI (~90 นาที → ~5 นาที)</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-n">#1</div><div class="uc-title">ตั้งค่าระบบ AI Knowledge Logger + Google Drive Auto-Sync</div><div class="chip c5">L5</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~30 นาที</span></div><div class="tool-row"><span class="tool">MCP Server</span><span class="tool">Google Drive API</span><span class="tool">Template Design</span></div><div class="uc-output out-n"><strong>Output:</strong> Knowledge Logger ครบวงจร — Auto-save ลง Drive, folder structure, templates, README</div><div class="uc-insight">💡 Meta UC สูงสุดในทีม — สร้างระบบที่กำลังใช้อยู่ตอนนี้</div></div>
   </div>
-</div>
+</div></div>
 
-<!-- Modal: Earth -->
-<div class="overlay" id="ov-earth">
-  <div class="modal">
-    <div class="modal-head"><div><h2>🔍 Use Cases — Earth (Jinnaphas)</h2><p>HR Manager & OD Strategy Lead · Level 4 — The Builder · 5 UCs · Avg 4.2</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
-    <div class="modal-body">
-      <div class="abox abox-e"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-        <li>5 UCs ทุกชิ้น Deliverable จับต้องได้ — L4 ที่แข็งแกร่งและหลากหลายที่สุดในทีม</li>
-        <li>UC#4 (HC Dashboard on GitHub Pages) + UC#5 (NRC System) ครอบคลุม HR Analytics และ Governance</li>
-        <li>Gap สู่ L5: ทุก UC ยังต้อง manual trigger — ตั้ง GitHub Action auto-deploy = L5 ทันที</li>
-      </ul></div>
-      <div class="uc uc-new"><div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — Management System + Board Knowledge Base + Context Engineering <span class="new-badge">✦ ใหม่</span></div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–5 ชม./ประชุม · 4–6 ครั้ง/ปี</span></div><div class="tool-row"><span class="tool">Claude Project Setup</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA localStorage</span><span class="tool">Board Knowledge Embed</span></div><div class="uc-output out-e"><strong>Output:</strong> Claude Project NRC พร้อมใช้ — Context ครบ: กรรมการ 12 คน, NRC 3 สมาชิก, หน้าที่เลขา, Glossary CG + NRC Management System.html (CRUD ข้อมูลการประชุม) รองรับงาน Transition เลขา NRC ทั้งปี</div><div class="uc-insight">💡 Context Engineering ขั้นสูง — AI รู้จักกรรมการทุกคนทันที ไม่ต้องอธิบายบริบทใหม่ทุก session</div></div>
-      <div class="uc uc-new"><div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Extraction + 6-Tab Dashboard + GitHub Pages Live <span class="new-badge">✦ ใหม่</span></div><div class="chip c5">L4→5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~15+ ชม./เดือน</span><span>🌐 Live on GitHub Pages</span></div><div class="tool-row"><span class="tool">Python (openpyxl)</span><span class="tool">HTML Multi-tab</span><span class="tool">GitHub Pages</span><span class="tool">v6→v7 Iteration</span></div><div class="uc-output out-e"><strong>Output:</strong> HC_Analytics_Portal_v7.html Live ✅ — 6 Tabs (HC/OT/Salary/Resign/Training/WFP), 9 บริษัท, 797 HC, Period+Company filter, Python extract จาก Excel</div><div class="uc-insight">💡 L4→L5 Borderline — ตั้ง GitHub Action trigger = L5 ทันที</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#1</div><div class="uc-title">Bamboo Supply Chain + China EV Supplier Interactive HTML Report</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ ~4.5 ชม.</span></div><div class="tool-row"><span class="tool">Web Search ×3</span><span class="tool">HTML Code Gen</span><span class="tool">JS Bug Fix</span></div><div class="uc-output out-e"><strong>Output:</strong> bamboo_supply_chain_report_v2.html — 7 Stage Accordion, 40+ Tech Items, 24 China Suppliers, Bug fix key collision</div><div class="uc-insight">💡 Orchestrate 3 เครื่องมือใน 1 Session + debug ตรงจุด ทักษะ L4 ชัดเจน</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20 (P1–P22)</span><span>⏱ หลายวันทำงาน</span></div><div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span></div><div class="uc-output out-e"><strong>Output:</strong> 189 JDs ครบทุก Family, HTML Library v2.0 Cards/Table/Family + KR/KPI, Python mk_l1→l5 + JE parser</div><div class="uc-insight">💡 สร้าง organizational tool 189 roles systematic — Scale AI work ในงาน HR จริง</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-e">#3</div><div class="uc-title">Agentic Org IC Framework × Digital Mindset Transformation Roadmap (.docx)</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~4–6 ชม.</span></div><div class="tool-row"><span class="tool">Multi-turn Brainstorm ×4</span><span class="tool">7 Frameworks</span><span class="tool">Word Doc</span></div><div class="uc-output out-e"><strong>Output:</strong> PCC_Digital_Mindset_Roadmap.docx — IC 5 มิติ (<strong>Agent Capital</strong> + <strong>Data Capital</strong>), Mental Model Pyramid, 3 Horizons Roadmap</div><div class="uc-insight">💡 Framework ใหม่ไม่เคยมีในวรรณกรรม ใช้ 7 Frameworks พร้อมกัน</div></div>
-    </div>
+<!-- Modal Earth -->
+<div class="overlay" id="ov-earth"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Use Cases — Earth (Jinnaphas)</h2><p>HR Manager & OD Strategy Lead · Level 4 — The Builder · 5 UCs · Avg 4.2</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-e"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
+      <li>5 UCs ทุกชิ้น Deliverable จับต้องได้ แจกจ่ายได้จริง — Classic L4 ที่แข็งแกร่ง</li>
+      <li>UC#4 (HC Dashboard on GitHub Pages) borderline L5 — deploy live แต่ยังต้อง manual upload data</li>
+      <li>Gap สู่ L5: ตั้ง GitHub Action auto-trigger เมื่อมี Excel ใหม่ใน Drive</li>
+    </ul></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#5</div><div class="uc-title">Project NRC — Management System + Board Knowledge Base + Context Engineering</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~3–5 ชม./ประชุม</span></div><div class="tool-row"><span class="tool">Claude Project</span><span class="tool">Context Engineering</span><span class="tool">HTML SPA</span><span class="tool">Board Knowledge</span></div><div class="uc-output out-e"><strong>Output:</strong> Claude Project NRC — กรรมการ 12 คน, NRC 3 สมาชิก, Glossary CG + NRC Management System.html</div><div class="uc-insight">💡 Context Engineering ขั้นสูง — AI รู้จักกรรมการทุกคนทันที ไม่ต้องอธิบายบริบทใหม่ทุก session</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Extraction + 6-Tab Dashboard + GitHub Pages</div><div class="chip c5">L4→5</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~15+ ชม./เดือน</span><span>🌐 Live on GitHub Pages</span></div><div class="tool-row"><span class="tool">Python openpyxl</span><span class="tool">HTML Multi-tab</span><span class="tool">GitHub Pages</span><span class="tool">v7 Iteration</span></div><div class="uc-output out-e"><strong>Output:</strong> HC_Analytics_Portal_v7.html Live ✅ — 6 Tabs, 9 บริษัท, 797 HC, Period+Company filter</div><div class="uc-insight">💡 L4→L5 Borderline — ตั้ง GitHub Action = L5 ทันที</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-e">#2</div><div class="uc-title">Job Role Architecture — 189 JDs + Python JE Automation + HTML Library v2.0</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-20</span><span>⏱ หลายวันทำงาน</span></div><div class="tool-row"><span class="tool">Python Code Gen</span><span class="tool">HTML Library v2</span><span class="tool">Excel Automation</span></div><div class="uc-output out-e"><strong>Output:</strong> 189 JDs ครบทุก Family, HTML Library Cards/Table/Family + KR/KPI</div><div class="uc-insight">💡 งานใหญ่ที่สุดในทีม — Scale AI work 189 roles ในงาน HR จริง</div></div>
   </div>
-</div>
+</div></div>
 
-<!-- Modal: Pattaratida -->
-<div class="overlay" id="ov-pattaratida">
-  <div class="modal">
-    <div class="modal-head"><div><h2>🔍 Use Cases — Pattaratida K.</h2><p>B2B Sales Intelligence · Level 3 — The Integrator · L4 Demonstrated</p></div><button class="close-btn" onclick="closeModal('pattaratida')">✕</button></div>
-    <div class="modal-body">
-      <div class="abox abox-p"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
-        <li>UC#3 (Sales Intelligence) = L4 ชัดเจน — ทีม Sales ใช้ซ้ำได้ทุกเดือน Highest ongoing ROI</li>
-        <li>จุดแข็ง: Domain Knowledge Encoding (B2B Electrical) + Complex System Design</li>
-        <li>Gap สู่ L4: แปลง Claude Chat เป็น Script อิสระ → ทีมรันได้เองทันที</li>
-      </ul></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Scoring Framework</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~1–2 ชม./ครั้ง</span></div><div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Scoring Criteria</span><span class="tool">Excel Output</span></div><div class="uc-output out-p"><strong>Output:</strong> ICP Scoring 7 Dimensions (Demand + Financial, 100 pts), Grade A★→D, 8 Industry Groups → ICP_Scoring_Form.xlsx 2 tabs</div><div class="uc-insight">💡 Multi-dimension scoring encode domain knowledge ไฟฟ้าครบ</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#2</div><div class="uc-title">Senior BA & Systems Engineer 7-Phase Framework + Knowledge Logger</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~5–7 ชม. (setup)</span></div><div class="tool-row"><span class="tool">7-Phase System Prompt</span><span class="tool">Knowledge Logger Embed</span><span class="tool">Quick Commands</span></div><div class="uc-output out-p"><strong>Output:</strong> System Prompt 7 Phase (Needs→Pugh Matrix), Traceability N-xx→FR→CAP→KPI, auto-trigger logging</div><div class="uc-insight">💡 ฝัง Knowledge Logging ใน System Prompt — ออกแบบ Workflow ให้คนอื่นใช้ได้</div></div>
-      <div class="uc"><div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ 22–25 ชม./เดือน 🔥</span></div><div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">4-Function Framework</span><span class="tool">Excel 17 cols</span></div><div class="uc-output out-p"><strong>Output:</strong> Phase 1: Filter/Dedup (2–3ชม.→10นาที) + Phase 2: HQ/PD/PQ/EMS Analysis (30–45นาที/ราย→2–3นาที) → Prospect_List_[YYYYmm]_.xlsx</div><div class="uc-insight">💡 L4 ชัดเจน — Highest ongoing ROI ในทีม ประหยัด 22–25 ชม./เดือน</div></div>
-    </div>
+<!-- Modal Pattaratida -->
+<div class="overlay" id="ov-pattaratida"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Use Cases — Pattaratida K.</h2><p>B2B Sales Intelligence · Level 3 — The Integrator · L4 Demonstrated</p></div><button class="close-btn" onclick="closeModal('pattaratida')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-p"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
+      <li>UC#3 (Sales Intelligence) = L4 ชัดเจน — ทีม Sales ใช้ซ้ำทุกเดือน Highest ongoing ROI</li>
+      <li>จุดแข็ง: Domain Knowledge Encoding + Complex System Design</li>
+      <li>Gap สู่ L4: แปลง Claude Chat เป็น Script อิสระให้ทีมรันเอง</li>
+    </ul></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-p">#3</div><div class="uc-title">PRECISE B2B Sales Intelligence System — 2-Phase Monthly Workflow</div><div class="chip c4">L4</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 22–25 ชม./เดือน 🔥</span></div><div class="tool-row"><span class="tool">Project Instruction v4.0</span><span class="tool">4-Function Framework</span><span class="tool">Excel 17 cols</span></div><div class="uc-output out-p"><strong>Output:</strong> Phase 1: Filter/Dedup (2–3ชม.→10นาที) + Phase 2: HQ/PD/PQ/EMS Analysis (30–45นาที/ราย→2–3นาที)</div><div class="uc-insight">💡 L4 ชัดเจน — Highest ongoing ROI ในทีม ประหยัด 22–25 ชม./เดือน</div></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-p">#1</div><div class="uc-title">ICP Scoring System for B2B Sales — 7-Dimension Scoring Framework</div><div class="chip c3">L3</div></div><div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~1–2 ชม./ครั้ง</span></div><div class="tool-row"><span class="tool">Complex System Prompt</span><span class="tool">Scoring Criteria</span><span class="tool">Excel Output</span></div><div class="uc-output out-p"><strong>Output:</strong> ICP Scoring 7 Dimensions (Demand + Financial, 100 pts), Grade A★→D → ICP_Scoring_Form.xlsx</div><div class="uc-insight">💡 Multi-dimension scoring encode domain knowledge B2B ไฟฟ้าครบ</div></div>
   </div>
-</div>
+</div></div>
+
+<!-- Modal Manaporn -->
+<div class="overlay" id="ov-manaporn"><div class="modal">
+  <div class="modal-head"><div><h2>🔍 Use Cases — มนพร (Manaporn)</h2><p>Business Development · Switchgear Industry · Level 3 — The Integrator · ✦ New Member</p></div><button class="close-btn" onclick="closeModal('manaporn')">✕</button></div>
+  <div class="modal-body">
+    <div class="abox abox-m"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>
+      <li>UC ชิ้นเดียวแต่ครอบคลุม 17 Sub-use cases ตลอด Value Chain Switchgear — L2–L5 ขึ้นอยู่กับ UC</li>
+      <li>จุดแข็ง: Industry Domain Knowledge (IEC Standard, 3D CAD, AR, MES, PLM) + Systematic Mapping</li>
+      <li>Gap สู่ L4: UC เป็น Blueprint/Roadmap ยังไม่ได้ Implement จริง → ลงมือทำ UC-01 หรือ UC-02 ให้เป็น Working Tool</li>
+      <li>คำแนะนำ: เริ่มจาก UC-02 (BOQ→ใบเสนอราคา) สร้างเป็น Google Sheets Template + Claude Prompt สำเร็จรูป</li>
+    </ul></div>
+    <div class="uc"><div class="uc-top"><div class="uc-num un-m">#1</div><div class="uc-title">AI Use Cases Blueprint — ธุรกิจผลิต Switchgear (17 UCs ครบ Value Chain)</div><div class="chip c3">L3</div></div>
+    <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด 60–120 นาที/วัน/คน (เมื่อ implement)</span></div>
+    <div class="tool-row"><span class="tool">Claude / ChatGPT</span><span class="tool">Python + Low-code</span><span class="tool">AR (Vuforia/PTC)</span><span class="tool">Computer Vision</span><span class="tool">SolidWorks AI Plugin</span><span class="tool">MES Integration</span></div>
+    <div class="uc-output out-m"><strong>Output:</strong> AI Use Case Map ครบ 4 กระบวนการ:<br>
+    • <strong>Pre-sales & Engineering:</strong> UC-01 อ่าน SLD→BOQ (L4), UC-02 ใบเสนอราคา (L3), UC-03 สรุป Requirement (L2), UC-04 ตรวจ IEC Compliance (L2)<br>
+    • <strong>Engineering Design:</strong> UC-05 AI Copilot 3D (L2–3), UC-06 คำนวณ Short Circuit (L3–4), UC-07 Review แบบ (L3), UC-08 Export BOM (L4)<br>
+    • <strong>Shop Floor:</strong> UC-09 Digital WI (L3–4), UC-10 Standard Time (L4–5), UC-11 Visual QC (L5), UC-12 Test Report (L4), UC-13–14 AR Inspection/Test (L5)<br>
+    • <strong>After-sales & Corporate:</strong> UC-15 Predictive Maintenance (L5), UC-16 RAG Knowledge Base (L3), UC-17 Smart Meeting (L2)
+    </div>
+    <div class="uc-insight">💡 L3 ที่มีวิสัยทัศน์ L5+ — Blueprint ครบวงจรที่ไม่มีใครในทีมทำ ถ้า implement UC-01/02 จริงจะเป็น L4 ทันที และถ้า UC-11/13 (AR + Computer Vision) ทำได้จริงคือ L5–6</div></div>
+  </div>
+</div></div>
 
 <script>
   function openModal(id){document.getElementById('ov-'+id).classList.add('open');document.body.style.overflow='hidden';}

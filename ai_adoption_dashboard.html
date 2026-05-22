@@ -90,8 +90,8 @@
 
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">4</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">18</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
-    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">130+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">19</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">135+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
     <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">3.9</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
 
@@ -110,7 +110,7 @@
       <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">6</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">30+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+      <div class="mini-stats"><div class="mstat"><div class="mstat-v">7</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">40+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
       <div class="tags"><span class="tag tag-e">Apps Script Auto</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span><span class="tag tag-e">Python</span></div>
       <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
@@ -230,16 +230,32 @@
 
 <!-- ══════════════ Modal: Earth ══════════════ -->
 <div class="overlay" id="ov-earth"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 Earth (Jinnaphas) — Use Cases & การวิเคราะห์</h2><p>HR Manager & OD Strategy Lead · PCC · Level 4 — The Builder · 6 UCs · Avg 4.3</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
+  <div class="modal-head"><div><h2>🔍 Earth (Jinnaphas) — Use Cases & การวิเคราะห์</h2><p>HR Manager & OD Strategy Lead · PCC · Level 4 — The Builder · 7 UCs · Avg 4.3</p></div><button class="close-btn" onclick="closeModal('earth')">✕</button></div>
   <div class="modal-body">
     <div class="abox abox-e"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
       <li>6 UCs ครอบคลุม HR Analytics, Governance, Supply Chain, Org Design, และ IT Infrastructure — กว้างที่สุดในทีม</li>
       <li>จุดแข็ง: สร้าง Deliverable จริงที่ Deploy บน Live Platform ได้ (GitHub Pages, HTML Tool)</li>
       <li>UC#6 (Dashboard Auto-System) ใกล้ L5 มาก — มี Daily Trigger + Change Detection</li>
-      <li>Gap สู่ L5 เต็ม: Setup Apps Script Script Properties ให้ครบ แล้ว HC Dashboard ก็ trigger อัตโนมัติด้วย</li>
+      <li>UC#7 (Copilot Survey) = end-to-end pipeline Form→Webhook→Notion→Netlify ใน session เดียว แสดง System Design ขั้น L4</li>
+      <li>Gap สู่ L5 เต็ม: ตั้ง Make.com ส่ง notification Teams ทุกครั้งที่มี Submission ใหม่ โดยไม่ต้องเข้าเช็ค Notion เอง</li>
     </ul></div>
 
     <!-- UC#6 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-e">#7</div>
+      <div class="uc-title">Copilot Use Case Survey — ระบบเก็บข้อมูล UC สำหรับหลักสูตรอบรม Microsoft Copilot งานเลขานุการบริษัท</div>
+      <div class="uc-badges"><div class="chip c4">L4</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~4–5 ชม.</span></div>
+      <div class="tool-row"><span class="tool">HTML Form (35 คำถาม)</span><span class="tool">Make.com Webhook</span><span class="tool">Notion DB (37 cols)</span><span class="tool">Netlify Deploy</span><span class="tool">Use Case Analysis</span><span class="tool">PowerPoint 11 Slides</span><span class="tool">HTML Report</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-e">Pipeline ครบวงจร: HTML Form 35 คำถาม / 6 ส่วน (conditional logic + Webhook ready) → Make.com Scenario → Notion Database 37 columns (Form + Table view) → Netlify URL (แจกสาธารณะ) → วิเคราะห์ 10 responses → 6 Use Cases เรียงตาม Pain Score:
+        <br><strong>UC-1</strong> AI-Assisted Minutes Drafting (4-8h→1h) · <strong>UC-2</strong> Smart Board Pack Builder (3-5วัน→1-2วัน) · <strong>UC-3</strong> 56-1 One Report Drafting (ลด50-60%) · <strong>UC-4</strong> Action Items Tracker (ลด70%) · <strong>UC-5</strong> Document Intelligence Search (30นาที→2นาที) · <strong>UC-6</strong> Board Presentation Builder (3-4h→45นาที)
+        <br>+ PowerPoint 11 Slides (Trainer Guide) + HTML Report (Single-page / Print-to-PDF)</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">Earth ต่อยอดจาก Job Role Architecture — รู้ว่าเลขานุการทำอะไรจาก JD จึงออกแบบ Survey ที่ถามได้ตรงจุด ผลที่ได้เป็น end-to-end pipeline: Collect → Store → Analyze → Present โดยใช้ Make.com เชื่อม Form กับ Notion อัตโนมัติ ทีม HR ไม่ต้อง Manual Transfer ข้อมูลเลย ถือเป็น L4 ที่ชัดเจนเพราะสร้างเครื่องมือที่ผู้อื่น (วิทยากร + ผู้ตอบแบบสอบถาม) ใช้ได้จริงโดยไม่ต้องพึ่ง Earth ทุกขั้นตอน</div>
+      <div class="uc-insight">💡 ต่อยอด Job Description Project ได้เลย — ถ้าตั้ง Make.com ส่ง notification เข้า Teams ทุกครั้งที่มี Submission ใหม่โดยไม่ต้องเช็ค Notion เอง = L5</div>
+    </div>
+
     <div class="uc">
       <div class="uc-top"><div class="uc-num un-e">#6</div><div class="uc-title">ระบบ AI Adoption Dashboard Auto-Update บน GitHub Pages ด้วย Google Apps Script</div><div class="uc-badges"><div class="chip c5">L5</div><a href="https://jinnaphas.github.io/AIadoption/ai_adoption_dashboard.html" target="_blank" class="live-link">🌐 Live</a></div></div>
       <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~10 ชม. setup + ประหยัดทุกครั้งในอนาคต</span></div>

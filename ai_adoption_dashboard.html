@@ -700,26 +700,16 @@
     </div>
 
     <div class="uc">
-      <div class="uc-top"><div class="uc-num un-e">#6</div><div class="uc-title">ระบบ AI Adoption Dashboard Auto-Update บน GitHub Pages ด้วย Google Apps Script</div><div class="uc-badges"><div class="chip c5">L5</div><a href="https://jinnaphas.github.io/AIadoption/ai_adoption_dashboard.html" target="_blank" class="live-link">🌐 Live</a></div></div>
-      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ~10 ชม. setup + ประหยัดทุกครั้งในอนาคต</span></div>
-      <div class="tool-row"><span class="tool">Google Apps Script</span><span class="tool">GitHub API</span><span class="tool">Anthropic Claude API</span><span class="tool">Daily Trigger 09:00</span><span class="tool">Change Detection</span><span class="tool">PyNaCl Encryption</span></div>
-      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
-      <div class="uc-output out-e">ระบบ Auto-Update ครบวงจร — Apps Script อ่าน Drive → วิเคราะห์ด้วย Claude API → Push GitHub Pages ทุกวัน 09:00 น. · Change Detection: เปรียบ MD5 hash ก่อน trigger เพื่อไม่ update ถ้าไม่มีการเปลี่ยนแปลง · ANTHROPIC_API_KEY ใส่ผ่าน GitHub Secrets API (Encrypted PyNaCl) · Dashboard live สำหรับทีม 4 คน ไม่ต้อง Manual อีก</div>
+      <div class="uc-top"><div class="uc-num un-e">#6</div>
+      <div class="uc-title">AI Adoption Dashboard System — Phase 1–3 (Impact Analytics + Auto-Update + Weekly Report)</div>
+      <div class="uc-badges"><div class="chip c5">L5</div><a href="https://jinnaphas.github.io/AIadoption/ai_adoption_dashboard.html" target="_blank" class="live-link">🌐 Live</a></div></div>
+      <div class="uc-meta"><span>📅 2026-05-21 → 2026-05-24</span><span>⏱ ~20 ชม. (setup + debug + 3 phases)</span><span>🔁 Daily 09:00 + Weekly Monday</span></div>
+      <div class="tool-row"><span class="tool">Google Apps Script v4</span><span class="tool">GitHub API</span><span class="tool">MD5 Change Detection</span><span class="tool">Daily Trigger</span><span class="tool">Weekly Email Report</span><span class="tool">MailApp</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์ (3 Phases)</div>
+      <div class="uc-output out-e"><strong>Phase 1 — Impact & Timeline:</strong> Business Value Panel (63,000+ บาท), UC Timeline Dot Chart, Cross-UC Synergy Map 4 คู่, Per-person ROI breakdown<br><br><strong>Phase 2 — Gap Alerts & Q3 Progress:</strong> 5 Gap Alerts (✅🟡🔴), Q3 Progress Bar รายคน (Team Avg 80% สู่เป้า L5), Roadmap Panel<br><br><strong>Phase 3 — Weekly Report:</strong> Apps Script v4 (100% Free) · updateDashboard: อ่าน Drive → patch UC count → Push GitHub · weeklyReport: HTML email → 3 addresses ทุกจันทร์ · MD5 Change Detection</div>
       <div class="uc-section-label">🔬 การวิเคราะห์</div>
-      <div class="uc-analysis">End-to-end Automation ครบ 4 ขั้นตอน (Read → Analyze → Generate → Deploy) โดยมี Daily Time Trigger และ Idempotency (Change Detection) — นี่คือ L5 ที่ชัดเจน ถ้า Apps Script setup ครบก็จะ Deploy ได้จริงโดยไม่ต้องสั่ง</div>
-      <div class="uc-insight">💡 Dashboard ที่กำลังดูอยู่ตอนนี้ถูก generate โดยระบบนี้ — Meta UC ระดับ L5 ที่ Deploy ตัวเองได้</div>
-    </div>
-
-    <!-- UC#4 -->
-    <div class="uc">
-      <div class="uc-top"><div class="uc-num un-e">#4</div><div class="uc-title">HC Analytics Portal v7 — Python Data Extraction + 6-Tab Dashboard</div><div class="uc-badges"><div class="chip c5">L4→5</div><a href="https://jinnaphas.github.io/HRdashboard/HC_Analytics_Portal_v7.html" target="_blank" class="live-link">🌐 Live</a></div></div>
-      <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~15+ ชม./เดือน</span></div>
-      <div class="tool-row"><span class="tool">Python (openpyxl)</span><span class="tool">HTML Multi-tab Build</span><span class="tool">GitHub Pages Deploy</span><span class="tool">v6→v7 Iteration</span><span class="tool">Period/Company Filter</span></div>
-      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
-      <div class="uc-output out-e">HC_Analytics_Portal_v7.html — Live ✅ · 6 Tabs (HC / OT / Salary / Resign / Training / WFP) · 9 บริษัท 797 HC (May 2026) · Period & Company filter ครบ · v7 fixes: Period+Company filter ✓, WFP tab ✓, New Hire tracking ✓, EG reorder ✓ · Python script (openpyxl data_only) extract ข้อมูลจาก Excel</div>
-      <div class="uc-section-label">🔬 การวิเคราะห์</div>
-      <div class="uc-analysis">สร้าง HR Analytics Tool ที่ทีมทุกคนเข้าถึงได้จาก URL โดยตรง โดยใช้ Python + AI ในการ Generate HTML ทั้งหมด Iterate จาก v6 → v7 แก้ Bug จริง (Period filter, EG reorder) แสดงทักษะ Debugging + Iterative Development ที่ชัดเจน</div>
-      <div class="uc-insight">💡 L4→L5 Borderline — ถ้าตั้ง GitHub Action auto-trigger เมื่อ Excel ใหม่เข้า Drive = L5 ทันที</div>
+      <div class="uc-analysis">UC นี้แสดง Problem-Solving ขั้นสูง — เจอ Syntax error (quote escaping), API issues (Anthropic credit หมด, Gemini 403/404/429, model name เปลี่ยน) แต่ iterate จนได้ระบบที่ทำงานได้จริงโดยไม่ต้องพึ่ง API ใดเลย ผลสุดท้ายคือ Apps Script ฟรี 100% มี Daily + Weekly Trigger ครบ ระบบมี Change Detection ตัดสินใจเองว่าจะ update หรือไม่</div>
+      <div class="uc-insight">💡 L5 เต็ม — Prompt เดียว "ทำให้ผมหน่อย" → ระบบรันทุกวันอัตโนมัติ ถ้าเพิ่ม Proactive Notification (แจ้งเมื่อใครไม่มี UC ใหม่ 2 สัปดาห์) = L6 ทันที</div>
     </div>
 
     <!-- UC#5 NRC -->

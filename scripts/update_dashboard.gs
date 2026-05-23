@@ -190,7 +190,6 @@ function ucCard(uc, num, c) {
 
 function memberCard(uid, info, m) {
   var q = String.fromCharCode(39);
-  var q = String.fromCharCode(39);
   var lv  = Math.max(1, Math.min(7, (m||{}).level||3));
   var sty = 'background:'+LVL_BG[lv]+';color:'+LVL_COL[lv]+';border:1px solid '+LVL_COL[lv]+'55';
   var tags = ((m||{}).tags||[]).slice(0,4).map(function(t){ return '<span class="tag tag-'+info.c+'">'+esc(t)+'</span>'; }).join('');
@@ -216,7 +215,7 @@ function memberModal(uid, info, m) {
     + '<div class="modal"><div class="modal-head">'
     + '<div><h2>🔍 Use Cases — '+esc(info.name)+'</h2>'
     + '<p>'+esc(info.role)+' · Level '+lv+' — '+LVL_LABEL[lv]+' · '+((m||{}).uc_count||0)+' UCs · Avg '+((m||{}).avg||0)+'</p></div>'
-    + '<button class="close-btn" onclick="closeModal(\''+uid+'\')">✕</button></div>'
+    + '<button class="close-btn" onclick="closeModal('+q+uid+q+')">✕</button></div>'
     + '<div class="modal-body">'
     + '<div class="abox abox-'+info.c+'"><h3>📊 การวิเคราะห์ภาพรวม</h3><ul>'+pts+'</ul>'
     + '<p style="font-size:.72rem;color:var(--text3);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)">🎯 สู่ Level ถัดไป: '+esc((m||{}).next||'')+'</p></div>'

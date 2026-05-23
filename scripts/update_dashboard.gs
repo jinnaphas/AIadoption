@@ -45,6 +45,7 @@ function updateDashboard() {
   Logger.log('🤖 Calling Anthropic API...');
   var analysis = callAI(files);
 
+  Utilities.sleep(3000);
   Logger.log('🏗️ Building HTML...');
   var html = buildHtml(analysis);
 
@@ -102,7 +103,7 @@ function callAI(files) {
   for (var uid in USER_FOLDERS) {
     lines.push('=== ' + USER_FOLDERS[uid].name + ' (' + uid + ') ===');
     (files[uid]||[]).forEach(function(f) {
-      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 1200) + '\n---');
+      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 600) + '\n---');
     });
   }
 
@@ -120,7 +121,7 @@ function callAI(files) {
     + 'Rules: Levels 1-7. Sort ucs by date desc. Fill ALL fields. Return ONLY the JSON object.';
 
   Logger.log('Calling Gemini API...');
-  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_KEY;
+  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + GEMINI_KEY;
 
   var resp = UrlFetchApp.fetch(url, {
     method: 'post',
@@ -399,7 +400,7 @@ function buildWeeklyReport(files) {
     ucCounts[uid] = ucs.length;
     lines.push('=== ' + info.name + ' (' + uid + ') — ' + ucs.length + ' UCs ===');
     ucs.forEach(function(f) {
-      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 800) + '\n---');
+      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 400) + '\n---');
     });
   }
 
@@ -415,7 +416,7 @@ function buildWeeklyReport(files) {
     + '"coach_message":"<2-3 sentences Thai motivational message for the team>"}\n'
     + 'Return ONLY JSON.';
 
-  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_KEY;
+  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + GEMINI_KEY;
   var resp = UrlFetchApp.fetch(weeklyUrl, {
     method: 'post',
     headers: { 'content-type': 'application/json' },

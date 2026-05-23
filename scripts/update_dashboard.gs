@@ -189,10 +189,12 @@ function ucCard(uc, num, c) {
 }
 
 function memberCard(uid, info, m) {
+  var q = String.fromCharCode(39);
+  var q = String.fromCharCode(39);
   var lv  = Math.max(1, Math.min(7, (m||{}).level||3));
   var sty = 'background:'+LVL_BG[lv]+';color:'+LVL_COL[lv]+';border:1px solid '+LVL_COL[lv]+'55';
   var tags = ((m||{}).tags||[]).slice(0,4).map(function(t){ return '<span class="tag tag-'+info.c+'">'+esc(t)+'</span>'; }).join('');
-  return '<div class="emp-card card-'+info.c+'" onclick="openModal(\''+uid+'\')"> '
+  return '<div class="emp-card card-'+info.c+'" onclick="openModal('+q+uid+q+')"> '
     + '<div class="emp-header"><div class="avatar av-'+info.c+'">'+info.av+'</div>'
     + '<div><div class="emp-name">'+esc(info.name)+'</div><div class="emp-role">'+esc(info.role)+'</div></div></div>'
     + '<div class="level-badge" style="'+sty+'">'+LVL_EMO[lv]+' Level '+lv+' — '+LVL_LABEL[lv]+'</div>'
@@ -203,7 +205,7 @@ function memberCard(uid, info, m) {
     + '<div class="mstat"><div class="mstat-v">'+((m||{}).avg||0)+'</div><div class="mstat-l">Avg Level</div></div>'
     + '<div class="mstat"><div class="mstat-v">'+esc((m||{}).hours||'?')+'</div><div class="mstat-l">ชม.ประหยัด</div></div>'
     + '</div><div class="tags">'+tags+'</div>'
-    + '<button class="drill-btn btn-'+info.c+'" onclick="event.stopPropagation();openModal(\''+uid+'\')">🔍 Drill Down →</button></div>';
+    + '<button class="drill-btn btn-'+info.c+'" onclick="event.stopPropagation();openModal('+q+uid+q+')">🔍 Drill Down →</button></div>';
 }
 
 function memberModal(uid, info, m) {

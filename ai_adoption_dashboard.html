@@ -156,7 +156,7 @@
 
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">4</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">20</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">21</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
     <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">140+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
     <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">3.9</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
@@ -168,7 +168,7 @@
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sng"></div><div class="seg"></div><div class="seg"></div></div></div>
       <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.6</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">10+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-n">Jira API</span><span class="tag tag-n">Chrome MCP</span><span class="tag tag-n">Scheduled Task</span><span class="tag tag-n">MCP Integration</span></div>
+      <div class="tags"><span class="tag tag-n">Jira API</span><span class="tag tag-n">Chrome MCP</span><span class="tag tag-n">SGAM Analysis</span><span class="tag tag-n">Scheduled Task</span></div>
       <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
     <div class="emp-card card-e" onclick="openModal('earth')">
@@ -569,16 +569,29 @@
 
 <!-- ══════════════ Modal: Nick ══════════════ -->
 <div class="overlay" id="ov-narawit"><div class="modal">
-  <div class="modal-head"><div><h2>🔍 นราวิช (Nick) — Use Cases & การวิเคราะห์</h2><p>Agentic Transformation PCC Group · Level 5 — Task Automator · 5 UCs · Avg 4.6</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
+  <div class="modal-head"><div><h2>🔍 นราวิช (Nick) — Use Cases & การวิเคราะห์</h2><p>Agentic Transformation PCC Group · Level 5 — Task Automator · 6 UCs · Avg 4.3</p></div><button class="close-btn" onclick="closeModal('narawit')">✕</button></div>
   <div class="modal-body">
     <div class="abox abox-n"><h3>📊 ภาพรวมและการวิเคราะห์</h3><ul>
-      <li>พัฒนาเร็วที่สุดในทีม — L3 → L5 ใน 1 วัน ผ่าน 5 Use Cases ที่หลากหลาย</li>
+      <li>พัฒนาเร็วที่สุดในทีม — L3 → L5 ใน 1 วัน + UC#6 แสดงการใช้ AI ใน Technical Domain (SGAM)</li>
       <li>จุดแข็ง: เชื่อมต่อ AI กับ External System (Jira API, Chrome MCP, Google Drive MCP) ได้คล่อง</li>
       <li>UC#5 (Auto Timesheet L7) แสดงว่าสามารถสร้าง Fully Autonomous System ได้แล้ว</li>
       <li>Gap สู่ L6: งานที่ทำยังเป็น Task-by-Task — ขั้นต่อไปคือให้ AI ตัดสินใจและ Action แบบ Multi-step โดยไม่รอ Prompt</li>
     </ul></div>
 
     <!-- UC#5 -->
+    <div class="uc">
+      <div class="uc-top"><div class="uc-num un-n">#6</div>
+      <div class="uc-title">SGAM Function Layer Analysis — DBTP-EMS vs DSO Smartness KPIs 7 ตัว</div>
+      <div class="uc-badges"><div class="chip c3">L3</div></div></div>
+      <div class="uc-meta"><span>📅 2026-05-22</span><span>⏱ ประหยัด ~90–120 นาที</span></div>
+      <div class="tool-row"><span class="tool">Project Knowledge Base</span><span class="tool">SGAM Documents</span><span class="tool">Gap Analysis</span><span class="tool">Priority Mapping</span><span class="tool">DSO KPI Framework</span></div>
+      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-output out-n"><strong>Output:</strong> Gap Analysis ครบ — Functions ที่มีอยู่แล้ว: Data Acquisition, Real-time Monitoring, Device Control, Dashboard (KPI 1, 2, 5) · Functions ที่ต้องเพิ่ม Priority High: Load Forecasting (KPI 3,4), Demand Response/DER Flexibility (KPI 3), Customer Data Portal + API for Aggregator (KPI 5) · Priority Medium: Predictive Maintenance, Voltage Regulation · ตาราง DSO KPI Coverage 7 ตัว (KPI 3,4,6,7 ยังต้องพัฒนา)</div>
+      <div class="uc-section-label">🔬 การวิเคราะห์</div>
+      <div class="uc-analysis">ใช้ AI ค้นหาและวิเคราะห์เอกสาร SGAM (SGAMUserManual.pdf, DSO KPI Report) จาก Project Knowledge Base — แสดงทักษะ L3 ที่ชัดเจน: เชื่อม AI เข้ากับ Technical Knowledge Management เพื่อลดเวลาการอ่านเอกสารและ Gap Analysis จาก 90–120 นาที เหลือไม่กี่นาที</div>
+      <div class="uc-insight">💡 เห็น Pattern ใหม่ — Nick ใช้ AI ใน Engineering Domain (SGAM/IoT) ไม่ใช่แค่ HR/Management ถ้าสร้าง Claude Project ที่มี SGAM + IEC Standards ฝังไว้ = L4 และวิเคราะห์ได้ลึกกว่านี้อีกมาก</div>
+    </div>
+
     <div class="uc">
       <div class="uc-top"><div class="uc-num un-n">#5</div><div class="uc-title">กรอก Timesheet อัตโนมัติ + ตั้ง Scheduled Task รายวัน</div><div class="uc-badges"><div class="chip c7">L7</div></div></div>
       <div class="uc-meta"><span>📅 2026-05-21</span><span>⏱ ประหยัด ~5–10 นาที/วัน (~200 นาที/เดือน)</span><span>🔁 Recurring ทุก Mon–Fri 08:00</span></div>

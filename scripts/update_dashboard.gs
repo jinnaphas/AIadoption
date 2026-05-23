@@ -120,7 +120,7 @@ function callAI(files) {
     + 'Rules: Levels 1-7. Sort ucs by date desc. Fill ALL fields. Return ONLY the JSON object.';
 
   Logger.log('Calling Gemini API...');
-  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_KEY;
 
   var resp = UrlFetchApp.fetch(url, {
     method: 'post',
@@ -415,7 +415,7 @@ function buildWeeklyReport(files) {
     + '"coach_message":"<2-3 sentences Thai motivational message for the team>"}\n'
     + 'Return ONLY JSON.';
 
-  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_KEY;
   var resp = UrlFetchApp.fetch(weeklyUrl, {
     method: 'post',
     headers: { 'content-type': 'application/json' },

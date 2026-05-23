@@ -388,7 +388,6 @@ function weeklyReport() {
 
 // ── วิเคราะห์ข้อมูลสำหรับ Report ──────────────────────────────────
 function buildWeeklyReport(files) {
-  var client   = ANTH_KEY;
   var lines    = [];
   var ucCounts = {};
   var today    = new Date();

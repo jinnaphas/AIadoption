@@ -367,3 +367,230 @@ function pushGitHub(html) {
   if (code === 200 || code === 201) Logger.log('✅ GitHub Pages updated!');
   else throw new Error('GitHub push failed: ' + put.getContentText());
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// PHASE 3 — AGENTIC WEEKLY REPORT
+// ═══════════════════════════════════════════════════════════════════
+// Setup trigger (ทำครั้งเดียว):
+//   Triggers → Add Trigger → weeklyReport
+//   Time-based → Week timer → Every Monday → 9am–10am
+// ═══════════════════════════════════════════════════════════════════
+
+var REPORT_EMAILS = [
+  'jinnaphas.phas@gmail.com',
+  'jinnaphas.p@precise.co.th'
+];
+
+// ── Entry point สำหรับ Weekly Report ──────────────────────────────
+function weeklyReport() {
+  Logger.log('📧 Starting Weekly AI Adoption Report...');
+
+  var files  = readDrive();
+  var report = buildWeeklyReport(files);
+  var html   = renderReportEmail(report);
+  sendReportEmail(html, report);
+
+  Logger.log('✅ Weekly report sent to: ' + REPORT_EMAILS.join(', '));
+}
+
+// ── วิเคราะห์ข้อมูลสำหรับ Report ──────────────────────────────────
+function buildWeeklyReport(files) {
+  var client   = ANTH_KEY;
+  var lines    = [];
+  var ucCounts = {};
+  var today    = new Date();
+  var cutoff   = new Date(today.getTime() - 14 * 24 * 60 * 60 * 1000); // 14 วัน
+
+  for (var uid in USER_FOLDERS) {
+    var info   = USER_FOLDERS[uid];
+    var ucs    = files[uid] || [];
+    ucCounts[uid] = ucs.length;
+    lines.push('=== ' + info.name + ' (' + uid + ') — ' + ucs.length + ' UCs ===');
+    ucs.forEach(function(f) {
+      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 800) + '\n---');
+    });
+  }
+
+  var prompt = 'You are an AI Adoption Coach analyzing a team\'s weekly progress. Analyze these use cases and return ONLY valid JSON.\n\n'
+    + lines.join('\n')
+    + '\n\nReturn this exact JSON:\n'
+    + '{"week_summary":"<2-3 sentences Thai about team progress this week>",'
+    + '"highlights":[{"person":"<name>","achievement":"<Thai>","level":<int>,"emoji":"<emoji>"}],'
+    + '"concerns":[{"person":"<name>","issue":"<Thai>","action":"<Thai>"}],'
+    + '"team_level_avg":<float>,'
+    + '"top_roi":{"person":"<name>","uc":"<title>","hours":<int>,"baht":<int>},'
+    + '"next_actions":[{"person":"<name>","action":"<Thai>","priority":"high|medium","target_level":<int>}],'
+    + '"coach_message":"<2-3 sentences Thai motivational message for the team>"}\n'
+    + 'Return ONLY JSON.';
+
+  var resp = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
+    method: 'post',
+    headers: {
+      'x-api-key': ANTH_KEY,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json'
+    },
+    payload: JSON.stringify({
+      model: 'claude-sonnet-4-20250514',
+      max_tokens: 2048,
+      messages: [{ role: 'user', content: prompt }]
+    }),
+    muteHttpExceptions: true
+  });
+
+  var httpCode = resp.getResponseCode();
+  if (httpCode !== 200) throw new Error('API error ' + httpCode);
+
+  var raw = JSON.parse(resp.getContentText()).content[0].text.trim()
+    .replace(/^```json?\n?/, '').replace(/\n?```$/, '');
+  var analysis = JSON.parse(raw);
+  analysis.ucCounts  = ucCounts;
+  analysis.generated = Utilities.formatDate(today, 'Asia/Bangkok', 'd MMM yyyy HH:mm');
+  return analysis;
+}
+
+// ── สร้าง HTML Email ───────────────────────────────────────────────
+function renderReportEmail(r) {
+  var levelColors = { 1:'#3b82f6',2:'#0891b2',3:'#059669',4:'#d97706',5:'#ea580c',6:'#dc2626',7:'#7c3aed' };
+  var levelNames  = { 1:'Basic',2:'Prompt',3:'Integrator',4:'Builder',5:'Automator',6:'Agentic',7:'Architect' };
+
+  // Highlights
+  var hlRows = (r.highlights || []).map(function(h) {
+    var lv  = h.level || 3;
+    var col = levelColors[lv] || '#059669';
+    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8">'
+      + '<span style="font-size:1.2rem">' + h.emoji + '</span></td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + h.person + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#4a6278">' + h.achievement + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
+      + '<span style="background:' + col + '18;color:' + col + ';border:1px solid ' + col + '44;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:700">L' + lv + ' ' + (levelNames[lv]||'') + '</span>'
+      + '</td></tr>';
+  }).join('');
+
+  // Concerns
+  var cnRows = (r.concerns || []).map(function(c) {
+    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + c.person + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#dc2626">' + c.issue + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#0077cc">' + c.action + '</td></tr>';
+  }).join('');
+
+  // Next Actions
+  var naRows = (r.next_actions || []).map(function(a) {
+    var pri   = a.priority === 'high' ? '#dc2626' : '#d97706';
+    var priBg = a.priority === 'high' ? '#fef2f2' : '#fffbeb';
+    var lv    = a.target_level || 4;
+    var col   = levelColors[lv] || '#d97706';
+    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + a.person + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#4a6278">' + a.action + '</td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
+      + '<span style="background:' + priBg + ';color:' + pri + ';border-radius:12px;padding:2px 10px;font-size:.72rem;font-weight:700">' + (a.priority === 'high' ? '🔴 สำคัญมาก' : '🟡 ควรทำ') + '</span></td>'
+      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
+      + '<span style="background:' + col + '18;color:' + col + ';border-radius:12px;padding:2px 10px;font-size:.72rem;font-weight:700">→ L' + lv + '</span></td></tr>';
+  }).join('');
+
+  // UC count row
+  var ucRow = Object.keys(USER_FOLDERS).map(function(uid) {
+    var info = USER_FOLDERS[uid];
+    var col  = uid==='narawit'?'#0077cc':uid==='earth'?'#d97706':uid==='pattaratida'?'#db2777':'#0d9488';
+    return '<td style="text-align:center;padding:14px">'
+      + '<div style="width:40px;height:40px;border-radius:10px;background:' + col + ';color:#fff;font-weight:800;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">' + info.av + '</div>'
+      + '<div style="font-size:.78rem;font-weight:700;color:#1a2b3c">' + info.name + '</div>'
+      + '<div style="font-size:1.5rem;font-weight:800;color:' + col + ';margin:4px 0">' + (r.ucCounts[uid]||0) + '</div>'
+      + '<div style="font-size:.68rem;color:#8aa0b4">Use Cases</div>'
+      + '</td>';
+  }).join('');
+
+  var topRoi = r.top_roi || {};
+
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#f0f4f9;font-family:\'Segoe UI\',sans-serif">'
+    + '<div style="max-width:680px;margin:0 auto;padding:24px 16px">'
+
+    // Header
+    + '<div style="background:linear-gradient(135deg,#0077cc,#0ea5e9);border-radius:16px;padding:28px 32px;margin-bottom:16px;color:#fff">'
+    + '<div style="font-size:.75rem;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">📊 PCC Group · AI Adoption Weekly Report</div>'
+    + '<div style="font-size:1.6rem;font-weight:800;margin-bottom:6px">สรุปประจำสัปดาห์</div>'
+    + '<div style="font-size:.85rem;opacity:.85">' + r.generated + ' · อัปเดตอัตโนมัติโดย Google Apps Script</div>'
+    + '</div>'
+
+    // Week Summary
+    + '<div style="background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:14px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05)">'
+    + '<div style="font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">🗓️ สรุปภาพรวมสัปดาห์นี้</div>'
+    + '<div style="font-size:.9rem;color:#1a2b3c;line-height:1.7">' + (r.week_summary||'') + '</div>'
+    + '</div>'
+
+    // Team UC Count
+    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
+    + '<div style="padding:16px 24px 0;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">👥 Use Cases ต่อคน</div>'
+    + '<table style="width:100%;border-collapse:collapse"><tr>' + ucRow + '</tr></table>'
+    + '<div style="padding:12px 24px;background:#f5f8fc;border-top:1px solid #dae3ef;display:flex;justify-content:space-between">'
+    + '<span style="font-size:.78rem;color:#4a6278"><strong>Team Avg Level:</strong> ' + (r.team_level_avg||0) + ' / 7</span>'
+    + '<span style="font-size:.78rem;color:#16a34a;font-weight:700">เป้า Q3: 5.0 → ' + Math.round((r.team_level_avg||0)/5*100) + '% ✓</span>'
+    + '</div></div>'
+
+    // Highlights
+    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
+    + '<div style="padding:16px 24px;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">🏆 Highlights สัปดาห์นี้</div>'
+    + '<table style="width:100%;border-collapse:collapse">' + (hlRows || '<tr><td colspan="4" style="padding:14px 24px;color:#8aa0b4;font-size:.8rem">ยังไม่มีข้อมูล</td></tr>') + '</table>'
+    + '</div>'
+
+    // Top ROI
+    + '<div style="background:linear-gradient(135deg,#edfaf3,#f0fdfa);border:1px solid #86efac;border-radius:12px;padding:18px 24px;margin-bottom:14px">'
+    + '<div style="font-size:.68rem;color:#16a34a;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">🔥 Highest ROI ของสัปดาห์</div>'
+    + '<div style="font-size:.9rem;font-weight:700;color:#1a2b3c">' + (topRoi.person||'') + ' — ' + (topRoi.uc||'') + '</div>'
+    + '<div style="font-size:.8rem;color:#4a6278;margin-top:4px">ประหยัด <strong>' + (topRoi.hours||0) + ' ชม.</strong> มูลค่า <strong>~' + ((topRoi.baht||0)).toLocaleString() + ' บาท</strong></div>'
+    + '</div>'
+
+    // Concerns
+    + (cnRows ? '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
+    + '<div style="padding:16px 24px;font-size:.68rem;color:#dc2626;text-transform:uppercase;letter-spacing:1px;font-weight:700">⚠️ จุดที่ต้องพัฒนา</div>'
+    + '<table style="width:100%;border-collapse:collapse"><tr style="background:#f5f8fc"><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คน</th><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">ปัญหา</th><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คำแนะนำ</th></tr>'
+    + cnRows + '</table></div>' : '')
+
+    // Next Actions
+    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
+    + '<div style="padding:16px 24px;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">🎯 Action Items สัปดาห์หน้า</div>'
+    + '<table style="width:100%;border-collapse:collapse"><tr style="background:#f5f8fc">'
+    + '<th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คน</th>'
+    + '<th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">สิ่งที่ต้องทำ</th>'
+    + '<th style="padding:8px 14px;text-align:center;font-size:.68rem;color:#8aa0b4">Priority</th>'
+    + '<th style="padding:8px 14px;text-align:center;font-size:.68rem;color:#8aa0b4">เป้าหมาย</th>'
+    + '</tr>' + naRows + '</table>'
+    + '</div>'
+
+    // Coach Message
+    + '<div style="background:linear-gradient(135deg,#f3eeff,#e8f3ff);border:1px solid #c4b5fd;border-radius:12px;padding:18px 24px;margin-bottom:14px">'
+    + '<div style="font-size:.68rem;color:#7c3aed;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">💬 AI Coach Message</div>'
+    + '<div style="font-size:.88rem;color:#1a2b3c;line-height:1.7;font-style:italic">"' + (r.coach_message||'') + '"</div>'
+    + '</div>'
+
+    // Footer
+    + '<div style="text-align:center;padding:16px;font-size:.7rem;color:#8aa0b4">'
+    + '🤖 Generated automatically by PCC AI Adoption System · Google Apps Script + Claude Sonnet 4<br>'
+    + '<a href="https://jinnaphas.github.io/AIadoption/" style="color:#0077cc">ดู Dashboard แบบ Interactive →</a>'
+    + '</div>'
+
+    + '</div></body></html>';
+}
+
+// ── ส่ง Email ─────────────────────────────────────────────────────
+function sendReportEmail(htmlBody, r) {
+  var subject = '📊 AI Adoption Weekly Report — '
+    + Utilities.formatDate(new Date(), 'Asia/Bangkok', 'd MMM yyyy')
+    + ' · Team Avg L' + (r.team_level_avg||0);
+
+  REPORT_EMAILS.forEach(function(email) {
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      htmlBody: htmlBody,
+      name: 'PCC AI Adoption System 🤖'
+    });
+    Logger.log('  Sent to: ' + email);
+  });
+}
+
+// ── Test: รัน Report ทันทีโดยไม่ต้องรอ Monday ─────────────────────
+function testWeeklyReport() {
+  Logger.log('🧪 Testing weekly report...');
+  weeklyReport();
+}

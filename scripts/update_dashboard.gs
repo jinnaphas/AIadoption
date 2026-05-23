@@ -24,9 +24,10 @@ var GH_REPO      = 'jinnaphas/AIadoption';
 var GH_FILE      = 'ai_adoption_dashboard.html';
 
 var USER_FOLDERS = {
-  narawit:     { name: 'นราวิช',           folder: '152ze23bdvba32lpKtHtkJwVrCyEf2aoG', role: 'HR Strategy & Org Transformation · PCC Group', av: 'น', c: 'n' },
-  earth:       { name: 'Earth (Jinnaphas)', folder: '1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_', role: 'HR Manager & OD Strategy Lead · PCC / SBP',      av: 'E', c: 'e' },
-  pattaratida: { name: 'Pattaratida K.',   folder: '1f1cO05r54YJpgOBswV8WlQnWauw8Hh32', role: 'B2B Sales Intelligence · PCC Group',              av: 'ภ', c: 'p' }
+  narawit:     { name: 'นราวิช (Nick)',     folder: '152ze23bdvba32lpKtHtkJwVrCyEf2aoG', role: 'Agentic Transformation PCC Group',           av: 'น', c: 'n' },
+  earth:       { name: 'Earth (Jinnaphas)', folder: '1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_', role: 'HR Manager & OD Strategy Lead · PCC',         av: 'E', c: 'e' },
+  pattaratida: { name: 'Pattaratida K.',   folder: '1f1cO05r54YJpgOBswV8WlQnWauw8Hh32', role: 'B2B Sales Intelligence · PCC Group',           av: 'ภ', c: 'p' },
+  manaporn:    { name: 'มนพร (Belle)',      folder: '1_qUjDQKbTGbXKZorTFod84tIS5Op8dzL', role: 'Business Development · Switchgear · PCC Group', av: 'ม', c: 'm' }
 };
 
 var LVL_LABEL = { 1:'ทารก — Basic User', 2:'วัยรุ่น — Prompt Engineer', 3:'วัยรุ่นตอนปลาย — Integrator', 4:'ปล่อยของ — The Builder', 5:'ปล่อยมือ — Task Automator', 6:'ปล่อยจอย — Agentic Operator', 7:'คบเด็กสร้างบ้าน — Architect' };
@@ -64,7 +65,7 @@ function readDrive() {
     var list = [];
     while (iter.hasNext()) {
       var f = iter.next();
-      if (/^\d{4}-\d{2}-\d{2}/.test(f.getName()) && f.getName().slice(-3) === '.md') {
+      if (f.getName().slice(-3) === '.md') {
         list.push({ id: f.getId(), name: f.getName(),
                     content: f.getBlob().getDataAsString().slice(0, 3000) });
       }

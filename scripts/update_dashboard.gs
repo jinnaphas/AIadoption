@@ -378,7 +378,8 @@ function pushGitHub(html) {
 
 var REPORT_EMAILS = [
   'jinnaphas.phas@gmail.com',
-  'jinnaphas.p@precise.co.th'
+  'jinnaphas.p@precise.co.th',
+  'nicha.n@precise.co.th'
 ];
 
 // ── Entry point สำหรับ Weekly Report ──────────────────────────────

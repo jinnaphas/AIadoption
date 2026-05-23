@@ -362,11 +362,7 @@ function pushGitHub(html) {
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// PHASE 3 — AGENTIC WEEKLY REPORT
-// ═══════════════════════════════════════════════════════════════════
-// Setup trigger (ทำครั้งเดียว):
-//   Triggers → Add Trigger → weeklyReport
-//   Time-based → Week timer → Every Monday → 9am–10am
+// PHASE 3 — WEEKLY REPORT (No AI API needed — 100% Free)
 // ═══════════════════════════════════════════════════════════════════
 
 var REPORT_EMAILS = [
@@ -375,211 +371,149 @@ var REPORT_EMAILS = [
   'nicha.n@precise.co.th'
 ];
 
-// ── Entry point สำหรับ Weekly Report ──────────────────────────────
+var USER_META = {
+  narawit:     { name: 'นราวิช (Nick)',    level: 5, color: '#0077cc' },
+  earth:       { name: 'Earth (Jinnaphas)', level: 4, color: '#d97706' },
+  pattaratida: { name: 'Pattaratida K.',   level: 3, color: '#db2777' },
+  manaporn:    { name: 'มนพร (Belle)',      level: 4, color: '#0d9488' }
+};
+
 function weeklyReport() {
-  Logger.log('📧 Starting Weekly AI Adoption Report...');
-
+  Logger.log('📧 Building Weekly Report (no AI)...');
   var files  = readDrive();
-  var report = buildWeeklyReport(files);
-  var html   = renderReportEmail(report);
-  sendReportEmail(html, report);
-
-  Logger.log('✅ Weekly report sent to: ' + REPORT_EMAILS.join(', '));
+  var html   = buildSimpleReport(files);
+  sendReportEmail(html);
+  Logger.log('✅ Report sent to: ' + REPORT_EMAILS.join(', '));
 }
 
-// ── วิเคราะห์ข้อมูลสำหรับ Report ──────────────────────────────────
-function buildWeeklyReport(files) {
-  var lines    = [];
-  var ucCounts = {};
-  var today    = new Date();
-  var cutoff   = new Date(today.getTime() - 14 * 24 * 60 * 60 * 1000); // 14 วัน
+function buildSimpleReport(files) {
+  var now    = Utilities.formatDate(new Date(), 'Asia/Bangkok', 'd MMM yyyy HH:mm');
+  var monday = new Date(); monday.setDate(monday.getDate() - monday.getDay() + 1);
+  var cutoff = new Date(Date.now() - 14*24*60*60*1000);
 
-  for (var uid in USER_FOLDERS) {
-    var info   = USER_FOLDERS[uid];
-    var ucs    = files[uid] || [];
-    ucCounts[uid] = ucs.length;
-    lines.push('=== ' + info.name + ' (' + uid + ') — ' + ucs.length + ' UCs ===');
-    ucs.forEach(function(f) {
-      lines.push('File: ' + f.name + '\n' + f.content.slice(0, 400) + '\n---');
-    });
-  }
+  var totalUCs = 0, totalHours = 0;
+  var memberRows = '', newUCRows = '', allUCRows = '';
 
-  var prompt = 'You are an AI Adoption Coach analyzing a team\'s weekly progress. Analyze these use cases and return ONLY valid JSON.\n\n'
-    + lines.join('\n')
-    + '\n\nReturn this exact JSON:\n'
-    + '{"week_summary":"<2-3 sentences Thai about team progress this week>",'
-    + '"highlights":[{"person":"<name>","achievement":"<Thai>","level":<int>,"emoji":"<emoji>"}],'
-    + '"concerns":[{"person":"<name>","issue":"<Thai>","action":"<Thai>"}],'
-    + '"team_level_avg":<float>,'
-    + '"top_roi":{"person":"<name>","uc":"<title>","hours":<int>,"baht":<int>},'
-    + '"next_actions":[{"person":"<name>","action":"<Thai>","priority":"high|medium","target_level":<int>}],'
-    + '"coach_message":"<2-3 sentences Thai motivational message for the team>"}\n'
-    + 'Return ONLY JSON.';
-
-  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=' + GEMINI_KEY;
-  var resp = UrlFetchApp.fetch(weeklyUrl, {
-    method: 'post',
-    headers: { 'content-type': 'application/json' },
-    payload: JSON.stringify({
-      contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.2, maxOutputTokens: 2048 }
-    }),
-    muteHttpExceptions: true
-  });
-
-  var httpCode = resp.getResponseCode();
-  if (httpCode !== 200) throw new Error('Gemini API error ' + httpCode + ': ' + resp.getContentText().slice(0,200));
-
-  var raw = JSON.parse(resp.getContentText()).candidates[0].content.parts[0].text.trim()
-    .replace(/^```json?\n?/, '').replace(/\n?```$/, '');
-  var analysis = JSON.parse(raw);
-  analysis.ucCounts  = ucCounts;
-  analysis.generated = Utilities.formatDate(today, 'Asia/Bangkok', 'd MMM yyyy HH:mm');
-  return analysis;
-}
-
-// ── สร้าง HTML Email ───────────────────────────────────────────────
-function renderReportEmail(r) {
   var levelColors = { 1:'#3b82f6',2:'#0891b2',3:'#059669',4:'#d97706',5:'#ea580c',6:'#dc2626',7:'#7c3aed' };
   var levelNames  = { 1:'Basic',2:'Prompt',3:'Integrator',4:'Builder',5:'Automator',6:'Agentic',7:'Architect' };
 
-  // Highlights
-  var hlRows = (r.highlights || []).map(function(h) {
-    var lv  = h.level || 3;
-    var col = levelColors[lv] || '#059669';
-    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8">'
-      + '<span style="font-size:1.2rem">' + h.emoji + '</span></td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + h.person + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#4a6278">' + h.achievement + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
-      + '<span style="background:' + col + '18;color:' + col + ';border:1px solid ' + col + '44;border-radius:12px;padding:2px 10px;font-size:.75rem;font-weight:700">L' + lv + ' ' + (levelNames[lv]||'') + '</span>'
-      + '</td></tr>';
-  }).join('');
+  var levelSum = 0, memberCount = 0;
 
-  // Concerns
-  var cnRows = (r.concerns || []).map(function(c) {
-    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + c.person + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#dc2626">' + c.issue + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#0077cc">' + c.action + '</td></tr>';
-  }).join('');
+  for (var uid in USER_FOLDERS) {
+    var info  = USER_FOLDERS[uid];
+    var meta  = USER_META[uid] || { name: info.name, level: 3, color: '#059669' };
+    var ucs   = files[uid] || [];
+    var lv    = meta.level;
+    var col   = meta.color;
+    var lcol  = levelColors[lv] || '#059669';
 
-  // Next Actions
-  var naRows = (r.next_actions || []).map(function(a) {
-    var pri   = a.priority === 'high' ? '#dc2626' : '#d97706';
-    var priBg = a.priority === 'high' ? '#fef2f2' : '#fffbeb';
-    var lv    = a.target_level || 4;
-    var col   = levelColors[lv] || '#d97706';
-    return '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;font-weight:600;color:#1a2b3c">' + a.person + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#4a6278">' + a.action + '</td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
-      + '<span style="background:' + priBg + ';color:' + pri + ';border-radius:12px;padding:2px 10px;font-size:.72rem;font-weight:700">' + (a.priority === 'high' ? '🔴 สำคัญมาก' : '🟡 ควรทำ') + '</span></td>'
-      + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;text-align:center">'
-      + '<span style="background:' + col + '18;color:' + col + ';border-radius:12px;padding:2px 10px;font-size:.72rem;font-weight:700">→ L' + lv + '</span></td></tr>';
-  }).join('');
+    totalUCs += ucs.length;
+    levelSum += lv;
+    memberCount++;
 
-  // UC count row
-  var ucRow = Object.keys(USER_FOLDERS).map(function(uid) {
-    var info = USER_FOLDERS[uid];
-    var col  = uid==='narawit'?'#0077cc':uid==='earth'?'#d97706':uid==='pattaratida'?'#db2777':'#0d9488';
-    return '<td style="text-align:center;padding:14px">'
-      + '<div style="width:40px;height:40px;border-radius:10px;background:' + col + ';color:#fff;font-weight:800;font-size:1rem;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px">' + info.av + '</div>'
-      + '<div style="font-size:.78rem;font-weight:700;color:#1a2b3c">' + info.name + '</div>'
-      + '<div style="font-size:1.5rem;font-weight:800;color:' + col + ';margin:4px 0">' + (r.ucCounts[uid]||0) + '</div>'
-      + '<div style="font-size:.68rem;color:#8aa0b4">Use Cases</div>'
-      + '</td>';
-  }).join('');
+    // Member summary row
+    memberRows += '<tr>'
+      + '<td style="padding:12px 16px;border-bottom:1px solid #eaf0f8">'
+      + '<div style="display:flex;align-items:center;gap:10px">'
+      + '<div style="width:34px;height:34px;border-radius:8px;background:'+col+';color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center">'+info.av+'</div>'
+      + '<div><div style="font-weight:700;color:#1a2b3c;font-size:.85rem">'+meta.name+'</div>'
+      + '<div style="font-size:.7rem;color:#8aa0b4">'+info.role+'</div></div></div></td>'
+      + '<td style="padding:12px 16px;border-bottom:1px solid #eaf0f8;text-align:center">'
+      + '<span style="font-size:1.4rem;font-weight:800;color:'+col+'">'+ucs.length+'</span></td>'
+      + '<td style="padding:12px 16px;border-bottom:1px solid #eaf0f8;text-align:center">'
+      + '<span style="background:'+lcol+'18;color:'+lcol+';border:1px solid '+lcol+'44;border-radius:12px;padding:3px 12px;font-size:.75rem;font-weight:700">L'+lv+' '+levelNames[lv]+'</span></td>'
+      + '</tr>';
 
-  var topRoi = r.top_roi || {};
+    // New UCs this week (last 14 days)
+    ucs.forEach(function(f) {
+      var dateMatch = f.name.match(/^(\d{4}-\d{2}-\d{2})/);
+      if (dateMatch) {
+        var ucDate = new Date(dateMatch[1]);
+        if (ucDate >= cutoff) {
+          var title = f.name.replace(/^\d{4}-\d{2}-\d{2}-/, '').replace(/-/g, ' ').replace('.md', '');
+          newUCRows += '<tr><td style="padding:10px 14px;border-bottom:1px solid #eaf0f8">'
+            + '<div style="width:8px;height:8px;border-radius:50%;background:'+col+';display:inline-block;margin-right:8px"></div>'
+            + '<strong style="color:#1a2b3c">'+meta.name+'</strong></td>'
+            + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#4a6278;font-size:.82rem">'+title+'</td>'
+            + '<td style="padding:10px 14px;border-bottom:1px solid #eaf0f8;color:#8aa0b4;font-size:.78rem">'+dateMatch[1]+'</td>'
+            + '</tr>';
+        }
+      }
+    });
+  }
 
-  return '<!DOCTYPE html><html><head><meta charset="UTF-8"></head><body style="margin:0;padding:0;background:#f0f4f9;font-family:\'Segoe UI\',sans-serif">'
-    + '<div style="max-width:680px;margin:0 auto;padding:24px 16px">'
+  var avgLevel = (levelSum / memberCount).toFixed(1);
+  var q3Pct   = Math.round((avgLevel / 5) * 100);
+
+  return '<!DOCTYPE html><html><head><meta charset="UTF-8"></head>'
+    + '<body style="margin:0;padding:0;background:#f0f4f9;font-family:Segoe UI,sans-serif">'
+    + '<div style="max-width:660px;margin:0 auto;padding:24px 16px">'
 
     // Header
-    + '<div style="background:linear-gradient(135deg,#0077cc,#0ea5e9);border-radius:16px;padding:28px 32px;margin-bottom:16px;color:#fff">'
-    + '<div style="font-size:.75rem;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px">📊 PCC Group · AI Adoption Weekly Report</div>'
-    + '<div style="font-size:1.6rem;font-weight:800;margin-bottom:6px">สรุปประจำสัปดาห์</div>'
-    + '<div style="font-size:.85rem;opacity:.85">' + r.generated + ' · อัปเดตอัตโนมัติโดย Google Apps Script</div>'
+    + '<div style="background:linear-gradient(135deg,#0077cc,#0ea5e9);border-radius:16px;padding:26px 30px;margin-bottom:14px;color:#fff">'
+    + '<div style="font-size:.72rem;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:6px">📊 PCC Group · AI Adoption Weekly Report</div>'
+    + '<div style="font-size:1.55rem;font-weight:800;margin-bottom:5px">สรุปประจำสัปดาห์</div>'
+    + '<div style="font-size:.82rem;opacity:.85">'+now+' · Auto-generated by Google Apps Script (Free)</div>'
     + '</div>'
 
-    // Week Summary
-    + '<div style="background:#fff;border-radius:12px;padding:20px 24px;margin-bottom:14px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05)">'
-    + '<div style="font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">🗓️ สรุปภาพรวมสัปดาห์นี้</div>'
-    + '<div style="font-size:.9rem;color:#1a2b3c;line-height:1.7">' + (r.week_summary||'') + '</div>'
+    // Stats bar
+    + '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">'
+    + '<div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #dae3ef">'
+    + '<div style="font-size:2rem;font-weight:800;color:#0077cc">'+totalUCs+'</div>'
+    + '<div style="font-size:.7rem;color:#8aa0b4;margin-top:4px">Total Use Cases</div></div>'
+    + '<div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #dae3ef">'
+    + '<div style="font-size:2rem;font-weight:800;color:#d97706">'+avgLevel+'</div>'
+    + '<div style="font-size:.7rem;color:#8aa0b4;margin-top:4px">Team Avg Level</div></div>'
+    + '<div style="background:#fff;border-radius:12px;padding:16px;text-align:center;border:1px solid #dae3ef">'
+    + '<div style="font-size:2rem;font-weight:800;color:#16a34a">'+q3Pct+'%</div>'
+    + '<div style="font-size:.7rem;color:#8aa0b4;margin-top:4px">Q3 Progress (→ L5)</div></div>'
     + '</div>'
 
-    // Team UC Count
-    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
-    + '<div style="padding:16px 24px 0;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">👥 Use Cases ต่อคน</div>'
-    + '<table style="width:100%;border-collapse:collapse"><tr>' + ucRow + '</tr></table>'
-    + '<div style="padding:12px 24px;background:#f5f8fc;border-top:1px solid #dae3ef;display:flex;justify-content:space-between">'
-    + '<span style="font-size:.78rem;color:#4a6278"><strong>Team Avg Level:</strong> ' + (r.team_level_avg||0) + ' / 7</span>'
-    + '<span style="font-size:.78rem;color:#16a34a;font-weight:700">เป้า Q3: 5.0 → ' + Math.round((r.team_level_avg||0)/5*100) + '% ✓</span>'
+    // Member table
+    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;margin-bottom:14px;overflow:hidden">'
+    + '<div style="padding:14px 20px;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">👥 สถานะรายคน</div>'
+    + '<table style="width:100%;border-collapse:collapse">'
+    + '<tr style="background:#f5f8fc"><th style="padding:8px 16px;text-align:left;font-size:.66rem;color:#8aa0b4">Member</th><th style="padding:8px 16px;text-align:center;font-size:.66rem;color:#8aa0b4">UCs</th><th style="padding:8px 16px;text-align:center;font-size:.66rem;color:#8aa0b4">Level</th></tr>'
+    + memberRows + '</table></div>'
+
+    // New UCs
+    + (newUCRows
+      ? '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;margin-bottom:14px;overflow:hidden">'
+        + '<div style="padding:14px 20px;font-size:.68rem;color:#16a34a;text-transform:uppercase;letter-spacing:1px;font-weight:700">✨ Use Cases ใหม่ใน 14 วันที่ผ่านมา</div>'
+        + '<table style="width:100%;border-collapse:collapse">'
+        + '<tr style="background:#f5f8fc"><th style="padding:8px 14px;text-align:left;font-size:.66rem;color:#8aa0b4">คน</th><th style="padding:8px 14px;text-align:left;font-size:.66rem;color:#8aa0b4">Use Case</th><th style="padding:8px 14px;text-align:left;font-size:.66rem;color:#8aa0b4">วันที่</th></tr>'
+        + newUCRows + '</table></div>'
+      : '<div style="background:#edfaf3;border:1px solid #86efac;border-radius:12px;padding:16px 20px;margin-bottom:14px;color:#16a34a;font-size:.85rem">✅ ไม่มี Use Case ใหม่ใน 14 วันที่ผ่านมา</div>')
+
+    // Roadmap reminders
+    + '<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:16px 20px;margin-bottom:14px">'
+    + '<div style="font-size:.68rem;color:#d97706;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:10px">🎯 Action Items — Roadmap สู่ Q3</div>'
+    + '<div style="font-size:.82rem;color:#1a2b3c;line-height:2">'
+    + '🚀 <strong>Nick (L5→L6):</strong> เพิ่ม Proactive Notification เมื่อทีมไม่มี UC ใหม่เกิน 2 สัปดาห์<br>'
+    + '⚡ <strong>Earth (L4→L5):</strong> Setup Apps Script Script Properties ให้ครบ<br>'
+    + '🏭 <strong>Belle (L4→L5):</strong> สร้าง Python Script auto-update Forecast เมื่อ Excel เปลี่ยน<br>'
+    + '📈 <strong>Pattaratida (L3→L4):</strong> แปลง PRECISE Sales Intelligence เป็น Script อิสระ'
     + '</div></div>'
 
-    // Highlights
-    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
-    + '<div style="padding:16px 24px;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">🏆 Highlights สัปดาห์นี้</div>'
-    + '<table style="width:100%;border-collapse:collapse">' + (hlRows || '<tr><td colspan="4" style="padding:14px 24px;color:#8aa0b4;font-size:.8rem">ยังไม่มีข้อมูล</td></tr>') + '</table>'
-    + '</div>'
-
-    // Top ROI
-    + '<div style="background:linear-gradient(135deg,#edfaf3,#f0fdfa);border:1px solid #86efac;border-radius:12px;padding:18px 24px;margin-bottom:14px">'
-    + '<div style="font-size:.68rem;color:#16a34a;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">🔥 Highest ROI ของสัปดาห์</div>'
-    + '<div style="font-size:.9rem;font-weight:700;color:#1a2b3c">' + (topRoi.person||'') + ' — ' + (topRoi.uc||'') + '</div>'
-    + '<div style="font-size:.8rem;color:#4a6278;margin-top:4px">ประหยัด <strong>' + (topRoi.hours||0) + ' ชม.</strong> มูลค่า <strong>~' + ((topRoi.baht||0)).toLocaleString() + ' บาท</strong></div>'
-    + '</div>'
-
-    // Concerns
-    + (cnRows ? '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
-    + '<div style="padding:16px 24px;font-size:.68rem;color:#dc2626;text-transform:uppercase;letter-spacing:1px;font-weight:700">⚠️ จุดที่ต้องพัฒนา</div>'
-    + '<table style="width:100%;border-collapse:collapse"><tr style="background:#f5f8fc"><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คน</th><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">ปัญหา</th><th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คำแนะนำ</th></tr>'
-    + cnRows + '</table></div>' : '')
-
-    // Next Actions
-    + '<div style="background:#fff;border-radius:12px;border:1px solid #dae3ef;box-shadow:0 1px 4px rgba(0,0,0,.05);margin-bottom:14px;overflow:hidden">'
-    + '<div style="padding:16px 24px;font-size:.68rem;color:#8aa0b4;text-transform:uppercase;letter-spacing:1px;font-weight:700">🎯 Action Items สัปดาห์หน้า</div>'
-    + '<table style="width:100%;border-collapse:collapse"><tr style="background:#f5f8fc">'
-    + '<th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">คน</th>'
-    + '<th style="padding:8px 14px;text-align:left;font-size:.68rem;color:#8aa0b4">สิ่งที่ต้องทำ</th>'
-    + '<th style="padding:8px 14px;text-align:center;font-size:.68rem;color:#8aa0b4">Priority</th>'
-    + '<th style="padding:8px 14px;text-align:center;font-size:.68rem;color:#8aa0b4">เป้าหมาย</th>'
-    + '</tr>' + naRows + '</table>'
-    + '</div>'
-
-    // Coach Message
-    + '<div style="background:linear-gradient(135deg,#f3eeff,#e8f3ff);border:1px solid #c4b5fd;border-radius:12px;padding:18px 24px;margin-bottom:14px">'
-    + '<div style="font-size:.68rem;color:#7c3aed;text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:8px">💬 AI Coach Message</div>'
-    + '<div style="font-size:.88rem;color:#1a2b3c;line-height:1.7;font-style:italic">"' + (r.coach_message||'') + '"</div>'
-    + '</div>'
-
     // Footer
-    + '<div style="text-align:center;padding:16px;font-size:.7rem;color:#8aa0b4">'
-    + '🤖 Generated automatically by PCC AI Adoption System · Google Apps Script + Gemini 1.5 Flash<br>'
-    + '<a href="https://jinnaphas.github.io/AIadoption/" style="color:#0077cc">ดู Dashboard แบบ Interactive →</a>'
-    + '</div>'
-
-    + '</div></body></html>';
+    + '<div style="text-align:center;padding:14px;font-size:.68rem;color:#8aa0b4">'
+    + '🤖 Auto-generated · Google Apps Script · PCC Group · ไม่ใช้ AI API (100% Free)<br>'
+    + '<a href="https://jinnaphas.github.io/AIadoption/" style="color:#0077cc">ดู Live Dashboard →</a>'
+    + '</div></div></body></html>';
 }
 
-// ── ส่ง Email ─────────────────────────────────────────────────────
-function sendReportEmail(htmlBody, r) {
-  var subject = '📊 AI Adoption Weekly Report — '
+function sendReportEmail(htmlBody) {
+  var subject = '📊 AI Adoption Weekly — '
     + Utilities.formatDate(new Date(), 'Asia/Bangkok', 'd MMM yyyy')
-    + ' · Team Avg L' + (r.team_level_avg||0);
+    + ' · PCC Group';
 
   REPORT_EMAILS.forEach(function(email) {
-    MailApp.sendEmail({
-      to: email,
-      subject: subject,
-      htmlBody: htmlBody,
-      name: 'PCC AI Adoption System 🤖'
-    });
-    Logger.log('  Sent to: ' + email);
+    MailApp.sendEmail({ to: email, subject: subject, htmlBody: htmlBody, name: 'PCC AI Adoption 🤖' });
+    Logger.log('  Sent → ' + email);
   });
 }
 
-// ── Test: รัน Report ทันทีโดยไม่ต้องรอ Monday ─────────────────────
 function testWeeklyReport() {
-  Logger.log('🧪 Testing weekly report...');
+  Logger.log('🧪 Test weekly report...');
   weeklyReport();
 }

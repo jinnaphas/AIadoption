@@ -79,6 +79,72 @@
   .uc-insight{font-size:.73rem;color:var(--text3);font-style:italic;line-height:1.65;padding:10px 14px;background:rgba(255,255,255,.6);border-radius:8px;border:1px dashed var(--border2)}
   /* scrollbar */
   ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+  /* ── Phase 1 & 2 Additions ── */
+  .section-header{margin:28px 0 16px;display:flex;align-items:center;gap:10px}
+  .section-header h2{font-size:.78rem;font-weight:700;color:var(--text);text-transform:uppercase;letter-spacing:1.5px}
+  .section-header span{font-size:.7rem;color:var(--text3)}
+  .ph-divider{width:100%;height:1px;background:var(--border);margin:28px 0}
+
+  /* Impact Row */
+  .impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .impact-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .impact-card-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .impact-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+  .impact-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  .impact-val{font-size:1.6rem;font-weight:800;line-height:1;margin-bottom:4px}
+  .impact-sub{font-size:.7rem;color:var(--text2)}
+  .impact-bar-wrap{margin-top:10px}
+  .impact-bar-label{display:flex;justify-content:space-between;font-size:.63rem;color:var(--text3);margin-bottom:4px}
+  .impact-bar-track{height:5px;background:var(--surface3);border-radius:3px;overflow:hidden}
+  .impact-bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+  /* Timeline */
+  .timeline-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:18px;margin-bottom:20px}
+  .tl-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .tl-chart-wrap{position:relative;height:160px;margin-top:10px}
+  .tl-person-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+  .tl-person-row:last-child{border-bottom:none}
+  .tl-dot-label{width:90px;font-size:.72rem;font-weight:600;color:var(--text2);flex-shrink:0}
+  .tl-dots{flex:1;display:flex;align-items:center;gap:0;position:relative;height:28px}
+  .tl-axis{display:flex;justify-content:space-between;font-size:.6rem;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:6px;padding:0 0 0 100px}
+  .uc-dot{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:800;color:#fff;cursor:default;transition:transform .15s;flex-shrink:0}
+  .uc-dot:hover{transform:scale(1.2)}
+  .uc-dot-n{background:var(--accent)}.uc-dot-e{background:var(--gold)}.uc-dot-p{background:var(--rose)}.uc-dot-m{background:var(--teal)}
+  .day-group{display:flex;flex-direction:column;align-items:center;gap:3px;margin-right:6px}
+  .day-label{font-size:.55rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
+
+  /* Synergy */
+  .synergy-item{display:flex;gap:12px;padding:12px;background:var(--surface2);border:1px solid var(--border);border-radius:10px;margin-bottom:9px;transition:border-color .2s}
+  .synergy-item:hover{border-color:var(--border2)}
+  .syn-avatars{display:flex;align-items:center;flex-shrink:0}
+  .syn-av{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;color:#fff}
+  .syn-plus{font-size:.8rem;color:var(--text3);margin:0 3px}
+  .syn-content h4{font-size:.78rem;font-weight:700;color:var(--text);margin-bottom:3px}
+  .syn-content p{font-size:.7rem;color:var(--text2);line-height:1.5}
+  .syn-chip{display:inline-flex;font-size:.62rem;padding:2px 8px;border-radius:20px;margin-top:5px;font-weight:600}
+
+  /* Gap Alerts */
+  .alert-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px}
+  .alert-panel{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .alert-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:10px;margin-bottom:8px}
+  .alert-green{background:var(--green-bg);border:1px solid #bbf7d0}
+  .alert-yellow{background:#fefce8;border:1px solid #fde68a}
+  .alert-blue{background:var(--accent-bg);border:1px solid #bfdbfe}
+  .alert-rose{background:var(--rose-bg);border:1px solid #fbcfe8}
+  .alert-icon{font-size:1rem;flex-shrink:0;margin-top:1px}
+  .alert-body h4{font-size:.76rem;font-weight:700;color:var(--text);margin-bottom:2px}
+  .alert-body p{font-size:.68rem;color:var(--text2);line-height:1.5}
+
+  /* Q3 Progress */
+  .q3-person{margin-bottom:14px}
+  .q3-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+  .q3-name{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600}
+  .q3-badge{font-size:.63rem;font-family:'JetBrains Mono',monospace;font-weight:700;padding:2px 8px;border-radius:20px}
+  .q3-track{height:10px;background:var(--surface3);border-radius:5px;overflow:hidden;position:relative}
+  .q3-fill{height:100%;border-radius:5px;transition:width .8s ease;position:relative}
+  .q3-target{position:absolute;top:0;bottom:0;width:2px;background:var(--text3);opacity:.5}
+  .q3-sub{font-size:.65rem;color:var(--text3);margin-top:4px;display:flex;justify-content:space-between}
+
 </style>
 </head>
 <body>
@@ -154,6 +220,352 @@
     </div>
   </div>
 </div>
+
+  <div class="ph-divider"></div>
+
+  <!-- ═══ PHASE 1: IMPACT & TIMELINE ═══ -->
+  <div class="section-header">
+    <h2>📈 Phase 1 — Impact & Timeline</h2>
+    <span>มูลค่าที่สร้าง + ความก้าวหน้าตามเวลา</span>
+  </div>
+
+  <!-- Impact Row -->
+  <div class="impact-row">
+
+    <!-- Business Value -->
+    <div class="impact-card">
+      <div class="impact-card-head">
+        <div class="impact-icon" style="background:var(--green-bg)">💰</div>
+        <div class="impact-label">Business Value สะสม (ประมาณ)</div>
+      </div>
+      <div class="impact-val" style="color:var(--green)">63,000+</div>
+      <div class="impact-sub">บาท (ชม.ประหยัด × อัตราเงินเดือน)</div>
+      <div class="impact-bar-wrap">
+        <div class="impact-bar-label"><span>Nick 5K</span><span>Earth 22.5K</span><span>Pattaratida 11K</span><span>Belle 24.5K</span></div>
+        <div style="display:flex;gap:2px;height:6px;margin-top:4px">
+          <div style="flex:5;background:var(--accent);border-radius:3px 0 0 3px"></div>
+          <div style="flex:22.5;background:var(--gold)"></div>
+          <div style="flex:11;background:var(--rose)"></div>
+          <div style="flex:24.5;background:var(--teal);border-radius:0 3px 3px 0"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recurring Monthly Value -->
+    <div class="impact-card">
+      <div class="impact-card-head">
+        <div class="impact-icon" style="background:var(--purple-bg)">🔄</div>
+        <div class="impact-label">Recurring Value / เดือน</div>
+      </div>
+      <div class="impact-val" style="color:var(--purple)">8,800+</div>
+      <div class="impact-sub">บาท/เดือน (ประหยัด 22–25 ชม. ongoing)</div>
+      <div class="impact-bar-wrap">
+        <div class="impact-bar-label"><span>ต้นทาง</span><span>Pattaratida UC#3</span></div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:100%;background:var(--rose)"></div></div>
+      </div>
+      <div class="impact-sub" style="margin-top:6px">📅 Annual Recurring: ~105,600 บาท/ปี</div>
+    </div>
+
+    <!-- Q3 Velocity -->
+    <div class="impact-card">
+      <div class="impact-card-head">
+        <div class="impact-icon" style="background:var(--gold-bg)">⚡</div>
+        <div class="impact-label">UC Velocity (3 วันแรก)</div>
+      </div>
+      <div class="impact-val" style="color:var(--gold)">20</div>
+      <div class="impact-sub">Use Cases ใน 3 วัน (20–22 พ.ค. 2569)</div>
+      <div class="impact-bar-wrap">
+        <div class="impact-bar-label"><span>20 พ.ค.</span><span>21 พ.ค.</span><span>22 พ.ค.</span></div>
+        <div style="display:flex;gap:3px;height:28px;align-items:flex-end;margin-top:4px">
+          <div style="flex:1;background:var(--accent-bg);border:1px solid #bfdbfe;border-radius:3px 3px 0 0;height:30%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--accent);font-weight:700">3</div>
+          <div style="flex:1;background:var(--gold-bg);border:1px solid #fde68a;border-radius:3px 3px 0 0;height:100%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--gold);font-weight:700">13</div>
+          <div style="flex:1;background:var(--teal-bg);border:1px solid #99f6e4;border-radius:3px 3px 0 0;height:40%;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--teal);font-weight:700">4</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-grid">
+    <div class="tl-panel">
+      <div class="section-title">UC Timeline — ใครเพิ่มอะไรเมื่อไหร่</div>
+      <div class="tl-person-row">
+        <div class="tl-dot-label" style="color:var(--accent)">นราวิช (Nick)</div>
+        <div class="tl-dots">
+          <div class="day-group">
+            <div class="uc-dot uc-dot-n" title="UC#1 Knowledge Logger">1</div>
+          </div>
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div style="display:flex;gap:3px">
+              <div class="uc-dot uc-dot-n" title="UC#2 ROI Analysis">2</div>
+              <div class="uc-dot uc-dot-n" title="UC#3 AI Assessment">3</div>
+              <div class="uc-dot uc-dot-n" title="UC#4 Jira API">4</div>
+              <div class="uc-dot uc-dot-n" title="UC#5 Auto Timesheet">5</div>
+            </div>
+          </div>
+          <div style="flex:1"></div>
+        </div>
+      </div>
+      <div class="tl-person-row">
+        <div class="tl-dot-label" style="color:var(--gold)">Earth</div>
+        <div class="tl-dots">
+          <div class="day-group">
+            <div style="display:flex;gap:3px">
+              <div class="uc-dot uc-dot-e" title="UC#1 Bamboo Report">1</div>
+              <div class="uc-dot uc-dot-e" title="UC#2 Job Role Library">2</div>
+            </div>
+          </div>
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div style="display:flex;gap:3px;flex-wrap:wrap;max-width:160px">
+              <div class="uc-dot uc-dot-e" title="UC#3 Corporate Strategy">3</div>
+              <div class="uc-dot uc-dot-e" title="UC#4 HC Dashboard">4</div>
+              <div class="uc-dot uc-dot-e" title="UC#5 NRC System">5</div>
+              <div class="uc-dot uc-dot-e" title="UC#6 Dashboard Auto">6</div>
+              <div class="uc-dot uc-dot-e" title="UC#7 Copilot Survey">7</div>
+            </div>
+          </div>
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div class="uc-dot uc-dot-e" title="UC#8 ISA-95 HTML">8</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-person-row">
+        <div class="tl-dot-label" style="color:var(--rose)">Pattaratida</div>
+        <div class="tl-dots">
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div style="display:flex;gap:3px">
+              <div class="uc-dot uc-dot-p" title="UC#1 ICP Scoring">1</div>
+              <div class="uc-dot uc-dot-p" title="UC#2 BA Framework">2</div>
+              <div class="uc-dot uc-dot-p" title="UC#3 Sales Intelligence">3</div>
+            </div>
+          </div>
+          <div style="flex:1"></div>
+        </div>
+      </div>
+      <div class="tl-person-row">
+        <div class="tl-dot-label" style="color:var(--teal)">Belle</div>
+        <div class="tl-dots">
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div class="uc-dot uc-dot-m" title="UC#1 Switchgear Blueprint">1</div>
+          </div>
+          <div style="flex:1"></div>
+          <div class="day-group">
+            <div style="display:flex;gap:3px">
+              <div class="uc-dot uc-dot-m" title="UC#2 ISA-95 HTML">2</div>
+              <div class="uc-dot uc-dot-m" title="UC#3 Odoo Visual">3</div>
+              <div class="uc-dot uc-dot-m" title="UC#4 PDEM Forecast">4</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-axis"><span>20 พ.ค.</span><span>21 พ.ค.</span><span>22 พ.ค.</span></div>
+      <p style="font-size:.65rem;color:var(--text3);margin-top:8px">* Hover บน dot เพื่อดูชื่อ UC</p>
+    </div>
+
+    <!-- Per-person Impact -->
+    <div class="tl-panel">
+      <div class="section-title">Impact per Person — ชม. × อัตราค่าจ้าง</div>
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-n" style="width:20px;height:20px;font-size:.55rem">น</div><span style="font-size:.78rem;font-weight:600">นราวิช (Nick)</span></div>
+          <span style="font-size:.72rem;color:var(--accent);font-weight:700">~5,000 ฿</span>
+        </div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:8%;background:var(--accent)"></div></div>
+        <div style="font-size:.63rem;color:var(--text3);margin-top:3px">10 ชม. × 500 ฿/ชม. + Jira API 90 นาที + Timesheet daily</div>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-e" style="width:20px;height:20px;font-size:.55rem">E</div><span style="font-size:.78rem;font-weight:600">Earth (Jinnaphas)</span></div>
+          <span style="font-size:.72rem;color:var(--gold);font-weight:700">~22,500 ฿</span>
+        </div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:36%;background:var(--gold)"></div></div>
+        <div style="font-size:.63rem;color:var(--text3);margin-top:3px">45 ชม. × 500 ฿/ชม. · 8 UCs ครอบคลุม 4 งานหลัก</div>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-p" style="width:20px;height:20px;font-size:.55rem">ภ</div><span style="font-size:.78rem;font-weight:600">Pattaratida</span></div>
+          <span style="font-size:.72rem;color:var(--rose);font-weight:700">~11,200 ฿ + 8,800/เดือน 🔥</span>
+        </div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:18%;background:var(--rose)"></div></div>
+        <div style="font-size:.63rem;color:var(--text3);margin-top:3px">28 ชม. × 400 ฿ + Recurring 22–25 ชม./เดือน (ไม่สิ้นสุด)</div>
+      </div>
+      <div style="margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-m" style="width:20px;height:20px;font-size:.55rem">ม</div><span style="font-size:.78rem;font-weight:600">Belle (มนพร)</span></div>
+          <span style="font-size:.72rem;color:var(--teal);font-weight:700">~24,750 ฿</span>
+        </div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:39%;background:var(--teal)"></div></div>
+        <div style="font-size:.63rem;color:var(--text3);margin-top:3px">55 ชม. × 450 ฿ · PDEM Forecast ประหยัด 40–60 ชม. ในชิ้นเดียว</div>
+      </div>
+      <div style="padding:10px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);margin-top:4px">
+        <div style="font-size:.68rem;font-weight:700;color:var(--text);margin-bottom:4px">📊 Highest ROI</div>
+        <div style="font-size:.7rem;color:var(--text2)"><strong>Pattaratida UC#3</strong> — Recurring 8,800 ฿/เดือน = <strong>105,600 ฿/ปี</strong> จาก Use Case เดียว</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cross-UC Synergy -->
+  <div class="tl-panel" style="margin-bottom:20px">
+    <div class="section-title">🔗 Cross-UC Synergy — UC ที่เชื่อมกันได้ทันที</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+      <div class="synergy-item">
+        <div class="syn-avatars"><div class="syn-av mav-m">ม</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div></div>
+        <div class="syn-content">
+          <h4>Belle PDEM Forecast → Pattaratida Sales</h4>
+          <p>BU ไหน Revenue Forecast สูง (PEM102 SF6-free +12.6%) → ให้ Pattaratida กรอง Prospect List ให้ตรงกับ BU นั้นก่อน</p>
+          <span class="syn-chip" style="background:var(--teal-bg);color:var(--teal)">Impact: Target Prospect ตรง Market ที่กำลัง Grow</span>
+        </div>
+      </div>
+      <div class="synergy-item">
+        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-n">น</div></div>
+        <div class="syn-content">
+          <h4>Earth HC Dashboard + Nick AI Assessment</h4>
+          <p>รวม HC data (797 คน, 9 บริษัท) กับ AI Adoption Level ของแต่ละทีม → เห็นว่า BU ไหน HC มาก แต่ AI Level ต่ำ ต้องพัฒนาก่อน</p>
+          <span class="syn-chip" style="background:var(--accent-bg);color:var(--accent)">Impact: HR + AI Strategy ในหน้าจอเดียว</span>
+        </div>
+      </div>
+      <div class="synergy-item">
+        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
+        <div class="syn-content">
+          <h4>Earth Job Role Library → Belle ISA-95 Pattern</h4>
+          <p>Pattern "Excel → Interactive HTML" ที่ Earth สร้างสามารถ Package เป็น Template ให้ทีมอื่นใช้สร้าง Technical Presentation ได้เลย</p>
+          <span class="syn-chip" style="background:var(--gold-bg);color:var(--gold)">Impact: Reusable Template ลด effort 80%</span>
+        </div>
+      </div>
+      <div class="synergy-item">
+        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-e">E</div></div>
+        <div class="syn-content">
+          <h4>Nick Knowledge Logger → Earth Copilot Survey</h4>
+          <p>ระบบ Auto-log ที่ Nick สร้างไว้ เชื่อม Make.com Webhook ของ Earth → ทุก Survey response บันทึกลง Drive อัตโนมัติโดยไม่ต้อง Manual</p>
+          <span class="syn-chip" style="background:var(--purple-bg);color:var(--purple)">Impact: Full automation ของ Survey Pipeline</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="ph-divider"></div>
+
+  <!-- ═══ PHASE 2: GAP ALERTS & Q3 PROGRESS ═══ -->
+  <div class="section-header">
+    <h2>🎯 Phase 2 — Gap Alerts & Q3 Progress</h2>
+    <span>ใครต้องการ Coach + ก้าวหน้าสู่เป้าหมายไตรมาส 3</span>
+  </div>
+
+  <div class="alert-grid">
+    <!-- Gap Alerts -->
+    <div class="alert-panel">
+      <div class="section-title">⚡ Gap Alerts — สิ่งที่ต้องทำถัดไป</div>
+
+      <div class="alert-item alert-green">
+        <div class="alert-icon">✅</div>
+        <div class="alert-body">
+          <h4>Nick — พร้อมสู่ L6 แล้ว</h4>
+          <p>Auto Timesheet (L7) + Jira API (L5) ครบ — Action: เพิ่ม Proactive Notification เมื่อ Team ไม่มี UC ใหม่เกิน 14 วัน</p>
+        </div>
+      </div>
+
+      <div class="alert-item alert-yellow">
+        <div class="alert-icon">⚡</div>
+        <div class="alert-body">
+          <h4>Earth — 1 session สู่ L5</h4>
+          <p>Setup Apps Script Script Properties ให้ครบ (ANTHROPIC_API_KEY + GITHUB_TOKEN) แล้ว Dashboard Auto-update จะรันจริง = L5 ทันที</p>
+        </div>
+      </div>
+
+      <div class="alert-item alert-yellow">
+        <div class="alert-icon">🏭</div>
+        <div class="alert-body">
+          <h4>Belle — Implement UC-02 จาก Blueprint</h4>
+          <p>BOQ→ใบเสนอราคา เป็น UC ที่ง่ายที่สุด Impact สูงสุด ใช้ Google Sheets + Claude Prompt สำเร็จรูป ~1 session = L5</p>
+        </div>
+      </div>
+
+      <div class="alert-item alert-blue">
+        <div class="alert-icon">📈</div>
+        <div class="alert-body">
+          <h4>Pattaratida — แปลง UC#3 เป็น Script อิสระ</h4>
+          <p>PRECISE Sales Intelligence ยังต้องรันผ่าน Claude Chat — แปลงเป็น Apps Script ที่ทีมรันเองได้ = L4 เต็ม</p>
+        </div>
+      </div>
+
+      <div class="alert-item alert-rose">
+        <div class="alert-icon">🔗</div>
+        <div class="alert-body">
+          <h4>Team — ยังไม่มีใครทำ L6 จริง</h4>
+          <p>L6 = AI ตัดสินใจและลงมือเองโดยไม่รอ Prompt เช่น PDEM เปลี่ยน 10% → Alert Pattaratida ปรับ Prospect List อัตโนมัติ</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 Progress -->
+    <div class="alert-panel">
+      <div class="section-title">🏆 Q3/2026 Progress — เป้าหมาย Avg Level 5</div>
+
+      <div class="q3-person">
+        <div class="q3-header">
+          <div class="q3-name"><div class="mav mav-n" style="width:22px;height:22px;font-size:.6rem">น</div>นราวิช (Nick)</div>
+          <span class="q3-badge" style="background:var(--l5b,#fff7ed);color:var(--l5c,#ea580c)">L5 ✅ เกินเป้า</span>
+        </div>
+        <div class="q3-track">
+          <div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--accent),#ea580c)"></div>
+          <div class="q3-target" style="left:100%"></div>
+        </div>
+        <div class="q3-sub"><span>L1</span><span style="color:var(--green);font-weight:600">⭐ Level 5 — บรรลุเป้า Q3 แล้ว</span><span>L7</span></div>
+      </div>
+
+      <div class="q3-person">
+        <div class="q3-header">
+          <div class="q3-name"><div class="mav mav-e" style="width:22px;height:22px;font-size:.6rem">E</div>Earth (Jinnaphas)</div>
+          <span class="q3-badge" style="background:var(--l4b,#fffbeb);color:var(--l4c,#d97706)">L4 → เป้า L5</span>
+        </div>
+        <div class="q3-track">
+          <div class="q3-fill" style="width:80%;background:linear-gradient(90deg,var(--gold),#f59e0b)"></div>
+          <div class="q3-target" style="left:100%"></div>
+        </div>
+        <div class="q3-sub"><span>L1</span><span>80% สู่เป้า · ขาด: Apps Script Setup</span><span>L7</span></div>
+      </div>
+
+      <div class="q3-person">
+        <div class="q3-header">
+          <div class="q3-name"><div class="mav mav-p" style="width:22px;height:22px;font-size:.6rem">ภ</div>Pattaratida</div>
+          <span class="q3-badge" style="background:var(--rose-bg);color:var(--rose)">L3 → เป้า L5</span>
+        </div>
+        <div class="q3-track">
+          <div class="q3-fill" style="width:60%;background:linear-gradient(90deg,var(--rose),#ec4899)"></div>
+          <div class="q3-target" style="left:100%"></div>
+        </div>
+        <div class="q3-sub"><span>L1</span><span>60% สู่เป้า · ขาด: Script อิสระ + Auto-trigger</span><span>L7</span></div>
+      </div>
+
+      <div class="q3-person">
+        <div class="q3-header">
+          <div class="q3-name"><div class="mav mav-m" style="width:22px;height:22px;font-size:.6rem">ม</div>Belle (มนพร)</div>
+          <span class="q3-badge" style="background:var(--l4b,#fffbeb);color:var(--l4c,#d97706)">L4 → เป้า L5</span>
+        </div>
+        <div class="q3-track">
+          <div class="q3-fill" style="width:80%;background:linear-gradient(90deg,var(--teal),#0d9488)"></div>
+          <div class="q3-target" style="left:100%"></div>
+        </div>
+        <div class="q3-sub"><span>L1</span><span>80% สู่เป้า · ขาด: Implement UC-02 จาก Blueprint</span><span>L7</span></div>
+      </div>
+
+      <div style="margin-top:16px;padding:14px;background:var(--surface2);border:1px solid var(--border);border-radius:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+          <span style="font-size:.75rem;font-weight:700;color:var(--text)">🎯 Team Avg Progress</span>
+          <span style="font-size:.75rem;font-weight:700;color:var(--purple)">4.0 / 5.0 = 80%</span>
+        </div>
+        <div class="q3-track" style="height:12px">
+          <div class="q3-fill" style="width:80%;background:linear-gradient(90deg,var(--purple),#7c3aed)"></div>
+        </div>
+        <div style="font-size:.67rem;color:var(--text3);margin-top:6px">ต้องเพิ่ม 1.0 Level โดยเฉลี่ย ภายใน Q3/2026 — คาดว่าใช้เวลา ~4–6 sessions รวมทั้งทีม</div>
+      </div>
+    </div>
+  </div>
 
 <!-- ══════════════ Modal: Nick ══════════════ -->
 <div class="overlay" id="ov-narawit"><div class="modal">

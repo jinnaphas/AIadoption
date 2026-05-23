@@ -7,7 +7,7 @@
  * ══════════════════════════════════════════════
  * 1. เปิด script.google.com → New project → วาง code นี้ทั้งหมด
  * 2. Project Settings (ฟันเฟือง) → Script Properties → Add:
- *      ANTHROPIC_API_KEY  =  sk-ant-...
+ *      GEMINI_API_KEY    =  AIza...
  *      GITHUB_TOKEN       =  ghp_...
  * 3. Run → updateDashboard → Authorize (ยืนยัน Drive access)
  * 4. Triggers (นาฬิกา) → Add Trigger:
@@ -18,7 +18,7 @@
 
 // ── Config ────────────────────────────────────────────────────────────────────
 var PROPS        = PropertiesService.getScriptProperties();
-var ANTH_KEY     = PROPS.getProperty('ANTHROPIC_API_KEY');
+var GEMINI_KEY   = PROPS.getProperty('GEMINI_API_KEY');
 var GH_TOKEN     = PROPS.getProperty('GITHUB_TOKEN');
 var GH_REPO      = 'jinnaphas/AIadoption';
 var GH_FILE      = 'ai_adoption_dashboard.html';
@@ -119,39 +119,30 @@ function callAI(files) {
     + '"pattaratida":{"level":3,"avg":3.3,"hours":"28+","uc_count":3,"tags":[],"analysis":[],"next":"","ucs":[]}}}\n'
     + 'Rules: Levels 1-7. Sort ucs by date desc. Fill ALL fields. Return ONLY the JSON object.';
 
-  Logger.log('Calling API with key prefix: ' + (ANTH_KEY ? ANTH_KEY.slice(0,20) + '...' : 'NOT SET'));
+  Logger.log('Calling Gemini API...');
+  var url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
 
-  var resp = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
+  var resp = UrlFetchApp.fetch(url, {
     method: 'post',
-    headers: {
-      'x-api-key': ANTH_KEY,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json'
-    },
+    headers: { 'content-type': 'application/json' },
     payload: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 4096,
-      messages: [{ role: 'user', content: prompt }]
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.1, maxOutputTokens: 4096 }
     }),
     muteHttpExceptions: true
   });
 
-  var httpCode  = resp.getResponseCode();
-  var respText  = resp.getContentText();
-  Logger.log('API HTTP status: ' + httpCode);
+  var httpCode = resp.getResponseCode();
+  var respText = resp.getContentText();
+  Logger.log('Gemini HTTP status: ' + httpCode);
 
   if (httpCode !== 200) {
-    Logger.log('API Error body: ' + respText.slice(0, 500));
-    throw new Error('Anthropic API error ' + httpCode + ': ' + respText.slice(0, 200));
+    Logger.log('Gemini Error: ' + respText.slice(0, 500));
+    throw new Error('Gemini API error ' + httpCode + ': ' + respText.slice(0, 200));
   }
 
   var respData = JSON.parse(respText);
-  if (!respData.content || !respData.content[0] || !respData.content[0].text) {
-    Logger.log('Unexpected response: ' + respText.slice(0, 500));
-    throw new Error('Unexpected API response — no content[0].text');
-  }
-
-  var raw = respData.content[0].text.trim()
+  var raw = respData.candidates[0].content.parts[0].text.trim()
     .replace(/^```json?\n?/, '').replace(/\n?```$/, '');
 
   Logger.log('Raw JSON preview: ' + raw.slice(0, 200));
@@ -160,7 +151,7 @@ function callAI(files) {
     return JSON.parse(raw);
   } catch (e) {
     Logger.log('JSON parse error: ' + e + ' | raw: ' + raw.slice(0, 300));
-    throw new Error('Failed to parse AI response as JSON: ' + e);
+    throw new Error('Failed to parse Gemini response as JSON: ' + e);
   }
 }
 
@@ -336,7 +327,7 @@ function buildHtml(data) {
     + '<div class="panel"><div class="section-title">ระบบอัตโนมัติ — Google Apps Script</div>'
     + '<div style="font-size:.8rem;color:var(--text2);line-height:2.1">'
     + '✅ อ่านจาก <strong>Google Drive</strong> โดยตรง (ไม่ต้อง credentials)<br>'
-    + '✅ วิเคราะห์ด้วย <strong>Claude Sonnet 4</strong><br>'
+    + '✅ วิเคราะห์ด้วย <strong>Gemini 1.5 Flash</strong> (Free)<br>'
     + '✅ Push ขึ้น <strong>GitHub Pages</strong> อัตโนมัติ<br>'
     + '🕘 รันทุกวันทำการ <strong>09:00 น.</strong> (Bangkok)<br>'
     + '<br><span style="font-size:.72rem;color:var(--text3)">อัปเดตล่าสุด: <strong>'+now+'</strong></span>'
@@ -425,25 +416,21 @@ function buildWeeklyReport(files) {
     + '"coach_message":"<2-3 sentences Thai motivational message for the team>"}\n'
     + 'Return ONLY JSON.';
 
-  var resp = UrlFetchApp.fetch('https://api.anthropic.com/v1/messages', {
+  var weeklyUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + GEMINI_KEY;
+  var resp = UrlFetchApp.fetch(weeklyUrl, {
     method: 'post',
-    headers: {
-      'x-api-key': ANTH_KEY,
-      'anthropic-version': '2023-06-01',
-      'content-type': 'application/json'
-    },
+    headers: { 'content-type': 'application/json' },
     payload: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 2048,
-      messages: [{ role: 'user', content: prompt }]
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.2, maxOutputTokens: 2048 }
     }),
     muteHttpExceptions: true
   });
 
   var httpCode = resp.getResponseCode();
-  if (httpCode !== 200) throw new Error('API error ' + httpCode);
+  if (httpCode !== 200) throw new Error('Gemini API error ' + httpCode + ': ' + resp.getContentText().slice(0,200));
 
-  var raw = JSON.parse(resp.getContentText()).content[0].text.trim()
+  var raw = JSON.parse(resp.getContentText()).candidates[0].content.parts[0].text.trim()
     .replace(/^```json?\n?/, '').replace(/\n?```$/, '');
   var analysis = JSON.parse(raw);
   analysis.ucCounts  = ucCounts;
@@ -567,7 +554,7 @@ function renderReportEmail(r) {
 
     // Footer
     + '<div style="text-align:center;padding:16px;font-size:.7rem;color:#8aa0b4">'
-    + '🤖 Generated automatically by PCC AI Adoption System · Google Apps Script + Claude Sonnet 4<br>'
+    + '🤖 Generated automatically by PCC AI Adoption System · Google Apps Script + Gemini 1.5 Flash<br>'
     + '<a href="https://jinnaphas.github.io/AIadoption/" style="color:#0077cc">ดู Dashboard แบบ Interactive →</a>'
     + '</div>'
 

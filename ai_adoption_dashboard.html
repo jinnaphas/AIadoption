@@ -216,12 +216,42 @@
       <div class="tags"><span class="tag tag-m">Demand Forecast</span><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Odoo Visual</span><span class="tag tag-m">Switchgear AI</span></div>
       <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
+
+    <!-- Jetniphat -->
+    <div class="emp-card" style="border-color:#fed7aa" onclick="openModal('jetniphat')">
+      <div class="emp-header">
+        <div class="avatar" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div>
+        <div>
+          <div class="emp-name">Jetniphat</div>
+          <div class="emp-role">Digital Organization · PCC Group</div>
+        </div>
+      </div>
+      <div class="level-badge" style="background:#eff6ff;color:#3b82f6;border:1px solid #bfdbfe">🍼 Level 1 — Basic User <span style="background:#dbeafe;color:#1e40af;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">🆕 ใหม่</span></div>
+      <div class="gauge-wrap">
+        <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track">
+          <div class="seg" style="background:#3b82f6;box-shadow:0 0 7px rgba(59,130,246,.5)"></div>
+          <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+          <div class="seg"></div><div class="seg"></div><div class="seg"></div>
+        </div>
+      </div>
+      <div class="mini-stats">
+        <div class="mstat"><div class="mstat-v">0</div><div class="mstat-l">Use Cases</div></div>
+        <div class="mstat"><div class="mstat-v">L1</div><div class="mstat-l">Level</div></div>
+        <div class="mstat"><div class="mstat-v">—</div><div class="mstat-l">ชม.ประหยัด</div></div>
+      </div>
+      <div class="tags">
+        <span class="tag" style="background:#fff7ed;border-color:#fed7aa;color:#ea580c">Digital Organization</span>
+        <span class="tag" style="background:#fff7ed;border-color:#fed7aa;color:#ea580c">เพิ่งเริ่ม</span>
+      </div>
+      <button class="drill-btn" onclick="event.stopPropagation();openModal('jetniphat')" style="color:#f97316">🔍 Drill Down →</button>
+    </div>
   </div>
 
   <div class="bottom-grid">
     <div class="panel">
       <div class="section-title">AI Level Framework — ทีมอยู่ที่ไหน</div>
-      <div class="lvl-row"><div class="lvl-num" style="background:#eff6ff;color:#3b82f6">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#eff6ff;color:#3b82f6">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div></div></div>
       <div class="lvl-row"><div class="lvl-num" style="background:#ecfeff;color:#0891b2">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div></div></div>
       <div class="lvl-row"><div class="lvl-num" style="background:#ecfdf5;color:#059669">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div></div></div>
       <div class="lvl-row cur"><div class="lvl-num" style="background:#fffbeb;color:#d97706">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div></div><div class="mini-avs"><div class="mav mav-m">ม</div><div class="mav mav-p">ภ</div></div></div>
@@ -577,6 +607,11 @@
           <p>Nick Stitch Portal (UC#8) ออกแบบ MCP ที่เชื่อม HR/Sales/OKR แล้ว → ถ้า Deploy Portal จริง ทีมทุกคนแชร์ Context กันได้ผ่าน UI เดียว ไม่ต้องส่งไฟล์กัน</p></div>
       </div>
 
+      <div class="alert-item" style="background:#eff6ff;border:1px solid #bfdbfe">
+        <div class="alert-icon">🆕</div>
+        <div class="alert-body"><h4>Jetniphat — สมาชิกใหม่ · L1 → เป้า L3 ใน 4 สัปดาห์</h4>
+          <p>Digital Organization · เพิ่งเข้าร่วม → บันทึก UC แรกด้วย Claude Chat ก่อน แล้วค่อย integrate กับ workflow = L3 ใน 4 สัปดาห์ตาม Pattern ของทีม</p></div>
+      </div>
       <div class="alert-item" style="background:#f0fdfa;border:1px solid #99f6e4">
         <div class="alert-icon">🚀</div>
         <div class="alert-body"><h4>Strategic Milestone — ทีมอยู่ L5 ทุกคนแล้ว!</h4>
@@ -650,115 +685,44 @@
     </ul></div>
 
     <!-- UC#5 -->
-            <div class="uc" style="border:2px solid #fecaca;background:#fff5f5;border-radius:14px;padding:18px;margin-bottom:14px">
+                <div class="uc" style="border:2px solid #fecaca;background:#fff5f5;border-radius:14px;padding:18px;margin-bottom:14px">
       <div class="uc-top">
         <div class="uc-num un-n">#9</div>
-        <div class="uc-title">PEA Hackathon 2026 — Cinematic Pitch Video 60 วิ (Veo + Canva + Suno) ทีม Precise Nextxus</div>
-        <div class="uc-badges"><div class="chip c5">L5</div><span class="dom-chip dom-5">Revenue Stream</span><span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:12px;padding:2px 8px;font-size:.62rem;font-weight:700;margin-left:4px">✦ ใหม่</span></div>
+        <div class="uc-title">PEA Hackathon 2026 — Cinematic Pitch Video Production 60 วินาที (5 Tools · 12-Clip Kit · VO+BGM)</div>
+        <div class="uc-badges"><div class="chip c5">L5</div><span class="dom-chip dom-5">Revenue Stream</span></div>
       </div>
       <div class="uc-meta">
         <span>📅 2026-06-05</span>
-        <span>⏱ ประหยัด ~2–3 ชม. (Storyboard + Video Production)</span>
-        <span>🎬 Smart EnergyIQ · PEA Hackathon โจทย์ที่ 4</span>
+        <span>⏱ ประหยัด ~2–3 วัน video production (1,000+ นาที)</span>
+        <span>🎬 Smart EnergyIQ · ทีม Precise Nextxus</span>
       </div>
       <div class="tool-row">
-        <span class="tool">Google Veo (Text-to-Video)</span>
-        <span class="tool">Canva (Storyboard + Deck)</span>
-        <span class="tool">Suno (AI Music)</span>
-        <span class="tool">Image-to-Video</span>
-        <span class="tool">Character Anchor Technique</span>
-        <span class="tool">Scene Prompt Engineering</span>
-      </div>
-      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
-      <div class="uc-output out-n">
-        <strong>Pitch Video 60 วินาที — 6 Scenes:</strong><br>
-        Scene 1: เกาะ C + โครงข่ายไฟฟ้า (Aerial Text-to-Video) · Scene 2: DG9 diesel ปัญหาเดิม (Text-to-Video) · Scene 3: Control Room ผู้ควบคุม (Character Anchor) · Scene 4: Smart EnergyIQ Dashboard (Image-to-Video จาก screenshot จริง) · Scene 5: Financial savings (Image-to-Video จาก data จริง) · Scene 6: CTA Future vision<br><br>
-        <strong>Storyboard Deck:</strong> Canva 7 slides (Cover + 6 scenes) — ใช้เป็นทั้ง storyboard และ pitch deck<br>
-        <strong>Reusable Templates:</strong> "Character Anchor" prompt ล็อกหน้า PEA operator ทุก scene · Text-to-Video vs Image-to-Video decision framework
-      </div>
-      <div class="uc-section-label">🔬 การวิเคราะห์ทุกมิติ</div>
-      <div class="uc-analysis">
-        <strong>Technical:</strong> ใช้ 2 Video Generation Modes ต่างกันตาม Scene Type — Text-to-Video สำหรับ Abstract scenes (aerial, control room) และ Image-to-Video สำหรับ Real data scenes (dashboard screenshot, financials) แสดง judgment ว่าต้องใช้ technique ไหนกับ context ไหน<br><br>
-        <strong>Cross-UC:</strong> UC#7 (EMS AI System) + UC#9 (Pitch Video) = <strong>Complete Hackathon Package</strong> — UC#7 สร้างเทคโนโลยีจริง UC#9 เปลี่ยนเทคโนโลยีนั้นเป็นเรื่องเล่าที่ Judge เข้าใจได้ใน 60 วินาที<br><br>
-        <strong>Reusable Asset:</strong> "Character Anchor" template เป็น Prompt Engineering technique ที่ทีมอื่นนำไปใช้ได้ — สร้างครั้งเดียวแต่ใช้ได้ทุก scene
-      </div>
-      <div class="uc-insight">💡 UC#7 + UC#9 = Hackathon Strategy ครบ — AI Engineer (UC#7) + AI Storyteller (UC#9) ในคนเดียว · Gap สู่ L7: ตั้ง AWS EventBridge ให้ advisory_agent.py รันทุก 15 นาทีอัตโนมัติ + SNS/Line alert → P1 operator เมื่อ severity = ACTION</div>
-    </div>
-
-    <div class="uc" style="border:2px solid #fecaca;background:#fff5f5;border-radius:14px;padding:18px;margin-bottom:14px">
-      <div class="uc-top">
-        <div class="uc-num un-n">#9</div>
-        <div class="uc-title">PEA Hackathon 2026 — Cinematic Pitch Video 60s (Veo + Canva + Suno + Character Anchor System)</div>
-        <div class="uc-badges"><div class="chip c4">L4</div><span class="dom-chip dom-5">Revenue Stream</span><span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:12px;padding:2px 8px;font-size:.62rem;font-weight:700;margin-left:4px">✦ ใหม่</span></div>
-      </div>
-      <div class="uc-meta">
-        <span>📅 2026-06-05</span>
-        <span>⏱ ประหยัด ~3–4 ชม. (Manual video vs AI-assisted)</span>
-        <span>🎬 Smart EnergyIQ · Team Precise Nextxus · PEA Hackathon Challenge 4</span>
-      </div>
-      <div class="tool-row">
-        <span class="tool">Google Veo / Vids</span>
-        <span class="tool">Canva (Storyboard)</span>
-        <span class="tool">Suno (Music)</span>
-        <span class="tool">Text-to-Video</span>
-        <span class="tool">Image-to-Video</span>
+        <span class="tool">Claude (Script+Prompts)</span>
+        <span class="tool">Canva AI (Storyboard 7 slides)</span>
+        <span class="tool">Google Veo (Text+Image-to-Video)</span>
+        <span class="tool">Suno/Udio (BGM 60s)</span>
+        <span class="tool">HTML Animation (Overlay)</span>
         <span class="tool">Character Anchor Template</span>
       </div>
-      <div class="uc-section-label">📦 Output & ผลลัพธ์</div>
+      <div class="uc-section-label">📦 Production Kit — 6 ขั้นตอน + 12 Clips</div>
       <div class="uc-output out-n">
-        <strong>3-Layer Creative System สำหรับ Pitch Video:</strong><br>
-        🎨 <strong>Storyboard Deck (Canva)</strong> — 7 slides (Cover + 6 scenes) ใช้เป็น Storyboard + Pitch Deck พร้อมกัน<br>
-        🎬 <strong>Scene-by-scene Veo Prompts</strong> — Text-to-Video (control room, diesel, aerial) + Image-to-Video (app screenshots จริง ≤8 วินาที/scene)<br>
-        🔒 <strong>"Character Anchor" Template</strong> — lock หน้า PEA operator ให้ consistent ทุก scene ด้วย "Treat as locked photo reference" technique<br>
-        🎵 <strong>Suno Music</strong> — background score ที่ match Energy/Innovation theme
+        <strong>①</strong> Storyboard Deck (Canva 7 slides = Storyboard + Pitch Deck ในไฟล์เดียว)<br>
+        <strong>②</strong> Veo Video Prompts ทุก Scene — Text-to-Video (control room/diesel/aerial) + Image-to-Video (dashboard screenshot → Ken Burns)<br>
+        <strong>③</strong> Reusable Templates: "Character Anchor" ล็อกหน้า วิชัย ทุก scene · "Locked photographic layer" กัน UI hallucinate · แก้ ฿ baht ทุก prompt<br>
+        <strong>④</strong> Motion Graphic Overlay (HTML transparent) Scene 6: PEA logo + gold particle burst → title slide-up → tagline → bottom bar (พร้อม export guide OBS/CapCut/AE)<br>
+        <strong>⑤</strong> VO Script (EN+TH, executive tone) + BGM prompt 60s Suno — [Intro][Build][Climax][Outro] + sync map ผูกกับ scene<br>
+        <strong>⑥</strong> Video Review จริง: 1920×1080, 30fps, 65.6 วิ → พบ Scene 3,4 dashboard ตัวเลขเพี้ยน → แนะนำใช้ Screenshot จริง + Ken Burns แทน AI<br><br>
+        <strong>Final output:</strong> Production kit 12 clips + Animated Overlay HTML + VO Script EN/TH + BGM Prompts
       </div>
       <div class="uc-section-label">🔬 การวิเคราะห์ทุกมิติ</div>
       <div class="uc-analysis">
-        <strong>ทำไม L4 ไม่ใช่ L2:</strong> ไม่ได้แค่ prompt เดียว — ออกแบบ Reusable Template System (Character Anchor + Scene Framework) ที่ทีม Precise Nextxus ใช้ซ้ำได้ทุก pitch — นี่คือ Builder สร้าง "Creative Production Toolkit"<br><br>
-        <strong>Cross-UC Connection:</strong> UC#7 (EMS AWS Bedrock L6) = ตัว Product · UC#9 = Marketing Material → Nick เป็นคนเดียวในทีมที่ทำครบทั้ง Product + Pitch ด้วย AI ล้วนๆ = Full-stack Hackathon Entry<br><br>
-        <strong>Innovation: "Character Anchor"</strong> — technique ที่ใช้ใน Professional Video Production นำมา Apply กับ AI Text-to-Video แสดง Cross-domain Knowledge ที่ผสม Creative + Technical
+        <strong>ทำไม L5 ไม่ใช่ L4:</strong> Output ไม่ใช่แค่วิดีโอ — เป็น Reusable Production Workflow ที่ Pattaratida หรือ Belle เอาไปใช้กับ Proposal ครั้งถัดไปได้ทันที (Character Anchor + Locked Layer + BGM Template) โดยไม่ต้องเริ่มใหม่เลย<br><br>
+        <strong>Technical Depth ที่สูงผิดปกติสำหรับ Creative Work:</strong> Nick ไม่แค่สร้างวิดีโอ แต่ยัง Review + พบ Bug (dashboard scene ตัวเลขเพี้ยน) + แนะนำแก้ทางเทคนิค (Ken Burns effect แทน AI video) = คิดเหมือน Director + QA Engineer<br><br>
+        <strong>5 Tools Orchestration:</strong> Claude → Canva → Veo (2 modes) → HTML Animation → Suno — แต่ละ tool มีบทบาทชัดเจนในกระบวนการเดียวกัน<br><br>
+        <strong>Time Saved:</strong> 2–3 วันของ video production (~1,000+ นาที) ลดเหลือไม่กี่ชั่วโมง — ROI สูงที่สุดในบรรดา UC ของ Nick
       </div>
-      <div class="uc-insight">💡 ถ้า Template System นี้ถูก Document และแชร์ให้ทีม Marketing ใช้สำหรับทุก Product Pitch = L5 (ระบบที่รันซ้ำได้โดยไม่ต้องสร้างใหม่) — Gap เล็กมากจาก L4→L5 สำหรับ UC นี้</div>
+      <div class="uc-insight">💡 Production Kit นี้ใช้ซ้ำได้ทุก Client Pitch — ถ้า Belle+Pattaratida นำ Template ไปใช้กับ EPC Proposal และ PDEM Presentation = ทีม BD ทุกคนมี Cinematic Pitch Video ไม่ต้องจ้าง Production House</div>
     </div>
-    <div class="uc" style="border:2px solid #fecaca;background:#fff5f5;border-radius:14px;padding:18px;margin-bottom:14px">
-      <div class="uc-top">
-        <div class="uc-num un-n">#9</div>
-        <div class="uc-title">PEA Hackathon 2026 — Cinematic Pitch Video 60 วินาที (Veo + Canva + Suno · 6 Scenes)</div>
-        <div class="uc-badges"><div class="chip c5">L5</div><span class="dom-chip dom-5">Revenue Stream</span><span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:12px;padding:2px 8px;font-size:.62rem;font-weight:700;margin-left:4px">✦ ใหม่</span></div>
-      </div>
-      <div class="uc-meta">
-        <span>📅 2026-06-05</span>
-        <span>⏱ ประหยัด ~3–4 ชม. (Storyboard + Video Prompts + Deck)</span>
-        <span>🎬 ทีม Precise Nextxus · Smart EnergyIQ</span>
-      </div>
-      <div class="tool-row">
-        <span class="tool">Google Veo (Text-to-Video)</span>
-        <span class="tool">Google Veo (Image-to-Video)</span>
-        <span class="tool">Canva AI (Storyboard Deck)</span>
-        <span class="tool">Suno (Audio)</span>
-        <span class="tool">Character Anchor Technique</span>
-        <span class="tool">Reusable Prompt Templates</span>
-      </div>
-      <div class="uc-section-label">📦 Output & Architecture</div>
-      <div class="uc-output out-n">
-        <strong>3-Tool Orchestration ใน Session เดียว:</strong><br>
-        🎨 <strong>Canva AI:</strong> Storyboard Deck 7 slides (Cover + 6 scenes) — ใช้เป็นทั้ง Storyboard และ Pitch Deck<br>
-        🎥 <strong>Google Veo Text-to-Video:</strong> Scenes ที่ไม่มี Reference (control room, diesel generator, aerial view)<br>
-        📱 <strong>Google Veo Image-to-Video:</strong> Scenes ที่ใช้ App Screenshot จริง (dashboard, financials)<br>
-        🎵 <strong>Suno:</strong> Background audio track ให้ cinematic feel<br><br>
-        <strong>Reusable Templates (จุดเด่น):</strong><br>
-        "Character Anchor" — ล็อกหน้า PEA Operator ให้ consistent ทุก scene<br>
-        "Treat as locked photo" — ควบคุม style ไม่ให้ drift ระหว่าง scenes
-      </div>
-      <div class="uc-section-label">🔬 การวิเคราะห์ทุกมิติ</div>
-      <div class="uc-analysis">
-        <strong>ทำไม L5 ไม่ใช่ L4:</strong> Output ไม่ใช่แค่ Video เดียว แต่เป็น <em>Reusable Template System</em> — "Character Anchor" และ "Image-to-Video technique" นำไปใช้กับ Hackathon ครั้งถัดไปหรือ Client Pitch ใดก็ได้ทันที = ระบบที่ทำงานแทนทุกครั้ง<br><br>
-        <strong>Cross-UC Synergy:</strong> UC#7 (EMS Technical System L6) + UC#9 (Pitch Video L5) = Nick ครอบคลุมทั้ง <em>Technical Solution</em> และ <em>Sales Presentation</em> ในคน ๆ เดียว ซึ่งปกติต้องใช้คนละทีม<br><br>
-        <strong>Domain Insight:</strong> Veo Image-to-Video technique (App Screenshot → Video) เป็น Pattern ที่ Earth สามารถเอาไปใช้กับ TCS LCC Tool หรือ NRC System ได้ทันที
-      </div>
-      <div class="uc-insight">💡 Template นี้ Reusable ทันที — ทีม Pattaratida (EPC Proposal) และ Belle (PDEM Forecast Presentation) สามารถใช้ "Character Anchor + Image-to-Video" สร้าง Pitch Video สำหรับลูกค้าได้โดยไม่ต้องเริ่มใหม่ = Cross-team multiplier effect</div>
-    </div>
-
 <div class="uc" style="border:2px solid #fecaca;background:#fff5f5;border-radius:14px;padding:18px;margin-bottom:14px">
       <div class="uc-top">
         <div class="uc-num un-n">#8</div>
@@ -1339,6 +1303,48 @@ uc">
     </div>
   </div>
 </div></div>
+
+<!-- ══════════════ Modal: Jetniphat ══════════════ -->
+<div class="overlay" id="ov-jetniphat">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>🔍 Use Cases — Jetniphat</h2>
+        <p>Digital Organization · PCC Group · Level 1 — Basic User · เพิ่งเริ่มต้น</p>
+      </div>
+      <button class="close-btn" onclick="closeModal('jetniphat')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="abox" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:11px;padding:15px 16px;margin-bottom:18px">
+        <h3 style="font-size:.77rem;font-weight:700;margin-bottom:9px;color:#3b82f6">📊 ข้อมูลสมาชิกใหม่</h3>
+        <ul style="list-style:none">
+          <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
+            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
+            เพิ่งเข้าร่วม AI Adoption Pilot เมื่อ มิ.ย. 2569 — ยังไม่มี Use Case ที่บันทึก
+          </li>
+          <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
+            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
+            สาขา: Digital Organization — เหมาะกับการพัฒนาด้าน Digital Process และ Automation
+          </li>
+          <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
+            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
+            แนะนำ: เริ่มจาก UC แรกที่เชื่อมกับงานปกติ เช่น ใช้ AI ช่วย Draft Email หรือ สรุปรายงาน → L2 ภายใน 1 สัปดาห์
+          </li>
+          <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
+            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
+            ดู Pattern ของ Earth UC#6 (Dashboard Auto-Update) หรือ Nick UC#4 (Jira Migration) เพื่อ inspire UC แรก
+          </li>
+        </ul>
+      </div>
+      <div style="text-align:center;padding:40px 20px;color:var(--text3)">
+        <div style="font-size:2rem;margin-bottom:10px">🚀</div>
+        <div style="font-size:.85rem;font-weight:600;margin-bottom:6px">ยังไม่มี Use Case</div>
+        <div style="font-size:.75rem">เมื่อ Jetniphat บันทึก UC แรก จะแสดงที่นี่</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
   function openModal(id){document.getElementById('ov-'+id).classList.add('open');document.body.style.overflow='hidden';}

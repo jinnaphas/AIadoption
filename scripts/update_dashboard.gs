@@ -1,13 +1,13 @@
 /**
  * PCC Group — AI Adoption Dashboard Watchdog + Weekly Report
- * v5 — Light auto-refresh (no AI) + new-UC alert
+ * v6 — Manifest-driven stats (data/ucs.json) + new-UC alert
  *
  * Architecture (agreed): "Light auto + Deep on-demand"
  *  - Daily 08:00 → dailyCheck():
- *      • รีเฟรชวันที่ "อัปเดต <วันนี้>" บน Live ทั้ง index.html + ai_adoption_dashboard.html
- *      • ตรวจจับไฟล์ UC ใหม่ (ขึ้นต้นด้วยวันที่ YYYY-MM-DD-, ตัดซ้ำ, ข้ามไฟล์ context)
- *      • ส่งอีเมลแจ้งเมื่อพบไฟล์ใหม่ หรือเมื่อจำนวนที่ตรวจพบไม่ตรงกับเลขบน Dashboard
- *      • ❗ ไม่เขียนทับเลข UC ที่ curate ไว้ (Drive ยังไม่มี convention 1ไฟล์=1UC) — แค่ "เตือน"
+ *      • เขียนเลขทางการ (Members / Total UCs / Avg) จาก data/ucs.json → Live ทั้ง 2 ไฟล์
+ *      • รีเฟรชวันที่ "อัปเดต <วันนี้>"
+ *      • ตรวจจับไฟล์ UC ใหม่ใน Drive (ขึ้นต้น YYYY-MM-DD-, ตัดซ้ำ, ข้าม context)
+ *      • อีเมลแจ้งเมื่อพบไฟล์ใหม่ หรือ Drive-detected ไม่ตรงกับ manifest total
  *  - Deep analysis (Modal/Synergy/Insight/6-section) = Claude ทำ on-demand แล้ว push main
  *  - Weekly Mon 08:00 → weeklyReport(): สรุปรายสัปดาห์เป็นอีเมล HTML
  *
@@ -104,11 +104,18 @@ function ghPut(path, html, sha, msg) {
 // ═══════════════════════════════════════════════════════════════════
 // DAILY 08:00 — Watchdog + Freshness stamp (ไม่ใช้ AI)
 // ═══════════════════════════════════════════════════════════════════
+function fetchManifest() {
+  var url = 'https://raw.githubusercontent.com/' + GH_REPO + '/main/data/ucs.json';
+  var r = UrlFetchApp.fetch(url, { muteHttpExceptions: true });
+  if (r.getResponseCode() !== 200) { Logger.log('⚠️ manifest fetch ' + r.getResponseCode()); return null; }
+  return JSON.parse(r.getContentText());
+}
+
 function dailyCheck() {
   Logger.log('📂 Collecting UC files from Drive...');
   var ucs = collectUCs();
 
-  // 1) หาไฟล์ใหม่เทียบกับ STATE เดิม
+  // 1) หาไฟล์ใหม่เทียบกับ SEEN state เดิม
   var old = JSON.parse(PROPS.getProperty('SEEN') || '{}');
   var seen = {}, newFiles = [], totalDetected = 0;
   for (var uid in ucs) {
@@ -120,26 +127,29 @@ function dailyCheck() {
   PROPS.setProperty('SEEN', JSON.stringify(seen));
   Logger.log('  detected=' + totalDetected + ' new=' + newFiles.length);
 
-  // 2) รีเฟรชวันที่บน Live ทั้ง 2 ไฟล์ (idempotent — รันซ้ำวันเดียวกันไม่ commit)
+  // 2) เขียนเลขทางการจาก manifest + รีเฟรชวันที่ บน Live ทั้ง 2 ไฟล์ (idempotent)
+  var man   = fetchManifest();
   var stamp = thaiStamp(new Date());
-  var curatedTotal = null;
   GH_FILES.forEach(function(path) {
     var g = ghGet(path);
-    if (curatedTotal === null) {
-      var mm = g.html.match(/Total Use Cases<\/div><div class="stat-val"[^>]*>(\d+)/);
-      if (mm) curatedTotal = Number(mm[1]);
+    var html = g.html;
+    if (man && man.team) {
+      html = html.replace(/(Team Members<\/div><div class="stat-val" style="color:var\(--accent\)">)\d+(<\/div>)/,      '$1' + man.team.members   + '$2');
+      html = html.replace(/(Total Use Cases<\/div><div class="stat-val" style="color:var\(--gold\)">)\d+(<\/div>)/,     '$1' + man.team.total_ucs + '$2');
+      html = html.replace(/(Team Avg Level<\/div><div class="stat-val" style="color:var\(--purple\)">)[\d.]+(<\/div>)/,  '$1' + man.team.avg_level + '$2');
     }
-    var html = g.html.replace(/อัปเดต\s+\d{1,2}\s+[^\s<]+\s+25\d{2}/, 'อัปเดต ' + stamp);
+    html = html.replace(/อัปเดต\s+\d{1,2}\s+[^\s<]+\s+25\d{2}/, 'อัปเดต ' + stamp);
     if (html !== g.html) ghPut(path, html, g.sha, '🤖 Daily refresh — ' + stamp);
   });
 
-  // 3) แจ้งเตือนถ้ามีไฟล์ใหม่ หรือจำนวนที่ตรวจพบไม่ตรงกับเลขบน Dashboard
-  var mismatch = (curatedTotal !== null && curatedTotal !== totalDetected);
+  // 3) แจ้งเตือนถ้ามีไฟล์ใหม่ หรือ Drive-detected ไม่ตรงกับ manifest total
+  var manifestTotal = (man && man.team) ? man.team.total_ucs : null;
+  var mismatch = (manifestTotal !== null && manifestTotal !== totalDetected);
   if (newFiles.length || mismatch) {
-    sendAlert(newFiles, totalDetected, curatedTotal, stamp);
+    sendAlert(newFiles, totalDetected, manifestTotal, stamp);
     Logger.log('📧 Alert sent.');
   } else {
-    Logger.log('✅ No new UCs, counts match. Stamp = ' + stamp);
+    Logger.log('✅ No new UCs, counts match manifest. Stamp = ' + stamp);
   }
 }
 
@@ -155,7 +165,7 @@ function sendAlert(newFiles, totalDetected, curatedTotal, stamp) {
 
   var mismatchBox = (curatedTotal !== null && curatedTotal !== totalDetected)
     ? '<p style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:12px 16px;color:#92400e;font-size:.85rem">'
-      + '⚠️ Drive ตรวจพบไฟล์ UC ลงวันที่ <b>' + totalDetected + '</b> ไฟล์ แต่ Dashboard แสดง <b>' + curatedTotal + '</b> — '
+      + '⚠️ Drive ตรวจพบไฟล์ UC ลงวันที่ <b>' + totalDetected + '</b> ไฟล์ แต่ manifest (data/ucs.json) = <b>' + curatedTotal + '</b> — '
       + 'อาจมี UC ใหม่ที่ยังไม่ได้วิเคราะห์ / ไฟล์ที่ยังไม่ตั้งชื่อด้วยวันที่ / ไฟล์ซ้ำ<br>'
       + 'สั่ง Claude: “วิเคราะห์ UC ใหม่ แล้วอัปเดต Dashboard 6 sections + push main”</p>'
     : '';

@@ -1,0 +1,93 @@
+{
+  "_meta": {
+    "description": "PCC Group AI Adoption — single source of truth for all Use Cases. Dashboard numbers + daily Apps Script derive from this file. Update this together with the HTML during deep updates.",
+    "updated": "2026-06-14",
+    "maintainer": "Claude (deep update) + Apps Script (daily light refresh)",
+    "domains": ["Corporate Strategy", "HR", "Digital Process", "Information Capital", "Revenue Stream", "Support BD"]
+  },
+  "team": {
+    "members": 5,
+    "total_ucs": 30,
+    "hours_saved": "197+",
+    "avg_level": 4.5,
+    "q3_progress_pct": 96
+  },
+  "members": {
+    "narawit": {
+      "name": "นราวิช (Nick)", "role": "Agentic Transformation PCC Group",
+      "folder_id": "152ze23bdvba32lpKtHtkJwVrCyEf2aoG",
+      "level": 6, "level_label": "Agentic Operator", "avg": 4.7, "hours": "24+", "uc_count": 9, "color": "#0077cc",
+      "ucs": [
+        { "num": 1, "title": "Knowledge Logger + Drive Auto-Sync", "level": 5, "date": "2026-05-20", "domain": "Digital Process", "drive_file_id": "19JZK45SvR-kc792hf4BkEIRVbBdWeIts", "drive_filename": "2026-05-20-setup-knowledge-logger.md" },
+        { "num": 2, "title": "ROI Analysis Electric Service", "level": 3, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1fO0khnlX3pes68AdHicsRytk33gRADc4", "drive_filename": "2026-05-21-ai-business-plan-electric-service.md" },
+        { "num": 3, "title": "AI Assessment ของ Earth", "level": 3, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1PmiEdjy3UN-ZcMekXxxLe5EFOJ2MOn4G", "drive_filename": "2026-05-21-evaluate-earth-ai-level.md" },
+        { "num": 4, "title": "Jira Migration 20 tasks", "level": 5, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1ZzazpHOjMVPCtqR35JCfR9eBS7LbSTmm", "drive_filename": "2026-05-21-jira-migrate-ems-to-iotc.md" },
+        { "num": 5, "title": "Auto Timesheet Scheduled", "level": 7, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1UiBgnJo0YXWHexj68PambrrE1EfeWzaZ", "drive_filename": "2026-05-21-auto-timesheet-schedule.md" },
+        { "num": 6, "title": "SGAM Function Layer DBTP-EMS", "level": 3, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1kZ8WWoAlTM7Dz4RuyBVFX_MrgA9f9oN2", "drive_filename": "2026-05-22-sgam-function-layer-dbtp-ems.md" },
+        { "num": 7, "title": "PEA Hackathon AWS Bedrock EMS 3-Agent", "level": 6, "date": "2026-05-27", "domain": "Revenue Stream", "drive_file_id": "1U55RqEiWevxxNvEqk7ebU1pYOahNPHAqHZDYw13Wfqg", "drive_filename": "2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md", "flags": ["google_doc_mimetype"] },
+        { "num": 8, "title": "Stitch → Precise AI Portal Design 11 Pages", "level": 5, "date": "2026-05-30", "domain": "Digital Process", "drive_file_id": "1m5s4WzVn1WKATBHT7w5zxIBZYnvMXdZB", "drive_filename": "2026-05-30-stitch-precise-ai-portal-design.md" },
+        { "num": 9, "title": "PEA Hackathon Pitch Video (Veo+Canva+Suno)", "level": 5, "date": "2026-06-05", "domain": "Revenue Stream", "drive_file_id": "1FHlVk73FLpihPbOioZW1pwlH9GgeV5WKmbPMRerjrEc", "drive_filename": "2026-06-05-pea-hackathon-pitch-video-veo-canva.md", "flags": ["google_doc_mimetype"] }
+      ]
+    },
+    "earth": {
+      "name": "Earth (Jinnaphas)", "role": "HR Manager & OD Strategy Lead · PCC",
+      "folder_id": "1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_",
+      "level": 5, "level_label": "Task Automator", "avg": 4.5, "hours": "65+", "uc_count": 11, "color": "#d97706",
+      "ucs": [
+        { "num": 1, "title": "Bamboo Supply Chain HTML Report", "level": 4, "date": "2026-05-20", "domain": "Information Capital", "drive_file_id": "1yI9lkO4Cd-bDkzFpiJ0huJSpiN-Zznze", "drive_filename": "2026-05-20-bamboo-supply-chain-automation-report.md" },
+        { "num": 2, "title": "Job Role Architecture 189 JDs", "level": 4, "date": "2026-05-20", "domain": "HR", "drive_file_id": "12xQ06AoCQkAK3IAYhCU_pOoUPZt14DAc", "drive_filename": "job-role-architecture.md", "flags": ["no_date_prefix"] },
+        { "num": 3, "title": "Corporate Strategy IC Framework", "level": 4, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1WfuE4szpzd9ZTxdug1cl9NoqVpul5eWJ", "drive_filename": "2026-05-21-agentic-org-ic-digital-mindset-roadmap.md" },
+        { "num": 4, "title": "HC Analytics Portal v7", "level": 5, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1HI2Y0bq7iIlLbCpkEKvkl3m0z8E2py6h", "drive_filename": "hc-dashboard.md", "flags": ["no_date_prefix"] },
+        { "num": 5, "title": "NRC Management System v3", "level": 4, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1V37-6eZj1X-V7NjdlC4zaF7AfcSgKv9-", "drive_filename": "nrc-app.md", "flags": ["no_date_prefix", "companion_file:nrc.md"] },
+        { "num": 6, "title": "AI Adoption Dashboard Phase1-3", "level": 5, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf", "drive_filename": "2026-05-21-ai-adoption-dashboard-automation.md", "flags": ["duplicate_x3:1KknSevPGyo8E1C7izPLezw2YT4EzqlpX,1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"] },
+        { "num": 7, "title": "Copilot Survey Make.com→Notion", "level": 4, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1qjJTj8zY0cIXU6AQPEwP2ycT9Bv3qVY5", "drive_filename": "2026-05-21-copilot-secretary-usecase-survey.md" },
+        { "num": 8, "title": "ISA-95 HTML Presentation", "level": 4, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1JvTH5jEOQw55tgWcVjUse-xTTc2bmhSF", "drive_filename": "2026-05-22-isa95-html-presentation.md" },
+        { "num": 9, "title": "Agentic Task System Claude→Notion→GitHub→Haiku", "level": 5, "date": "2026-05-27", "domain": "Digital Process", "drive_file_id": "1SuOAD0M-onGHis58yIR9j6K9pomBJ0PQ", "drive_filename": "2026-05-27-pcc-agentic-task-system.md" },
+        { "num": 10, "title": "Cloudflare Worker Multi-user Bridge", "level": 5, "date": "2026-05-28", "domain": "Digital Process", "drive_file_id": "1IixsRrRLQuVafIr4zMc1wYXhbGKCdNZb", "drive_filename": "2026-05-28-cloudflare-worker-team-task-logger.md" },
+        { "num": 11, "title": "DE+DBTP TCS Value Proposition LCC Tool (8 deliverables)", "level": 5, "date": "2026-06-01", "domain": "Revenue Stream", "drive_file_id": "1hBOpu8VTHNMjDjOsVjhraxsWLbaZNFjN", "drive_filename": "2026-06-01-de-dbtp-tcs-value-proposition.md" }
+      ]
+    },
+    "pattaratida": {
+      "name": "Pattaratida K.", "role": "B2B Sales Intelligence · PCC Group",
+      "folder_id": "1f1cO05r54YJpgOBswV8WlQnWauw8Hh32",
+      "level": 4, "level_label": "The Builder", "level_note": "L5 Demonstrated", "avg": 3.8, "hours": "55+", "uc_count": 5, "color": "#db2777",
+      "ucs": [
+        { "num": 1, "title": "ICP Scoring 7-Dimension", "level": 3, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "137NzlZrxhtW0w-PqXuyqWcQLZko7ozs_", "drive_filename": "2026-05-21-icp-scoring-system.md" },
+        { "num": 2, "title": "Senior BA 7-Phase Framework", "level": 3, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1U1LvywDCG3sA5UUxvpiJ_7xKW7D0wVPI", "drive_filename": "2026-05-21-business-analyst-framework.md" },
+        { "num": 3, "title": "PRECISE Sales Intelligence Recurring 8,800฿/เดือน", "level": 4, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1vGyr0OQ5Ck3UK2BqhSJzRsw4Qu88PErd", "drive_filename": "2026-05-21-precise-sales-intelligence-system.md" },
+        { "num": 4, "title": "EPC Scope PEA Battery Auto Scheduled", "level": 5, "date": "2026-05-25", "domain": "Support BD", "drive_file_id": "1xbaMi-dm5Ws302-hA9Fw7lQXnHz2unho", "drive_filename": "use-case_2026-05-25-epc-scope-pea-battery.md", "flags": ["wrong_prefix:use-case_"] },
+        { "num": 5, "title": "TOR→Proposal PZE ปิ่นทอง 5 (252M฿)", "level": 4, "date": "2026-05-26", "domain": "Support BD", "drive_file_id": "1umUFLl_UIpW_vTLf9yLlpASYns50MDfX", "drive_filename": "2026-05-26-substation-sor-to-proposal-pze.md" }
+      ]
+    },
+    "manaporn": {
+      "name": "มนพร (Belle)", "role": "Business Development · Switchgear · PCC Group",
+      "folder_id": "1_qUjDQKbTGbXKZorTFod84tIS5Op8dzL",
+      "level": 5, "level_label": "Task Automator", "level_note": "Assessed", "avg": 3.3, "hours": "55+", "uc_count": 4, "color": "#0d9488",
+      "ucs": [
+        { "num": 1, "title": "Switchgear AI Blueprint 17 UCs", "level": 3, "date": "2026-05-21", "domain": "Revenue Stream", "drive_file_id": "1g5md6u4-kLqkOdip405LdtT5ycZj_dSw", "drive_filename": "2026-05-21-switchgear-ai-use-cases (2).md", "flags": ["suffix_(2)"] },
+        { "num": 2, "title": "ISA-95 HTML Presentation Excel→Base64", "level": 4, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1m63jUNO6Hodimzz5-WL4UOUGub1dGiGN", "drive_filename": "2026-05-22-isa95-html-presentation.md" },
+        { "num": 3, "title": "Odoo Implementation Visual", "level": 2, "date": "2026-05-22", "domain": "Digital Process", "drive_file_id": "1ub603GmNfW8n460VY7PJfF2jLvH9Iniu", "drive_filename": "2026-05-22-odoo-implementation-visual.md" },
+        { "num": 4, "title": "PDEM Derived Demand Forecast 2027-2030 (3,951M฿)", "level": 4, "date": "2026-05-22", "domain": "Revenue Stream", "drive_file_id": "16htgxAzweHIrqyYLLzvyEVfZvRcWpLL-", "drive_filename": "2026-05-22-derived-demand-forecast-pdem.md" }
+      ]
+    },
+    "jetniphat": {
+      "name": "Jetniphat", "role": "Digital Organization · PCC Group",
+      "folder_id": "11nDqpsgeni3OJuVHnkZ_7mxDe9fzB1pW",
+      "level": 3, "level_label": "Integrator", "avg": 3.0, "hours": "40 นาที", "uc_count": 1, "color": "#f97316",
+      "ucs": [
+        { "num": 1, "title": "Audit & Review โครงสร้าง AI Knowledge Vault (4 Data Hygiene issues)", "level": 3, "date": "2026-06-10", "domain": "Digital Process", "drive_file_id": "1BKWxggLWbE29xLam3sZo8xidcY_SmWKG", "drive_filename": "2026-06-10-audit-knowledge-vault-structure.md" }
+      ]
+    }
+  },
+  "hygiene": {
+    "note": "ปัญหาที่ Jetniphat UC#1 ตรวจพบ — ยืนยันด้วยการ audit Drive จริง (2026-06-14). regex นับอัตโนมัติยังเชื่อ 100% ไม่ได้จนกว่าจะเคลียร์ตาม CONVENTION.md",
+    "issues": [
+      { "type": "duplicate", "person": "earth", "detail": "2026-05-21-ai-adoption-dashboard-automation.md มี 3 ก๊อปปี้", "ids": ["1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf", "1KknSevPGyo8E1C7izPLezw2YT4EzqlpX", "1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"], "action": "เก็บ canonical 1MXdPr6..., ที่เหลือย้าย/ลบ" },
+      { "type": "no_date_prefix", "person": "earth", "detail": "UC ที่ตั้งชื่อแบบ context ไม่มีวันที่นำหน้า — auto-counter มองไม่เห็น", "files": ["job-role-architecture.md", "hc-dashboard.md", "nrc-app.md"], "action": "rename เป็น YYYY-MM-DD-<slug>.md" },
+      { "type": "wrong_prefix", "person": "pattaratida", "detail": "ขึ้นต้น use-case_ แทนวันที่", "files": ["use-case_2026-05-25-epc-scope-pea-battery.md"], "action": "rename เป็น 2026-05-25-epc-scope-pea-battery.md" },
+      { "type": "name_suffix", "person": "manaporn", "detail": "มี ' (2)' ต่อท้าย (ร่องรอยไฟล์ซ้ำ)", "files": ["2026-05-21-switchgear-ai-use-cases (2).md"], "action": "rename ลบ ' (2)'" },
+      { "type": "google_doc_mimetype", "person": "narawit", "detail": "2 UC เป็น Google Doc (ลงท้าย .md แต่ mimeType เป็น Doc) — get_media/parse ตรง ๆ ไม่ได้ ต้อง export", "files": ["2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md", "2026-06-05-pea-hackathon-pitch-video-veo-canva.md"], "action": "Download as Markdown แล้ว re-upload เป็น .md จริง" },
+      { "type": "non_uc_files", "detail": "ไฟล์ที่ไม่ใช่ UC ปนอยู่ในโฟลเดอร์ use-case — ควรย้ายไป _context/", "files": ["earth/glossary.md", "earth/pcc-group.md", "earth/pcc-organization.md", "earth/nrc.md", "earth/2026-05-27-apply-ai-training-psl.md", "earth/2026-05-26-tcs-precall-planning.md", "pattaratida/assessment_PAK.md"], "action": "ย้ายไป _context/ หรือ _assessments/ (ต้องทำมือ — MCP ปัจจุบันไม่มีคำสั่ง move/delete)" }
+    ]
+  }
+}

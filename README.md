@@ -20,6 +20,9 @@
 
 ## Files
 - `index.html` / `ai_adoption_dashboard.html` — Dashboard (ต้องเหมือนกันเสมอ; Pages serve จาก root)
-- `scripts/update_dashboard.gs` — Google Apps Script automation (เวอร์ชันปัจจุบัน)
+- `data/ucs.json` — **Single source of truth** ของ UC ทั้งหมด (Live + Apps Script ดึงเลขจากนี้)
+- `scripts/update_dashboard.gs` — Apps Script v6 (daily 08:00: เขียนเลขจาก manifest + แจ้ง UC ใหม่)
+- `scripts/sync_manifest.py` — validate/patch dashboard ให้ตรง manifest (`--write` = patch + sync index)
+- `CONVENTION.md` — naming convention + checklist เคลียร์ Drive
 
 Updated: 14 Jun 2026

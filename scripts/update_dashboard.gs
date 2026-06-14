@@ -24,10 +24,11 @@ var REPORT_EMAILS = [
 ];
 
 var USER_FOLDERS = {
-  narawit:     { name: 'นราวิช (Nick)',     folder: '152ze23bdvba32lpKtHtkJwVrCyEf2aoG', role: 'Agentic Transformation PCC Group',            av: 'น', c: 'n', level: 5, color: '#0077cc' },
-  earth:       { name: 'Earth (Jinnaphas)', folder: '1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_', role: 'HR Manager & OD Strategy Lead · PCC',          av: 'E', c: 'e', level: 4, color: '#d97706' },
-  pattaratida: { name: 'Pattaratida K.',   folder: '1f1cO05r54YJpgOBswV8WlQnWauw8Hh32', role: 'B2B Sales Intelligence · PCC Group',            av: 'ภ', c: 'p', level: 3, color: '#db2777' },
-  manaporn:    { name: 'มนพร (Belle)',      folder: '1_qUjDQKbTGbXKZorTFod84tIS5Op8dzL', role: 'Business Development · Switchgear · PCC Group', av: 'ม', c: 'm', level: 4, color: '#0d9488' }
+  narawit:     { name: 'นราวิช (Nick)',     folder: '152ze23bdvba32lpKtHtkJwVrCyEf2aoG', role: 'Agentic Transformation PCC Group',            av: 'น', c: 'n', level: 6, color: '#0077cc' },
+  earth:       { name: 'Earth (Jinnaphas)', folder: '1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_', role: 'HR Manager & OD Strategy Lead · PCC',          av: 'E', c: 'e', level: 5, color: '#d97706' },
+  pattaratida: { name: 'Pattaratida K.',   folder: '1f1cO05r54YJpgOBswV8WlQnWauw8Hh32', role: 'B2B Sales Intelligence · PCC Group',            av: 'ภ', c: 'p', level: 4, color: '#db2777' },
+  manaporn:    { name: 'มนพร (Belle)',      folder: '1_qUjDQKbTGbXKZorTFod84tIS5Op8dzL', role: 'Business Development · Switchgear · PCC Group', av: 'ม', c: 'm', level: 5, color: '#0d9488' },
+  jetniphat:   { name: 'Jetniphat',         folder: '11nDqpsgeni3OJuVHnkZ_7mxDe9fzB1pW', role: 'Digital Organization · PCC Group',             av: 'J', c: 'j', level: 3, color: '#f97316' }
 };
 
 // ═══════════════════════════════════════════════════════════════════

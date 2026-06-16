@@ -1,9 +1,16 @@
 {
   "_meta": {
     "description": "PCC Group AI Adoption — single source of truth for all Use Cases. Dashboard numbers + daily Apps Script derive from this file. Update this together with the HTML during deep updates.",
-    "updated": "2026-06-14",
+    "updated": "2026-06-16",
     "maintainer": "Claude (deep update) + Apps Script (daily light refresh)",
-    "domains": ["Corporate Strategy", "HR", "Digital Process", "Information Capital", "Revenue Stream", "Support BD"]
+    "domains": [
+      "Corporate Strategy",
+      "HR",
+      "Digital Process",
+      "Information Capital",
+      "Revenue Stream",
+      "Support BD"
+    ]
   },
   "team": {
     "members": 5,
@@ -14,64 +21,569 @@
   },
   "members": {
     "narawit": {
-      "name": "นราวิช (Nick)", "role": "Agentic Transformation PCC Group",
+      "name": "นราวิช (Nick)",
+      "role": "Agentic Transformation PCC Group",
       "folder_id": "152ze23bdvba32lpKtHtkJwVrCyEf2aoG",
-      "level": 6, "level_label": "Agentic Operator", "avg": 4.7, "hours": "24+", "uc_count": 9, "color": "#0077cc",
+      "level": 6,
+      "level_label": "Agentic Operator",
+      "avg": 4.7,
+      "hours": "24+",
+      "uc_count": 9,
+      "color": "#0077cc",
       "ucs": [
-        { "num": 1, "title": "Knowledge Logger + Drive Auto-Sync", "level": 5, "date": "2026-05-20", "domain": "Digital Process", "drive_file_id": "19JZK45SvR-kc792hf4BkEIRVbBdWeIts", "drive_filename": "2026-05-20-setup-knowledge-logger.md" },
-        { "num": 2, "title": "ROI Analysis Electric Service", "level": 3, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1fO0khnlX3pes68AdHicsRytk33gRADc4", "drive_filename": "2026-05-21-ai-business-plan-electric-service.md" },
-        { "num": 3, "title": "AI Assessment ของ Earth", "level": 3, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1PmiEdjy3UN-ZcMekXxxLe5EFOJ2MOn4G", "drive_filename": "2026-05-21-evaluate-earth-ai-level.md" },
-        { "num": 4, "title": "Jira Migration 20 tasks", "level": 5, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1ZzazpHOjMVPCtqR35JCfR9eBS7LbSTmm", "drive_filename": "2026-05-21-jira-migrate-ems-to-iotc.md" },
-        { "num": 5, "title": "Auto Timesheet Scheduled", "level": 7, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1UiBgnJo0YXWHexj68PambrrE1EfeWzaZ", "drive_filename": "2026-05-21-auto-timesheet-schedule.md" },
-        { "num": 6, "title": "SGAM Function Layer DBTP-EMS", "level": 3, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1kZ8WWoAlTM7Dz4RuyBVFX_MrgA9f9oN2", "drive_filename": "2026-05-22-sgam-function-layer-dbtp-ems.md" },
-        { "num": 7, "title": "PEA Hackathon AWS Bedrock EMS 3-Agent", "level": 6, "date": "2026-05-27", "domain": "Revenue Stream", "drive_file_id": "1U55RqEiWevxxNvEqk7ebU1pYOahNPHAqHZDYw13Wfqg", "drive_filename": "2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md", "flags": ["google_doc_mimetype"] },
-        { "num": 8, "title": "Stitch → Precise AI Portal Design 11 Pages", "level": 5, "date": "2026-05-30", "domain": "Digital Process", "drive_file_id": "1m5s4WzVn1WKATBHT7w5zxIBZYnvMXdZB", "drive_filename": "2026-05-30-stitch-precise-ai-portal-design.md" },
         {
-          "num": 9, "title": "PEA Hackathon Pitch Video (Veo+Canva+Suno)", "level": 5, "date": "2026-06-05",
-          "domain": "Revenue Stream", "drive_file_id": "1FHlVk73FLpihPbOioZW1pwlH9GgeV5WKmbPMRerjrEc",
-          "drive_filename": "2026-06-05-pea-hackathon-pitch-video-veo-canva.md", "flags": ["google_doc_mimetype"],
+          "num": 1,
+          "title": "Knowledge Logger + Drive Auto-Sync",
+          "level": 5,
+          "date": "2026-05-20",
+          "domain": "Digital Process",
+          "drive_file_id": "19JZK45SvR-kc792hf4BkEIRVbBdWeIts",
+          "drive_filename": "2026-05-20-setup-knowledge-logger.md",
+          "time_saved": "ประหยัด ~30 นาที (setup)",
+          "tools": [
+            "MCP Server Setup",
+            "Google Drive API",
+            "Folder Architecture",
+            "Markdown Templates",
+            "README"
+          ],
+          "output": "AI Knowledge Logger ครบวงจร — Auto-save Use Cases ลง Google Drive · Folder structure (use-cases/[user]/, assessments/, _templates/) · Markdown templates พร้อม frontmatter · README อธิบายระบบให้ทีม · บันทึก UC แรกโดยไม่ต้อง manual",
+          "insight": "💡 ถ้าตั้ง Scheduled Auto-run ให้บันทึก UC อัตโนมัติทุกสิ้นวัน = L6 ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 2,
+          "title": "ROI Analysis Electric Service",
+          "level": 3,
+          "date": "2026-05-21",
+          "domain": "Corporate Strategy",
+          "drive_file_id": "1fO0khnlX3pes68AdHicsRytk33gRADc4",
+          "drive_filename": "2026-05-21-ai-business-plan-electric-service.md",
+          "time_saved": "ประหยัด ~3–4 ชั่วโมง",
+          "tools": [
+            "Multi-turn Chat",
+            "ROI Modeling",
+            "Strategic Planning",
+            "Industry Context"
+          ],
+          "output": "แผน AI 3 ระยะ (0–12 เดือน) + ROI Analysis 2 Option: Option A SaaS — ลงทุน 206K บาท, return 1.92M บาท, ROI 832%, Break-even 5–6 สัปดาห์ | Option B Enterprise — ลงทุน 1.6M บาท, ROI 95%, Break-even 6–7 เดือน · ประโยชน์รายด้าน: เอกสาร 630K/ปี, Maintenance 405K–505K/ปี, Call Center 840K/ปี, Energy Audit Service (รายได้ใหม่) 1.2M/ปี",
+          "insight": "💡 ฐาน Strategic Thinking ที่ดี — ต่อยอดเป็น Claude Project สำหรับ Business Case Template ของทีม Agentic Transformation ได้ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 3,
+          "title": "AI Assessment ของ Earth",
+          "level": 3,
+          "date": "2026-05-21",
+          "domain": "HR",
+          "drive_file_id": "1PmiEdjy3UN-ZcMekXxxLe5EFOJ2MOn4G",
+          "drive_filename": "2026-05-21-evaluate-earth-ai-level.md",
+          "time_saved": "ประหยัด ~60–90 นาที",
+          "tools": [
+            "Google Drive MCP",
+            "Multi-file Analysis",
+            "Assessment Framework",
+            "Auto Knowledge Logging"
+          ],
+          "output": "ผลประเมิน Earth — Level 4 (ทบทวนจาก 5 เดิม) พร้อม Rationale จาก 3 Use Cases · วิเคราะห์ Gap สู่ L5 · คำแนะนำ Automated Trigger ที่เป็นรูปธรรม · บันทึก 2 ไฟล์ลง Drive อัตโนมัติ (use-case + assessment profile)",
+          "insight": "💡 ถ้าตั้งเป็น Monthly Auto-Assessment ที่รันเองและส่ง Report ให้ HR Manager = L6",
+          "enriched": "from-html"
+        },
+        {
+          "num": 4,
+          "title": "Jira Migration 20 tasks",
+          "level": 5,
+          "date": "2026-05-21",
+          "domain": "Digital Process",
+          "drive_file_id": "1ZzazpHOjMVPCtqR35JCfR9eBS7LbSTmm",
+          "drive_filename": "2026-05-21-jira-migrate-ems-to-iotc.md",
+          "time_saved": "ประหยัด ~90 นาที (manual 90 นาที → AI ~5 นาที)",
+          "tools": [
+            "Jira REST API",
+            "Task Analysis",
+            "Cross-project Migration",
+            "Assignee Transfer",
+            "Due Date Copy"
+          ],
+          "output": "สร้าง 20 tasks ใหม่ใน IOTC Project อัตโนมัติ — IOTC-1 (Core System & DevObs, 16 tasks: IOTC-17 ถึง IOTC-36) + IOTC-2 (Dashboard & Widget, 4 tasks: IOTC-21, 26, 30, 31) พร้อม assignee, due date, epic link ครบถ้วน · Limitation: Jira Cloud API ไม่รองรับ DELETE → ต้อง Archive ใน UI",
+          "insight": "💡 L5 — AI ไม่ได้แค่ \"ทำตามสั่ง\" แต่วิเคราะห์และตัดสินใจ mapping เองก่อน แล้วค่อย Execute ผ่าน API อีก 20 ครั้ง",
+          "enriched": "from-html"
+        },
+        {
+          "num": 5,
+          "title": "Auto Timesheet Scheduled",
+          "level": 7,
+          "date": "2026-05-21",
+          "domain": "Digital Process",
+          "drive_file_id": "1UiBgnJo0YXWHexj68PambrrE1EfeWzaZ",
+          "drive_filename": "2026-05-21-auto-timesheet-schedule.md",
+          "time_saved": "ประหยัด ~5–10 นาที/วัน (~200 นาที/เดือน)",
+          "tools": [
+            "Chrome MCP",
+            "Web Navigation",
+            "Form Auto-fill",
+            "Scheduled Task",
+            "Duplicate Check"
+          ],
+          "output": "Scheduled Task \"daily-timesheet-pde\" ✅ รันทุกวันจันทร์–ศุกร์ 08:00 น. อัตโนมัติ — AI navigate ไปยัง cloud.precise.co.th/timesheet/pde, กรอกข้อมูล นราวิชญ์ สมนา (641815), PJ-DBTP EMS, 08:00–17:00 พร้อมตรวจสอบ duplicate ก่อนกรอกทุกครั้ง",
+          "insight": "💡 สูงสุดในทีม — Prompt เดียวสร้าง Autonomous System ที่รันไปตลอด ถ้าขยายให้ AI เลือกโปรเจกต์เองตาม context ของวัน = L7 เต็ม",
+          "enriched": "from-html"
+        },
+        {
+          "num": 6,
+          "title": "SGAM Function Layer DBTP-EMS",
+          "level": 3,
+          "date": "2026-05-22",
+          "domain": "Information Capital",
+          "drive_file_id": "1kZ8WWoAlTM7Dz4RuyBVFX_MrgA9f9oN2",
+          "drive_filename": "2026-05-22-sgam-function-layer-dbtp-ems.md",
+          "time_saved": "ประหยัด ~90–120 นาที",
+          "tools": [
+            "Project Knowledge Base",
+            "SGAM Documents",
+            "Gap Analysis",
+            "Priority Mapping",
+            "DSO KPI Framework"
+          ],
+          "output": "Output: Gap Analysis ครบ — Functions ที่มีอยู่แล้ว: Data Acquisition, Real-time Monitoring, Device Control, Dashboard (KPI 1, 2, 5) · Functions ที่ต้องเพิ่ม Priority High: Load Forecasting (KPI 3,4), Demand Response/DER Flexibility (KPI 3), Customer Data Portal + API for Aggregator (KPI 5) · Priority Medium: Predictive Maintenance, Voltage Regulation · ตาราง DSO KPI Coverage 7 ตัว (KPI 3,4,6,7 ยังต้องพัฒนา)",
+          "insight": "💡 เห็น Pattern ใหม่ — Nick ใช้ AI ใน Engineering Domain (SGAM/IoT) ไม่ใช่แค่ HR/Management ถ้าสร้าง Claude Project ที่มี SGAM + IEC Standards ฝังไว้ = L4 และวิเคราะห์ได้ลึกกว่านี้อีกมาก",
+          "enriched": "from-html"
+        },
+        {
+          "num": 7,
+          "title": "PEA Hackathon AWS Bedrock EMS 3-Agent",
+          "level": 6,
+          "date": "2026-05-27",
+          "domain": "Revenue Stream",
+          "drive_file_id": "1U55RqEiWevxxNvEqk7ebU1pYOahNPHAqHZDYw13Wfqg",
+          "drive_filename": "2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md",
+          "flags": [
+            "google_doc_mimetype"
+          ],
+          "time_saved": "ประหยัด 8–10 ชม. (Architecture + Code + Debug + Prompts)",
+          "tools": [
+            "AWS Bedrock (Nova Pro + Nova 2 Lite)",
+            "AWS EC2 (Amazon Linux 2023)",
+            "Python boto3",
+            "AWS S3",
+            "XGBoost + SARIMAX",
+            "Chunking Strategy",
+            "Multi-Agent Architecture"
+          ],
+          "output": "3-Agent System สำหรับ Smart EnergyIQ (เกาะ C): · 🔮 Forecast Agent: Python ML (XGBoost + SARIMAX) — พยากรณ์การใช้พลังงาน · ⚡ Dispatch Optimizer Agent: Amazon Nova Pro — optimize 96 intervals/วัน (DG9/Battery/Line 6) ด้วย Chunking 8×12 rows แก้ JSON truncate · 📢 Advisory & Warning Agent: Amazon Nova 2 Lite — detect 7 advisory cases → สร้าง radio message ภาษาไทยสำหรับ P1 operator · · Flow: Forecast → dispatch_optimizer.py (Nova Pro) → advisory_agent.py (Nova 2 Lite) → dispatch_plan.json + advisory.json → S3 อัตโนมัติ · · Debug ที่แก้: Python 3.8 compat (Optional) · API format converse()→invoke_model() · JSON truncate→chunking · S3 filename \"-\"→ชื่อจริง",
+          "insight": "💡 UC นี้ทำให้ Nick เป็นคนแรกในทีมที่ก้าวถึง L6 — ไม่ใช่แค่ \"ตั้ง trigger\" แต่ AI ทำ Multi-step Decision และ Action แบบ Agentic จริง ถ้า deploy บน production ให้รันทุกวันอัตโนมัติ = L7 เต็ม",
+          "enriched": "from-html"
+        },
+        {
+          "num": 8,
+          "title": "Stitch → Precise AI Portal Design 11 Pages",
+          "level": 5,
+          "date": "2026-05-30",
+          "domain": "Digital Process",
+          "drive_file_id": "1m5s4WzVn1WKATBHT7w5zxIBZYnvMXdZB",
+          "drive_filename": "2026-05-30-stitch-precise-ai-portal-design.md",
+          "time_saved": "ประหยัด ~120 นาที (Architecture + Design Prompts)",
+          "tools": [
+            "Google Stitch (UI Design)",
+            "Next.js App Router",
+            "LiteLLM + AWS Bedrock",
+            "RBAC 5-tier",
+            "MCP Internal Systems",
+            "Whisper STT"
+          ],
+          "output": "เปลี่ยน Architecture: Open-WebUI (port 3000) → Precise AI Portal (Next.js) → LiteLLM → AWS Bedrock · · 11 หน้าที่ออกแบบใน Stitch (7 Design Prompt Sets): · 🔐 Login (Azure AD) · 🏠 Dashboard (MCP Status + Quick Actions) · 🎙️ Meeting AI (VDO/Audio → Summary + PPTX) · 📊 OKR Tracker · 🔄 PDCA Board · 📋 Work Instructions · 📚 Knowledge Base (RAG) · 👥 HR Portal · 📢 Announcements Hub · 💰 Sales & Plans (Multi-BU) · ⚙️ MCP Manager (Admin) · · Design System: Dark navy #0D1117 · Accent #3B82F6 · Font: Inter (Linear.app / Vercel style)",
+          "insight": "💡 L5 ที่ต่อยอดสู่ L7 ได้ — Stitch Design คือ Phase แรก ถ้า implement Next.js ครบ + deploy บน Production = L7 (End-to-End Automated System) ที่ทีมทุกคนใช้จริง",
+          "enriched": "from-html"
+        },
+        {
+          "num": 9,
+          "title": "PEA Hackathon Pitch Video (Veo+Canva+Suno)",
+          "level": 5,
+          "date": "2026-06-05",
+          "domain": "Revenue Stream",
+          "drive_file_id": "1FHlVk73FLpihPbOioZW1pwlH9GgeV5WKmbPMRerjrEc",
+          "drive_filename": "2026-06-05-pea-hackathon-pitch-video-veo-canva.md",
+          "flags": [
+            "google_doc_mimetype"
+          ],
           "enriched": "2026-06-16",
           "time_saved": "~2-3 วัน → ไม่กี่ ชม. (~1,000+ นาที)",
-          "tools": ["Claude", "Canva", "Veo / Google Vids", "Suno / Udio", "HTML overlay"],
+          "tools": [
+            "Claude",
+            "Canva",
+            "Veo / Google Vids",
+            "Suno / Udio",
+            "HTML overlay"
+          ],
           "output": "Storyboard deck (Canva 7 สไลด์) + animated HTML overlay (transparent) + วิดีโอ pitch 60 วิ (MP4) + production kit 12 คลิป (text-to-video + image-to-video) + VO script EN/TH + BGM prompts",
           "insight": "💡 จุดเด่นคือ Reusable Prompt Templates — 'Character Anchor' (ล็อกหน้าตัวละครให้ consistent), 'locked photographic layer' (กัน Veo เพี้ยน UI/ตัวเลข), BGM structure tags → ทีม BD นำไปใช้ทำ pitch ได้ทุก proposal"
         }
       ]
     },
     "earth": {
-      "name": "Earth (Jinnaphas)", "role": "HR Manager & OD Strategy Lead · PCC",
+      "name": "Earth (Jinnaphas)",
+      "role": "HR Manager & OD Strategy Lead · PCC",
       "folder_id": "1MX08bN2eeHKHqGW_3fvKEEWj9LqVErC_",
-      "level": 5, "level_label": "Task Automator", "avg": 4.5, "hours": "65+", "uc_count": 11, "color": "#d97706",
+      "level": 5,
+      "level_label": "Task Automator",
+      "avg": 4.5,
+      "hours": "65+",
+      "uc_count": 11,
+      "color": "#d97706",
       "ucs": [
-        { "num": 1, "title": "Bamboo Supply Chain HTML Report", "level": 4, "date": "2026-05-20", "domain": "Information Capital", "drive_file_id": "1yI9lkO4Cd-bDkzFpiJ0huJSpiN-Zznze", "drive_filename": "2026-05-20-bamboo-supply-chain-automation-report.md" },
-        { "num": 2, "title": "Job Role Architecture 189 JDs", "level": 4, "date": "2026-05-20", "domain": "HR", "drive_file_id": "12xQ06AoCQkAK3IAYhCU_pOoUPZt14DAc", "drive_filename": "job-role-architecture.md", "flags": ["no_date_prefix"] },
-        { "num": 3, "title": "Corporate Strategy IC Framework", "level": 4, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1WfuE4szpzd9ZTxdug1cl9NoqVpul5eWJ", "drive_filename": "2026-05-21-agentic-org-ic-digital-mindset-roadmap.md" },
-        { "num": 4, "title": "HC Analytics Portal v7", "level": 5, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1HI2Y0bq7iIlLbCpkEKvkl3m0z8E2py6h", "drive_filename": "hc-dashboard.md", "flags": ["no_date_prefix"] },
-        { "num": 5, "title": "NRC Management System v3", "level": 4, "date": "2026-05-21", "domain": "Corporate Strategy", "drive_file_id": "1V37-6eZj1X-V7NjdlC4zaF7AfcSgKv9-", "drive_filename": "nrc-app.md", "flags": ["no_date_prefix", "companion_file:nrc.md"] },
-        { "num": 6, "title": "AI Adoption Dashboard Phase1-3", "level": 5, "date": "2026-05-21", "domain": "Digital Process", "drive_file_id": "1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf", "drive_filename": "2026-05-21-ai-adoption-dashboard-automation.md", "flags": ["duplicate_x3:1KknSevPGyo8E1C7izPLezw2YT4EzqlpX,1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"] },
-        { "num": 7, "title": "Copilot Survey Make.com→Notion", "level": 4, "date": "2026-05-21", "domain": "HR", "drive_file_id": "1qjJTj8zY0cIXU6AQPEwP2ycT9Bv3qVY5", "drive_filename": "2026-05-21-copilot-secretary-usecase-survey.md" },
-        { "num": 8, "title": "ISA-95 HTML Presentation", "level": 4, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1JvTH5jEOQw55tgWcVjUse-xTTc2bmhSF", "drive_filename": "2026-05-22-isa95-html-presentation.md" },
-        { "num": 9, "title": "Agentic Task System Claude→Notion→GitHub→Haiku", "level": 5, "date": "2026-05-27", "domain": "Digital Process", "drive_file_id": "1SuOAD0M-onGHis58yIR9j6K9pomBJ0PQ", "drive_filename": "2026-05-27-pcc-agentic-task-system.md" },
-        { "num": 10, "title": "Cloudflare Worker Multi-user Bridge", "level": 5, "date": "2026-05-28", "domain": "Digital Process", "drive_file_id": "1IixsRrRLQuVafIr4zMc1wYXhbGKCdNZb", "drive_filename": "2026-05-28-cloudflare-worker-team-task-logger.md" },
-        { "num": 11, "title": "DE+DBTP TCS Value Proposition LCC Tool (8 deliverables)", "level": 5, "date": "2026-06-01", "domain": "Revenue Stream", "drive_file_id": "1hBOpu8VTHNMjDjOsVjhraxsWLbaZNFjN", "drive_filename": "2026-06-01-de-dbtp-tcs-value-proposition.md" }
+        {
+          "num": 1,
+          "title": "Bamboo Supply Chain HTML Report",
+          "level": 4,
+          "date": "2026-05-20",
+          "domain": "Information Capital",
+          "drive_file_id": "1yI9lkO4Cd-bDkzFpiJ0huJSpiN-Zznze",
+          "drive_filename": "2026-05-20-bamboo-supply-chain-automation-report.md",
+          "time_saved": "ประหยัด ~4.5 ชม. (manual 4.5ชม. → AI ~10 นาที)",
+          "tools": [
+            "Web Search ×3",
+            "HTML Code Gen",
+            "JS Bug Fix",
+            "Light Theme Design",
+            "Drill-Down UX"
+          ],
+          "output": "bamboo_supply_chain_report_v2.html — 7 Stage Accordion (Seedling → CHP), 40+ Tech Items พร้อม Drill-Down, 24 China EV Suppliers พร้อมลิงก์กดได้จริง (DJI, XAG, Hesai, ESTUN, BYD, Kingdee ฯลฯ), Master Supplier Filter Table กรองตาม Stage ได้ · Bug fix: key collision ใน renderItems() แก้ด้วย prefix 'm'/'d'",
+          "insight": "💡 L4 ชัดเจน — ผลลัพธ์เป็น Interactive Tool ที่ทีม Sourcing ใช้งานได้จริง ไม่ใช่แค่ Summary Text",
+          "enriched": "from-html"
+        },
+        {
+          "num": 2,
+          "title": "Job Role Architecture 189 JDs",
+          "level": 4,
+          "date": "2026-05-20",
+          "domain": "HR",
+          "drive_file_id": "12xQ06AoCQkAK3IAYhCU_pOoUPZt14DAc",
+          "drive_filename": "job-role-architecture.md",
+          "flags": [
+            "no_date_prefix"
+          ],
+          "time_saved": "ประหยัดหลายวันทำงาน",
+          "tools": [
+            "Python Code Gen",
+            "JE Extraction Script",
+            "HTML Library v2",
+            "Excel Automation",
+            "Donut Chart",
+            "KR/KPI Cards"
+          ],
+          "output": "189 Active JDs ครบทุก Family ทุก Level (P1–P22), Excel Registry 124+ entries, PCC_Group_Job_Role_Library.html v2.0 — 3 View Modes (Cards / Table / Family), Drill-down modal + Donut Chart + KR/KPI data · Python functions: mk_l1, mk_l2, mk_l3, mk_l5 + JE parser regex (40≤score≤250) + parse_je() สำหรับ format \"JE=44 ✓\"",
+          "insight": "💡 แสดงความสามารถ Scale AI-generated work — ถ้ามี JD ใหม่ เพิ่มแค่ Python function call แล้ว Regenerate Library ได้ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 3,
+          "title": "Corporate Strategy IC Framework",
+          "level": 4,
+          "date": "2026-05-21",
+          "domain": "Corporate Strategy",
+          "drive_file_id": "1WfuE4szpzd9ZTxdug1cl9NoqVpul5eWJ",
+          "drive_filename": "2026-05-21-agentic-org-ic-digital-mindset-roadmap.md",
+          "time_saved": "ประหยัด ~4–6 ชั่วโมง",
+          "tools": [
+            "Multi-turn Brainstorm ×4",
+            "7 Frameworks Applied",
+            "Word Doc (.docx)",
+            "OD Strategy",
+            "IC Framework Design"
+          ],
+          "output": "PCC_Digital_Mindset_Transformation_Roadmap.docx — 6 ส่วน: (1) Executive Summary (Current vs Target State), (2) Expanded IC Framework 5 มิติ (Human / Structural / Relational / Agent Capital / Data Capital) พร้อม KPI, (3) Mental Model Pyramid 4 ชั้น + Identity Shift Model, (4) Roadmap Matrix 3 Horizons × 5 IC Components, (5) OD Interventions (Pull/Push/Embed), (6) IC Manager Role + Dashboard + CSF 5 ข้อ",
+          "insight": "💡 ถ้าสร้าง IC Diagnostic Template ที่รันได้ทุกไตรมาสโดยอัตโนมัติ = L5",
+          "enriched": "from-html"
+        },
+        {
+          "num": 4,
+          "title": "HC Analytics Portal v7",
+          "level": 5,
+          "date": "2026-05-21",
+          "domain": "HR",
+          "drive_file_id": "1HI2Y0bq7iIlLbCpkEKvkl3m0z8E2py6h",
+          "drive_filename": "hc-dashboard.md",
+          "flags": [
+            "no_date_prefix"
+          ],
+          "time_saved": "ประหยัด ~15+ ชม./เดือน (recurring)",
+          "tools": [
+            "Python (openpyxl)",
+            "HTML Multi-tab",
+            "GitHub Pages",
+            "Period/Company Filter",
+            "v6→v7 Iteration"
+          ],
+          "output": "HC_Analytics_Portal_v7.html — Live ✅ · 6 Tabs (HC / OT / Salary / Resign / Training / WFP) · 9 บริษัท 797 HC (May 2026) · Period & Company filter · v7 fixes: Period+Company ✓, WFP tab ✓, New Hire tracking ✓, EG reorder ✓",
+          "insight": "💡 L4→L5 Borderline — ถ้าตั้ง GitHub Action auto-trigger เมื่อ Excel ใหม่เข้า Drive = L5 ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 5,
+          "title": "NRC Management System v3",
+          "level": 4,
+          "date": "2026-05-21",
+          "domain": "Corporate Strategy",
+          "drive_file_id": "1V37-6eZj1X-V7NjdlC4zaF7AfcSgKv9-",
+          "drive_filename": "nrc-app.md",
+          "flags": [
+            "no_date_prefix",
+            "companion_file:nrc.md"
+          ],
+          "time_saved": "ประหยัด ~3–5 ชม./ประชุม · ประชุม 4–6 ครั้ง/ปี",
+          "tools": [
+            "Claude Project Setup",
+            "Context Engineering",
+            "HTML SPA (localStorage)",
+            "Board Knowledge Embed",
+            "CG Glossary"
+          ],
+          "output": "Claude Project \"NRC\" พร้อมใช้งาน — Context files ครบ: company.md (PCC Board 12 คน + คณะย่อย 5 ชุด), nrc.md (สมาชิก NRC 3 คน + หน้าที่เลขา 7 ข้อ), board-directors.md, glossary.md (CG/NRC terms) + NRC Management System.html (CRUD การประชุม, localStorage) รองรับงาน Transition เลขา NRC ทั้งปี",
+          "insight": "💡 Classic L4 — สร้างเครื่องมือ (Claude Project + HTML System) ที่ Earth ใช้งานได้ทันทีทุกครั้งที่มีประชุม NRC โดยไม่ต้อง Setup ใหม่",
+          "enriched": "from-html"
+        },
+        {
+          "num": 6,
+          "title": "AI Adoption Dashboard Phase1-3",
+          "level": 5,
+          "date": "2026-05-21",
+          "domain": "Digital Process",
+          "drive_file_id": "1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf",
+          "drive_filename": "2026-05-21-ai-adoption-dashboard-automation.md",
+          "flags": [
+            "duplicate_x3:1KknSevPGyo8E1C7izPLezw2YT4EzqlpX,1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"
+          ],
+          "time_saved": "~20 ชม. (setup + debug + 3 phases)",
+          "tools": [
+            "Google Apps Script v4",
+            "GitHub API",
+            "MD5 Change Detection",
+            "Daily Trigger",
+            "Weekly Email Report",
+            "MailApp"
+          ],
+          "output": "Phase 1 — Impact & Timeline: Business Value Panel (63,000+ บาท), UC Timeline Dot Chart, Cross-UC Synergy Map 4 คู่, Per-person ROI breakdown · · Phase 2 — Gap Alerts & Q3 Progress: 5 Gap Alerts (✅🟡🔴), Q3 Progress Bar รายคน (Team Avg 80% สู่เป้า L5), Roadmap Panel · · Phase 3 — Weekly Report: Apps Script v4 (100% Free) · updateDashboard: อ่าน Drive → patch UC count → Push GitHub · weeklyReport: HTML email → 3 addresses ทุกจันทร์ · MD5 Change Detection",
+          "insight": "💡 L5 เต็ม — Prompt เดียว \"ทำให้ผมหน่อย\" → ระบบรันทุกวันอัตโนมัติ ถ้าเพิ่ม Proactive Notification (แจ้งเมื่อใครไม่มี UC ใหม่ 2 สัปดาห์) = L6 ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 7,
+          "title": "Copilot Survey Make.com→Notion",
+          "level": 4,
+          "date": "2026-05-21",
+          "domain": "HR",
+          "drive_file_id": "1qjJTj8zY0cIXU6AQPEwP2ycT9Bv3qVY5",
+          "drive_filename": "2026-05-21-copilot-secretary-usecase-survey.md",
+          "time_saved": "ประหยัด ~4–5 ชม.",
+          "tools": [
+            "HTML Form (35 คำถาม)",
+            "Make.com Webhook",
+            "Notion DB (37 cols)",
+            "Netlify Deploy",
+            "Use Case Analysis",
+            "PowerPoint 11 Slides",
+            "HTML Report"
+          ],
+          "output": "Pipeline ครบวงจร: HTML Form 35 คำถาม / 6 ส่วน (conditional logic + Webhook ready) → Make.com Scenario → Notion Database 37 columns (Form + Table view) → Netlify URL (แจกสาธารณะ) → วิเคราะห์ 10 responses → 6 Use Cases เรียงตาม Pain Score: · UC-1 AI-Assisted Minutes Drafting (4-8h→1h) · UC-2 Smart Board Pack Builder (3-5วัน→1-2วัน) · UC-3 56-1 One Report Drafting (ลด50-60%) · UC-4 Action Items Tracker (ลด70%) · UC-5 Document Intelligence Search (30นาที→2นาที) · UC-6 Board Presentation Builder (3-4h→45นาที) · + PowerPoint 11 Slides (Trainer Guide) + HTML Report (Single-page / Print-to-PDF)",
+          "insight": "💡 ต่อยอด Job Description Project ได้เลย — ถ้าตั้ง Make.com ส่ง notification เข้า Teams ทุกครั้งที่มี Submission ใหม่โดยไม่ต้องเช็ค Notion เอง = L5",
+          "enriched": "from-html"
+        },
+        {
+          "num": 8,
+          "title": "ISA-95 HTML Presentation",
+          "level": 4,
+          "date": "2026-05-22",
+          "domain": "Information Capital",
+          "drive_file_id": "1JvTH5jEOQw55tgWcVjUse-xTTc2bmhSF",
+          "drive_filename": "2026-05-22-isa95-html-presentation.md",
+          "time_saved": "ประหยัด ~5.5 ชม. (manual ~5.5ชม. → AI ~10 นาที)",
+          "tools": [
+            "HTML/CSS/JS Generation",
+            "SVG Pyramid",
+            "Excel→Base64 Image",
+            "Python (unzip .xlsx)",
+            "Sticky Navigation",
+            "Interactive Image Tabs",
+            "Multi-iteration"
+          ],
+          "output": "isa95-combined.html — ไฟล์เดียว ใช้ได้เลย ไม่พึ่ง internet: · • SVG Pyramid 5 Levels พร้อม IT/OT bracket · • Level Cards (Level 0–4) — ชื่อ + คำอธิบายภาษาไทย + Module/System tags (Odoo ERP, MES, IoT Platform, SCADA, PLC, Sensor) + Information Flow · • Image Tabs 6 tab (Level 0–4 + Overview) embed รูปจาก Excel เป็น Base64 · • Sticky Nav \"ISA-95 Overview ↔ ตัวอย่างภาพแต่ละ Level\" · · เวลา: HTML+CSS ทั้งหมด ~3–4ชม. → 0 นาที | แตกรูปจาก Excel ~1ชม. → 2 นาที | อัปเดตข้อมูลจาก Excel ~30นาที → 5 นาที | รวม 2 ไฟล์+Nav ~1ชม. → 3 นาที",
+          "insight": "💡 Pattern ที่ชัดขึ้นเรื่อยๆ — Job Role Library → ISA-95 HTML → ทั้งคู่คือ \"นำข้อมูล Excel จริงมาสร้าง Interactive HTML ที่ทีมใช้ได้\" ถ้าสร้าง Template/Script สำเร็จรูปที่ใครก็ใส่ Excel แล้วได้ HTML ออกมา = L5 ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 9,
+          "title": "Agentic Task System Claude→Notion→GitHub→Haiku",
+          "level": 5,
+          "date": "2026-05-27",
+          "domain": "Digital Process",
+          "drive_file_id": "1SuOAD0M-onGHis58yIR9j6K9pomBJ0PQ",
+          "drive_filename": "2026-05-27-pcc-agentic-task-system.md",
+          "time_saved": "ประหยัด ~30+ นาที/วัน (ไม่ต้องเปิด Notion, ไม่ต้องกรอก form)",
+          "tools": [
+            "Claude Chat (Notion MCP)",
+            "Notion Database",
+            "GitHub Actions (cron 15 min)",
+            "Claude Haiku API",
+            "GitHub Pages",
+            "Natural Language Intent"
+          ],
+          "output": "User ทำแค่นี้: พิมข้อความธรรมชาติใน Claude Chat · \"ผมได้รับโจทย์มา ให้เข้าไปช่วยสอนการ Apply AI ให้กับทีม PSL101 PSL102 ในวันที่ 4 มิถุนายน ในการประชุมช่วงเช้า\" · · ระบบทำเองอัตโนมัติ: · Step 1: Claude parse → extract Task/Owner/Due Date/Priority → สร้าง Notion Page ทันที · Step 2: GitHub Actions cron ทุก 15 นาที → sync Tasks จาก Notion · Step 3: Claude Haiku วิเคราะห์: Duplicate / Dependency / Escalation / Workload Balance / Meeting Agenda / Auto-Reassign Suggest · Step 4: data.json → GitHub Pages deploy → Dashboard ทีมเห็นโดยไม่ต้องทำอะไร",
+          "insight": "💡 UC นี้ + UC#6 (Dashboard Auto-Update) = Earth มี 2 ระบบ L5 ที่รันอยู่พร้อมกันตลอดเวลา — ก้าวเข้าสู่ L6 ได้ทันทีถ้าเพิ่ม Auto-notify ทาง Line/Email เมื่อ AI detect Escalation โดยไม่ต้องรอคนเปิด Dashboard",
+          "enriched": "from-html"
+        },
+        {
+          "num": 10,
+          "title": "Cloudflare Worker Multi-user Bridge",
+          "level": 5,
+          "date": "2026-05-28",
+          "domain": "Digital Process",
+          "drive_file_id": "1IixsRrRLQuVafIr4zMc1wYXhbGKCdNZb",
+          "drive_filename": "2026-05-28-cloudflare-worker-team-task-logger.md",
+          "time_saved": "ประหยัด ~60+ นาที + แก้ปัญหา OAuth ถาวร",
+          "tools": [
+            "Cloudflare Workers",
+            "Serverless Deploy",
+            "Notion API (Bridge)",
+            "Environment Variables",
+            "Token Security Design",
+            "Multi-user Architecture"
+          ],
+          "output": "ปัญหา: Tonliew และ Belle ไม่สามารถบันทึกงานลง Notion ของ Earth ได้ เพราะ Notion MCP ใช้ OAuth ของแต่ละคน — Guest Access ไม่พอสำหรับ API · · Solution — Cloudflare Worker as Bridge: · ทุกคนในทีม → Claude POST → pcc-task-logger.jinnaphas-phas.workers.dev → Worker ใช้ NOTION_TOKEN ของ Earth → สร้าง Page ใน Notion DB ✅ · · Architecture ใหม่ (3 คน): · Earth พิมใน Claude → Notion MCP ─────┐ · Tonliew พิมใน Claude → Worker ──────▶ Notion DB → GitHub Actions → AI Analysis → Dashboard · Belle พิมใน Claude → Worker ──────────┘ · · Deploy สำเร็จ: {\"ok\":true,\"message\":\"บันทึกสำเร็จ\"} · ฟรีตลอด 100K req/วัน",
+          "insight": "💡 UC#9 + UC#10 = Complete Team Task System — UC#9 สร้าง pipeline แกนหลัก, UC#10 ขยายให้ทีมทุกคนใช้ได้โดยไม่ต้องมีสิทธิ์พิเศษ ถ้าเพิ่ม Line Notify ใน Worker เมื่อมี task ใหม่ = L6 ทันที",
+          "enriched": "from-html"
+        },
+        {
+          "num": 11,
+          "title": "DE+DBTP TCS Value Proposition LCC Tool (8 deliverables)",
+          "level": 5,
+          "date": "2026-06-01",
+          "domain": "Revenue Stream",
+          "drive_file_id": "1hBOpu8VTHNMjDjOsVjhraxsWLbaZNFjN",
+          "drive_filename": "2026-06-01-de-dbtp-tcs-value-proposition.md",
+          "time_saved": "ประหยัด 8+ ชม. (Framework + 8 HTML Tools + 2 PDFs)",
+          "tools": [
+            "HTML/CSS/JS (8 files)",
+            "Claude Sonnet API (embedded)",
+            "LCC Calculator Engine",
+            "Python ReportLab (PDF)",
+            "Multi-turn Conversation",
+            "NPV/ROI/Payback Formula"
+          ],
+          "output": "1️⃣ Conceptual Infographic HTML — LCC Iceberg, Hidden Costs 5 หมวด, Awareness Journey 5 ขั้น, Financing 3 Models · 2️⃣ Interactive LCC Calculator HTML — 4-step input form, PV/Annuity engine, Before vs After chart, ROI/Payback output · 3️⃣ Executive Conceptual View HTML — Light theme สำหรับ Executive presentation · 4️⃣ Technical Feature View HTML — 5-Layer Platform Stack, Analytics Matrix 6 หมวด, Live Dashboard Preview · 5️⃣ AI-Powered Pilot Tool HTML + Claude API — Buyer กรอก → Claude วิเคราะห์ Strategy อัตโนมัติ (ไม่รอ Sales) · 6️⃣ Complete Presentation (Single HTML 4 Tabs) — รวมทุก view ในไฟล์เดียว · 7️⃣ Executive Summary PDF (2 หน้า) — Cover + LCC Comparison + Saving Strip · 8️⃣ Formula Reference PDF (4 หน้า) — S01–S07 ครบทุก Formula พร้อม Worked Example",
+          "insight": "💡 UC ที่ Impact สูงสุดของ Earth จนถึงตอนนี้ — ถ้าตั้ง Auto-send LCC Report ให้ Sales เมื่อ Buyer ใหม่กรอกข้อมูล = L6 ทันที · ถ้าขยายเป็น SaaS Product สำหรับลูกค้า PEA/MEA = L7",
+          "enriched": "from-html"
+        }
       ]
     },
     "pattaratida": {
-      "name": "Pattaratida K.", "role": "B2B Sales Intelligence · PCC Group",
+      "name": "Pattaratida K.",
+      "role": "B2B Sales Intelligence · PCC Group",
       "folder_id": "1f1cO05r54YJpgOBswV8WlQnWauw8Hh32",
-      "level": 4, "level_label": "The Builder", "level_note": "L5 Demonstrated", "avg": 3.8, "hours": "55+", "uc_count": 5, "color": "#db2777",
+      "level": 4,
+      "level_label": "The Builder",
+      "level_note": "L5 Demonstrated",
+      "avg": 3.8,
+      "hours": "55+",
+      "uc_count": 5,
+      "color": "#db2777",
       "ucs": [
-        { "num": 1, "title": "ICP Scoring 7-Dimension", "level": 3, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "137NzlZrxhtW0w-PqXuyqWcQLZko7ozs_", "drive_filename": "2026-05-21-icp-scoring-system.md" },
-        { "num": 2, "title": "Senior BA 7-Phase Framework", "level": 3, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1U1LvywDCG3sA5UUxvpiJ_7xKW7D0wVPI", "drive_filename": "2026-05-21-business-analyst-framework.md" },
-        { "num": 3, "title": "PRECISE Sales Intelligence Recurring 8,800฿/เดือน", "level": 4, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1vGyr0OQ5Ck3UK2BqhSJzRsw4Qu88PErd", "drive_filename": "2026-05-21-precise-sales-intelligence-system.md" },
-        { "num": 4, "title": "EPC Scope PEA Battery Auto Scheduled", "level": 5, "date": "2026-05-25", "domain": "Support BD", "drive_file_id": "1xbaMi-dm5Ws302-hA9Fw7lQXnHz2unho", "drive_filename": "use-case_2026-05-25-epc-scope-pea-battery.md", "flags": ["wrong_prefix:use-case_"] },
         {
-          "num": 5, "title": "TOR→Proposal PZE ปิ่นทอง 5 (252M฿)", "level": 4, "date": "2026-05-26",
-          "domain": "Support BD", "drive_file_id": "1umUFLl_UIpW_vTLf9yLlpASYns50MDfX",
+          "num": 1,
+          "title": "ICP Scoring 7-Dimension",
+          "level": 3,
+          "date": "2026-05-21",
+          "domain": "Support BD",
+          "drive_file_id": "137NzlZrxhtW0w-PqXuyqWcQLZko7ozs_",
+          "drive_filename": "2026-05-21-icp-scoring-system.md",
+          "time_saved": "ประหยัด ~1–2 ชม./ครั้ง",
+          "tools": [
+            "Complex System Prompt",
+            "Multi-dimension Scoring",
+            "Grade Definition (A★→D)",
+            "Excel 2-tab Output"
+          ],
+          "output": "ICP Scoring System — 7 Dimensions: D1 (Core Need), D2 (Budget Signal), D3 (Decision Stage), F1a (Revenue Proxy), F1b (Growth Signal), F1c (Investment Pattern), F2 (Financial Health) รวม 100 pts · Grade A★ (90+) → A (75+) → B (60+) → C (45+) → D (<45) · 8 Industry Groups (A–H) พร้อม weight ต่างกัน → Output: ICP_Scoring_Form.xlsx (ICP Summary + Top Suspects tabs)",
+          "insight": "💡 Foundation ที่ดี — UC#3 (PRECISE Sales Intelligence) ต่อยอดจาก Framework นี้",
+          "enriched": "from-html"
+        },
+        {
+          "num": 2,
+          "title": "Senior BA 7-Phase Framework",
+          "level": 3,
+          "date": "2026-05-21",
+          "domain": "Support BD",
+          "drive_file_id": "1U1LvywDCG3sA5UUxvpiJ_7xKW7D0wVPI",
+          "drive_filename": "2026-05-21-business-analyst-framework.md",
+          "time_saved": "ประหยัด ~5–7 ชม. (setup)",
+          "tools": [
+            "7-Phase System Prompt",
+            "Knowledge Logger Embed",
+            "Drive Integration",
+            "Quick Command Table",
+            "Traceability Chain"
+          ],
+          "output": "System Prompt ครบ 7 Phase: (1) Needs Analysis, (2) Requirements Definition, (3) Stakeholder Analysis, (4) Scope of Impact, (5) Solution Design (3 Scenarios), (6) KPI Definition, (7) Pugh Matrix Evaluation · Traceability Chain N-xx → FR → CAP → KPI ทุกขั้น · Knowledge Logger auto-trigger เมื่อ session จบ · Quick Command table (/next, /trace, /summary)",
+          "insight": "💡 L3 ที่แข็งแกร่ง — ถ้าสร้างเป็น Claude Project ที่ทีม BA ทุกคนเข้าถึงได้ = L4",
+          "enriched": "from-html"
+        },
+        {
+          "num": 3,
+          "title": "PRECISE Sales Intelligence Recurring 8,800฿/เดือน",
+          "level": 4,
+          "date": "2026-05-21",
+          "domain": "Support BD",
+          "drive_file_id": "1vGyr0OQ5Ck3UK2BqhSJzRsw4Qu88PErd",
+          "drive_filename": "2026-05-21-precise-sales-intelligence-system.md",
+          "time_saved": "ประหยัด 22–25 ชม./เดือน 🔥 (ongoing)",
+          "tools": [
+            "Project Instruction v4.0",
+            "Business Logic Encoding",
+            "4-Function Framework",
+            "Excel Output (17 cols)",
+            "Industry Proxy"
+          ],
+          "output": "Sales Intelligence System รันได้ทุกเดือน: Phase 1 — Filter/Dedup/Sort Buyer List (2–3 ชม. → ~10 นาที) + Phase 2 — 4-Function Analysis ต่อ Prospect (HQ: Company Profile, PD: Product-Market Fit, PQ: Procurement Signal, EMS: Electrical Management Signal) จาก 30–45 นาที/ราย → 2–3 นาที/ราย → Output: Prospect_List_[YYYYmm]_.xlsx ครบ 17 columns + Top Suspects tab",
+          "insight": "💡 Highest ROI ในทีม — ถ้าแปลงเป็น Python Script ที่รันได้โดยไม่ผ่าน Chat = L4 เต็ม และถ้าตั้ง Monthly Auto-run = L5",
+          "enriched": "from-html"
+        },
+        {
+          "num": 4,
+          "title": "EPC Scope PEA Battery Auto Scheduled",
+          "level": 5,
+          "date": "2026-05-25",
+          "domain": "Support BD",
+          "drive_file_id": "1xbaMi-dm5Ws302-hA9Fw7lQXnHz2unho",
+          "drive_filename": "use-case_2026-05-25-epc-scope-pea-battery.md",
+          "flags": [
+            "wrong_prefix:use-case_"
+          ],
+          "time_saved": "ประหยัด ~4.5 ชม.",
+          "tools": [
+            "epc-scope-analyzer Skill",
+            "pdfplumber",
+            "openpyxl",
+            "Scheduled Task"
+          ],
+          "output": "EPC_Scope_PEA_SM_BMS_2568.xlsx — 6 Sheets: · Project Summary (28.2M บาท, 300 วัน) · EPC Scope Matrix 8 หมวด · BOQ 24 items (Battery 24ชุด+BMS+AC 48 เครื่อง) · RFI List 15 คำถาม · Station List 24 สถานี · Risk Register",
+          "insight": "💡 L5 เต็ม — ก้าวข้าม L4 แล้ว ถัดไปคือ L6: AI วิเคราะห์เองว่าโครงการไหน Fit แล้ว alert ทีม Pre-sale อัตโนมัติ",
+          "enriched": "from-html"
+        },
+        {
+          "num": 5,
+          "title": "TOR→Proposal PZE ปิ่นทอง 5 (252M฿)",
+          "level": 4,
+          "date": "2026-05-26",
+          "domain": "Support BD",
+          "drive_file_id": "1umUFLl_UIpW_vTLf9yLlpASYns50MDfX",
           "drive_filename": "2026-05-26-substation-sor-to-proposal-pze.md",
           "enriched": "2026-06-16",
           "time_saved": "~2-3 วันทำงาน → ~45 นาที (~2,400 นาที)",
-          "tools": ["Skill: substation-sor-to-proposal", "4-Axis S&OP Framework", "Python / openpyxl", "Excel (6 sheets)"],
+          "tools": [
+            "Skill: substation-sor-to-proposal",
+            "4-Axis S&OP Framework",
+            "Python / openpyxl",
+            "Excel (6 sheets)"
+          ],
           "business_value": "252,199,345.67 บาท (งบอ้างอิง PEA · สถานีไฟฟ้าปิ่นทอง 5 · Bid PEA-SPM1-TDDP2-PZE/2569)",
           "output": "Proposal_PZE_Pinthong5_Summary.xlsx (6 sheets) — TOR vs DB 4-Axis mapping 38 items (Match 28 / Deviation 8 / Gap 2) · BOM 50 items · Made-in-TH check (✓12/⚠4/✗2) · Commercial Summary · Fast Submit Checklist 30 จุด",
           "insight": "💡 สู่ L5: ตั้ง Scheduled Task ให้ AI monitor folder Customer Requirement → auto-run 4-Axis + ส่ง Proposal Excel ทางอีเมลทีมอัตโนมัติ"
@@ -79,34 +591,206 @@
       ]
     },
     "manaporn": {
-      "name": "มนพร (Belle)", "role": "Business Development · Switchgear · PCC Group",
+      "name": "มนพร (Belle)",
+      "role": "Business Development · Switchgear · PCC Group",
       "folder_id": "1_qUjDQKbTGbXKZorTFod84tIS5Op8dzL",
-      "level": 5, "level_label": "Task Automator", "level_note": "Assessed", "avg": 3.3, "hours": "55+", "uc_count": 4, "color": "#0d9488",
+      "level": 5,
+      "level_label": "Task Automator",
+      "level_note": "Assessed",
+      "avg": 3.3,
+      "hours": "55+",
+      "uc_count": 4,
+      "color": "#0d9488",
       "ucs": [
-        { "num": 1, "title": "Switchgear AI Blueprint 17 UCs", "level": 3, "date": "2026-05-21", "domain": "Revenue Stream", "drive_file_id": "1g5md6u4-kLqkOdip405LdtT5ycZj_dSw", "drive_filename": "2026-05-21-switchgear-ai-use-cases (2).md", "flags": ["suffix_(2)"] },
-        { "num": 2, "title": "ISA-95 HTML Presentation Excel→Base64", "level": 4, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1m63jUNO6Hodimzz5-WL4UOUGub1dGiGN", "drive_filename": "2026-05-22-isa95-html-presentation.md" },
-        { "num": 3, "title": "Odoo Implementation Visual", "level": 2, "date": "2026-05-22", "domain": "Digital Process", "drive_file_id": "1ub603GmNfW8n460VY7PJfF2jLvH9Iniu", "drive_filename": "2026-05-22-odoo-implementation-visual.md" },
-        { "num": 4, "title": "PDEM Derived Demand Forecast 2027-2030 (3,951M฿)", "level": 4, "date": "2026-05-22", "domain": "Revenue Stream", "drive_file_id": "16htgxAzweHIrqyYLLzvyEVfZvRcWpLL-", "drive_filename": "2026-05-22-derived-demand-forecast-pdem.md" }
+        {
+          "num": 1,
+          "title": "Switchgear AI Blueprint 17 UCs",
+          "level": 3,
+          "date": "2026-05-21",
+          "domain": "Revenue Stream",
+          "drive_file_id": "1g5md6u4-kLqkOdip405LdtT5ycZj_dSw",
+          "drive_filename": "2026-05-21-switchgear-ai-use-cases (2).md",
+          "flags": [
+            "suffix_(2)"
+          ],
+          "time_saved": "ประหยัด 60–120 นาที/วัน/คน เมื่อ Implement ครบ",
+          "tools": [
+            "Claude / ChatGPT",
+            "Python + Low-code",
+            "AR (Vuforia/PTC)",
+            "Computer Vision AI",
+            "SolidWorks AI Plugin",
+            "MES Integration"
+          ],
+          "output": "AI Use Case Map ครบ 4 กระบวนการ: · • กระบวนการ 1 — Pre-sales & Engineering (AI1): UC-01 อ่าน SLD→BOQ (L4), UC-02 ใบเสนอราคาจาก BOQ (L3), UC-03 สรุป TOR/Requirement (L2), UC-04 ตรวจ IEC 61439 Compliance (L2) · • กระบวนการ 2 — Engineering Design (AI2): UC-05 AI Copilot SolidWorks/BricsCAD (L2–3), UC-06 คำนวณ Short Circuit/Thermal (L3–4), UC-07 Review Drawing ก่อน Release (L3), UC-08 Export BOM → ERP (L4) · • กระบวนการ 3 — Shop Floor (AI3): UC-09 Digital Work Instruction (L3–4), UC-10 Standard Time Analysis (L4–5), UC-11 Visual QC Camera (L5), UC-12 Auto Test Report (L4), UC-13 AR Inspection Vuforia (L5), UC-14 AR-Guided Routine Test (L5) · • กระบวนการ 4 — After-sales & Corporate (AI4): UC-15 Predictive Maintenance (L5), UC-16 RAG Knowledge Base (L3), UC-17 Smart Meeting (L2)",
+          "insight": "💡 L3 ที่มีวิสัยทัศน์ L5+ — ถ้าเลือก Implement 1 UC ที่ง่ายที่สุดก่อน (UC-02 ใบเสนอราคา = Google Sheets + Claude Prompt) = L4 ใน 1 session",
+          "enriched": "from-html"
+        },
+        {
+          "num": 2,
+          "title": "ISA-95 HTML Presentation Excel→Base64",
+          "level": 4,
+          "date": "2026-05-22",
+          "domain": "Information Capital",
+          "drive_file_id": "1m63jUNO6Hodimzz5-WL4UOUGub1dGiGN",
+          "drive_filename": "2026-05-22-isa95-html-presentation.md",
+          "time_saved": "ประหยัด ~5.5 ชม. (manual ~5.5ชม. → AI ~10 นาที)",
+          "tools": [
+            "HTML/CSS/JS Generation",
+            "SVG Pyramid Design",
+            "Excel→Base64 Image",
+            "Sticky Navigation",
+            "Interactive Image Tabs",
+            "Multi-iteration"
+          ],
+          "output": "isa95-combined.html — ไฟล์เดียวพร้อมใช้งาน ไม่พึ่ง Server · SVG Pyramid 5 Levels (IT/OT bracket แยกชัด) · Level Cards ครบ Level 0–4 — ชื่อ, คำอธิบายภาษาไทย, Module/System tags (Odoo ERP, MES, IoT Platform, SCADA, PLC, Sensor) · Information Flow Section แต่ละ Level (Order to Plan → Produce to Deliver) · Image Tabs 6 tab (Level 0–4 + Overview) embed รูปจาก Excel เป็น Base64 · Sticky Nav \"ISA-95 Overview ↔ ตัวอย่างภาพแต่ละ Level\"",
+          "insight": "💡 L4 ชัดเจน — ไม่ใช่แค่ขอสรุป แต่ขอ \"เครื่องมือ\" ที่นำเสนอได้จริง ถ้าสร้าง Script auto-regenerate HTML เมื่อ Excel เปลี่ยน = L5",
+          "enriched": "from-html"
+        },
+        {
+          "num": 3,
+          "title": "Odoo Implementation Visual",
+          "level": 2,
+          "date": "2026-05-22",
+          "domain": "Digital Process",
+          "drive_file_id": "1ub603GmNfW8n460VY7PJfF2jLvH9Iniu",
+          "drive_filename": "2026-05-22-odoo-implementation-visual.md",
+          "time_saved": "ประหยัด ~3 ชม.",
+          "tools": [
+            "Excel Analysis (pandas)",
+            "HTML + Chart.js",
+            "JPEG via Playwright",
+            "Iterative Design",
+            "PPT-ready (16:9)"
+          ],
+          "output": "5 Output Files: report_review_dashboard.html (สรุป 105 Reports + Chart.js), odoo_implementation_overview.jpg (1280×720px แผน 6 บริษัท 4 Scope 14 Process), odoo_14processes.jpg (Dark Theme), odoo_processes_v2.jpg (Light Theme Core+Supporting), odoo_pem_ci_comparison.jpg (ตาราง DB เดียว vs แยก DB) · ทุกภาพพร้อมใส่ PPT ได้ทันที",
+          "insight": "💡 ถ้าสร้าง Template HTML สำเร็จรูปที่ทีมวาง Excel แล้วได้ภาพออกมาทันที = L3 และถ้าเชื่อม Google Drive auto-save = L3+ ที่แข็งแรง",
+          "enriched": "from-html"
+        },
+        {
+          "num": 4,
+          "title": "PDEM Derived Demand Forecast 2027-2030 (3,951M฿)",
+          "level": 4,
+          "date": "2026-05-22",
+          "domain": "Revenue Stream",
+          "drive_file_id": "16htgxAzweHIrqyYLLzvyEVfZvRcWpLL-",
+          "drive_filename": "2026-05-22-derived-demand-forecast-pdem.md",
+          "time_saved": "ประหยัด 40–60 ชม. 🔥🔥",
+          "tools": [
+            "PDF Upload (6 ฉบับ)",
+            "Excel Analysis",
+            "Correlation Mapping",
+            "Weighted Growth Rate",
+            "Derived Demand Method",
+            "Multi-phase Workflow"
+          ],
+          "output": "5 Excel Files: External_Factors_PDEM.xlsx (10 Thailand + 6 Cambodia factors), Source_Reference.xlsx (URL + Verified status), Correlation_Mapping_WeightedGrowth.xlsx (Factor × 70+ products), PDEM_Forecast_2026_2030.xlsx (Revenue/GP/Forecast ครบทุก product) · · Forecast Summary (Million Baht): · PEM101: 560→733 (CAGR 6.9%) · PEM102: 401→645 (CAGR 12.6% 🔥 SF6-free) · PEM103: 1,196→1,558 (CAGR 6.8%) · PEM104: 512→663 (CAGR 6.7%) · CI101: 27→34 · PEMC Cambodia: 194→318 (CAGR 13.1%) · TOTAL: 2,891 → 3,951 MB (CAGR 8.1%)",
+          "insight": "💡 งานที่ประหยัดเวลาสูงสุดในทีม (40–60 ชม.) — Belle ใช้ AI เป็น Research + Quantitative Analyst Partner ไม่ใช่แค่ Drafting Tool ถ้าสร้าง Auto-update Script เมื่อ PEA/MEA งบประมาณใหม่ออก = L5",
+          "enriched": "from-html"
+        }
       ]
     },
     "jetniphat": {
-      "name": "Jetniphat", "role": "Digital Organization · PCC Group",
+      "name": "Jetniphat",
+      "role": "Digital Organization · PCC Group",
       "folder_id": "11nDqpsgeni3OJuVHnkZ_7mxDe9fzB1pW",
-      "level": 3, "level_label": "Integrator", "avg": 3.0, "hours": "40 นาที", "uc_count": 1, "color": "#f97316",
+      "level": 3,
+      "level_label": "Integrator",
+      "avg": 3.0,
+      "hours": "40 นาที",
+      "uc_count": 1,
+      "color": "#f97316",
       "ucs": [
-        { "num": 1, "title": "Audit & Review โครงสร้าง AI Knowledge Vault (4 Data Hygiene issues)", "level": 3, "date": "2026-06-10", "domain": "Digital Process", "drive_file_id": "1BKWxggLWbE29xLam3sZo8xidcY_SmWKG", "drive_filename": "2026-06-10-audit-knowledge-vault-structure.md" }
+        {
+          "num": 1,
+          "title": "Audit & Review โครงสร้าง AI Knowledge Vault (4 Data Hygiene issues)",
+          "level": 3,
+          "date": "2026-06-10",
+          "domain": "Digital Process",
+          "drive_file_id": "1BKWxggLWbE29xLam3sZo8xidcY_SmWKG",
+          "drive_filename": "2026-06-10-audit-knowledge-vault-structure.md",
+          "time_saved": "ประหยัด ~40 นาที",
+          "tools": [
+            "Claude + Google Drive MCP",
+            "metadata อ่าน folder",
+            "parentId search",
+            "Template vs File comparison",
+            "Root Cause Analysis"
+          ],
+          "output": "4 ปัญหา Data Hygiene ที่พบ: assessments สร้างไฟล์ใหม่ทุก run (ไม่ update) → ไฟล์ซ้ำเป็นสิบ · folder \"assessments\" ซ้ำ 2 อัน · mimeType ปนกัน (Google Doc vs .md) · ชื่อ user ไม่นิ่ง (นราวิช vs นราวิชญ์) · สรุป: ระบบทำงานถูกที่ use-cases แต่ broken ที่ assessments เพราะขาด update mechanism",
+          "insight": "💡 UC แรกที่ค้นพบปัญหาระดับระบบกระทบทั้งทีม 5 คน — Integrator thinking ชัดเจน · ถัดไป: auto-audit script ทุกเดือน = L4",
+          "enriched": "from-html"
+        }
       ]
     }
   },
   "hygiene": {
     "note": "ปัญหาที่ Jetniphat UC#1 ตรวจพบ — ยืนยันด้วยการ audit Drive จริง (2026-06-14). regex นับอัตโนมัติยังเชื่อ 100% ไม่ได้จนกว่าจะเคลียร์ตาม CONVENTION.md",
     "issues": [
-      { "type": "duplicate", "person": "earth", "detail": "2026-05-21-ai-adoption-dashboard-automation.md มี 3 ก๊อปปี้", "ids": ["1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf", "1KknSevPGyo8E1C7izPLezw2YT4EzqlpX", "1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"], "action": "เก็บ canonical 1MXdPr6..., ที่เหลือย้าย/ลบ" },
-      { "type": "no_date_prefix", "person": "earth", "detail": "UC ที่ตั้งชื่อแบบ context ไม่มีวันที่นำหน้า — auto-counter มองไม่เห็น", "files": ["job-role-architecture.md", "hc-dashboard.md", "nrc-app.md"], "action": "rename เป็น YYYY-MM-DD-<slug>.md" },
-      { "type": "wrong_prefix", "person": "pattaratida", "detail": "ขึ้นต้น use-case_ แทนวันที่", "files": ["use-case_2026-05-25-epc-scope-pea-battery.md"], "action": "rename เป็น 2026-05-25-epc-scope-pea-battery.md" },
-      { "type": "name_suffix", "person": "manaporn", "detail": "มี ' (2)' ต่อท้าย (ร่องรอยไฟล์ซ้ำ)", "files": ["2026-05-21-switchgear-ai-use-cases (2).md"], "action": "rename ลบ ' (2)'" },
-      { "type": "google_doc_mimetype", "person": "narawit", "detail": "2 UC เป็น Google Doc (ลงท้าย .md แต่ mimeType เป็น Doc) — get_media/parse ตรง ๆ ไม่ได้ ต้อง export", "files": ["2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md", "2026-06-05-pea-hackathon-pitch-video-veo-canva.md"], "action": "Download as Markdown แล้ว re-upload เป็น .md จริง" },
-      { "type": "non_uc_files", "detail": "ไฟล์ที่ไม่ใช่ UC ปนอยู่ในโฟลเดอร์ use-case — ควรย้ายไป _context/", "files": ["earth/glossary.md", "earth/pcc-group.md", "earth/pcc-organization.md", "earth/nrc.md", "earth/2026-05-27-apply-ai-training-psl.md", "earth/2026-05-26-tcs-precall-planning.md", "pattaratida/assessment_PAK.md"], "action": "ย้ายไป _context/ หรือ _assessments/ (ต้องทำมือ — MCP ปัจจุบันไม่มีคำสั่ง move/delete)" }
+      {
+        "type": "duplicate",
+        "person": "earth",
+        "detail": "2026-05-21-ai-adoption-dashboard-automation.md มี 3 ก๊อปปี้",
+        "ids": [
+          "1MXdPr6oIhRBs_PmoKhqs55dmBNgyZ7lf",
+          "1KknSevPGyo8E1C7izPLezw2YT4EzqlpX",
+          "1QX59mlL4KcC5JVV050qqIlO0s2CLz4q_"
+        ],
+        "action": "เก็บ canonical 1MXdPr6..., ที่เหลือย้าย/ลบ"
+      },
+      {
+        "type": "no_date_prefix",
+        "person": "earth",
+        "detail": "UC ที่ตั้งชื่อแบบ context ไม่มีวันที่นำหน้า — auto-counter มองไม่เห็น",
+        "files": [
+          "job-role-architecture.md",
+          "hc-dashboard.md",
+          "nrc-app.md"
+        ],
+        "action": "rename เป็น YYYY-MM-DD-<slug>.md"
+      },
+      {
+        "type": "wrong_prefix",
+        "person": "pattaratida",
+        "detail": "ขึ้นต้น use-case_ แทนวันที่",
+        "files": [
+          "use-case_2026-05-25-epc-scope-pea-battery.md"
+        ],
+        "action": "rename เป็น 2026-05-25-epc-scope-pea-battery.md"
+      },
+      {
+        "type": "name_suffix",
+        "person": "manaporn",
+        "detail": "มี ' (2)' ต่อท้าย (ร่องรอยไฟล์ซ้ำ)",
+        "files": [
+          "2026-05-21-switchgear-ai-use-cases (2).md"
+        ],
+        "action": "rename ลบ ' (2)'"
+      },
+      {
+        "type": "google_doc_mimetype",
+        "person": "narawit",
+        "detail": "2 UC เป็น Google Doc (ลงท้าย .md แต่ mimeType เป็น Doc) — get_media/parse ตรง ๆ ไม่ได้ ต้อง export",
+        "files": [
+          "2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md",
+          "2026-06-05-pea-hackathon-pitch-video-veo-canva.md"
+        ],
+        "action": "Download as Markdown แล้ว re-upload เป็น .md จริง"
+      },
+      {
+        "type": "non_uc_files",
+        "detail": "ไฟล์ที่ไม่ใช่ UC ปนอยู่ในโฟลเดอร์ use-case — ควรย้ายไป _context/",
+        "files": [
+          "earth/glossary.md",
+          "earth/pcc-group.md",
+          "earth/pcc-organization.md",
+          "earth/nrc.md",
+          "earth/2026-05-27-apply-ai-training-psl.md",
+          "earth/2026-05-26-tcs-precall-planning.md",
+          "pattaratida/assessment_PAK.md"
+        ],
+        "action": "ย้ายไป _context/ หรือ _assessments/ (ต้องทำมือ — MCP ปัจจุบันไม่มีคำสั่ง move/delete)"
+      }
     ]
   }
 }

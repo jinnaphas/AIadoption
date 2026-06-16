@@ -26,7 +26,16 @@
         { "num": 6, "title": "SGAM Function Layer DBTP-EMS", "level": 3, "date": "2026-05-22", "domain": "Information Capital", "drive_file_id": "1kZ8WWoAlTM7Dz4RuyBVFX_MrgA9f9oN2", "drive_filename": "2026-05-22-sgam-function-layer-dbtp-ems.md" },
         { "num": 7, "title": "PEA Hackathon AWS Bedrock EMS 3-Agent", "level": 6, "date": "2026-05-27", "domain": "Revenue Stream", "drive_file_id": "1U55RqEiWevxxNvEqk7ebU1pYOahNPHAqHZDYw13Wfqg", "drive_filename": "2026-05-27-pea-hackathon-aws-bedrock-ems-agents.md", "flags": ["google_doc_mimetype"] },
         { "num": 8, "title": "Stitch → Precise AI Portal Design 11 Pages", "level": 5, "date": "2026-05-30", "domain": "Digital Process", "drive_file_id": "1m5s4WzVn1WKATBHT7w5zxIBZYnvMXdZB", "drive_filename": "2026-05-30-stitch-precise-ai-portal-design.md" },
-        { "num": 9, "title": "PEA Hackathon Pitch Video (Veo+Canva+Suno)", "level": 5, "date": "2026-06-05", "domain": "Revenue Stream", "drive_file_id": "1FHlVk73FLpihPbOioZW1pwlH9GgeV5WKmbPMRerjrEc", "drive_filename": "2026-06-05-pea-hackathon-pitch-video-veo-canva.md", "flags": ["google_doc_mimetype"] }
+        {
+          "num": 9, "title": "PEA Hackathon Pitch Video (Veo+Canva+Suno)", "level": 5, "date": "2026-06-05",
+          "domain": "Revenue Stream", "drive_file_id": "1FHlVk73FLpihPbOioZW1pwlH9GgeV5WKmbPMRerjrEc",
+          "drive_filename": "2026-06-05-pea-hackathon-pitch-video-veo-canva.md", "flags": ["google_doc_mimetype"],
+          "enriched": "2026-06-16",
+          "time_saved": "~2-3 วัน → ไม่กี่ ชม. (~1,000+ นาที)",
+          "tools": ["Claude", "Canva", "Veo / Google Vids", "Suno / Udio", "HTML overlay"],
+          "output": "Storyboard deck (Canva 7 สไลด์) + animated HTML overlay (transparent) + วิดีโอ pitch 60 วิ (MP4) + production kit 12 คลิป (text-to-video + image-to-video) + VO script EN/TH + BGM prompts",
+          "insight": "💡 จุดเด่นคือ Reusable Prompt Templates — 'Character Anchor' (ล็อกหน้าตัวละครให้ consistent), 'locked photographic layer' (กัน Veo เพี้ยน UI/ตัวเลข), BGM structure tags → ทีม BD นำไปใช้ทำ pitch ได้ทุก proposal"
+        }
       ]
     },
     "earth": {
@@ -56,7 +65,17 @@
         { "num": 2, "title": "Senior BA 7-Phase Framework", "level": 3, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1U1LvywDCG3sA5UUxvpiJ_7xKW7D0wVPI", "drive_filename": "2026-05-21-business-analyst-framework.md" },
         { "num": 3, "title": "PRECISE Sales Intelligence Recurring 8,800฿/เดือน", "level": 4, "date": "2026-05-21", "domain": "Support BD", "drive_file_id": "1vGyr0OQ5Ck3UK2BqhSJzRsw4Qu88PErd", "drive_filename": "2026-05-21-precise-sales-intelligence-system.md" },
         { "num": 4, "title": "EPC Scope PEA Battery Auto Scheduled", "level": 5, "date": "2026-05-25", "domain": "Support BD", "drive_file_id": "1xbaMi-dm5Ws302-hA9Fw7lQXnHz2unho", "drive_filename": "use-case_2026-05-25-epc-scope-pea-battery.md", "flags": ["wrong_prefix:use-case_"] },
-        { "num": 5, "title": "TOR→Proposal PZE ปิ่นทอง 5 (252M฿)", "level": 4, "date": "2026-05-26", "domain": "Support BD", "drive_file_id": "1umUFLl_UIpW_vTLf9yLlpASYns50MDfX", "drive_filename": "2026-05-26-substation-sor-to-proposal-pze.md" }
+        {
+          "num": 5, "title": "TOR→Proposal PZE ปิ่นทอง 5 (252M฿)", "level": 4, "date": "2026-05-26",
+          "domain": "Support BD", "drive_file_id": "1umUFLl_UIpW_vTLf9yLlpASYns50MDfX",
+          "drive_filename": "2026-05-26-substation-sor-to-proposal-pze.md",
+          "enriched": "2026-06-16",
+          "time_saved": "~2-3 วันทำงาน → ~45 นาที (~2,400 นาที)",
+          "tools": ["Skill: substation-sor-to-proposal", "4-Axis S&OP Framework", "Python / openpyxl", "Excel (6 sheets)"],
+          "business_value": "252,199,345.67 บาท (งบอ้างอิง PEA · สถานีไฟฟ้าปิ่นทอง 5 · Bid PEA-SPM1-TDDP2-PZE/2569)",
+          "output": "Proposal_PZE_Pinthong5_Summary.xlsx (6 sheets) — TOR vs DB 4-Axis mapping 38 items (Match 28 / Deviation 8 / Gap 2) · BOM 50 items · Made-in-TH check (✓12/⚠4/✗2) · Commercial Summary · Fast Submit Checklist 30 จุด",
+          "insight": "💡 สู่ L5: ตั้ง Scheduled Task ให้ AI monitor folder Customer Requirement → auto-run 4-Axis + ส่ง Proposal Excel ทางอีเมลทีมอัตโนมัติ"
+        }
       ]
     },
     "manaporn": {

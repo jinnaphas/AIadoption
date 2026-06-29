@@ -163,6 +163,38 @@
   .q3-target{position:absolute;top:0;bottom:0;width:2px;background:var(--text3);opacity:.5}
   .q3-sub{font-size:.65rem;color:var(--text3);margin-top:4px;display:flex;justify-content:space-between}
 
+  /* ── Library Sidebar ── */
+  .lib-toggle-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:300;background:var(--accent);color:#fff;border:none;border-radius:12px 0 0 12px;padding:14px 9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;box-shadow:-2px 0 16px rgba(0,119,204,.3);transition:all .2s;font-family:'Outfit',sans-serif}
+  .lib-toggle-btn:hover{background:#005fa3;padding-right:13px}
+  .lib-toggle-btn .lib-icon{font-size:1.15rem}
+  .lib-toggle-btn span{font-size:.55rem;font-weight:700;letter-spacing:1px;writing-mode:vertical-rl;text-orientation:mixed}
+  .lib-sidebar{position:fixed;right:-310px;top:0;width:300px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:400;display:flex;flex-direction:column;transition:right .28s cubic-bezier(.4,0,.2,1);box-shadow:-6px 0 28px rgba(0,0,0,.12)}
+  .lib-sidebar.open{right:0}
+  .lib-sidebar-head{padding:15px 16px 13px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--surface)}
+  .lib-sidebar-head h3{font-size:.78rem;font-weight:700;color:var(--text)}
+  .lib-sidebar-head p{font-size:.62rem;color:var(--text3);margin-top:2px}
+  .lib-sidebar-close{width:26px;height:26px;border:1px solid var(--border);border-radius:7px;background:var(--surface2);color:var(--text2);font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+  .lib-sidebar-close:hover{background:var(--surface3)}
+  .lib-sidebar-body{overflow-y:auto;flex:1}
+  .lib-grp-item{border-bottom:1px solid var(--border)}
+  .lib-grp-hdr{display:flex;align-items:flex-start;gap:8px;padding:12px 14px;cursor:pointer;transition:background .15s;user-select:none}
+  .lib-grp-hdr:hover{background:var(--surface2)}
+  .lib-grp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
+  .lib-grp-title{flex:1;font-size:.73rem;font-weight:700;color:var(--text);line-height:1.4}
+  .lib-grp-sub{font-weight:400;font-size:.6rem;color:var(--text3);display:block;margin-top:1px}
+  .lib-grp-badge{font-size:.6rem;font-family:'JetBrains Mono',monospace;background:var(--surface3);color:var(--text3);padding:2px 7px;border-radius:10px;flex-shrink:0;margin-top:2px}
+  .lib-grp-arrow{font-size:.6rem;color:var(--text3);transition:transform .2s;flex-shrink:0;margin-top:4px}
+  .lib-grp-item.expanded .lib-grp-arrow{transform:rotate(90deg)}
+  .lib-cos{display:none;background:var(--surface2);padding:4px 0 8px}
+  .lib-grp-item.expanded .lib-cos{display:block}
+  .lib-co-row{padding:6px 14px 6px 28px}
+  .lib-co-top{display:flex;align-items:center;gap:6px}
+  .lib-co-name{font-size:.7rem;font-weight:600;color:var(--text2);flex:1}
+  .lib-co-cnt{font-size:.6rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
+  .lib-pilot-entry{display:flex;align-items:center;gap:4px;padding:3px 0 0 8px;font-size:.64rem;color:var(--text);font-weight:500;line-height:1.4}
+  .lib-pilot-entry .star{color:#d97706;font-size:.7rem}
+  .lib-sidebar-foot{padding:10px 14px;border-top:1px solid var(--border);font-size:.62rem;color:var(--text3);text-align:center;flex-shrink:0;background:var(--surface2)}
+
 </style>
 </head>
 <body>
@@ -174,8 +206,8 @@
 
   <div class="stats-row">
     <div class="stat-card"><div class="stat-icon si1">👥</div><div><div class="stat-label">Team Members</div><div class="stat-val" style="color:var(--accent)">5</div><div class="stat-sub">บันทึก Use Case แล้ว</div></div></div>
-    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">30</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
-    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">197+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
+    <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">33</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
+    <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">201+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
     <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">4.5</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
   </div>
 
@@ -226,7 +258,7 @@
           <div class="emp-role">Digital Organization · PCC Group</div>
         </div>
       </div>
-      <div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">🔗 Level 3 — Integrator <span style="background:#d1fae5;color:#065f46;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ UC#1 สำเร็จ</span></div>
+      <div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">📈 Level 3.5 — Growing Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
       <div class="gauge-wrap">
         <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
         <div class="gauge-track">
@@ -237,9 +269,9 @@
         </div>
       </div>
       <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">1</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v" style="color:#059669">3.0</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">40+</div><div class="mstat-l">นาทีประหยัด</div></div>
+        <div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div>
+        <div class="mstat"><div class="mstat-v" style="color:#059669">3.5</div><div class="mstat-l">Avg Level</div></div>
+        <div class="mstat"><div class="mstat-v">~4h</div><div class="mstat-l">ชม.ประหยัด</div></div>
       </div>
       <div class="tags">
         <span class="tag" style="background:#fff7ed;border-color:#fed7aa;color:#ea580c">Digital Organization</span>
@@ -1340,29 +1372,29 @@
     <div class="modal-head">
       <div>
         <h2>🔍 Use Cases — Jetniphat</h2>
-        <p>Digital Organization · PCC Group · Level 3 — Integrator · 1 UC · 40 นาทีประหยัด</p>
+        <p>กลุ่ม วิชาชีพ · PEM · Level 3.5 — Growing Builder · 4 UCs · ~225 นาทีประหยัด</p>
       </div>
       <button class="close-btn" onclick="closeModal('jetniphat')">✕</button>
     </div>
     <div class="modal-body">
-      <div class="abox" style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:11px;padding:15px 16px;margin-bottom:18px">
-        <h3 style="font-size:.77rem;font-weight:700;margin-bottom:9px;color:#3b82f6">📊 ข้อมูลสมาชิกใหม่</h3>
+      <div class="abox" style="background:#ecfdf5;border:1px solid #a7f3d0;border-radius:11px;padding:15px 16px;margin-bottom:18px">
+        <h3 style="font-size:.77rem;font-weight:700;margin-bottom:9px;color:#059669">📊 สรุป AI Skill Assessment</h3>
         <ul style="list-style:none">
           <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
-            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
-            เพิ่งเข้าร่วม AI Adoption Pilot เมื่อ มิ.ย. 2569 — ยังไม่มี Use Case ที่บันทึก
+            <span style="position:absolute;left:0;color:#059669;font-size:.68rem;font-weight:700">→</span>
+            Use Cases บันทึก: <strong>4 UCs</strong> (UC#1–4) · avg AI Level <strong>3.5</strong> · ประหยัดรวม <strong>225 นาที (~3.75 ชม.)</strong>
           </li>
           <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
-            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
-            สาขา: Digital Organization — เหมาะกับการพัฒนาด้าน Digital Process และ Automation
+            <span style="position:absolute;left:0;color:#059669;font-size:.68rem;font-weight:700">→</span>
+            สาขา: กลุ่ม วิชาชีพ · PEM · Officer ระดับ 3 — BA Role · Digital Process & Automation
           </li>
           <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
-            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
-            แนะนำ: เริ่มจาก UC แรกที่เชื่อมกับงานปกติ เช่น ใช้ AI ช่วย Draft Email หรือ สรุปรายงาน → L2 ภายใน 1 สัปดาห์
+            <span style="position:absolute;left:0;color:#059669;font-size:.68rem;font-weight:700">→</span>
+            โดดเด่น: 2 UCs ระดับ L4 ในวันเดียว (16 มิ.ย. 2569) — แสดง rapid skill growth ที่ชัดเจน
           </li>
           <li style="font-size:.73rem;color:var(--text2);padding:2px 0 2px 14px;position:relative;line-height:1.55">
-            <span style="position:absolute;left:0;color:#3b82f6;font-size:.68rem;font-weight:700">→</span>
-            ดู Pattern ของ Earth UC#6 (Dashboard Auto-Update) หรือ Nick UC#4 (Jira Migration) เพื่อ inspire UC แรก
+            <span style="position:absolute;left:0;color:#059669;font-size:.68rem;font-weight:700">→</span>
+            Tool Stack: Claude + Google Drive MCP · Python (MarkItDown) · System Prompt Engineering
           </li>
         </ul>
       </div>
@@ -1389,7 +1421,80 @@
         <strong>สรุป:</strong> ระบบทำงานถูกต้องที่ use-cases แต่ broken ที่ assessments เพราะขาด update mechanism
       </div>
       <div style="font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:9px;border-top:1px solid var(--border)">
-        💡 UC แรกที่ค้นพบปัญหาระดับระบบที่กระทบทั้งทีม 5 คน — แสดง "Integrator thinking" ที่ชัดเจน · ถัดไป: สร้าง checklist/script audit อัตโนมัติทุกเดือน = L4
+        💡 UC แรกที่ค้นพบปัญหาระดับระบบที่กระทบทั้งทีม 5 คน — แสดง "Integrator thinking" ที่ชัดเจน
+      </div>
+    </div>
+
+    <!-- UC#2 -->
+    <div class="uc" style="border-radius:12px;background:var(--surface2);border:1px solid var(--border);padding:17px;margin-bottom:12px">
+      <div class="uc-top">
+        <div class="uc-num" style="width:25px;height:25px;border-radius:6px;background:#ecfdf5;border:1px solid #a7f3d0;color:#059669;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace">#2</div>
+        <div class="uc-title">สร้าง System Prompt + Project Knowledge สำหรับ BA Role — AI-Powered Context Engine</div>
+        <div class="chip c4">L4</div>
+      </div>
+      <div class="uc-meta"><span>📅 2026-06-16</span><span>⏱ ประหยัด ~60 นาที</span><span>🏷️ Digital Process</span></div>
+      <div class="tool-row">
+        <span class="tool">Claude Projects</span>
+        <span class="tool">System Prompt Engineering</span>
+        <span class="tool">Project Knowledge</span>
+        <span class="tool">BA Role Context</span>
+      </div>
+      <div class="uc-output" style="background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:10px;border-left:3px solid #059669">
+        <strong>Output:</strong> System Prompt ที่กำหนด BA role ครบถ้วน + Project Knowledge ที่โหลด context ก่อนทุก session<br>
+        → Claude รู้จัก Org Structure, Project Scope, Terminology ของงาน BA โดยอัตโนมัติ<br>
+        → ลดเวลา context-setting จาก ~15 นาที → 0 ทุก session
+      </div>
+      <div style="font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:9px;border-top:1px solid var(--border)">
+        💡 Level 4 = Builder — สร้าง reusable AI configuration ที่คนอื่นใน team นำไปต่อยอดได้ · pattern นี้เหมาะขยายให้ทั้ง PEM
+      </div>
+    </div>
+
+    <!-- UC#3 -->
+    <div class="uc" style="border-radius:12px;background:var(--surface2);border:1px solid var(--border);padding:17px;margin-bottom:12px">
+      <div class="uc-top">
+        <div class="uc-num" style="width:25px;height:25px;border-radius:6px;background:#ecfdf5;border:1px solid #a7f3d0;color:#059669;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace">#3</div>
+        <div class="uc-title">สร้าง Excel Transformation: Project Register 6 Sheets ที่เชื่อมกันอัตโนมัติ</div>
+        <div class="chip c4">L4</div>
+      </div>
+      <div class="uc-meta"><span>📅 2026-06-16</span><span>⏱ ประหยัด ~90 นาที</span><span>🏷️ Data Architecture</span></div>
+      <div class="tool-row">
+        <span class="tool">Claude</span>
+        <span class="tool">Excel Formula Design</span>
+        <span class="tool">Multi-Sheet Automation</span>
+        <span class="tool">Project Register Template</span>
+      </div>
+      <div class="uc-output" style="background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:10px;border-left:3px solid #059669">
+        <strong>Output:</strong> Project Register Template ที่มี 6 sheets เชื่อมกันด้วย formula อัตโนมัติ<br>
+        → Sheet: Summary · Timeline · Budget · Risk · Stakeholder · Action Log<br>
+        → Input ข้อมูลใน sheet เดียว → อีก 5 sheet อัปเดตอัตโนมัติ · ประหยัด ~90 นาที/โปรเจกต์
+      </div>
+      <div style="font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:9px;border-top:1px solid var(--border)">
+        💡 Complex multi-sheet data architecture = ทักษะระดับ L4 ที่ชัดเจน · template นี้ reusable ข้ามโปรเจกต์ทั้งหมด
+      </div>
+    </div>
+
+    <!-- UC#4 -->
+    <div class="uc" style="border-radius:12px;background:var(--surface2);border:1px solid var(--border);padding:17px;margin-bottom:12px">
+      <div class="uc-top">
+        <div class="uc-num" style="width:25px;height:25px;border-radius:6px;background:#ecfdf5;border:1px solid #a7f3d0;color:#059669;font-size:.67rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'JetBrains Mono',monospace">#4</div>
+        <div class="uc-title">ใช้ MarkItDown แปลง PDF → Markdown + Transcribe Org Chart ด้วย Claude Vision</div>
+        <div class="chip c3">L3</div>
+      </div>
+      <div class="uc-meta"><span>📅 2026-06-16</span><span>⏱ ประหยัด ~35 นาที</span><span>🏷️ Document Processing</span></div>
+      <div class="tool-row">
+        <span class="tool">Python (MarkItDown)</span>
+        <span class="tool">Claude Vision</span>
+        <span class="tool">Google Drive MCP</span>
+        <span class="tool">PDF → Markdown</span>
+        <span class="tool">Org Chart OCR</span>
+      </div>
+      <div class="uc-output" style="background:rgba(0,0,0,.04);border-radius:8px;padding:10px 12px;font-size:.73rem;color:var(--text2);line-height:1.65;margin-bottom:10px;border-left:3px solid #059669">
+        <strong>Output:</strong> Multi-tool pipeline: PDF document → MarkItDown CLI → clean Markdown + Claude อ่าน org chart image → structured text<br>
+        → เอกสารที่แต่ก่อน copy-paste ด้วยมือ ~35 นาที → pipeline รัน &lt;1 นาที<br>
+        → Markdown พร้อม upload เข้า AI Knowledge Vault ทันที
+      </div>
+      <div style="font-size:.72rem;color:var(--text3);font-style:italic;line-height:1.6;padding-top:9px;border-top:1px solid var(--border)">
+        💡 ผสม CLI tool (Python) + AI Vision + Drive MCP = pipeline ที่ครบ loop · แสดง technical depth ที่โดดเด่นใน กลุ่ม วิชาชีพ
       </div>
     </div>
     </div>
@@ -1397,9 +1502,134 @@
 </div>
 
 
+<!-- ══════════════ Library Toggle Button ══════════════ -->
+<button class="lib-toggle-btn" id="libToggleBtn" onclick="toggleLibrary()" title="Library Menu — Employee Groups">
+  <span class="lib-icon">📚</span>
+  <span>LIBRARY</span>
+</button>
+
+<!-- ══════════════ Library Sidebar ══════════════ -->
+<div class="lib-sidebar" id="libSidebar">
+  <div class="lib-sidebar-head">
+    <div>
+      <h3>📚 Library Menu</h3>
+      <p>Employee Group → Company → Pilot Members ★</p>
+    </div>
+    <button class="lib-sidebar-close" onclick="toggleLibrary()">✕</button>
+  </div>
+  <div class="lib-sidebar-body">
+
+    <!-- Group 1: บริหาร/ผู้เชี่ยวชาญ -->
+    <div class="lib-grp-item" id="grp1">
+      <div class="lib-grp-hdr" onclick="toggleGrp('grp1')">
+        <div class="lib-grp-dot" style="background:#7c3aed"></div>
+        <div class="lib-grp-title">บริหาร/ผู้เชี่ยวชาญ<span class="lib-grp-sub">ผู้บริหารโครงการ · L10A–L13</span></div>
+        <div class="lib-grp-badge">~14</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+
+    <!-- Group 2: จัดการ/ชำนาญการ (4 pilot members) -->
+    <div class="lib-grp-item expanded" id="grp2">
+      <div class="lib-grp-hdr" onclick="toggleGrp('grp2')">
+        <div class="lib-grp-dot" style="background:#0077cc"></div>
+        <div class="lib-grp-title">จัดการ/ชำนาญการ<span class="lib-grp-sub">ผู้จัดการโครงการ · L6A–L9B</span></div>
+        <div class="lib-grp-badge">~148</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row">
+          <div class="lib-co-top"><span class="lib-co-name">PCC</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> Earth — จิณนภัสฐ์ ภัศฐาพงษ์</div>
+        </div>
+        <div class="lib-co-row">
+          <div class="lib-co-top"><span class="lib-co-name">PSP</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> Pattaratida.k — ภัทริดา กองสิน</div>
+        </div>
+        <div class="lib-co-row">
+          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> Manaporn — มนพร พงศ์สิทธิศาสตร์</div>
+        </div>
+        <div class="lib-co-row">
+          <div class="lib-co-top"><span class="lib-co-name">PDE</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> นราวิช — นราวิชญ์ สมนา</div>
+        </div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+
+    <!-- Group 3: กลุ่ม วิชาชีพ (Jetniphat) -->
+    <div class="lib-grp-item" id="grp3">
+      <div class="lib-grp-hdr" onclick="toggleGrp('grp3')">
+        <div class="lib-grp-dot" style="background:#16a34a"></div>
+        <div class="lib-grp-title">กลุ่ม วิชาชีพ<span class="lib-grp-sub">Professional · L5A–L6D</span></div>
+        <div class="lib-grp-badge">~220</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row">
+          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> Jetniphat — เจตนิพัทธ์ บุญใจ</div>
+        </div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+
+    <!-- Group 4: กลุ่ม ปฏิบัติการ -->
+    <div class="lib-grp-item" id="grp4">
+      <div class="lib-grp-hdr" onclick="toggleGrp('grp4')">
+        <div class="lib-grp-dot" style="background:#d97706"></div>
+        <div class="lib-grp-title">กลุ่ม ปฏิบัติการ<span class="lib-grp-sub">Operations · L5A–L5B</span></div>
+        <div class="lib-grp-badge">~25</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="lib-sidebar-foot">411 employees · 8 companies · Pilot: 5 members ★</div>
+</div>
+
 <script>
   function openModal(id){document.getElementById('ov-'+id).classList.add('open');document.body.style.overflow='hidden';}
   function closeModal(id){document.getElementById('ov-'+id).classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.overlay').forEach(function(el){el.addEventListener('click',function(e){if(e.target===el){el.classList.remove('open');document.body.style.overflow='';}});});
+  function toggleLibrary(){
+    var s=document.getElementById('libSidebar');
+    var b=document.getElementById('libToggleBtn');
+    var open=s.classList.toggle('open');
+    b.style.display=open?'none':'flex';
+  }
+  function toggleGrp(id){
+    document.getElementById(id).classList.toggle('expanded');
+  }
 </script>
 </body></html>

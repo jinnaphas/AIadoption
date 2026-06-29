@@ -52,7 +52,7 @@
   .section-title{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;margin-bottom:16px}
   .lvl-row{display:flex;align-items:center;gap:10px;padding:7px 9px;border-radius:8px;margin-bottom:3px}.lvl-row.cur{background:var(--surface2);border:1px solid var(--border)}
   .lvl-num{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;font-family:'JetBrains Mono',monospace}
-  .lvl-info{flex:1}.lvl-name{font-size:.8rem;font-weight:600}
+  .lvl-info{flex:1}.lvl-name{font-size:.8rem;font-weight:600}.lvl-desc{font-size:.62rem;color:var(--text3);line-height:1.4;margin-top:2px}
   .mini-avs{display:flex;gap:4px}.mav{width:22px;height:22px;border-radius:5px;font-size:.58rem;font-weight:800;color:#fff;display:flex;align-items:center;justify-content:center}
   .mav-n{background:linear-gradient(135deg,#0ea5e9,#0369a1)}.mav-e{background:linear-gradient(135deg,#f59e0b,#b45309)}.mav-p{background:linear-gradient(135deg,#ec4899,#be185d)}.mav-m{background:linear-gradient(135deg,#0d9488,#0f766e)}
   .rm-item{display:flex;gap:12px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:11px;margin-bottom:9px}.rm-content h4{font-size:.8rem;font-weight:700;margin-bottom:3px}.rm-content p{font-size:.7rem;color:var(--text2);line-height:1.5}.rm-chip{display:inline-flex;font-size:.63rem;margin-top:6px;font-family:'JetBrains Mono',monospace;font-weight:600}
@@ -352,110 +352,51 @@
     </div>
   </div>
 
-  <div class="cards-grid">
-    <div class="emp-card card-n" onclick="openModal('narawit')">
-      <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิชญ์ สมนา</div><div class="emp-role">Nick · PDE · Agentic Transformation</div></div></div>
-      <div class="level-badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">🤖 Level 6 — Agentic Operator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
-      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-      <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg" style="background:#dc2626;box-shadow:0 0 7px rgba(220,38,38,.6)"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">9</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#dc2626">4.7</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">24+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-n">PEA Pitch Video (Veo)</span><span class="tag tag-n">AWS Bedrock Multi-Agent</span><span class="tag tag-n">Precise AI Portal</span><span class="tag tag-n">EMS Dispatch AI</span></div>
-      <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases & วิเคราะห์ →</button>
-    </div>
-    <div class="emp-card card-e" onclick="openModal('earth')">
-      <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">จิณนภัสฐ์ ภัศฐาพงษ์</div><div class="emp-role">Earth · PCC · HR Manager & OD Strategy</div></div></div>
-      <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
-      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-      <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">11</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">65+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-e">Apps Script Auto</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span><span class="tag tag-e">Python</span></div>
-      <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases & วิเคราะห์ →</button>
-    </div>
-    <div class="emp-card card-p" onclick="openModal('pattaratida')">
-      <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">ภัทริดา กองสิน</div><div class="emp-role">Pattaratida · PSP · B2B Sales Intelligence</div></div></div>
-      <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ L5 Demonstrated</span></div>
-      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-      <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">3.8</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-p">EPC Scope Auto L5</span><span class="tag tag-p">TOR→Proposal</span><span class="tag tag-p">Sales Intelligence</span><span class="tag tag-p">Substation Analysis</span></div>
-      <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 ดู Use Cases & วิเคราะห์ →</button>
-    </div>
-    <div class="emp-card card-m" onclick="openModal('manaporn')">
-      <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร พงศ์สิทธิศาสตร์</div><div class="emp-role">Belle · PEM · Business Development Switchgear</div></div></div>
-      <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
-      <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-      <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg" style="box-shadow:0 0 7px rgba(13,148,136,.6)"></div><div class="seg"></div><div class="seg"></div></div></div>
-      <div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
-      <div class="tags"><span class="tag tag-m">Demand Forecast</span><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Odoo Visual</span><span class="tag tag-m">Switchgear AI</span></div>
-      <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases & วิเคราะห์ →</button>
-    </div>
-
-    <!-- Jetniphat -->
-    <div class="emp-card" style="border-color:#a7f3d0" onclick="openModal('jetniphat')">
-      <div class="emp-header">
-        <div class="avatar" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div>
-        <div>
-          <div class="emp-name">เจตนิพัทธ์ บุญใจ</div>
-          <div class="emp-role">Jetniphat · PEM · กลุ่ม วิชาชีพ · Officer L3</div>
-        </div>
-      </div>
-      <div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">📈 Level 3.5 — Growing Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
-      <div class="gauge-wrap">
-        <div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
-        <div class="gauge-track">
-          <div class="seg" style="background:#059669"></div>
-          <div class="seg" style="background:#059669"></div>
-          <div class="seg" style="background:#059669;box-shadow:0 0 7px rgba(5,150,105,.5)"></div>
-          <div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div>
-        </div>
-      </div>
-      <div class="mini-stats">
-        <div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div>
-        <div class="mstat"><div class="mstat-v" style="color:#059669">3.5</div><div class="mstat-l">Avg Level</div></div>
-        <div class="mstat"><div class="mstat-v">~4h</div><div class="mstat-l">ชม.ประหยัด</div></div>
-      </div>
-      <div class="tags">
-        <span class="tag" style="background:#fff7ed;border-color:#fed7aa;color:#ea580c">Digital Organization</span>
-        <span class="tag" style="background:#ecfdf5;border-color:#a7f3d0;color:#059669">Data Governance</span>
-      </div>
-      <button class="drill-btn" onclick="event.stopPropagation();openModal('jetniphat')" style="color:#059669">🔍 Drill Down →</button>
-    </div>
+  <!-- ── Executive Summary ── -->
+  <div style="background:linear-gradient(135deg,var(--accent-bg),var(--surface2));border:1px solid var(--border2);border-radius:14px;padding:16px 20px;margin-bottom:22px">
+    <div style="font-size:.73rem;font-weight:700;color:var(--accent);letter-spacing:.5px;text-transform:uppercase;margin-bottom:7px">📋 Executive Summary</div>
+    <p style="font-size:.82rem;color:var(--text2);line-height:1.75">Pilot 5 คน จาก 4 บริษัท (PCC · PDE · PEM · PSP) ใน 2 กลุ่ม พิสูจน์ว่า AI ช่วยลดเวลางานได้จริง <strong>203+ ชั่วโมง ≈ 25 วันทำงาน</strong> ใน 6 สัปดาห์ สร้าง Business Value <strong>110,000+ บาท + Proposal มูลค่า 252M฿ + Forecast 3,951M฿</strong> — ทีม Avg Level 4.5 <strong>เกินเป้า Q3 ล่วงหน้าแล้ว</strong> พร้อม Scale จาก 5 Pilot สู่ 20+ คน ใน Q3/2026</p>
   </div>
 
   <div class="bottom-grid">
     <div class="panel">
       <div class="section-title">AI Level Framework — ทีมอยู่ที่ไหน</div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:#eff6ff;color:#3b82f6">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:#ecfeff;color:#0891b2">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:#ecfdf5;color:#059669">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div></div><div class="mini-avs"><div class="mav" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:#fffbeb;color:#d97706">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div></div><div class="mini-avs"><div class="mav mav-m">ม</div><div class="mav mav-p">ภ</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:#fff7ed;color:#ea580c">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div></div><div class="mini-avs"><div class="mav mav-e">E</div><div class="mav mav-p" style="font-size:.5rem;background:linear-gradient(135deg,#ec4899,#be185d)">ภ*</div><div class="mav mav-m">ม</div></div></div>
-      <div class="lvl-row cur"><div class="lvl-num" style="background:#fef2f2;color:#dc2626">6</div><div class="lvl-info"><div class="lvl-name">ปล่อยจอย — Agentic Operator</div></div><div class="mini-avs"><div class="mav mav-n">น</div></div></div>
-      <div class="lvl-row"><div class="lvl-num" style="background:#f5f3ff;color:#7c3aed">7</div><div class="lvl-info"><div class="lvl-name">คบเด็กสร้างบ้าน — Architect</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#eff6ff;color:#3b82f6">1</div><div class="lvl-info"><div class="lvl-name">ทารก — Basic User</div><div class="lvl-desc">สั่ง AI แบบ 1 คำถาม-1 คำตอบ ไม่มี Context ต่อเนื่อง</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#ecfeff;color:#0891b2">2</div><div class="lvl-info"><div class="lvl-name">วัยรุ่น — Prompt Engineer</div><div class="lvl-desc">เขียน Prompt ดีขึ้น มี Role + Context + Format แต่ยัง Manual ทุกครั้ง</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#ecfdf5;color:#059669">3</div><div class="lvl-info"><div class="lvl-name">วัยรุ่นตอนปลาย — Integrator</div><div class="lvl-desc">ผสม Tool หลายตัว เชื่อม MCP/API สร้าง Artifact ที่นำไปใช้งานได้จริง</div><div style="margin-top:5px;font-size:.64rem;color:#059669;font-weight:600">เจตนิพัทธ์ บุญใจ · PEM · กลุ่ม วิชาชีพ</div></div><div class="mini-avs"><div class="mav" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#fffbeb;color:#d97706">4</div><div class="lvl-info"><div class="lvl-name">ปล่อยของ — The Builder</div><div class="lvl-desc">สร้าง Output ที่คนอื่นใช้งานได้ — Template, Tool, Report พร้อมแจกจ่าย</div><div style="margin-top:5px;font-size:.64rem;color:#d97706;font-weight:600">มนพร พงศ์สิทธิศาสตร์ · PEM &nbsp;|&nbsp; ภัทริดา กองสิน · PSP</div></div><div class="mini-avs"><div class="mav mav-m">ม</div><div class="mav mav-p">ภ</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#fff7ed;color:#ea580c">5</div><div class="lvl-info"><div class="lvl-name">ปล่อยมือ — Task Automator</div><div class="lvl-desc">ระบบทำงานเองได้ — Script, Auto-trigger, Scheduled Task ไม่ต้องสั่งทุกครั้ง</div><div style="margin-top:5px;font-size:.64rem;color:#ea580c;font-weight:600">จิณนภัสฐ์ ภัศฐาพงษ์ · PCC &nbsp;|&nbsp; มนพร* L5 Assessed &nbsp;|&nbsp; ภัทริดา* L5 Demo · PSP</div></div><div class="mini-avs"><div class="mav mav-e">E</div><div class="mav mav-p" style="font-size:.5rem;background:linear-gradient(135deg,#ec4899,#be185d)">ภ*</div><div class="mav mav-m">ม</div></div></div>
+      <div class="lvl-row cur"><div class="lvl-num" style="background:#fef2f2;color:#dc2626">6</div><div class="lvl-info"><div class="lvl-name">ปล่อยจอย — Agentic Operator</div><div class="lvl-desc">ออกแบบ Multi-Agent System ที่ตัดสินใจ-ทำงานต่อเนื่องเองโดยไม่ต้อง Human Trigger</div><div style="margin-top:5px;font-size:.64rem;color:#dc2626;font-weight:600">นราวิชญ์ สมนา · PDE · จัดการ/ชำนาญการ</div></div><div class="mini-avs"><div class="mav mav-n">น</div></div></div>
+      <div class="lvl-row"><div class="lvl-num" style="background:#f5f3ff;color:#7c3aed">7</div><div class="lvl-info"><div class="lvl-name">คบเด็กสร้างบ้าน — Architect</div><div class="lvl-desc">สร้าง AI Infrastructure ให้องค์กร — Platform, Standards, Training System · เป้าปี 2027+</div></div></div>
     </div>
     <div class="panel">
-      <div class="section-title">Roadmap — เส้นทางสู่ Level ถัดไป</div>
-      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--accent-bg)">🎯</div><div class="rm-content"><h4>Nick → Level 6 (ปล่อยจอย)</h4><p>Deploy EMS Advisory System บน <strong>Production จริง</strong> ให้รันทุกวันอัตโนมัติ — Forecast → Dispatch → Advisory → S3 → Dashboard โดยไม่มีคนกด หรือขยายให้ครอบคลุม EMS อื่นของ PEA</p><div class="rm-chip" style="color:var(--accent)">L6 → L7 · Production Deploy + End-to-End Auto · ~1–2 sessions</div></div></div>
-      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>Earth → Level 6 (ปล่อยจอย) 🆕</h4><p>Setup Apps Script ครบ + ตั้ง Auto-trigger HC Dashboard เมื่อมี Excel ใหม่ใน Drive</p><div class="rm-chip" style="color:var(--gold)">L4.5 → L5 · Complete Apps Script · ~1 session</div></div></div>
-      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--teal-bg)">🏭</div><div class="rm-content"><h4>Belle → Level 5 (ปล่อยมือ)</h4><p>สร้าง <strong>Python Script auto-update HTML</strong> เมื่อ Excel เปลี่ยน → generate ISA-95 HTML ใหม่อัตโนมัติ ไม่ต้องสั่ง AI ทุกครั้ง</p><div class="rm-chip" style="color:var(--teal)">L4 → L5 · Auto-trigger Script · ~1 session</div></div></div>
-      <div class="rm-item" style="border-color:#e9d5ff"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0;background:var(--purple-bg)">🚀</div><div class="rm-content"><h4>Team Goal — Q3/2026</h4><p>Nick L6 + Earth L5 + Pattaratida L4 + Belle L4 → <strong>Agentic HR + Sales + Manufacturing System</strong></p><div class="rm-chip" style="color:var(--purple)">Team Avg L5 · Impact: -70% Manual Work</div></div></div>
+      <div class="section-title">Roadmap — แผนพัฒนา AI ตาม Employee Group & Company</div>
+      <div style="font-size:.67rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border)">กลุ่ม จัดการ/ชำนาญการ · ~148 คน · Pilot 4 บริษัท</div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:#fef2f2">🤖</div><div class="rm-content"><h4>PDE · นราวิชญ์ สมนา — L6 → L7</h4><p>Deploy Precise AI Portal บน Production ให้รันทุกวันอัตโนมัติ — EMS Forecast → Dispatch → Advisory ไม่มีคนกด = Architect ระดับ Enterprise</p><div class="rm-chip" style="color:#dc2626">L6 → L7 · Production Deploy · ~1–2 sessions</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:var(--gold-bg)">⚡</div><div class="rm-content"><h4>PCC · จิณนภัสฐ์ ภัศฐาพงษ์ — L5 → L6</h4><p>เพิ่ม Auto-notify Line/Email เมื่อมี NRC ประชุมใหม่ หรือ HC Report ออก → HR Intelligence ทำงานเองครบวงจรไม่ต้อง Manual Trigger</p><div class="rm-chip" style="color:var(--gold)">L5 → L6 · Auto-notify · ~1 session</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:var(--rose-bg)">🎯</div><div class="rm-content"><h4>PSP · ภัทริดา กองสิน — L4 → L5 เต็ม</h4><p>ตั้ง Auto-trigger เมื่อ TOR ใหม่เข้า Folder + แปลง PRECISE Sales Script เป็น Tool อิสระที่ทีม Sales รันเองได้ทุกเดือน</p><div class="rm-chip" style="color:var(--rose)">L4 → L5 · Auto TOR + Script · ~1 session</div></div></div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:var(--teal-bg)">🏭</div><div class="rm-content"><h4>PEM · มนพร พงศ์สิทธิศาสตร์ — L5 → L6</h4><p>Implement UC-02 BOQ Auto-Generator จาก Blueprint 17 UCs ให้เป็น Python Script จริง ที่ฝ่าย Sales ใช้สร้างใบเสนอราคาเองได้ทันที</p><div class="rm-chip" style="color:var(--teal)">L5 → L6 · BOQ Script Deploy · ~1–2 sessions</div></div></div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:.68rem;color:var(--text3);margin-bottom:10px">📌 <strong>PPP · PCE · PSL · SBP</strong> — ยังไม่มี Pilot · Scale Up Q3/2026: ส่ง 1–2 คน/บริษัท เข้าร่วม Knowledge Vault</div>
+      <div style="font-size:.67rem;font-weight:700;color:#059669;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-bottom:5px;border-bottom:1px solid var(--border)">กลุ่ม วิชาชีพ · ~220 คน · Pilot 1 บริษัท</div>
+      <div class="rm-item"><div style="width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;background:#ecfdf5">📈</div><div class="rm-content"><h4>PEM · เจตนิพัทธ์ บุญใจ — L3.5 → L4</h4><p>สร้าง Monthly Auto-Audit Script สำหรับ Knowledge Vault ให้รันตรวจสอบ Data Hygiene ทุกเดือนอัตโนมัติ = Builder ที่สร้าง Tool ให้ทีม 5 คนใช้ร่วมกัน</p><div class="rm-chip" style="color:#059669">L3.5 → L4 · Auto-Audit Script · ~1 session</div></div></div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:9px 12px;font-size:.68rem;color:var(--text3)">📌 <strong>กลุ่ม บริหาร/ผู้เชี่ยวชาญ (~14 คน) · กลุ่ม วิชาชีพ บริษัทอื่น · กลุ่ม ปฏิบัติการ (~25 คน)</strong> — ยังไม่มี Pilot · วางแผน Scale Up ใน Q3/2026 หลังจัดการ/ชำนาญการ เสร็จ</div>
     </div>
   </div>
 </div>
 
   <div class="ph-divider"></div>
 
-  <!-- ═══ PHASE 1: IMPACT & TIMELINE ═══ -->
+  <!-- ═══ IMPACT & TIMELINE ═══ -->
   <div class="section-header">
-    <h2>📈 Phase 1 — Impact & Timeline</h2>
-    <span>มูลค่าที่สร้าง + ความก้าวหน้าตามเวลา</span>
+    <h2>📈 Impact & Timeline</h2>
+    <span>มูลค่าที่สร้าง + ผลลัพธ์รายคน</span>
   </div>
 
   <!-- Impact Row -->
   <div class="impact-row">
     <div class="impact-card">
       <div class="impact-card-head"><div class="impact-icon" style="background:var(--green-bg)">💰</div><div class="impact-label">Business Value สะสม</div></div>
-      <div class="impact-val" style="color:var(--green)">100,000+</div>
+      <div class="impact-val" style="color:var(--green)">110,000+</div>
       <div class="impact-sub">บาท · ชม.ประหยัด × อัตราค่าจ้าง รวมทุกคน</div>
       <div class="impact-bar-wrap">
         <div class="impact-bar-label"><span>Nick 18K</span><span>Earth 36K</span><span>P'tida 30K</span><span>Belle 25K</span></div>
@@ -463,7 +404,8 @@
           <div style="flex:14;background:var(--accent);border-radius:3px 0 0 3px"></div>
           <div style="flex:36;background:var(--gold)"></div>
           <div style="flex:30;background:var(--rose)"></div>
-          <div style="flex:25;background:var(--teal);border-radius:0 3px 3px 0"></div>
+          <div style="flex:25;background:var(--teal)"></div>
+          <div style="flex:4;background:#f97316;border-radius:0 3px 3px 0"></div>
         </div>
       </div>
     </div>
@@ -472,409 +414,92 @@
       <div class="impact-val" style="color:var(--purple)">252M+</div>
       <div class="impact-sub">บาท Proposal · + 8,800 ฿/เดือน Recurring</div>
       <div class="impact-bar-wrap">
-        <div class="impact-bar-label"><span>Pattaratida UC#5 TOR Proposal</span></div>
+        <div class="impact-bar-label"><span>ภัทริดา UC#5 TOR Proposal</span></div>
         <div class="impact-bar-track"><div class="impact-bar-fill" style="width:100%;background:var(--rose)"></div></div>
       </div>
       <div class="impact-sub" style="margin-top:5px">Annual Recurring: 105,600 ฿/ปี (ongoing)</div>
     </div>
     <div class="impact-card">
-      <div class="impact-card-head"><div class="impact-icon" style="background:var(--gold-bg)">⚡</div><div class="impact-label">UC Velocity — 22 วัน</div></div>
-      <div class="impact-val" style="color:var(--gold)">30</div>
-      <div class="impact-sub">Use Cases · 20 พ.ค.–10 มิ.ย. 2569</div>
+      <div class="impact-card-head"><div class="impact-icon" style="background:var(--gold-bg)">⚡</div><div class="impact-label">UC Velocity — 27 วัน</div></div>
+      <div class="impact-val" style="color:var(--gold)">33</div>
+      <div class="impact-sub">Use Cases · 20 พ.ค.–16 มิ.ย. 2569</div>
       <div class="impact-bar-wrap">
-        <div class="impact-bar-label"><span>20-22 พ.ค.</span><span>25-28</span><span>30–1 มิ.ย.</span><span>5-10 มิ.ย.</span></div>
+        <div class="impact-bar-label"><span>20–22 พ.ค.</span><span>25–28</span><span>30–1 มิ.ย.</span><span>10–16 มิ.ย.</span></div>
         <div style="display:flex;gap:2px;height:20px;align-items:flex-end;margin-top:4px">
           <div style="flex:20;background:var(--accent-bg);border:1px solid #bfdbfe;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--accent);font-weight:700">20</div>
           <div style="flex:5;background:var(--rose-bg);border:1px solid #fbcfe8;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--rose);font-weight:700;height:40%">5</div>
           <div style="flex:3;background:var(--gold-bg);border:1px solid #fde68a;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--gold);font-weight:700;height:25%">3</div>
-          <div style="flex:2;background:#fff7ed;border:1px solid #fed7aa;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#f97316;font-weight:700;height:20%">2</div>
+          <div style="flex:5;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:3px 3px 0 0;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:#059669;font-weight:700;height:35%">5</div>
         </div>
       </div>
     </div>
   </div>
-<!-- Domain Coverage -->
+
+  <!-- Impact per Person -->
   <div class="tl-panel" style="margin-bottom:20px">
-    <div class="section-title">🏷️ Domain Coverage — 30 UCs แยกตาม Scope งาน</div>
-    <div class="dom-bar">
-      <div class="dom-bar-seg" style="flex:3;background:#1d4ed8" title="Corporate Strategy (3)">3</div>
-      <div class="dom-bar-seg" style="flex:5;background:#065f46" title="HR (5)">5</div>
-      <div class="dom-bar-seg" style="flex:9;background:#5b21b6" title="Digital Process (9)">9</div>
-      <div class="dom-bar-seg" style="flex:4;background:#92400e" title="Information Capital (4)">4</div>
-      <div class="dom-bar-seg" style="flex:4;background:#991b1b" title="Revenue Stream Dev (4)">4</div>
-      <div class="dom-bar-seg" style="flex:5;background:#86198f" title="Support BD (5)">5</div>
+    <div class="section-title">Impact per Person — ชม. × อัตราค่าจ้าง + Value</div>
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+        <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-n" style="width:20px;height:20px;font-size:.55rem">น</div><span style="font-size:.78rem;font-weight:600">นราวิชญ์ สมนา — L6 🤖 · PDE · จัดการ/ชำนาญการ</span></div>
+        <span style="font-size:.72rem;color:#dc2626;font-weight:700">~18,000 ฿ + EMS+Video</span>
+      </div>
+      <div class="impact-bar-track"><div class="impact-bar-fill" style="width:14%;background:#dc2626"></div></div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:3px">9 UCs · PEA EMS 3-Agent L6 + Pitch Video Veo L4 + Stitch Portal + Jira Auto L5 + Timesheet L7 + SGAM</div>
     </div>
-    <div class="dom-legend">
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#1d4ed8"></div><span><strong>Corporate Strategy (3)</strong> — Nick ROI · Earth NRC + IC Framework</span></div>
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#065f46"></div><span><strong>HR (5)</strong> — Nick Assessment · Earth Job Role + HC + Copilot Survey</span></div>
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#5b21b6"></div><span><strong>Digital Process (9) ← มากที่สุด</strong> — Nick Logger+Jira+Timesheet+Portal · Earth Dashboard+Agentic+Cloudflare · Belle Odoo · Jetniphat Audit</span></div>
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#92400e"></div><span><strong>Information Capital (4)</strong> — Nick SGAM · Earth Bamboo+ISA-95 · Belle ISA-95</span></div>
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#991b1b"></div><span><strong>Revenue Stream Dev (4)</strong> — Nick PEA Pitch Video + Earth TCS LCC · Belle Blueprint + PDEM 3,951M฿</span></div>
-      <div class="dom-leg-item"><div class="dom-dot" style="background:#86198f"></div><span><strong>Support BD Subsidiary (5)</strong> — Pattaratida ICP+BA+PRECISE+EPC L5+TOR 252M฿</span></div>
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+        <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-e" style="width:20px;height:20px;font-size:.55rem">E</div><span style="font-size:.78rem;font-weight:600">จิณนภัสฐ์ ภัศฐาพงษ์ — L5 · PCC · จัดการ/ชำนาญการ</span></div>
+        <span style="font-size:.72rem;color:var(--gold);font-weight:700">~36,000 ฿ + TCS Sales Tool</span>
+      </div>
+      <div class="impact-bar-track"><div class="impact-bar-fill" style="width:43%;background:var(--gold)"></div></div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:3px">11 UCs · 65+ ชม. · TCS LCC ลด Sales Cycle + Agentic Task L5 + HC Dashboard Auto + NRC v3 13 Modules</div>
     </div>
-    <div style="margin-top:10px;padding:10px 14px;background:var(--surface2);border-radius:8px;border:1px solid var(--border);font-size:.71rem;color:var(--text2);line-height:1.8">
-      <strong style="color:var(--text)">📊 Strategic Insight:</strong><br>
-      • <strong>Digital Process (9)</strong> มากที่สุด — Nick Portal Design ขยาย scope สู่ Enterprise Platform<br>
-      • <strong>Corporate Strategy (3)</strong> NRC System v3 ครอบคลุม Corporate Governance 12 กรรมการ 13 modules<br>
-      • <strong>Revenue + Support BD รวม 8 UCs</strong> — Earth TCS LCC + Pattaratida 252M฿ + Belle PDEM = Direct Business Impact<br>
-      • <strong>ช่องว่าง:</strong> Finance/Accounting + Operations ยังไม่มี UC — โอกาสขยายทีมใหม่
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+        <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-p" style="width:20px;height:20px;font-size:.55rem">ภ</div><span style="font-size:.78rem;font-weight:600">ภัทริดา กองสิน — L4 (L5 Demo) · PSP · จัดการ/ชำนาญการ</span></div>
+        <span style="font-size:.72rem;color:var(--rose);font-weight:700">~30,000 ฿ + 252M฿ Proposal 🔥</span>
+      </div>
+      <div class="impact-bar-track"><div class="impact-bar-fill" style="width:36%;background:var(--rose)"></div></div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:3px">5 UCs · Recurring 8,800 ฿/เดือน · TOR→Proposal PZE 252M฿ ใน 45 นาที · EPC Scope Auto L5</div>
     </div>
-  </div>
-
-<!-- Timeline -->
-  <div class="timeline-grid">
-    <div class="tl-panel">
-      <div class="section-title">UC Timeline — 30 UCs · 20 พ.ค.–10 มิ.ย. 2569</div>
-      <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--accent)">นราวิชญ์ (9) 🤖L6</div>
-        <div class="tl-dots">
-          <div class="day-group"><div class="uc-dot uc-dot-n" title="UC#1 Knowledge Logger L5">1</div></div>
-          <div style="flex:1"></div>
-          <div class="day-group"><div style="display:flex;gap:3px">
-            <div class="uc-dot uc-dot-n" title="UC#2 ROI L3">2</div>
-            <div class="uc-dot uc-dot-n" title="UC#3 AI Assessment L3">3</div>
-            <div class="uc-dot uc-dot-n" title="UC#4 Jira L5">4</div>
-            <div class="uc-dot uc-dot-n" title="UC#5 Timesheet L7">5</div>
-          </div></div>
-          <div style="flex:0.5"></div>
-          <div class="day-group"><div class="uc-dot uc-dot-n" title="UC#6 SGAM L3">6</div></div>
-          <div style="flex:0.5"></div>
-          <div class="day-group"><div class="uc-dot" style="background:#dc2626;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:800;color:#fff;box-shadow:0 0 8px rgba(220,38,38,.6)" title="UC#7 PEA Hackathon L6">7</div></div>
-          <div style="flex:0.5"></div>
-          <div class="day-group"><div class="uc-dot uc-dot-n" title="UC#8 Stitch Portal L5">8</div>
-            <div class="uc-dot uc-dot-n" title="UC#9 Pitch Video Veo+Canva L4" style="width:20px;height:20px;font-size:.55rem">9</div></div>
-          <div style="flex:0.1"></div>
-        </div>
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
+        <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-m" style="width:20px;height:20px;font-size:.55rem">ม</div><span style="font-size:.78rem;font-weight:600">มนพร พงศ์สิทธิศาสตร์ — L5 Assessed · PEM · จัดการ/ชำนาญการ</span></div>
+        <span style="font-size:.72rem;color:var(--teal);font-weight:700">~25,000 ฿ + PDEM 3,951M฿</span>
       </div>
-      <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--gold)">จิณนภัสฐ์ (11) L5</div>
-        <div class="tl-dots">
-          <div class="day-group"><div style="display:flex;gap:3px">
-            <div class="uc-dot uc-dot-e" title="UC#1 Bamboo L4">1</div>
-            <div class="uc-dot uc-dot-e" title="UC#2 Job Role L4">2</div>
-          </div></div>
-          <div style="flex:1"></div>
-          <div class="day-group"><div style="display:flex;gap:2px;flex-wrap:wrap;max-width:120px">
-            <div class="uc-dot uc-dot-e" title="UC#3 Strategy L4">3</div>
-            <div class="uc-dot uc-dot-e" title="UC#4 HC L5">4</div>
-            <div class="uc-dot uc-dot-e" title="UC#5 NRC L4">5</div>
-            <div class="uc-dot uc-dot-e" title="UC#6 Dashboard L5">6</div>
-            <div class="uc-dot uc-dot-e" title="UC#7 Copilot L4">7</div>
-          </div></div>
-          <div style="flex:0.3"></div>
-          <div class="day-group"><div class="uc-dot uc-dot-e" title="UC#8 ISA-95 L4">8</div></div>
-          <div style="flex:0.3"></div>
-          <div class="day-group"><div style="display:flex;gap:2px">
-            <div class="uc-dot uc-dot-e" title="UC#9 Agentic Task L5">9</div>
-            <div class="uc-dot uc-dot-e" title="UC#10 Cloudflare L5">10</div>
-          </div></div>
-          <div style="flex:0.5"></div>
-          <div class="day-group"><div class="uc-dot" style="background:#d97706;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:800;color:#fff;box-shadow:0 0 8px rgba(217,119,6,.6)" title="UC#11 TCS LCC L5">11</div></div>
-        </div>
-      </div>
-      <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--rose)">ภัทริดา (5) L4*</div>
-        <div class="tl-dots">
-          <div style="flex:1"></div>
-          <div class="day-group"><div style="display:flex;gap:3px">
-            <div class="uc-dot uc-dot-p" title="UC#1 ICP L3">1</div>
-            <div class="uc-dot uc-dot-p" title="UC#2 BA L3">2</div>
-            <div class="uc-dot uc-dot-p" title="UC#3 PRECISE L4">3</div>
-          </div></div>
-          <div style="flex:1"></div>
-          <div class="day-group"><div style="display:flex;gap:3px">
-            <div class="uc-dot uc-dot-p" title="UC#4 EPC Auto L5">4</div>
-            <div class="uc-dot uc-dot-p" title="UC#5 TOR 252M฿ L4">5</div>
-          </div></div>
-          <div style="flex:2"></div>
-        </div>
-      </div>
-      <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--teal)">มนพร(4) ⭐L5</div>
-        <div class="tl-dots">
-          <div style="flex:1"></div>
-          <div class="day-group"><div class="uc-dot uc-dot-m" title="UC#1 Blueprint 17 UCs L3">1</div></div>
-          <div style="flex:0.5"></div>
-          <div class="day-group"><div style="display:flex;gap:3px">
-            <div class="uc-dot uc-dot-m" title="UC#2 ISA-95 HTML L4">2</div>
-            <div class="uc-dot uc-dot-m" title="UC#3 Odoo Visual L2">3</div>
-            <div class="uc-dot uc-dot-m" title="UC#4 PDEM Forecast L4">4</div>
-          </div></div>
-          <div style="flex:3"></div>
-        </div>
-      </div>
-      <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:#f97316">เจตนิพัทธ์(1) 🆕L3</div>
-        <div class="tl-dots">
-          <div style="flex:6.5"></div>
-          <div class="day-group"><div class="uc-dot" style="background:#f97316" title="UC#1 Audit Knowledge Vault L3">1</div></div>
-          <div style="flex:0.1"></div>
-        </div>
-      </div>
-      <div class="tl-axis"><span>20 พ.ค.</span><span>21 พ.ค.</span><span>22 พ.ค.</span><span>25-26</span><span>27-28</span><span>30-1 มิ.ย.</span><span>5 มิ.ย.</span><span>10 มิ.ย.</span></div>
-      <p style="font-size:.62rem;color:var(--text3);margin-top:6px">* Hover บน dot เพื่อดูชื่อ UC · สีแดงเข้ม = L6 · ⭐ = Assessed Level</p>
+      <div class="impact-bar-track"><div class="impact-bar-fill" style="width:30%;background:var(--teal)"></div></div>
+      <div style="font-size:.62rem;color:var(--text3);margin-top:3px">4 UCs · 55+ ชม. · PDEM Forecast 2026–2030 ครอบคลุม 6 BUs · Blueprint 17 AI UCs สำหรับ Switchgear Manufacturing</div>
     </div>
-
-    <div class="tl-panel">
-      <div class="section-title">Impact per Person — ชม. × อัตราค่าจ้าง + Value</div>
+    <div style="padding:11px;background:var(--surface2);border-radius:9px;border:1px solid var(--border)">
       <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-n" style="width:20px;height:20px;font-size:.55rem">น</div><span style="font-size:.78rem;font-weight:600">นราวิชญ์ สมนา L6 🤖</span></div>
-          <span style="font-size:.72rem;color:#dc2626;font-weight:700">~18,000 ฿ + EMS+Video</span>
-        </div>
-        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:14%;background:#dc2626"></div></div>
-        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">9 UCs · PEA EMS 8-10h + Pitch Video 2-3h + Stitch Portal + Jira + Timesheet + SGAM</div>
-      </div>
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-e" style="width:20px;height:20px;font-size:.55rem">E</div><span style="font-size:.78rem;font-weight:600">จิณนภัสฐ์ ภัศฐาพงษ์ L5</span></div>
-          <span style="font-size:.72rem;color:var(--gold);font-weight:700">~36,000 ฿ + TCS Sales Tool</span>
-        </div>
-        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:43%;background:var(--gold)"></div></div>
-        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">11 UCs · 65+ ชม. · TCS LCC ลด Sales Cycle + Agentic Task + Dashboard Auto</div>
-      </div>
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-p" style="width:20px;height:20px;font-size:.55rem">ภ</div><span style="font-size:.78rem;font-weight:600">ภัทริดา กองสิน L4(L5 Demo)</span></div>
-          <span style="font-size:.72rem;color:var(--rose);font-weight:700">~30,000 ฿ + 252M฿ Proposal 🔥</span>
-        </div>
-        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:36%;background:var(--rose)"></div></div>
-        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">5 UCs · Recurring 8,800 ฿/เดือน · TOR→Proposal PZE 252M฿</div>
-      </div>
-      <div style="margin-bottom:12px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-m" style="width:20px;height:20px;font-size:.55rem">ม</div><span style="font-size:.78rem;font-weight:600">มนพร พงศ์สิทธิศาสตร์ L5 ⭐</span></div>
-          <span style="font-size:.72rem;color:var(--teal);font-weight:700">~25,000 ฿ + PDEM 3,951M฿</span>
-        </div>
-        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:30%;background:var(--teal)"></div></div>
-        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">4 UCs · 55+ ชม. · PDEM 2027–2030 ครอบคลุม 6 BUs</div>
-      </div>
-      <div style="padding:11px;background:var(--surface2);border-radius:9px;border:1px solid var(--border)">
-        <div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
           <div style="display:flex;align-items:center;gap:6px">
             <div class="mav" style="width:20px;height:20px;background:linear-gradient(135deg,#f97316,#c2410c);font-size:.55rem">J</div>
-            <span style="font-size:.78rem;font-weight:600">เจตนิพัทธ์ บุญใจ — L3 🆕</span>
+            <span style="font-size:.78rem;font-weight:600">เจตนิพัทธ์ บุญใจ — L3.5 · PEM · กลุ่ม วิชาชีพ</span>
           </div>
-          <span style="font-size:.72rem;color:#f97316;font-weight:700">~700 ฿ + Data Hygiene Fix</span>
+          <span style="font-size:.72rem;color:#f97316;font-weight:700">~4,000 ฿ + Data Governance Fix</span>
         </div>
-        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:1%;background:#f97316"></div></div>
-        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">1 UC · Audit Knowledge Vault — พบ 4 ปัญหากระทบทั้งทีม (40 นาที)</div>
+        <div class="impact-bar-track"><div class="impact-bar-fill" style="width:4%;background:#f97316"></div></div>
+        <div style="font-size:.62rem;color:var(--text3);margin-top:3px">4 UCs · ~3.75 ชม. · Audit Knowledge Vault (4 Data Hygiene Issues กระทบทีม) + BA System Prompt L4 + Excel 6-Sheet Project Register L4 + MarkItDown PDF Pipeline L3</div>
       </div>
       <div style="font-size:.72rem;font-weight:700;margin-bottom:6px">🏆 Top Rankings</div>
-        <div style="font-size:.69rem;color:var(--text2);line-height:2.1">
-          💰 <strong>Highest Value:</strong> Pattaratida UC#5 — 252M฿ ใน 45 นาที<br>
-          🔄 <strong>Best Recurring:</strong> Pattaratida UC#3 — 105,600 ฿/ปี<br>
-          📊 <strong>Best Forecast:</strong> Belle UC#4 — PDEM 3,951M฿<br>
-          🤖 <strong>Most Strategic:</strong> Nick UC#7 EMS L6 (PEA Hackathon)<br>
-          🛠️ <strong>Most Deliverables:</strong> Earth UC#11 — 8 Tools in 1 session<br>
-          ⚡ <strong>Most UCs:</strong> Earth — 11 UCs / 5 Domains
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- Cross-UC Synergy -->
-  <div class="tl-panel" style="margin-bottom:20px">
-    <div class="section-title">🔗 Cross-UC Synergy — 11 คู่ที่เชื่อมกันได้ (อัปเดต)</div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="synergy-item" style="border-color:#fecaca">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-e">E</div></div>
-        <div class="syn-content"><h4>Nick AI Portal (UC#8) + Earth MCP Systems</h4>
-          <p>Nick ออกแบบ Portal ที่ใช้ MCP HR/Sales/OKR — Earth สร้าง MCP ทั้งหมด (NRC, HC, Agentic Task) → Portal เป็น Frontend ที่ Earth's systems รองรับอยู่แล้ว</p>
-          <span class="syn-chip" style="background:#fef2f2;color:#dc2626">Impact: Enterprise AI Platform ครบวงจร</span></div>
-      </div>
-      <div class="synergy-item" style="border-color:#fde68a">
-        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div></div>
-        <div class="syn-content"><h4>Earth TCS LCC Tool (UC#11) + Pattaratida Sales Intelligence</h4>
-          <p>Pattaratida ค้น Prospect ด้วย AI → ส่งให้ Earth's TCS LCC Tool วิเคราะห์ Cost Saving ให้ Buyer ทันที = Complete AI-powered Sales Cycle ไม่มีคนคั่น</p>
-          <span class="syn-chip" style="background:var(--gold-bg);color:var(--gold)">Impact: End-to-End AI Sales Pipeline</span></div>
-      </div>
-            <div class="synergy-item" style="border-color:#fecaca;background:#fff5f5">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-n">น</div></div>
-        <div class="syn-content">
-          <h4>Nick UC#7 EMS System + UC#9 Pitch Video = Complete Hackathon</h4>
-          <p>UC#7 สร้าง AI Product (EMS 3 Agents L6) · UC#9 สร้าง Marketing (60s Cinematic Video) → Nick ทำครบทั้ง Product + Pitch ด้วย AI ล้วนๆ ใน Hackathon เดียว</p>
-          <span class="syn-chip" style="background:#fef2f2;color:#dc2626">Impact: Full-stack Hackathon · Technical + Creative</span>
-        </div>
-      </div>
-<div class="synergy-item">
-        <div class="syn-avatars"><div class="syn-av mav-m">ม</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div></div>
-        <div class="syn-content"><h4>Belle PDEM Forecast + Pattaratida Proposal Priority</h4>
-          <p>PEM102 SF6-free +12.6%, Cambodia +13.1% → กำหนด Priority Proposal ตาม BU ที่ Grow แทนรับงานตามคิว</p>
-          <span class="syn-chip" style="background:var(--teal-bg);color:var(--teal)">Impact: Target ตรง Market Growth</span></div>
-      </div>
-      <div class="synergy-item">
-        <div class="syn-avatars"><div class="syn-av mav-p">ภ</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
-        <div class="syn-content"><h4>Pattaratida EPC Scope Auto + Belle Excel→HTML Pattern</h4>
-          <p>PDF → EPC Excel (L5 Auto) → HTML Presentation (Belle Pattern) = Proposal พร้อม Visual ให้ลูกค้าโดยไม่มี Manual Work</p>
-          <span class="syn-chip" style="background:var(--rose-bg);color:var(--rose)">Impact: End-to-End Proposal Automation</span></div>
-      </div>
-      <div class="synergy-item">
-        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-n">น</div></div>
-        <div class="syn-content"><h4>Earth HC Dashboard + Nick AI Level Assessment</h4>
-          <p>HC Data 797 คน 9 บริษัท + AI Level ของแต่ละทีม → BU ไหน HC มากแต่ AI Level ต่ำ ต้องพัฒนาก่อน</p>
-          <span class="syn-chip" style="background:var(--accent-bg);color:var(--accent)">Impact: HR + AI Strategy รวม Dashboard</span></div>
-      </div>
-      <div class="synergy-item">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-e">E</div></div>
-        <div class="syn-content"><h4>Nick Drive Logger + Earth Cloudflare Worker + Make.com</h4>
-          <p>Auto-log (Nick) + Cloudflare Bridge (Earth) + Notion MCP → Knowledge Pipeline ที่ทีม 5 คนบันทึกงานได้จาก Claude Chat ทันที</p>
-          <span class="syn-chip" style="background:var(--purple-bg);color:var(--purple)">Impact: Team Knowledge System ครบวงจร</span></div>
-      </div>
-      <div class="synergy-item">
-        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
-        <div class="syn-content"><h4>Earth Job Role Library Pattern → Belle EPC Library</h4>
-          <p>Pattern "Excel → Interactive HTML" ใน 189 JDs → สร้าง EPC Scope Library ที่ทีม Pre-sale Reference ได้ทันที ลด Setup 80%</p>
-          <span class="syn-chip" style="background:var(--gold-bg);color:var(--gold)">Impact: Reusable Pattern ลด Effort</span></div>
-      </div>
-      <div class="synergy-item" style="border-color:#fecaca">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
-        <div class="syn-content">
-          <h4>Jetniphat Audit Findings → Nick + Earth Fix Knowledge Vault</h4>
-          <p>Jetniphat พบ 4 Data Hygiene issues (duplicate assessments, mimeType mix, unstable username) → Nick + Earth แก้ระบบ Logger ให้ถูกต้อง = Knowledge Base คุณภาพสูงขึ้นสำหรับทั้งทีม 5 คน</p>
-          <span class="syn-chip" style="background:#ecfdf5;color:#059669">Impact: System Quality ทีมทั้งหมด</span>
-        </div>
-      </div>
-      <div class="synergy-item" style="border-color:#fecaca">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
-        <div class="syn-content">
-          <h4>Nick Veo Pitch Template → Pattaratida + Belle Client Presentations</h4>
-          <p>"Character Anchor + Image-to-Video" ที่ Nick พัฒนาสำหรับ PEA → Pattaratida ใช้สร้าง Pitch Video สำหรับ Proposal EPC · Belle ใช้กับ PDEM Forecast ให้ PEA เห็นภาพ = ทีม BD มี Pitch Video ทุก Proposal</p>
-          <span class="syn-chip" style="background:#fef2f2;color:#dc2626">Impact: Reusable Template → ทุก Client Pitch</span>
-        </div>
-      </div>
-      <div class="synergy-item" style="border-color:#dbeafe">
-        <div class="syn-avatars"><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-n">น</div></div>
-        <div class="syn-content">
-          <h4>Earth NRC System v3 + Nick Precise AI Portal</h4>
-          <p>NRC data.json (Board/CG/Skills Matrix) → เข้า Nick's Portal ผ่าน MCP Governance module → ผู้บริหารดู CG Analysis + Board Skills Matrix ใน Enterprise Portal เดียว</p>
-          <span class="syn-chip" style="background:#eff6ff;color:#1d4ed8">Impact: Corporate Governance ใน Enterprise AI Platform</span>
-        </div>
-      </div>
-      <div class="syn-item-spacer"></div>
-      <div class="synergy-item" style="border-color:#e9d5ff">
-        <div class="syn-avatars"><div class="syn-av mav-n">น</div><div class="syn-plus">+</div><div class="syn-av mav-e">E</div><div class="syn-plus">+</div><div class="syn-av mav-p">ภ</div><div class="syn-plus">+</div><div class="syn-av mav-m">ม</div></div>
-        <div class="syn-content"><h4>🚀 End-to-End BD Intelligence Pipeline (Team L6 Goal)</h4>
-          <p>PDEM Forecast → PRECISE Scoring → TCS LCC Calculator → EPC Scope Auto → HC Planning = ระบบ BD ครบวงจรทำงานเองตั้งแต่ต้นน้ำถึงปลายน้ำ</p>
-          <span class="syn-chip" style="background:#f3eeff;color:#7c3aed">Q3/2026 · Team L6 · -70% Manual BD Work</span></div>
-      </div>
-    </div>
-  </div>
-<div class="ph-divider"></div>
-
-  <!-- ═══ PHASE 2: GAP ALERTS & Q3 PROGRESS ═══ -->
-  <div class="section-header">
-    <h2>🎯 Phase 2 — Gap Alerts & Q3 Progress</h2>
-    <span>จุดที่ต้องพัฒนา + ความก้าวหน้าสู่เป้าหมาย Q3/2026</span>
-  </div>
-  <div class="alert-grid">
-
-    <div class="alert-panel">
-      <div class="section-title">⚡ Gap Alerts — Action Items ถัดไป</div>
-
-      <div class="alert-item" style="background:#fef2f2;border:1px solid #fecaca">
-        <div class="alert-icon">🤖</div>
-        <div class="alert-body"><h4>Nick — L6 บรรลุแล้ว · ถัดไป L7 Production Deploy</h4>
-          <p>PEA Hackathon EMS 3-Agent (UC#7) + Pitch Video L4 (UC#9) + Portal Design (UC#8) ✅ → Deploy Precise AI Portal บน Production จริงให้รันทุกวัน = L7 End-to-End System</p></div>
-      </div>
-
-      <div class="alert-item alert-green">
-        <div class="alert-icon">✅</div>
-        <div class="alert-body"><h4>Earth — L5 บรรลุแล้ว · ถัดไป L6</h4>
-          <p>UC#5 NRC v3 + UC#9 Agentic Task + UC#10 Cloudflare + UC#11 TCS LCC ✅ → เพิ่ม <strong>Auto-notify Line/Email</strong> เมื่อมีประชุม NRC ใหม่หรือ Buyer กรอก LCC Tool = L6</p></div>
-      </div>
-
-      <div class="alert-item alert-yellow">
-        <div class="alert-icon">⚡</div>
-        <div class="alert-body"><h4>Pattaratida — L4 (L5 Demo) · ถัดไป L5 เต็ม</h4>
-          <p>EPC Scope Auto (UC#4 L5) ทำได้แล้ว + TOR Proposal 252M฿ ✅ → ตั้ง <strong>Auto-trigger เมื่อมี TOR ใหม่เข้า Folder</strong> + แปลง PRECISE Sales เป็น Script อิสระ = L5 เต็ม</p></div>
-      </div>
-
-      <div class="alert-item alert-green">
-        <div class="alert-icon">⭐</div>
-        <div class="alert-body"><h4>Belle — L5 Assessed ✅ · ถัดไป L6</h4>
-          <p>L5 จากการประเมินรวม (PDEM Forecast + Blueprint 17 UCs) → Implement <strong>UC-02 BOQ Auto-Generator</strong> จาก Blueprint ให้เป็น Script จริงที่ Sales รันเองได้ = L6</p></div>
-      </div>
-
-      <div class="alert-item alert-rose">
-        <div class="alert-icon">🔗</div>
-        <div class="alert-body"><h4>Team — Knowledge ยังไม่ไหลข้ามคนอัตโนมัติ</h4>
-          <p>Nick Stitch Portal (UC#8) ออกแบบ MCP ที่เชื่อม HR/Sales/OKR แล้ว → ถ้า Deploy Portal จริง ทีมทุกคนแชร์ Context กันได้ผ่าน UI เดียว ไม่ต้องส่งไฟล์กัน</p></div>
-      </div>
-
-      <div class="alert-item" style="background:#eff6ff;border:1px solid #bfdbfe">
-        <div class="alert-icon">🆕</div>
-        <div class="alert-body"><h4>Jetniphat — สมาชิกใหม่ · L1 → เป้า L3 ใน 4 สัปดาห์</h4>
-          <p>Digital Organization · เพิ่งเข้าร่วม → UC#1 (Audit Knowledge Vault L3) ✅ พบ 4 ปัญหา Data Hygiene กระทบทั้งทีม · ถัดไป: สร้าง auto-audit script = L4</p></div>
-      </div>
-      <div class="alert-item" style="background:#f0fdfa;border:1px solid #99f6e4">
-        <div class="alert-icon">🚀</div>
-        <div class="alert-body"><h4>Strategic Milestone — ทีมอยู่ L5 ทุกคนแล้ว!</h4>
-          <p>Nick L6 · Earth L5 · Belle L5 · Pattaratida L4(L5 Demo) — เป้า Q3 คือ <strong>ทีม Avg L5+ และมีคนถึง L6 อย่างน้อย 2 คน</strong> ภายในสิ้น Q3</p></div>
-      </div>
-    </div>
-
-    <div class="alert-panel">
-      <div class="section-title">🏆 Q3/2026 Progress — เป้าหมาย Team Avg L5</div>
-
-      <div class="q3-person">
-        <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-n" style="width:22px;height:22px;font-size:.6rem">น</div>นราวิชญ์ สมนา</div>
-          <span class="q3-badge" style="background:#fef2f2;color:#dc2626">L6 🤖 เกินเป้ามาก!</span>
-        </div>
-        <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--accent),#dc2626)"></div></div>
-        <div class="q3-sub"><span>L1</span><span style="color:#dc2626;font-weight:600">🤖 L6 บรรลุ · PEA EMS + Stitch Portal · ถัดไป L7 Production</span><span>L7</span></div>
-      </div>
-
-      <div class="q3-person">
-        <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-e" style="width:22px;height:22px;font-size:.6rem">E</div>จิณนภัสฐ์ ภัศฐาพงษ์</div>
-          <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L5 ✅ บรรลุ</span>
-        </div>
-        <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),#ea580c)"></div></div>
-        <div class="q3-sub"><span>L1</span><span style="color:var(--green);font-weight:600">⭐ L5 บรรลุ · TCS LCC+Agentic Task+Cloudflare · ถัดไป L6</span><span>L7</span></div>
-      </div>
-
-      <div class="q3-person">
-        <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-p" style="width:22px;height:22px;font-size:.6rem">ภ</div>ภัทริดา กองสิน</div>
-          <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L4(L5 Demo) → L5</span>
-        </div>
-        <div class="q3-track"><div class="q3-fill" style="width:84%;background:linear-gradient(90deg,var(--rose),#ea580c)"></div></div>
-        <div class="q3-sub"><span>L1</span><span>84% · EPC L5 ทำได้แล้ว · ขาด: Auto-trigger TOR + Script อิสระ</span><span>L7</span></div>
-      </div>
-
-      <div class="q3-person">
-        <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-m" style="width:22px;height:22px;font-size:.6rem">ม</div>มนพร พงศ์สิทธิศาสตร์</div>
-          <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L5 ✅ Assessed</span>
-        </div>
-        <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--teal),#ea580c)"></div></div>
-        <div class="q3-sub"><span>L1</span><span style="color:var(--green);font-weight:600">⭐ L5 Assessed · PDEM Forecast + Blueprint · ถัดไป: Implement UC-02</span><span>L7</span></div>
-      </div>
-
-      <div class="q3-person">
-        <div class="q3-header">
-          <div class="q3-name"><div class="mav" style="width:22px;height:22px;font-size:.6rem;background:linear-gradient(135deg,#f97316,#c2410c)">J</div>เจตนิพัทธ์ บุญใจ</div>
-          <span class="q3-badge" style="background:#ecfdf5;color:#059669">L3 🆕 → L4</span>
-        </div>
-        <div class="q3-track"><div class="q3-fill" style="width:60%;background:linear-gradient(90deg,#f97316,#059669)"></div></div>
-        <div class="q3-sub"><span>L1</span><span>60% · UC#1 Audit Knowledge Vault ✅ · ขาด: Monthly Auto-Audit Script</span><span>L7</span></div>
-      </div>
-
-      <div style="margin-top:14px;padding:13px;background:var(--surface2);border:1px solid var(--border);border-radius:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px">
-          <span style="font-size:.75rem;font-weight:700;color:var(--text)">🎯 Team Avg Progress</span>
-          <span style="font-size:.75rem;font-weight:700;color:var(--purple)">4.8 / 5.0 = 96%</span>
-        </div>
-        <div class="q3-track" style="height:12px"><div class="q3-fill" style="width:96%;background:linear-gradient(90deg,var(--purple),#7c3aed)"></div></div>
-        <div style="font-size:.65rem;color:var(--text3);margin-top:6px">
-          Nick L6 🤖 · Earth L5 ✅ · Belle L5 ✅ · Pattaratida L4(L5 Demo) · <span style="color:#f97316">Jetniphat L3 🆕</span><br>
-          <strong>เป้าถัดไป:</strong> ทีม Avg L5+ · 2 คนถึง L6 ภายิน Q3/2026 · Pattaratida ปิด L5 เต็ม
-        </div>
+      <div style="font-size:.69rem;color:var(--text2);line-height:2.1">
+        💰 <strong>Highest Value:</strong> ภัทริดา UC#5 — 252M฿ Proposal ใน 45 นาที<br>
+        🔄 <strong>Best Recurring:</strong> ภัทริดา UC#3 — 105,600 ฿/ปี<br>
+        📊 <strong>Best Forecast:</strong> มนพร UC#4 — PDEM Forecast 3,951M฿<br>
+        🤖 <strong>Most Strategic:</strong> นราวิชญ์ UC#7 — EMS 3-Agent L6 (PEA Hackathon)<br>
+        🛠️ <strong>Most Deliverables:</strong> จิณนภัสฐ์ UC#11 — 8 Tools in 1 session<br>
+        ⚡ <strong>Most UCs:</strong> จิณนภัสฐ์ — 11 UCs / 5 Domains
       </div>
     </div>
   </div>
 </div><!-- /view-overview -->
+
+<!-- ── DELETED SECTIONS (moved to group/company views): ──
+     cards-grid (5 pilot cards), Domain Coverage, UC Timeline,
+     Cross-UC Synergy, Phase 2 Gap Alerts & Q3 Progress
+     Old bottom-grid roadmap (per-person) → replaced with group/company roadmap
+-->
 
 <!-- ── Group View 1: บริหาร/ผู้เชี่ยวชาญ ── -->
 <div id="view-grp-1" class="view">

@@ -163,41 +163,152 @@
   .q3-target{position:absolute;top:0;bottom:0;width:2px;background:var(--text3);opacity:.5}
   .q3-sub{font-size:.65rem;color:var(--text3);margin-top:4px;display:flex;justify-content:space-between}
 
-  /* ── Library Sidebar ── */
-  .lib-toggle-btn{position:fixed;right:0;top:50%;transform:translateY(-50%);z-index:300;background:var(--accent);color:#fff;border:none;border-radius:12px 0 0 12px;padding:14px 9px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;box-shadow:-2px 0 16px rgba(0,119,204,.3);transition:all .2s;font-family:'Outfit',sans-serif}
-  .lib-toggle-btn:hover{background:#005fa3;padding-right:13px}
-  .lib-toggle-btn .lib-icon{font-size:1.15rem}
-  .lib-toggle-btn span{font-size:.55rem;font-weight:700;letter-spacing:1px;writing-mode:vertical-rl;text-orientation:mixed}
-  .lib-sidebar{position:fixed;right:-310px;top:0;width:300px;height:100vh;background:var(--surface);border-left:1px solid var(--border);z-index:400;display:flex;flex-direction:column;transition:right .28s cubic-bezier(.4,0,.2,1);box-shadow:-6px 0 28px rgba(0,0,0,.12)}
-  .lib-sidebar.open{right:0}
-  .lib-sidebar-head{padding:15px 16px 13px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;background:var(--surface)}
-  .lib-sidebar-head h3{font-size:.78rem;font-weight:700;color:var(--text)}
-  .lib-sidebar-head p{font-size:.62rem;color:var(--text3);margin-top:2px}
-  .lib-sidebar-close{width:26px;height:26px;border:1px solid var(--border);border-radius:7px;background:var(--surface2);color:var(--text2);font-size:.8rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
-  .lib-sidebar-close:hover{background:var(--surface3)}
-  .lib-sidebar-body{overflow-y:auto;flex:1}
+  /* ── Left Sidebar Layout ── */
+  .page-wrap{display:flex;min-height:100vh}
+  .lib-left{width:252px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
+  .main-wrap{flex:1;overflow-x:hidden;min-width:0}
+  .lib-left-head{padding:14px 14px 11px;border-bottom:1px solid var(--border);flex-shrink:0}
+  .lib-left-title{font-size:.78rem;font-weight:700;color:var(--text)}
+  .lib-left-sub{font-size:.59rem;color:var(--text3);margin-top:2px}
+  .lib-left-body{flex:1;overflow-y:auto}
+  .lib-left-foot{padding:9px 12px;border-top:1px solid var(--border);font-size:.59rem;color:var(--text3);text-align:center;flex-shrink:0;background:var(--surface2)}
+  /* Tree items */
   .lib-grp-item{border-bottom:1px solid var(--border)}
-  .lib-grp-hdr{display:flex;align-items:flex-start;gap:8px;padding:12px 14px;cursor:pointer;transition:background .15s;user-select:none}
-  .lib-grp-hdr:hover{background:var(--surface2)}
-  .lib-grp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:4px}
-  .lib-grp-title{flex:1;font-size:.73rem;font-weight:700;color:var(--text);line-height:1.4}
-  .lib-grp-sub{font-weight:400;font-size:.6rem;color:var(--text3);display:block;margin-top:1px}
-  .lib-grp-badge{font-size:.6rem;font-family:'JetBrains Mono',monospace;background:var(--surface3);color:var(--text3);padding:2px 7px;border-radius:10px;flex-shrink:0;margin-top:2px}
-  .lib-grp-arrow{font-size:.6rem;color:var(--text3);transition:transform .2s;flex-shrink:0;margin-top:4px}
+  .lib-grp-hdr{display:flex;align-items:flex-start;gap:7px;padding:10px 12px;cursor:pointer;transition:background .15s;user-select:none}
+  .lib-grp-hdr:hover,.lib-grp-hdr.lib-sel{background:var(--surface2)}
+  .lib-grp-hdr.lib-sel{border-left:3px solid var(--accent)}
+  .lib-grp-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:4px}
+  .lib-grp-title{flex:1;font-size:.7rem;font-weight:700;color:var(--text);line-height:1.4}
+  .lib-grp-sub{font-weight:400;font-size:.58rem;color:var(--text3);display:block;margin-top:1px}
+  .lib-grp-badge{font-size:.58rem;font-family:'JetBrains Mono',monospace;background:var(--surface3);color:var(--text3);padding:2px 6px;border-radius:9px;flex-shrink:0;margin-top:2px}
+  .lib-grp-arrow{font-size:.58rem;color:var(--text3);transition:transform .2s;flex-shrink:0;margin-top:4px}
   .lib-grp-item.expanded .lib-grp-arrow{transform:rotate(90deg)}
-  .lib-cos{display:none;background:var(--surface2);padding:4px 0 8px}
+  .lib-cos{display:none;padding:3px 0 6px;background:var(--surface2)}
   .lib-grp-item.expanded .lib-cos{display:block}
-  .lib-co-row{padding:6px 14px 6px 28px}
-  .lib-co-top{display:flex;align-items:center;gap:6px}
-  .lib-co-name{font-size:.7rem;font-weight:600;color:var(--text2);flex:1}
-  .lib-co-cnt{font-size:.6rem;color:var(--text3);font-family:'JetBrains Mono',monospace}
-  .lib-pilot-entry{display:flex;align-items:center;gap:4px;padding:3px 0 0 8px;font-size:.64rem;color:var(--text);font-weight:500;line-height:1.4}
-  .lib-pilot-entry .star{color:#d97706;font-size:.7rem}
-  .lib-sidebar-foot{padding:10px 14px;border-top:1px solid var(--border);font-size:.62rem;color:var(--text3);text-align:center;flex-shrink:0;background:var(--surface2)}
+  .lib-co-row{padding:5px 10px 5px 24px;cursor:pointer;transition:background .15s;border-left:2px solid transparent;margin:0 2px;border-radius:5px}
+  .lib-co-row:hover{background:var(--surface3)}
+  .lib-co-row.lib-sel{background:var(--accent-bg);border-left-color:var(--accent)}
+  .lib-co-top{display:flex;align-items:center;gap:5px}
+  .lib-co-name{font-size:.67rem;font-weight:600;color:var(--text2);flex:1}
+  .lib-pilot-entry{display:flex;align-items:center;gap:3px;padding:2px 0 0 6px;font-size:.61rem;color:var(--text);font-weight:500;line-height:1.4}
+  .lib-pilot-entry .star{color:#d97706;font-size:.65rem}
+  /* Views */
+  .view{display:none}
+  .view.active{display:block}
+  .view-header{display:flex;align-items:center;gap:12px;padding:22px 0 16px;flex-wrap:wrap}
+  .view-back{background:var(--surface);border:1px solid var(--border2);border-radius:9px;padding:6px 14px;font-size:.72rem;font-weight:600;cursor:pointer;color:var(--text2);font-family:'Outfit',sans-serif;transition:all .15s}
+  .view-back:hover{background:var(--surface2);color:var(--text)}
+  .view-grp-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+  .view-grp-name{font-size:1rem;font-weight:700;color:var(--text);line-height:1.3}
+  .view-grp-sub{font-size:.7rem;color:var(--text3);margin-top:2px}
+  .view-vstats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+  .view-vstat{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  .view-vstat-v{font-size:1.25rem;font-weight:800;line-height:1}
+  .view-vstat-l{font-size:.59rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:600}
+  .view-empty{background:var(--surface);border:1px dashed var(--border2);border-radius:16px;padding:44px 28px;text-align:center;color:var(--text3);font-size:.8rem;line-height:1.8;margin:10px 0}
 
 </style>
 </head>
 <body>
+<div class="page-wrap">
+<aside class="lib-left">
+  <div class="lib-left-head">
+    <div class="lib-left-title">📚 Library</div>
+    <div class="lib-left-sub">Employee Group → Company</div>
+  </div>
+  <div class="lib-left-body">
+    <div class="lib-grp-item" id="grp1">
+      <div class="lib-grp-hdr" onclick="selectView('grp-1');toggleGrp('grp1')">
+        <div class="lib-grp-dot" style="background:#7c3aed"></div>
+        <div class="lib-grp-title">บริหาร/ผู้เชี่ยวชาญ<span class="lib-grp-sub">ผู้บริหารโครงการ · L10A–L13</span></div>
+        <div class="lib-grp-badge">~14</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-1')"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+    <div class="lib-grp-item expanded" id="grp2">
+      <div class="lib-grp-hdr" onclick="selectView('grp-2');toggleGrp('grp2')">
+        <div class="lib-grp-dot" style="background:#0077cc"></div>
+        <div class="lib-grp-title">จัดการ/ชำนาญการ<span class="lib-grp-sub">ผู้จัดการโครงการ · L6A–L9B</span></div>
+        <div class="lib-grp-badge">~148</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row" onclick="selectView('co-g2-PCC')">
+          <div class="lib-co-top"><span class="lib-co-name">PCC</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> จิณนภัสฐ์ ภัศฐาพงษ์</div>
+        </div>
+        <div class="lib-co-row" onclick="selectView('co-g2-PSP')">
+          <div class="lib-co-top"><span class="lib-co-name">PSP</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> ภัทริดา กองสิน</div>
+        </div>
+        <div class="lib-co-row" onclick="selectView('co-g2-PEM')">
+          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> มนพร พงศ์สิทธิศาสตร์</div>
+        </div>
+        <div class="lib-co-row" onclick="selectView('co-g2-PDE')">
+          <div class="lib-co-top"><span class="lib-co-name">PDE</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> นราวิชญ์ สมนา</div>
+        </div>
+        <div class="lib-co-row" onclick="selectView('grp-2')"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-2')"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-2')"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-2')"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+    <div class="lib-grp-item" id="grp3">
+      <div class="lib-grp-hdr" onclick="selectView('grp-3');toggleGrp('grp3')">
+        <div class="lib-grp-dot" style="background:#16a34a"></div>
+        <div class="lib-grp-title">กลุ่ม วิชาชีพ<span class="lib-grp-sub">Professional · L5A–L6D</span></div>
+        <div class="lib-grp-badge">~220</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row" onclick="selectView('co-g3-PEM')">
+          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
+          <div class="lib-pilot-entry"><span class="star">★</span> เจตนิพัทธ์ บุญใจ</div>
+        </div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-3')"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+    <div class="lib-grp-item" id="grp4">
+      <div class="lib-grp-hdr" onclick="selectView('grp-4');toggleGrp('grp4')">
+        <div class="lib-grp-dot" style="background:#d97706"></div>
+        <div class="lib-grp-title">กลุ่ม ปฏิบัติการ<span class="lib-grp-sub">Operations · L5A–L5B</span></div>
+        <div class="lib-grp-badge">~25</div>
+        <div class="lib-grp-arrow">▶</div>
+      </div>
+      <div class="lib-cos">
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
+        <div class="lib-co-row" onclick="selectView('grp-4')"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="lib-left-foot">411 employees · 8 companies · ★ 5 Pilot</div>
+</aside>
+<div class="main-wrap">
+<div id="view-overview" class="view active">
 <div class="container">
   <div class="header">
     <div><h1>AI Adoption <span>Dashboard</span></h1><p>PCC Group · AI-Knowledge-Vault · อัปเดต 16 มิ.ย. 2569</p></div>
@@ -213,7 +324,7 @@
 
   <div class="cards-grid">
     <div class="emp-card card-n" onclick="openModal('narawit')">
-      <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิช (Nick)</div><div class="emp-role">Agentic Transformation PCC Group</div></div></div>
+      <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิชญ์ สมนา</div><div class="emp-role">Nick · PDE · Agentic Transformation</div></div></div>
       <div class="level-badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">🤖 Level 6 — Agentic Operator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg" style="background:#dc2626;box-shadow:0 0 7px rgba(220,38,38,.6)"></div><div class="seg"></div></div></div>
@@ -222,7 +333,7 @@
       <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
     <div class="emp-card card-e" onclick="openModal('earth')">
-      <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">Earth (Jinnaphas)</div><div class="emp-role">HR Manager & OD Strategy Lead · PCC</div></div></div>
+      <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">จิณนภัสฐ์ ภัศฐาพงษ์</div><div class="emp-role">Earth · PCC · HR Manager & OD Strategy</div></div></div>
       <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
@@ -231,7 +342,7 @@
       <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
     <div class="emp-card card-p" onclick="openModal('pattaratida')">
-      <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">Pattaratida K.</div><div class="emp-role">B2B Sales Intelligence · PCC Group</div></div></div>
+      <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">ภัทริดา กองสิน</div><div class="emp-role">Pattaratida · PSP · B2B Sales Intelligence</div></div></div>
       <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ L5 Demonstrated</span></div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
@@ -240,7 +351,7 @@
       <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 ดู Use Cases & วิเคราะห์ →</button>
     </div>
     <div class="emp-card card-m" onclick="openModal('manaporn')">
-      <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร (Belle)</div><div class="emp-role">Business Development · Switchgear · PCC Group</div></div></div>
+      <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร พงศ์สิทธิศาสตร์</div><div class="emp-role">Belle · PEM · Business Development Switchgear</div></div></div>
       <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
       <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
       <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg" style="box-shadow:0 0 7px rgba(13,148,136,.6)"></div><div class="seg"></div><div class="seg"></div></div></div>
@@ -254,8 +365,8 @@
       <div class="emp-header">
         <div class="avatar" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div>
         <div>
-          <div class="emp-name">Jetniphat</div>
-          <div class="emp-role">Digital Organization · PCC Group</div>
+          <div class="emp-name">เจตนิพัทธ์ บุญใจ</div>
+          <div class="emp-role">Jetniphat · PEM · กลุ่ม วิชาชีพ · Officer L3</div>
         </div>
       </div>
       <div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">📈 Level 3.5 — Growing Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
@@ -384,7 +495,7 @@
     <div class="tl-panel">
       <div class="section-title">UC Timeline — 30 UCs · 20 พ.ค.–10 มิ.ย. 2569</div>
       <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--accent)">Nick (9) 🤖L6</div>
+        <div class="tl-dot-label" style="color:var(--accent)">นราวิชญ์ (9) 🤖L6</div>
         <div class="tl-dots">
           <div class="day-group"><div class="uc-dot uc-dot-n" title="UC#1 Knowledge Logger L5">1</div></div>
           <div style="flex:1"></div>
@@ -405,7 +516,7 @@
         </div>
       </div>
       <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--gold)">Earth (11) L5</div>
+        <div class="tl-dot-label" style="color:var(--gold)">จิณนภัสฐ์ (11) L5</div>
         <div class="tl-dots">
           <div class="day-group"><div style="display:flex;gap:3px">
             <div class="uc-dot uc-dot-e" title="UC#1 Bamboo L4">1</div>
@@ -431,7 +542,7 @@
         </div>
       </div>
       <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--rose)">P'tida (5) L4*</div>
+        <div class="tl-dot-label" style="color:var(--rose)">ภัทริดา (5) L4*</div>
         <div class="tl-dots">
           <div style="flex:1"></div>
           <div class="day-group"><div style="display:flex;gap:3px">
@@ -448,7 +559,7 @@
         </div>
       </div>
       <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:var(--teal)">Belle(4) ⭐L5</div>
+        <div class="tl-dot-label" style="color:var(--teal)">มนพร(4) ⭐L5</div>
         <div class="tl-dots">
           <div style="flex:1"></div>
           <div class="day-group"><div class="uc-dot uc-dot-m" title="UC#1 Blueprint 17 UCs L3">1</div></div>
@@ -462,7 +573,7 @@
         </div>
       </div>
       <div class="tl-person-row">
-        <div class="tl-dot-label" style="color:#f97316">Jetniphat(1) 🆕L3</div>
+        <div class="tl-dot-label" style="color:#f97316">เจตนิพัทธ์(1) 🆕L3</div>
         <div class="tl-dots">
           <div style="flex:6.5"></div>
           <div class="day-group"><div class="uc-dot" style="background:#f97316" title="UC#1 Audit Knowledge Vault L3">1</div></div>
@@ -477,7 +588,7 @@
       <div class="section-title">Impact per Person — ชม. × อัตราค่าจ้าง + Value</div>
       <div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-n" style="width:20px;height:20px;font-size:.55rem">น</div><span style="font-size:.78rem;font-weight:600">นราวิช (Nick) L6 🤖</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-n" style="width:20px;height:20px;font-size:.55rem">น</div><span style="font-size:.78rem;font-weight:600">นราวิชญ์ สมนา L6 🤖</span></div>
           <span style="font-size:.72rem;color:#dc2626;font-weight:700">~18,000 ฿ + EMS+Video</span>
         </div>
         <div class="impact-bar-track"><div class="impact-bar-fill" style="width:14%;background:#dc2626"></div></div>
@@ -485,7 +596,7 @@
       </div>
       <div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-e" style="width:20px;height:20px;font-size:.55rem">E</div><span style="font-size:.78rem;font-weight:600">Earth (Jinnaphas) L5</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-e" style="width:20px;height:20px;font-size:.55rem">E</div><span style="font-size:.78rem;font-weight:600">จิณนภัสฐ์ ภัศฐาพงษ์ L5</span></div>
           <span style="font-size:.72rem;color:var(--gold);font-weight:700">~36,000 ฿ + TCS Sales Tool</span>
         </div>
         <div class="impact-bar-track"><div class="impact-bar-fill" style="width:43%;background:var(--gold)"></div></div>
@@ -493,7 +604,7 @@
       </div>
       <div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-p" style="width:20px;height:20px;font-size:.55rem">ภ</div><span style="font-size:.78rem;font-weight:600">Pattaratida L4(L5 Demo)</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-p" style="width:20px;height:20px;font-size:.55rem">ภ</div><span style="font-size:.78rem;font-weight:600">ภัทริดา กองสิน L4(L5 Demo)</span></div>
           <span style="font-size:.72rem;color:var(--rose);font-weight:700">~30,000 ฿ + 252M฿ Proposal 🔥</span>
         </div>
         <div class="impact-bar-track"><div class="impact-bar-fill" style="width:36%;background:var(--rose)"></div></div>
@@ -501,7 +612,7 @@
       </div>
       <div style="margin-bottom:12px">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
-          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-m" style="width:20px;height:20px;font-size:.55rem">ม</div><span style="font-size:.78rem;font-weight:600">Belle (มนพร) L5 ⭐</span></div>
+          <div style="display:flex;align-items:center;gap:6px"><div class="mav mav-m" style="width:20px;height:20px;font-size:.55rem">ม</div><span style="font-size:.78rem;font-weight:600">มนพร พงศ์สิทธิศาสตร์ L5 ⭐</span></div>
           <span style="font-size:.72rem;color:var(--teal);font-weight:700">~25,000 ฿ + PDEM 3,951M฿</span>
         </div>
         <div class="impact-bar-track"><div class="impact-bar-fill" style="width:30%;background:var(--teal)"></div></div>
@@ -512,7 +623,7 @@
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px">
           <div style="display:flex;align-items:center;gap:6px">
             <div class="mav" style="width:20px;height:20px;background:linear-gradient(135deg,#f97316,#c2410c);font-size:.55rem">J</div>
-            <span style="font-size:.78rem;font-weight:600">Jetniphat — L3 🆕</span>
+            <span style="font-size:.78rem;font-weight:600">เจตนิพัทธ์ บุญใจ — L3 🆕</span>
           </div>
           <span style="font-size:.72rem;color:#f97316;font-weight:700">~700 ฿ + Data Hygiene Fix</span>
         </div>
@@ -677,7 +788,7 @@
 
       <div class="q3-person">
         <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-n" style="width:22px;height:22px;font-size:.6rem">น</div>นราวิช (Nick)</div>
+          <div class="q3-name"><div class="mav mav-n" style="width:22px;height:22px;font-size:.6rem">น</div>นราวิชญ์ สมนา</div>
           <span class="q3-badge" style="background:#fef2f2;color:#dc2626">L6 🤖 เกินเป้ามาก!</span>
         </div>
         <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--accent),#dc2626)"></div></div>
@@ -686,7 +797,7 @@
 
       <div class="q3-person">
         <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-e" style="width:22px;height:22px;font-size:.6rem">E</div>Earth (Jinnaphas)</div>
+          <div class="q3-name"><div class="mav mav-e" style="width:22px;height:22px;font-size:.6rem">E</div>จิณนภัสฐ์ ภัศฐาพงษ์</div>
           <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L5 ✅ บรรลุ</span>
         </div>
         <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--gold),#ea580c)"></div></div>
@@ -695,7 +806,7 @@
 
       <div class="q3-person">
         <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-p" style="width:22px;height:22px;font-size:.6rem">ภ</div>Pattaratida</div>
+          <div class="q3-name"><div class="mav mav-p" style="width:22px;height:22px;font-size:.6rem">ภ</div>ภัทริดา กองสิน</div>
           <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L4(L5 Demo) → L5</span>
         </div>
         <div class="q3-track"><div class="q3-fill" style="width:84%;background:linear-gradient(90deg,var(--rose),#ea580c)"></div></div>
@@ -704,7 +815,7 @@
 
       <div class="q3-person">
         <div class="q3-header">
-          <div class="q3-name"><div class="mav mav-m" style="width:22px;height:22px;font-size:.6rem">ม</div>Belle (มนพร)</div>
+          <div class="q3-name"><div class="mav mav-m" style="width:22px;height:22px;font-size:.6rem">ม</div>มนพร พงศ์สิทธิศาสตร์</div>
           <span class="q3-badge" style="background:#fff7ed;color:#ea580c">L5 ✅ Assessed</span>
         </div>
         <div class="q3-track"><div class="q3-fill" style="width:100%;background:linear-gradient(90deg,var(--teal),#ea580c)"></div></div>
@@ -713,7 +824,7 @@
 
       <div class="q3-person">
         <div class="q3-header">
-          <div class="q3-name"><div class="mav" style="width:22px;height:22px;font-size:.6rem;background:linear-gradient(135deg,#f97316,#c2410c)">J</div>Jetniphat</div>
+          <div class="q3-name"><div class="mav" style="width:22px;height:22px;font-size:.6rem;background:linear-gradient(135deg,#f97316,#c2410c)">J</div>เจตนิพัทธ์ บุญใจ</div>
           <span class="q3-badge" style="background:#ecfdf5;color:#059669">L3 🆕 → L4</span>
         </div>
         <div class="q3-track"><div class="q3-fill" style="width:60%;background:linear-gradient(90deg,#f97316,#059669)"></div></div>
@@ -733,6 +844,149 @@
       </div>
     </div>
   </div>
+</div><!-- /view-overview -->
+
+<!-- ── Group View 1: บริหาร/ผู้เชี่ยวชาญ ── -->
+<div id="view-grp-1" class="view">
+  <div class="container">
+    <div class="view-header">
+      <button class="view-back" onclick="selectView('overview')">← หน้าหลัก</button>
+      <div class="view-grp-dot" style="background:#7c3aed"></div>
+      <div><div class="view-grp-name">บริหาร/ผู้เชี่ยวชาญ / ผู้บริหารโครงการ</div><div class="view-grp-sub">~14 คน · Level 10A–L13 · 8 บริษัท</div></div>
+    </div>
+    <div class="view-empty">ยังไม่มีข้อมูล Skill Assessment ในกลุ่มนี้ — อยู่ระหว่างรวบรวม<br><span style="font-size:.75rem">กลุ่มนี้ประกอบด้วยผู้บริหารระดับสูงและผู้เชี่ยวชาญพิเศษทั้ง 8 บริษัทในกลุ่ม PCC</span></div>
+  </div>
+</div>
+
+<!-- ── Group View 2: จัดการ/ชำนาญการ (4 Pilot Members) ── -->
+<div id="view-grp-2" class="view">
+  <div class="container">
+    <div class="view-header">
+      <button class="view-back" onclick="selectView('overview')">← หน้าหลัก</button>
+      <div class="view-grp-dot" style="background:#0077cc"></div>
+      <div><div class="view-grp-name">จัดการ/ชำนาญการ / ผู้จัดการโครงการ</div><div class="view-grp-sub">~148 คน · Level 6A–9B · 8 บริษัท · ★ Pilot 4 คน</div></div>
+    </div>
+    <div class="view-vstats">
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--accent)">4</div><div class="view-vstat-l">Pilot Members</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--gold)">29</div><div class="view-vstat-l">Use Cases</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--green)">~197h</div><div class="view-vstat-l">ประหยัดรวม</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--purple)">4.3</div><div class="view-vstat-l">Avg AI Level</div></div>
+    </div>
+    <div class="cards-grid">
+      <div class="emp-card card-n" onclick="openModal('narawit')">
+        <div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิชญ์ สมนา</div><div class="emp-role">Nick · PDE · Agentic Transformation</div></div></div>
+        <div class="level-badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">🤖 Level 6 — Agentic Operator</div>
+        <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track"><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg sn"></div><div class="seg" style="background:#dc2626;box-shadow:0 0 7px rgba(220,38,38,.6)"></div><div class="seg"></div></div></div>
+        <div class="mini-stats"><div class="mstat"><div class="mstat-v">9</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#dc2626">4.7</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">24+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+        <div class="tags"><span class="tag tag-n">PEA Pitch Video (Veo)</span><span class="tag tag-n">AWS Bedrock Multi-Agent</span><span class="tag tag-n">EMS Dispatch AI</span></div>
+        <button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases →</button>
+      </div>
+      <div class="emp-card card-e" onclick="openModal('earth')">
+        <div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">จิณนภัสฐ์ ภัศฐาพงษ์</div><div class="emp-role">Earth · PCC · HR Manager & OD Strategy</div></div></div>
+        <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator</div>
+        <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track"><div class="seg se"></div><div class="seg se"></div><div class="seg se"></div><div class="seg seg_"></div><div class="seg" style="background:#ea580c;opacity:.35"></div><div class="seg"></div><div class="seg"></div></div></div>
+        <div class="mini-stats"><div class="mstat"><div class="mstat-v">11</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">65+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+        <div class="tags"><span class="tag tag-e">Apps Script Auto</span><span class="tag tag-e">HC Analytics</span><span class="tag tag-e">NRC System</span></div>
+        <button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases →</button>
+      </div>
+      <div class="emp-card card-p" onclick="openModal('pattaratida')">
+        <div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">ภัทริดา กองสิน</div><div class="emp-role">Pattaratida · PSP · B2B Sales Intelligence</div></div></div>
+        <div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div>
+        <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track"><div class="seg sr"></div><div class="seg sr"></div><div class="seg srg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+        <div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">3.8</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+        <div class="tags"><span class="tag tag-p">EPC Scope Auto L5</span><span class="tag tag-p">TOR→Proposal</span><span class="tag tag-p">Sales Intelligence</span></div>
+        <button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 ดู Use Cases →</button>
+      </div>
+      <div class="emp-card card-m" onclick="openModal('manaporn')">
+        <div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร พงศ์สิทธิศาสตร์</div><div class="emp-role">Belle · PEM · Business Development Switchgear</div></div></div>
+        <div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator</div>
+        <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track"><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg sm"></div><div class="seg smg"></div><div class="seg"></div><div class="seg"></div></div></div>
+        <div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+        <div class="tags"><span class="tag tag-m">Demand Forecast</span><span class="tag tag-m">ISA-95 HTML</span><span class="tag tag-m">Switchgear AI</span></div>
+        <button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Group View 3: กลุ่ม วิชาชีพ ── -->
+<div id="view-grp-3" class="view">
+  <div class="container">
+    <div class="view-header">
+      <button class="view-back" onclick="selectView('overview')">← หน้าหลัก</button>
+      <div class="view-grp-dot" style="background:#16a34a"></div>
+      <div><div class="view-grp-name">กลุ่ม วิชาชีพ</div><div class="view-grp-sub">~220 คน · Level 5A–6D · 8 บริษัท · ★ Pilot 1 คน</div></div>
+    </div>
+    <div class="view-vstats">
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--accent)">1</div><div class="view-vstat-l">Pilot Members</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--gold)">4</div><div class="view-vstat-l">Use Cases</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--green)">~4h</div><div class="view-vstat-l">ประหยัดรวม</div></div>
+      <div class="view-vstat"><div class="view-vstat-v" style="color:var(--purple)">3.5</div><div class="view-vstat-l">Avg AI Level</div></div>
+    </div>
+    <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+      <div class="emp-card" style="border-color:#a7f3d0" onclick="openModal('jetniphat')">
+        <div class="emp-header"><div class="avatar" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div><div><div class="emp-name">เจตนิพัทธ์ บุญใจ</div><div class="emp-role">Jetniphat · PEM · กลุ่ม วิชาชีพ · Officer L3</div></div></div>
+        <div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">📈 Level 3.5 — Growing Builder <span style="background:#fef3c7;color:#92400e;border:1px solid #fcd34d;border-radius:6px;padding:1px 6px;font-size:.58rem;margin-left:4px">✦ Updated</span></div>
+        <div class="gauge-wrap"><div class="gauge-labels"><span>L1</span><span>L2</span><span>L3</span><span>L4</span><span>L5</span><span>L6</span><span>L7</span></div>
+        <div class="gauge-track"><div class="seg" style="background:#059669"></div><div class="seg" style="background:#059669"></div><div class="seg" style="background:#059669;box-shadow:0 0 7px rgba(5,150,105,.5)"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div><div class="seg"></div></div></div>
+        <div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#059669">3.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">~4h</div><div class="mstat-l">ชม.ประหยัด</div></div></div>
+        <div class="tags"><span class="tag" style="background:#fff7ed;border-color:#fed7aa;color:#ea580c">Digital Organization</span><span class="tag" style="background:#ecfdf5;border-color:#a7f3d0;color:#059669">Data Governance</span></div>
+        <button class="drill-btn" onclick="event.stopPropagation();openModal('jetniphat')" style="color:#059669">🔍 ดู Use Cases →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Group View 4: กลุ่ม ปฏิบัติการ ── -->
+<div id="view-grp-4" class="view">
+  <div class="container">
+    <div class="view-header">
+      <button class="view-back" onclick="selectView('overview')">← หน้าหลัก</button>
+      <div class="view-grp-dot" style="background:#d97706"></div>
+      <div><div class="view-grp-name">กลุ่ม ปฏิบัติการ</div><div class="view-grp-sub">~25 คน · Level 5A–5B · 8 บริษัท</div></div>
+    </div>
+    <div class="view-empty">ยังไม่มีข้อมูล Skill Assessment ในกลุ่มนี้ — อยู่ระหว่างรวบรวม<br><span style="font-size:.75rem">กลุ่มปฏิบัติการมีสมาชิกประมาณ 25 คนจาก 8 บริษัทในกลุ่ม PCC</span></div>
+  </div>
+</div>
+
+<!-- ── Company Views ── -->
+<div id="view-co-g2-PCC" class="view"><div class="container">
+  <div class="view-header"><button class="view-back" onclick="selectView('grp-2')">← จัดการ/ชำนาญการ</button><div class="view-grp-dot" style="background:#0077cc"></div><div><div class="view-grp-name">PCC · จัดการ/ชำนาญการ</div><div class="view-grp-sub">★ 1 Pilot Member</div></div></div>
+  <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="emp-card card-e" onclick="openModal('earth')"><div class="emp-header"><div class="avatar av-e">E</div><div><div class="emp-name">จิณนภัสฐ์ ภัศฐาพงษ์</div><div class="emp-role">Earth · PCC · HR Manager & OD Strategy</div></div></div><div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator</div><div class="mini-stats"><div class="mstat"><div class="mstat-v">11</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">4.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">65+</div><div class="mstat-l">ชม.ประหยัด</div></div></div><button class="drill-btn btn-e" onclick="event.stopPropagation();openModal('earth')">🔍 ดู Use Cases →</button></div>
+  </div>
+</div></div>
+<div id="view-co-g2-PSP" class="view"><div class="container">
+  <div class="view-header"><button class="view-back" onclick="selectView('grp-2')">← จัดการ/ชำนาญการ</button><div class="view-grp-dot" style="background:#0077cc"></div><div><div class="view-grp-name">PSP · จัดการ/ชำนาญการ</div><div class="view-grp-sub">★ 1 Pilot Member</div></div></div>
+  <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="emp-card card-p" onclick="openModal('pattaratida')"><div class="emp-header"><div class="avatar av-p">ภ</div><div><div class="emp-name">ภัทริดา กองสิน</div><div class="emp-role">Pattaratida · PSP · B2B Sales Intelligence</div></div></div><div class="level-badge" style="background:#fffbeb;color:#d97706;border:1px solid #fde68a">🔥 Level 4 — The Builder</div><div class="mini-stats"><div class="mstat"><div class="mstat-v">5</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#ea580c">3.8</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div><button class="drill-btn btn-p" onclick="event.stopPropagation();openModal('pattaratida')">🔍 ดู Use Cases →</button></div>
+  </div>
+</div></div>
+<div id="view-co-g2-PEM" class="view"><div class="container">
+  <div class="view-header"><button class="view-back" onclick="selectView('grp-2')">← จัดการ/ชำนาญการ</button><div class="view-grp-dot" style="background:#0077cc"></div><div><div class="view-grp-name">PEM · จัดการ/ชำนาญการ</div><div class="view-grp-sub">★ 1 Pilot Member</div></div></div>
+  <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="emp-card card-m" onclick="openModal('manaporn')"><div class="emp-header"><div class="avatar av-m">ม</div><div><div class="emp-name">มนพร พงศ์สิทธิศาสตร์</div><div class="emp-role">Belle · PEM · Business Development Switchgear</div></div></div><div class="level-badge" style="background:#fff7ed;color:#ea580c;border:1px solid #fed7aa">🚀 Level 5 — Task Automator</div><div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#d97706">3.3</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">55+</div><div class="mstat-l">ชม.ประหยัด</div></div></div><button class="drill-btn btn-m" onclick="event.stopPropagation();openModal('manaporn')">🔍 ดู Use Cases →</button></div>
+  </div>
+</div></div>
+<div id="view-co-g2-PDE" class="view"><div class="container">
+  <div class="view-header"><button class="view-back" onclick="selectView('grp-2')">← จัดการ/ชำนาญการ</button><div class="view-grp-dot" style="background:#0077cc"></div><div><div class="view-grp-name">PDE · จัดการ/ชำนาญการ</div><div class="view-grp-sub">★ 1 Pilot Member</div></div></div>
+  <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="emp-card card-n" onclick="openModal('narawit')"><div class="emp-header"><div class="avatar av-n">น</div><div><div class="emp-name">นราวิชญ์ สมนา</div><div class="emp-role">Nick · PDE · Agentic Transformation</div></div></div><div class="level-badge" style="background:#fef2f2;color:#dc2626;border:1px solid #fecaca">🤖 Level 6 — Agentic Operator</div><div class="mini-stats"><div class="mstat"><div class="mstat-v">9</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#dc2626">4.7</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">24+</div><div class="mstat-l">ชม.ประหยัด</div></div></div><button class="drill-btn btn-n" onclick="event.stopPropagation();openModal('narawit')">🔍 ดู Use Cases →</button></div>
+  </div>
+</div></div>
+<div id="view-co-g3-PEM" class="view"><div class="container">
+  <div class="view-header"><button class="view-back" onclick="selectView('grp-3')">← กลุ่ม วิชาชีพ</button><div class="view-grp-dot" style="background:#16a34a"></div><div><div class="view-grp-name">PEM · กลุ่ม วิชาชีพ</div><div class="view-grp-sub">★ 1 Pilot Member</div></div></div>
+  <div class="cards-grid" style="grid-template-columns:repeat(2,1fr)">
+    <div class="emp-card" style="border-color:#a7f3d0" onclick="openModal('jetniphat')"><div class="emp-header"><div class="avatar" style="background:linear-gradient(135deg,#f97316,#c2410c)">J</div><div><div class="emp-name">เจตนิพัทธ์ บุญใจ</div><div class="emp-role">Jetniphat · PEM · กลุ่ม วิชาชีพ · Officer L3</div></div></div><div class="level-badge" style="background:#ecfdf5;color:#059669;border:1px solid #a7f3d0">📈 Level 3.5 — Growing Builder</div><div class="mini-stats"><div class="mstat"><div class="mstat-v">4</div><div class="mstat-l">Use Cases</div></div><div class="mstat"><div class="mstat-v" style="color:#059669">3.5</div><div class="mstat-l">Avg Level</div></div><div class="mstat"><div class="mstat-v">~4h</div><div class="mstat-l">ชม.ประหยัด</div></div></div><button class="drill-btn" onclick="event.stopPropagation();openModal('jetniphat')" style="color:#059669">🔍 ดู Use Cases →</button></div>
+  </div>
+</div></div>
+
+</div><!-- /main-wrap -->
+</div><!-- /page-wrap -->
 
 
 <!-- ══════════════ Modal: Nick ══════════════ -->
@@ -1501,132 +1755,17 @@
   </div>
 </div>
 
-
-<!-- ══════════════ Library Toggle Button ══════════════ -->
-<button class="lib-toggle-btn" id="libToggleBtn" onclick="toggleLibrary()" title="Library Menu — Employee Groups">
-  <span class="lib-icon">📚</span>
-  <span>LIBRARY</span>
-</button>
-
-<!-- ══════════════ Library Sidebar ══════════════ -->
-<div class="lib-sidebar" id="libSidebar">
-  <div class="lib-sidebar-head">
-    <div>
-      <h3>📚 Library Menu</h3>
-      <p>Employee Group → Company → Pilot Members ★</p>
-    </div>
-    <button class="lib-sidebar-close" onclick="toggleLibrary()">✕</button>
-  </div>
-  <div class="lib-sidebar-body">
-
-    <!-- Group 1: บริหาร/ผู้เชี่ยวชาญ -->
-    <div class="lib-grp-item" id="grp1">
-      <div class="lib-grp-hdr" onclick="toggleGrp('grp1')">
-        <div class="lib-grp-dot" style="background:#7c3aed"></div>
-        <div class="lib-grp-title">บริหาร/ผู้เชี่ยวชาญ<span class="lib-grp-sub">ผู้บริหารโครงการ · L10A–L13</span></div>
-        <div class="lib-grp-badge">~14</div>
-        <div class="lib-grp-arrow">▶</div>
-      </div>
-      <div class="lib-cos">
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
-      </div>
-    </div>
-
-    <!-- Group 2: จัดการ/ชำนาญการ (4 pilot members) -->
-    <div class="lib-grp-item expanded" id="grp2">
-      <div class="lib-grp-hdr" onclick="toggleGrp('grp2')">
-        <div class="lib-grp-dot" style="background:#0077cc"></div>
-        <div class="lib-grp-title">จัดการ/ชำนาญการ<span class="lib-grp-sub">ผู้จัดการโครงการ · L6A–L9B</span></div>
-        <div class="lib-grp-badge">~148</div>
-        <div class="lib-grp-arrow">▶</div>
-      </div>
-      <div class="lib-cos">
-        <div class="lib-co-row">
-          <div class="lib-co-top"><span class="lib-co-name">PCC</span></div>
-          <div class="lib-pilot-entry"><span class="star">★</span> Earth — จิณนภัสฐ์ ภัศฐาพงษ์</div>
-        </div>
-        <div class="lib-co-row">
-          <div class="lib-co-top"><span class="lib-co-name">PSP</span></div>
-          <div class="lib-pilot-entry"><span class="star">★</span> Pattaratida.k — ภัทริดา กองสิน</div>
-        </div>
-        <div class="lib-co-row">
-          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
-          <div class="lib-pilot-entry"><span class="star">★</span> Manaporn — มนพร พงศ์สิทธิศาสตร์</div>
-        </div>
-        <div class="lib-co-row">
-          <div class="lib-co-top"><span class="lib-co-name">PDE</span></div>
-          <div class="lib-pilot-entry"><span class="star">★</span> นราวิช — นราวิชญ์ สมนา</div>
-        </div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
-      </div>
-    </div>
-
-    <!-- Group 3: กลุ่ม วิชาชีพ (Jetniphat) -->
-    <div class="lib-grp-item" id="grp3">
-      <div class="lib-grp-hdr" onclick="toggleGrp('grp3')">
-        <div class="lib-grp-dot" style="background:#16a34a"></div>
-        <div class="lib-grp-title">กลุ่ม วิชาชีพ<span class="lib-grp-sub">Professional · L5A–L6D</span></div>
-        <div class="lib-grp-badge">~220</div>
-        <div class="lib-grp-arrow">▶</div>
-      </div>
-      <div class="lib-cos">
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
-        <div class="lib-co-row">
-          <div class="lib-co-top"><span class="lib-co-name">PEM</span></div>
-          <div class="lib-pilot-entry"><span class="star">★</span> Jetniphat — เจตนิพัทธ์ บุญใจ</div>
-        </div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
-      </div>
-    </div>
-
-    <!-- Group 4: กลุ่ม ปฏิบัติการ -->
-    <div class="lib-grp-item" id="grp4">
-      <div class="lib-grp-hdr" onclick="toggleGrp('grp4')">
-        <div class="lib-grp-dot" style="background:#d97706"></div>
-        <div class="lib-grp-title">กลุ่ม ปฏิบัติการ<span class="lib-grp-sub">Operations · L5A–L5B</span></div>
-        <div class="lib-grp-badge">~25</div>
-        <div class="lib-grp-arrow">▶</div>
-      </div>
-      <div class="lib-cos">
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCC</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PEM</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PDE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PPP</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PCE</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">PSL</span></div></div>
-        <div class="lib-co-row"><div class="lib-co-top"><span class="lib-co-name">SBP</span></div></div>
-      </div>
-    </div>
-
-  </div>
-  <div class="lib-sidebar-foot">411 employees · 8 companies · Pilot: 5 members ★</div>
-</div>
-
 <script>
   function openModal(id){document.getElementById('ov-'+id).classList.add('open');document.body.style.overflow='hidden';}
   function closeModal(id){document.getElementById('ov-'+id).classList.remove('open');document.body.style.overflow='';}
   document.querySelectorAll('.overlay').forEach(function(el){el.addEventListener('click',function(e){if(e.target===el){el.classList.remove('open');document.body.style.overflow='';}});});
-  function toggleLibrary(){
-    var s=document.getElementById('libSidebar');
-    var b=document.getElementById('libToggleBtn');
-    var open=s.classList.toggle('open');
-    b.style.display=open?'none':'flex';
+  function selectView(id){
+    document.querySelectorAll('.view').forEach(function(v){v.classList.remove('active');});
+    var t=document.getElementById('view-'+id);
+    if(t)t.classList.add('active');
+    document.querySelectorAll('.lib-co-row,.lib-grp-hdr').forEach(function(el){el.classList.remove('lib-sel');});
+    var sel=document.querySelector('[data-view="'+id+'"]');
+    if(sel)sel.classList.add('lib-sel');
   }
   function toggleGrp(id){
     document.getElementById(id).classList.toggle('expanded');

@@ -22,6 +22,12 @@
   .stat-icon{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
   .si1{background:var(--accent-bg)}.si2{background:var(--gold-bg)}.si3{background:var(--green-bg)}.si4{background:var(--purple-bg)}
   .stat-label{font-size:.68rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:700;margin-bottom:4px}.stat-val{font-size:1.7rem;font-weight:800;line-height:1}.stat-sub{font-size:.68rem;color:var(--text3);margin-top:3px}
+  .insight-bar{display:flex;gap:10px;margin-bottom:22px;flex-wrap:wrap}
+  .insight-chip{display:flex;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 18px;flex:1;min-width:200px;box-shadow:0 1px 3px rgba(0,0,0,.05);transition:box-shadow .15s}
+  .insight-chip:hover{box-shadow:0 3px 10px rgba(0,0,0,.09)}
+  .insight-icon{font-size:1.4rem;flex-shrink:0}
+  .insight-val{font-size:.88rem;font-weight:700;color:var(--text);line-height:1.35}
+  .insight-sub{font-size:.67rem;color:var(--text3);margin-top:3px}
   .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
   .emp-card{background:var(--surface);border:1.5px solid var(--border);border-radius:18px;padding:20px;cursor:pointer;transition:all .22s ease;box-shadow:0 2px 8px rgba(0,0,0,.06);position:relative;overflow:hidden}
   .emp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:18px 18px 0 0}
@@ -320,6 +326,30 @@
     <div class="stat-card"><div class="stat-icon si2">📋</div><div><div class="stat-label">Total Use Cases</div><div class="stat-val" style="color:var(--gold)">33</div><div class="stat-sub">ใน Knowledge Base</div></div></div>
     <div class="stat-card"><div class="stat-icon si3">⏱</div><div><div class="stat-label">เวลาประหยัดรวม</div><div class="stat-val" style="color:var(--green)">201+</div><div class="stat-sub">ชั่วโมง (ประมาณ)</div></div></div>
     <div class="stat-card"><div class="stat-icon si4">📊</div><div><div class="stat-label">Team Avg Level</div><div class="stat-val" style="color:var(--purple)">4.5</div><div class="stat-sub">/ 7 · เป้า Q3: 5</div></div></div>
+  </div>
+
+  <div class="insight-bar">
+    <div class="insight-chip">
+      <div class="insight-icon">✅</div>
+      <div>
+        <div class="insight-val">4 ใน 5 คน เกิน Level 4</div>
+        <div class="insight-sub">บรรลุเป้า Q3 ล่วงหน้าแล้ว</div>
+      </div>
+    </div>
+    <div class="insight-chip">
+      <div class="insight-icon">⏱</div>
+      <div>
+        <div class="insight-val">201+ ชม. ≈ 25 วันทำงาน</div>
+        <div class="insight-sub">ประหยัดได้ใน 6 สัปดาห์แรก</div>
+      </div>
+    </div>
+    <div class="insight-chip">
+      <div class="insight-icon">🚀</div>
+      <div>
+        <div class="insight-val">นราวิชญ์ อยู่ L6 — Agentic Operator</div>
+        <div class="insight-sub">ระดับสูงสุดในกลุ่ม Pilot ขณะนี้</div>
+      </div>
+    </div>
   </div>
 
   <div class="cards-grid">

@@ -169,6 +169,14 @@
   .q3-target{position:absolute;top:0;bottom:0;width:2px;background:var(--text3);opacity:.5}
   .q3-sub{font-size:.65rem;color:var(--text3);margin-top:4px;display:flex;justify-content:space-between}
 
+  /* ── App Tabs (top-level) ── */
+  .app-tabs{display:flex;gap:2px;background:#0f1e2e;padding:0 20px;position:sticky;top:0;z-index:300;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+  .app-tab{padding:14px 22px;font-size:.8rem;font-weight:700;color:#7d93a8;cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;display:flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;background:none;border-top:none;border-left:none;border-right:none;white-space:nowrap}
+  .app-tab:hover{color:#e2ecf5}
+  .app-tab.active{color:#fff;border-bottom-color:#0ea5e9}
+  .app-panel{display:none}
+  .app-panel.active{display:block}
+
   /* ── Left Sidebar Layout ── */
   .page-wrap{display:flex;min-height:100vh}
   .lib-left{width:252px;flex-shrink:0;background:var(--surface);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;z-index:10}
@@ -213,9 +221,146 @@
   .view-vstat-l{font-size:.59rem;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-top:3px;font-weight:600}
   .view-empty{background:var(--surface);border:1px dashed var(--border2);border-radius:16px;padding:44px 28px;text-align:center;color:var(--text3);font-size:.8rem;line-height:1.8;margin:10px 0}
 
+  /* ── Competition App: Digital & AI Talent 2569 ── */
+  .comp-wrap{display:flex;min-height:calc(100vh - 47px)}
+  .comp-nav{width:236px;flex-shrink:0;background:#0f1e2e;color:#fff;padding:18px 0;position:sticky;top:47px;height:calc(100vh - 47px);overflow-y:auto}
+  .comp-nav-head{padding:0 18px 16px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px}
+  .comp-nav-title{font-size:.86rem;font-weight:800;line-height:1.3}
+  .comp-nav-sub{font-size:.62rem;color:#8aa0b4;margin-top:4px}
+  .comp-nav-item{padding:11px 18px;font-size:.76rem;font-weight:600;color:#b8c7d6;cursor:pointer;border-left:3px solid transparent;transition:all .15s;display:flex;align-items:center;gap:9px}
+  .comp-nav-item:hover{background:rgba(255,255,255,.06);color:#fff}
+  .comp-nav-item.active{background:rgba(14,165,233,.16);color:#fff;border-left-color:#0ea5e9}
+  .comp-main{flex:1;padding:26px 30px 60px;min-width:0}
+  .comp-view{display:none}
+  .comp-view.active{display:block}
+  .comp-h1{font-size:1.35rem;font-weight:800;color:var(--text);margin-bottom:4px}
+  .comp-h1-sub{font-size:.78rem;color:var(--text2);margin-bottom:20px}
+
+  /* Poster / hero */
+  .comp-hero{display:grid;grid-template-columns:340px 1fr;gap:24px;margin-bottom:26px}
+  .comp-poster-placeholder{aspect-ratio:3/4;background:linear-gradient(160deg,#0a1628,#152238 55%,#1c2f4d);border:1px solid rgba(255,255,255,.12);border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#8aa8c2;text-align:center;padding:26px;gap:10px;box-shadow:0 10px 30px rgba(10,22,40,.25)}
+  .comp-poster-placeholder img{width:100%;height:100%;object-fit:cover;border-radius:17px}
+  .comp-poster-icon{font-size:2.2rem}
+  .comp-hero-info{background:linear-gradient(135deg,#0a1628,#1c2f4d);border-radius:18px;padding:24px 26px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+  .comp-hero-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:1.5px;color:#7dd3fc;text-transform:uppercase;margin-bottom:8px}
+  .comp-hero-title{font-size:1.5rem;font-weight:800;line-height:1.25;margin-bottom:10px;background:linear-gradient(90deg,#fde68a,#fbbf24);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .comp-hero-desc{font-size:.78rem;color:#c3d3e3;line-height:1.7;margin-bottom:16px}
+  .comp-hero-chips{display:flex;gap:8px;flex-wrap:wrap}
+  .comp-hero-chip{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:6px 14px;font-size:.7rem;font-weight:600;color:#e2ecf5;display:flex;align-items:center;gap:6px}
+
+  /* Topic grid */
+  .comp-topic-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:10px 0 24px}
+  .comp-topic-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+  .comp-topic-num{width:36px;height:36px;border-radius:10px;background:var(--accent-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 9px;font-family:'JetBrains Mono',monospace}
+  .comp-topic-name{font-size:.7rem;font-weight:600;line-height:1.4;color:var(--text)}
+
+  /* Prize panel */
+  .comp-prize-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+  .comp-prize-card{border-radius:14px;padding:18px;text-align:center;color:#fff}
+  .comp-prize-1{background:linear-gradient(135deg,#f59e0b,#b45309)}
+  .comp-prize-2{background:linear-gradient(135deg,#94a3b8,#475569)}
+  .comp-prize-3{background:linear-gradient(135deg,#c2703d,#7c3f1d)}
+  .comp-prize-label{font-size:.68rem;font-weight:700;opacity:.9;text-transform:uppercase;letter-spacing:.5px}
+  .comp-prize-val{font-size:1.3rem;font-weight:800;margin-top:6px}
+
+  /* Timeline stepper */
+  .comp-steps{display:flex;justify-content:space-between;position:relative;margin:22px 0 8px}
+  .comp-steps::before{content:'';position:absolute;top:17px;left:5%;right:5%;height:2px;background:var(--border2)}
+  .comp-step{flex:1;text-align:center;position:relative;z-index:1}
+  .comp-step-dot{width:34px;height:34px;border-radius:50%;background:var(--surface);border:2px solid var(--border2);display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-size:1rem}
+  .comp-step.done .comp-step-dot{background:var(--green);border-color:var(--green);color:#fff}
+  .comp-step-label{font-size:.66rem;font-weight:700;color:var(--text)}
+  .comp-step-date{font-size:.62rem;color:var(--text3);margin-top:2px}
+
+  /* Rubric table */
+  .rubric-weight-bar{display:flex;gap:10px;margin-bottom:18px}
+  .rubric-weight-chip{flex:1;border-radius:12px;padding:14px 16px;color:#fff;text-align:center}
+  .rw-1{background:linear-gradient(135deg,#0ea5e9,#0369a1)}
+  .rw-2{background:linear-gradient(135deg,#f59e0b,#b45309)}
+  .rw-3{background:linear-gradient(135deg,#7c3aed,#5b21b6)}
+  .rubric-weight-pct{font-size:1.15rem;font-weight:800}
+  .rubric-weight-lbl{font-size:.66rem;opacity:.9;margin-top:2px}
+  .rubric-section-hdr{font-size:.82rem;font-weight:800;color:var(--accent);margin:22px 0 10px;padding-bottom:6px;border-bottom:2px solid var(--accent-bg)}
+  .rubric-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:12px}
+  .rubric-card-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .rubric-code{width:34px;height:34px;border-radius:9px;background:var(--accent-bg);color:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.72rem;flex-shrink:0;font-family:'JetBrains Mono',monospace}
+  .rubric-title{font-size:.86rem;font-weight:700}
+  .rubric-title-en{font-size:.68rem;color:var(--text3);font-weight:500}
+  .rubric-focus{font-size:.72rem;color:var(--text2);margin-bottom:10px;line-height:1.6;padding:8px 12px;background:var(--surface2);border-radius:8px}
+  .rubric-scale-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .rubric-scale-cell{border-radius:8px;padding:8px 9px;font-size:.63rem;line-height:1.5}
+  .rs-1{background:#fef2f2;border:1px solid #fecaca}
+  .rs-2{background:#fff7ed;border:1px solid #fed7aa}
+  .rs-3{background:#fefce8;border:1px solid #fde68a}
+  .rs-4{background:#f0fdf4;border:1px solid #bbf7d0}
+  .rs-5{background:#ecfdf5;border:1px solid #6ee7b7}
+  .rubric-scale-num{font-weight:800;font-family:'JetBrains Mono',monospace;margin-bottom:3px;display:block}
+
+  /* Team setup */
+  .team-setup-head{display:grid;grid-template-columns:44px 1fr 1fr 200px;gap:10px;padding:8px 10px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3)}
+  .team-setup-row{display:grid;grid-template-columns:44px 1fr 1fr 200px;gap:10px;padding:7px 10px;align-items:center;border-radius:8px}
+  .team-setup-row:nth-child(even){background:var(--surface2)}
+  .team-setup-num{font-weight:800;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:.76rem}
+  .team-input,.team-select{padding:8px 10px;border:1px solid var(--border2);border-radius:8px;font-size:.76rem;font-family:'Outfit',sans-serif;width:100%;background:var(--surface)}
+  .team-input:focus,.team-select:focus{outline:none;border-color:var(--accent)}
+
+  /* Scoring form */
+  .score-setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
+  .score-field-label{font-size:.68rem;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+  .score-select{width:100%;padding:10px 12px;border:1.5px solid var(--border2);border-radius:10px;font-size:.82rem;font-family:'Outfit',sans-serif;background:var(--surface)}
+  .team-picker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+  .team-pick-btn{padding:10px 8px;border-radius:10px;border:1.5px solid var(--border2);background:var(--surface);cursor:pointer;text-align:left;font-size:.68rem;transition:all .15s;position:relative}
+  .team-pick-btn:hover{border-color:var(--accent)}
+  .team-pick-btn.sel{border-color:var(--accent);background:var(--accent-bg)}
+  .team-pick-btn.done::after{content:'✓';position:absolute;top:6px;right:8px;color:var(--green);font-weight:800}
+  .team-pick-num{font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--text3);font-size:.62rem}
+  .team-pick-name{font-weight:700;margin-top:2px}
+  .score-item{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:15px 17px;margin-bottom:10px}
+  .score-item-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+  .score-item-title{font-size:.8rem;font-weight:700;display:flex;align-items:center;gap:8px}
+  .score-item-focus{font-size:.67rem;color:var(--text3);margin-top:3px;line-height:1.5}
+  .score-btns{display:flex;gap:6px;flex-shrink:0}
+  .score-btn{width:36px;height:36px;border-radius:9px;border:1.5px solid var(--border2);background:var(--surface2);font-weight:800;font-size:.82rem;cursor:pointer;transition:all .15s;font-family:'JetBrains Mono',monospace;color:var(--text2)}
+  .score-btn:hover{border-color:var(--accent);color:var(--accent)}
+  .score-btn.sel{background:var(--accent);border-color:var(--accent);color:#fff}
+  .score-item-toggle{font-size:.63rem;color:var(--accent);cursor:pointer;margin-top:8px;font-weight:600;user-select:none}
+  .score-item-desc{font-size:.67rem;color:var(--text2);line-height:1.6;margin-top:8px;padding-top:8px;border-top:1px dashed var(--border);display:none}
+  .score-item-desc.show{display:block}
+  .score-item-desc b{color:var(--text)}
+  .score-summary-bar{position:sticky;bottom:0;background:var(--surface);border-top:2px solid var(--border2);padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-radius:14px;margin-top:16px;box-shadow:0 -4px 14px rgba(0,0,0,.06);flex-wrap:wrap;gap:10px}
+  .score-summary-nums{display:flex;gap:18px}
+  .score-summary-item{text-align:center}
+  .score-summary-v{font-size:1.1rem;font-weight:800}
+  .score-summary-l{font-size:.6rem;color:var(--text3);text-transform:uppercase;font-weight:700}
+  .comp-btn{padding:10px 18px;border-radius:10px;border:none;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+  .comp-btn-primary{background:var(--accent);color:#fff}
+  .comp-btn-primary:hover{background:#005fa3}
+  .comp-btn-secondary{background:var(--surface2);color:var(--text);border:1.5px solid var(--border2)}
+  .comp-btn-secondary:hover{background:var(--surface3)}
+  .comp-btn-green{background:var(--green);color:#fff}
+  .comp-progress-track{height:8px;background:var(--surface3);border-radius:4px;overflow:hidden;flex:1;min-width:120px}
+  .comp-progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),#60b4ff);border-radius:4px;transition:width .3s}
+
+  /* Results */
+  .comp-results-table{width:100%;border-collapse:collapse;font-size:.74rem}
+  .comp-results-table th,.comp-results-table td{padding:9px 10px;border-bottom:1px solid var(--border);text-align:left}
+  .comp-results-table th{background:var(--surface2);font-size:.63rem;text-transform:uppercase;color:var(--text3);font-weight:700}
+  .comp-rank-badge{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;font-weight:800;font-size:.68rem;color:#fff}
+  .rank-1{background:#f59e0b}.rank-2{background:#94a3b8}.rank-3{background:#c2703d}
+  .comp-award-tag{font-size:.62rem;font-weight:700;padding:3px 9px;border-radius:20px}
+  .award-advance{background:var(--green-bg);color:var(--green)}
+  .award-cash{background:var(--gold-bg);color:var(--gold)}
+  .comp-upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:24px;text-align:center;background:var(--surface2);margin-bottom:16px}
+  .comp-judge-pill{display:inline-flex;align-items:center;gap:6px;background:var(--accent-bg);color:var(--accent);border-radius:20px;padding:5px 12px;font-size:.68rem;font-weight:600;margin:3px}
+
 </style>
 </head>
 <body>
+<div class="app-tabs">
+  <button class="app-tab active" data-app="dashboard" onclick="selectApp('dashboard')">📊 AI Adoption Dashboard</button>
+  <button class="app-tab" data-app="competition" onclick="selectApp('competition')">🏆 Digital &amp; AI Talent 2569</button>
+</div>
+<div id="app-dashboard" class="app-panel active">
 <div class="page-wrap">
 <aside class="lib-left">
   <div class="lib-left-head">
@@ -2456,6 +2601,291 @@
   </div>
 </div></div>
 
+</div><!-- /app-dashboard -->
+
+<div id="app-competition" class="app-panel">
+<div class="comp-wrap">
+  <aside class="comp-nav">
+    <div class="comp-nav-head">
+      <div class="comp-nav-title">🏆 Digital &amp; AI Talent</div>
+      <div class="comp-nav-sub">Precise Got Digital &amp; AI, Automation Talent 2569</div>
+    </div>
+    <div class="comp-nav-item active" data-comp="home" onclick="selectComp('home')">🏠 หน้าแรก — ประจำปี 2569</div>
+    <div class="comp-nav-item" data-comp="criteria" onclick="selectComp('criteria')">📋 เกณฑ์การให้คะแนน</div>
+    <div class="comp-nav-item" data-comp="teams" onclick="selectComp('teams')">👥 ทีมเข้าประกวด (24 ทีม)</div>
+    <div class="comp-nav-item" data-comp="score" onclick="selectComp('score')">✍️ ให้คะแนนออนไลน์</div>
+    <div class="comp-nav-item" data-comp="results" onclick="selectComp('results')">🏆 สรุปผล &amp; อันดับ</div>
+    <div class="comp-nav-item" data-comp="howto" onclick="selectComp('howto')">ℹ️ วิธีใช้งานระบบ</div>
+  </aside>
+  <div class="comp-main">
+
+    <!-- ══════ HOME ══════ -->
+    <div id="comp-home" class="comp-view active">
+      <div class="comp-hero">
+        <div class="comp-poster-placeholder" id="comp-poster-slot">
+          <div class="comp-poster-icon">🏆</div>
+          <div style="font-size:.78rem;font-weight:700;line-height:1.6">Poster ต้นฉบับ<br>PRECISE GOT DIGITAL &amp; AI,<br>AUTOMATION TALENT</div>
+          <div style="font-size:.64rem;line-height:1.6;opacity:.75">แนบไฟล์ภาพ Poster เพื่อแสดงที่นี่<br>(รอไฟล์จากผู้ดูแลระบบ)</div>
+        </div>
+        <div class="comp-hero-info">
+          <div class="comp-hero-eyebrow">Precise Got Digital &amp; AI, Automation Talent · 2569</div>
+          <div class="comp-hero-title">เวทีประกวดไอเดีย &amp; ทักษะดิจิทัล<br>สไตล์ Got Talent</div>
+          <div class="comp-hero-desc">ปลุกพลัง Digital Talent ในตัวคุณ — ถึงเวลาโชว์ของ!<br>เปิดรับพนักงานระดับ 1–9 รวมทีมไม่เกิน 5 คน ข้ามบริษัทในกลุ่ม Precise ได้</div>
+          <div class="comp-hero-chips">
+            <span class="comp-hero-chip">👥 พนักงานระดับ 1–9</span>
+            <span class="comp-hero-chip">🧑‍🤝‍🧑 ทีมไม่เกิน 5 คน</span>
+            <span class="comp-hero-chip">🌐 Cross ข้ามบริษัท</span>
+            <span class="comp-hero-chip">🏆 รางวัลรวมกว่า 200,000 บาท</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">7 หัวข้อการประกวด</div>
+      <div class="comp-topic-grid">
+        <div class="comp-topic-card"><div class="comp-topic-num">1</div><div class="comp-topic-name">Strategy /<br>Customer Capital</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">2</div><div class="comp-topic-name">Revenue Stream<br>Development</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">3</div><div class="comp-topic-name">Business<br>Generation</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">4</div><div class="comp-topic-name">STEM<br>(R&amp;D)</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">5</div><div class="comp-topic-name">Demand<br>Satisfaction</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">6</div><div class="comp-topic-name">Operation<br>Excellence</div></div>
+        <div class="comp-topic-card"><div class="comp-topic-num">7</div><div class="comp-topic-name">Service &amp;<br>Support</div></div>
+      </div>
+
+      <div class="section-title">เงินรางวัล — รอบชิงชนะเลิศ (Final)</div>
+      <div class="comp-prize-row">
+        <div class="comp-prize-card comp-prize-1"><div class="comp-prize-label">🥇 รางวัลที่ 1</div><div class="comp-prize-val">60,000 บาท</div></div>
+        <div class="comp-prize-card comp-prize-2"><div class="comp-prize-label">🥈 รางวัลที่ 2</div><div class="comp-prize-val">40,000 บาท</div></div>
+        <div class="comp-prize-card comp-prize-3"><div class="comp-prize-label">🥉 รางวัลที่ 3</div><div class="comp-prize-val">30,000 บาท</div></div>
+      </div>
+      <div class="panel" style="margin-bottom:24px">
+        <div style="font-size:.76rem;color:var(--text2);line-height:1.9">
+          <strong>รอบที่ 1 (คัดเลือกรายหัวข้อ):</strong> อันดับ 1 ของแต่ละหัวข้อ ผ่านเข้ารอบ 2 (ไม่รับเงินรางวัลรอบ 1) · อันดับ 2 = 10,000 บาท · อันดับ 3 = 8,000 บาท<br>
+          <span style="color:var(--text3);font-size:.7rem">แต่ละหัวข้อไม่จำเป็นต้องได้ครบทุกรางวัล — คณะกรรมการมีสิทธิ์งดรางวัลหากคะแนนต่ำกว่ามาตรฐาน · เงินรางวัลรวมกว่า 200,000 บาท</span>
+        </div>
+      </div>
+
+      <div class="section-title">กำหนดการ</div>
+      <div class="panel">
+        <div class="comp-steps">
+          <div class="comp-step done"><div class="comp-step-dot">📝</div><div class="comp-step-label">เปิดรับสมัคร</div><div class="comp-step-date">วันนี้ – 31 ก.ค. 69</div></div>
+          <div class="comp-step done"><div class="comp-step-dot">☁️</div><div class="comp-step-label">ส่งผลงาน</div><div class="comp-step-date">31 ก.ค. 69</div></div>
+          <div class="comp-step done"><div class="comp-step-dot">🔍</div><div class="comp-step-label">คัดเลือก</div><div class="comp-step-date">1–7 ส.ค. 69</div></div>
+          <div class="comp-step"><div class="comp-step-dot">🔬</div><div class="comp-step-label">แข่งขันรอบที่ 1</div><div class="comp-step-date" style="color:var(--accent);font-weight:700">15 ก.ย. 69</div></div>
+          <div class="comp-step"><div class="comp-step-dot">🏆</div><div class="comp-step-label">รอบชิงชนะเลิศ</div><div class="comp-step-date">To be Announced</div></div>
+        </div>
+      </div>
+
+      <div style="margin-top:24px;padding:16px 20px;background:linear-gradient(135deg,var(--accent-bg),var(--surface2));border:1px solid var(--border2);border-radius:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+        <div>
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:3px">พร้อมสำหรับรอบที่ 1 แล้วหรือยัง?</div>
+          <div style="font-size:.7rem;color:var(--text2)">ตั้งค่ารายชื่อ 24 ทีม แล้วเริ่มให้คะแนนออนไลน์ได้ทันทีในวันแข่งขัน</div>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="comp-btn comp-btn-secondary" onclick="selectComp('teams')">👥 ตั้งค่าทีม</button>
+          <button class="comp-btn comp-btn-primary" onclick="selectComp('score')">✍️ เริ่มให้คะแนน →</button>
+        </div>
+      </div>
+    </div>
+    <!-- ══════ CRITERIA ══════ -->
+    <div id="comp-criteria" class="comp-view">
+      <div class="comp-h1">📋 เกณฑ์การให้คะแนน</div>
+      <div class="comp-h1-sub">การแข่งขันรอบที่ 1 (Build → Find Solutions) · มาตรวัด 1–5 อิงบันได Accountability ของ Precise</div>
+
+      <div class="rubric-weight-bar">
+        <div class="rubric-weight-chip rw-1"><div class="rubric-weight-pct">50%</div><div class="rubric-weight-lbl">① Professionalism<br>10 ข้อ (A1–A10)</div></div>
+        <div class="rubric-weight-chip rw-2"><div class="rubric-weight-pct">30%</div><div class="rubric-weight-lbl">② ผลงาน (Solution)<br>2 ข้อ (B1–B2)</div></div>
+        <div class="rubric-weight-chip rw-3"><div class="rubric-weight-pct">20%</div><div class="rubric-weight-lbl">③ การนำเสนอ<br>2 ข้อ (C1–C2)</div></div>
+      </div>
+      <div class="panel" style="margin-bottom:20px">
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">
+          รวม <strong>100 คะแนน</strong> — เกณฑ์ Deploy / Measurement / Scale / Inspire / Replicate สงวนไว้ใช้ในรอบ 2 ตามเอกสารโครงการ · รอบ 1 ยังไม่มี Vote จากผู้เข้าฟัง (Vote 20% ใช้เฉพาะรอบ 2)<br>
+          <span style="color:var(--text3)">1 = ต่ำกว่าเส้น (Victim) แค่บ่นปัญหา &nbsp;|&nbsp; 2 = Acknowledge เห็นปัญหาแต่เป็นไอเดีย &nbsp;|&nbsp; 3 = Own &amp; Embrace ลงมือแล้ว มี prototype &nbsp;|&nbsp; 4 = Find Solutions มีของที่ใช้ได้จริง &nbsp;|&nbsp; 5 = Find Solutions+ โดดเด่น พร้อมเข้ารอบ</span>
+        </div>
+      </div>
+
+      <div id="rubric-list"></div>
+    </div>
+    <!-- ══════ TEAMS SETUP ══════ -->
+    <div id="comp-teams" class="comp-view">
+      <div class="comp-h1">👥 ทีมเข้าประกวด</div>
+      <div class="comp-h1-sub">กรอกรายชื่อ 24 ทีมที่ผ่านการคัดเลือกเข้ารอบที่ 1 — ใช้ 1 ครั้งก่อนวันแข่งขัน (เทียบเท่า Sheet 3 คอลัมน์ C/D/E ในไฟล์เดิม)</div>
+
+      <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div id="teams-summary" style="font-size:.74rem;color:var(--text2)"></div>
+        <div style="display:flex;gap:8px">
+          <button class="comp-btn comp-btn-secondary" onclick="exportTeams()">📤 Export รายชื่อทีม</button>
+          <label class="comp-btn comp-btn-secondary" style="cursor:pointer;margin:0">📥 Import รายชื่อทีม<input type="file" accept="application/json" style="display:none" onchange="importTeams(event)"></label>
+          <button class="comp-btn comp-btn-primary" onclick="saveTeamsUI()">💾 บันทึกทั้งหมด</button>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div></div>
+        <div id="teams-list"></div>
+      </div>
+    </div>
+    <!-- ══════ SCORING ══════ -->
+    <div id="comp-score" class="comp-view">
+      <div class="comp-h1">✍️ ให้คะแนนออนไลน์</div>
+      <div class="comp-h1-sub">รอบที่ 1 · 15 กันยายน 2569 · นำเสนอ ≤7 นาที + ซักถาม ≤5 นาที ต่อทีม</div>
+
+      <div class="score-setup-grid">
+        <div>
+          <div class="score-field-label">👤 ชื่อกรรมการ</div>
+          <select class="score-select" id="judge-select" onchange="onJudgeChange()">
+            <option value="">— เลือกชื่อกรรมการ —</option>
+          </select>
+        </div>
+        <div>
+          <div class="score-field-label">➕ เพิ่ม/แก้ชื่อกรรมการ</div>
+          <div style="display:flex;gap:8px">
+            <input type="text" class="team-input" id="judge-new-name" placeholder="พิมพ์ชื่อกรรมการใหม่...">
+            <button class="comp-btn comp-btn-secondary" style="flex-shrink:0" onclick="addJudge()">เพิ่ม</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="score-progress-wrap" style="display:none">
+        <div class="score-field-label">🎯 เลือกทีมที่จะให้คะแนน — <span id="score-progress-text"></span></div>
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+          <div class="comp-progress-track"><div class="comp-progress-fill" id="score-progress-fill" style="width:0%"></div></div>
+        </div>
+        <div class="team-picker-grid" id="team-picker"></div>
+      </div>
+
+      <div id="score-form-wrap" style="display:none;margin-top:22px">
+        <div class="panel" style="margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-size:.95rem;font-weight:800" id="score-team-title"></div>
+              <div style="font-size:.7rem;color:var(--text3);margin-top:2px" id="score-team-sub"></div>
+            </div>
+            <div style="font-size:.68rem;color:var(--text3);text-align:right">
+              💡 คลิก "ดูเกณฑ์" เพื่ออ่านรายละเอียดแต่ละระดับ
+            </div>
+          </div>
+        </div>
+
+        <div class="rubric-section-hdr">① Professionalism 10 ข้อ — 50%</div>
+        <div id="score-items-A"></div>
+        <div class="rubric-section-hdr">② เกณฑ์ส่วนผลงาน (Solution) — 30%</div>
+        <div id="score-items-B"></div>
+        <div class="rubric-section-hdr">③ เกณฑ์ส่วนการนำเสนอ — 20%</div>
+        <div id="score-items-C"></div>
+
+        <div class="score-field-label" style="margin-top:16px">📝 บันทึกช่วงซักถาม / ความเห็นเพิ่มเติม</div>
+        <textarea id="score-note" class="team-input" style="min-height:70px;resize:vertical" placeholder="บันทึกประเด็นจากช่วงซักถาม หรือความเห็นเพิ่มเติม..." oninput="saveCurrentScore()"></textarea>
+
+        <div class="score-summary-bar">
+          <div class="score-summary-nums">
+            <div class="score-summary-item"><div class="score-summary-v" id="sum-1" style="color:#0ea5e9">0</div><div class="score-summary-l">① /50</div></div>
+            <div class="score-summary-item"><div class="score-summary-v" id="sum-2" style="color:#f59e0b">0</div><div class="score-summary-l">② /30</div></div>
+            <div class="score-summary-item"><div class="score-summary-v" id="sum-3" style="color:#7c3aed">0</div><div class="score-summary-l">③ /20</div></div>
+            <div class="score-summary-item"><div class="score-summary-v" id="sum-total" style="color:var(--green);font-size:1.4rem">0</div><div class="score-summary-l">รวม /100</div></div>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="comp-btn comp-btn-secondary" onclick="prevTeam()">← ทีมก่อนหน้า</button>
+            <button class="comp-btn comp-btn-green" onclick="nextTeam()">บันทึก &amp; ทีมถัดไป →</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:20px;background:var(--surface2)">
+        <div style="font-size:.72rem;color:var(--text2);line-height:1.8">
+          💾 คะแนนบันทึกอัตโนมัติในเบราว์เซอร์นี้ทันทีที่กด — ไม่ต้องกดบันทึกซ้ำ · เมื่อให้คะแนนครบทุกทีมแล้ว ให้ไปที่หน้า
+          <a href="#" onclick="selectComp('results');return false" style="color:var(--accent);font-weight:700">🏆 สรุปผล</a>
+          แล้วกด "Export คะแนนของฉัน" เพื่อส่งไฟล์ให้ผู้ดูแลรวมคะแนนกรรมการทุกท่าน
+        </div>
+      </div>
+    </div>
+    <!-- ══════ RESULTS ══════ -->
+    <div id="comp-results" class="comp-view">
+      <div class="comp-h1">🏆 สรุปผล &amp; อันดับ</div>
+      <div class="comp-h1-sub">รวมคะแนนจากกรรมการทุกท่าน แล้วจัดอันดับ 3 อันดับแรกของแต่ละหัวข้อโดยอัตโนมัติ</div>
+
+      <div class="panel" style="margin-bottom:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+          <div>
+            <div style="font-size:.8rem;font-weight:700;margin-bottom:3px">ขั้นตอนรวมคะแนน (Online)</div>
+            <div style="font-size:.7rem;color:var(--text2);line-height:1.7">
+              1) กรรมการแต่ละท่านให้คะแนนครบ 24 ทีมในหน้า "ให้คะแนนออนไลน์" บนอุปกรณ์ของตัวเอง →
+              2) กด Export คะแนนของฉัน ด้านล่างนี้ (ดาวน์โหลดไฟล์ .json) →
+              3) ผู้ดูแล (HR) รวบรวมไฟล์จากกรรมการทุกท่าน แล้ว Import เข้าที่นี่ทีละไฟล์ →
+              4) ตารางผลลัพธ์ด้านล่างคำนวณอันดับให้อัตโนมัติ
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;flex-shrink:0">
+            <button class="comp-btn comp-btn-secondary" onclick="exportMyScores()">📤 Export คะแนนของฉัน</button>
+            <label class="comp-btn comp-btn-primary" style="cursor:pointer;margin:0">📥 Import ไฟล์คะแนนกรรมการ<input type="file" accept="application/json" multiple style="display:none" onchange="importJudgeScores(event)"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px">
+        <div style="font-size:.72rem;font-weight:700;margin-bottom:8px">กรรมการที่มีคะแนนอยู่ในระบบนี้แล้ว</div>
+        <div id="judges-loaded"></div>
+      </div>
+
+      <div class="panel" style="margin-bottom:18px">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+          <div class="section-title" style="margin-bottom:0">ตารางคะแนนรวมรายทีม (เทียบเท่า Sheet 4)</div>
+          <button class="comp-btn comp-btn-secondary" onclick="exportResultsCSV()">📥 Export CSV</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="comp-results-table">
+            <thead><tr><th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th></tr></thead>
+            <tbody id="results-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section-title">ผลการตัดสิน 3 อันดับต่อหัวข้อ (เทียบเท่า Sheet 5)</div>
+      <div id="results-by-topic"></div>
+    </div>
+
+    <!-- ══════ HOW TO ══════ -->
+    <div id="comp-howto" class="comp-view">
+      <div class="comp-h1">ℹ️ วิธีใช้งานระบบให้คะแนนออนไลน์</div>
+      <div class="comp-h1-sub">สรุปจากเอกสาร "แบบประเมินและลงคะแนน" — ฉบับดิจิทัลแทนไฟล์ Excel</div>
+
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">🎬 รูปแบบการแข่งขันรอบ 1</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">แต่ละทีมนำเสนอผลงานและสาธิต ไม่เกิน 7 นาที · กรรมการซักถามไม่เกิน 5 นาที (รวม 12 นาที/ทีม) · ผู้เข้าประกวดประมาณ 24 ทีม</div>
+      </div>
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">🏅 ผลการตัดสินรอบ 1</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">ประกาศผู้ชนะ 3 อันดับของแต่ละหัวข้อ · อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ 2 (ไม่รับเงินรางวัลรอบ 1) · อันดับ 2 = 10,000 บาท · อันดับ 3 = 8,000 บาท · แต่ละหัวข้อไม่จำเป็นต้องได้ครบทุกรางวัล</div>
+      </div>
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">🧮 โครงสร้างคะแนน</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">① Professionalism 10 ข้อ = 50% &nbsp;&nbsp;② ผลงาน (ปัญหา + โซลูชัน) = 30% &nbsp;&nbsp;③ การนำเสนอ (เล่าเรื่อง + ตรรกะ) = 20% &nbsp;&nbsp;รวม 100 คะแนน<br>
+        <span style="color:var(--text3)">เกณฑ์ Deploy / Measurement / Scale / Inspire / Replicate สงวนไว้ใช้ในรอบ 2 · รอบ 1 ยังไม่มี Vote จากผู้เข้าฟัง (Vote 20% ใช้เฉพาะรอบ 2)</span></div>
+      </div>
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">🖥️ ขั้นตอนใช้งานระบบออนไลน์ (แทนขั้นตอนกรอก Excel เดิม)</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:2">
+          ① ผู้ดูแล (HR) กรอกรายชื่อ 24 ทีมที่หน้า <strong>"ทีมเข้าประกวด"</strong> ครั้งเดียวก่อนวันแข่งขัน<br>
+          ② แจกลิงก์เว็บนี้ให้กรรมการทุกท่าน — เปิดจากมือถือ/แท็บเล็ต/โน้ตบุ๊กของตัวเองได้เลย ไม่ต้องติดตั้งอะไร<br>
+          ③ กรรมการเลือก/พิมพ์ชื่อตนเองที่หน้า <strong>"ให้คะแนนออนไลน์"</strong> แล้วให้คะแนน 1–5 ทีละทีม ระบบบันทึกอัตโนมัติทันทีในเบราว์เซอร์ของกรรมการท่านนั้น<br>
+          ④ เมื่อให้คะแนนครบ 24 ทีมแล้ว กรรมการกด <strong>"Export คะแนนของฉัน"</strong> ที่หน้าสรุปผล เพื่อดาวน์โหลดไฟล์ขนาดเล็ก (.json)<br>
+          ⑤ ผู้ดูแลรวบรวมไฟล์จากกรรมการทั้ง ~10 ท่าน แล้ว <strong>"Import ไฟล์คะแนนกรรมการ"</strong> ทีละไฟล์ที่หน้าสรุปผล — ระบบคำนวณคะแนนเฉลี่ยและจัดอันดับ 3 อันดับต่อหัวข้อให้อัตโนมัติ
+        </div>
+      </div>
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">📄 กรณีใช้กระดาษหน้างาน (สำรอง)</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">หากกรรมการบางท่านไม่สะดวกใช้อุปกรณ์ ให้ใช้ใบให้คะแนนกระดาษพิมพ์แจกหน้างานแทน แล้วให้ผู้ดูแลคีย์คะแนนแทนกรรมการท่านนั้นในหน้า "ให้คะแนนออนไลน์" โดยเลือกชื่อกรรมการท่านนั้นในระบบภายหลัง — เนื้อหาเกณฑ์เหมือนกันทุกข้อ</div>
+      </div>
+      <div class="rubric-card">
+        <div class="rubric-title" style="margin-bottom:8px">🔒 ข้อมูลเก็บที่ไหน</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">ระบบนี้เป็นหน้าเว็บล้วน (ไม่มีเซิร์ฟเวอร์กลาง) — คะแนนของกรรมการแต่ละท่านเก็บอยู่ใน <em>เบราว์เซอร์ของอุปกรณ์ที่ใช้ให้คะแนน</em> เท่านั้น ต้อง Export/Import เพื่อรวมผลข้ามอุปกรณ์เสมอ — อย่าล้างข้อมูลเบราว์เซอร์ (Clear browsing data) ก่อน Export</div>
+      </div>
+    </div>
+
+  </div><!-- /comp-main -->
+</div><!-- /comp-wrap -->
+
+</div><!-- /app-competition -->
+
 <script>
   function openModal(id){document.getElementById('ov-'+id).classList.add('open');document.body.style.overflow='hidden';}
   function closeModal(id){document.getElementById('ov-'+id).classList.remove('open');document.body.style.overflow='';}
@@ -2471,5 +2901,546 @@
   function toggleGrp(id){
     document.getElementById(id).classList.toggle('expanded');
   }
+  function selectApp(id){
+    document.querySelectorAll('.app-panel').forEach(function(p){p.classList.remove('active');});
+    document.getElementById('app-'+id).classList.add('active');
+    document.querySelectorAll('.app-tab').forEach(function(t){t.classList.toggle('active',t.dataset.app===id);});
+    window.scrollTo(0,0);
+  }
+
+/* ══════════════════════════════════════════════
+   Competition App — Digital & AI Talent 2569
+   ══════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+var TOPICS = [
+  'Strategy / Relation / Customer Capital',
+  'Revenue Stream Type Development',
+  'Business Generation (PCF 1-6)',
+  'STEM (R&D)',
+  'Demand Satisfaction',
+  'Operation Excellence',
+  'Service and Support (PCF 7-13)'
+];
+
+var CRIT = {
+A:[
+{id:'A1',th:'เชิงรุก',en:'Proactive',focus:'เริ่มไอเดีย / ลงมือเองก่อนถูกสั่ง',s:[
+ 'ทำเพราะถูกสั่ง หรือทำตามกระแส ไม่มีร่องรอยการเริ่มด้วยตัวเอง',
+ 'เห็นปัญหาและเสนอไอเดียได้ แต่ยังไม่ได้ลงมือทำ',
+ 'ลงมือเองก่อนมีใครสั่ง มีร่องรอยการทดลองจริง',
+ 'ลงมือเอง และดึงคนอื่นเข้ามาร่วม ขยายขอบเขตงานด้วยตนเอง',
+ 'ริเริ่มเองและผลักดันจนเกิดผลแล้ว โดยไม่รอคำสั่งหรือทรัพยากร']},
+{id:'A2',th:'ความสามารถ',en:'Competence',focus:'เลือกเครื่องมือ / prompt เหมาะ ทำให้ทำงานได้จริง',s:[
+ 'ไม่ระบุว่าใช้เครื่องมือ/AI อะไร หรือเลือกใช้ผิดกับโจทย์',
+ 'ใช้ AI ระดับถามตอบทั่วไป ยังไม่เชื่อมกับงานจริง',
+ 'เลือกเครื่องมือเหมาะกับโจทย์ และทำ prototype ได้',
+ 'ใช้เครื่องมือได้คล่อง ผลลัพธ์ใช้งานได้จริงและเสถียร',
+ 'ผสมหลายเครื่องมือ / ออกแบบ workflow เอง จนคนอื่นเรียนรู้ต่อได้']},
+{id:'A3',th:'สร้างสรรค์',en:'Creativity',focus:'วิธีแก้โจทย์แปลกใหม่ มองมุมที่คนมองข้าม',s:[
+ 'ทำซ้ำสิ่งที่มีอยู่แล้ว ไม่มีมุมมองใหม่',
+ 'มีมุมใหม่ แต่เป็นการปรับปรุงเล็กน้อย',
+ 'วิธีแก้ต่างจากเดิมชัดเจน และมีเหตุผลรองรับ',
+ 'มองเห็นโจทย์ที่คนอื่นมองข้าม และแก้ด้วยวิธีที่องค์กรไม่เคยมี',
+ 'เปลี่ยนกรอบปัญหาใหม่ (Reframe) เปิดโอกาสที่ไม่เคยมีมาก่อน']},
+{id:'A4',th:'มุ่งมั่น',en:'Determination',focus:'ลองผิดลองถูกจนได้ของที่ใช้ได้ ไม่ล้มเลิก',s:[
+ 'ยังไม่ได้เริ่ม หรือหยุดตั้งแต่เจออุปสรรคแรก',
+ 'เริ่มแล้วแต่ติดปัญหา และยังไม่มีทางออก',
+ 'มีร่องรอยการลองหลายรอบจนได้ prototype',
+ 'ผ่านอุปสรรคจริงหลายครั้ง จนได้ของที่ใช้ได้',
+ 'ฝ่าอุปสรรคใหญ่ (ข้อมูล / งบ / คน) ได้ และยังพัฒนาต่อเนื่อง']},
+{id:'A5',th:'รับฟัง',en:'Listening',focus:'เข้าใจ pain point จริง ออกแบบตรงปัญหา',s:[
+ 'สมมติปัญหาขึ้นเอง ไม่มีเสียงผู้ใช้จริง',
+ 'อ้างถึงปัญหา แต่ไม่มีหลักฐานว่าได้คุยกับผู้ใช้',
+ 'คุยกับผู้ใช้จริง และสะท้อนออกมาในการออกแบบ',
+ 'เก็บ feedback หลายรอบ และปรับแก้ตามจริง',
+ 'ผู้ใช้จริงร่วมออกแบบ และยืนยันว่าแก้ตรงปัญหา']},
+{id:'A6',th:'คิดไปข้างหน้า',en:'Forward Thinking',focus:'ออกแบบเผื่อขยายผล / ทำซ้ำ ไม่แก้เฉพาะหน้า',s:[
+ 'แก้เฉพาะหน้า / เฉพาะคน ไม่คิดถึงการทำซ้ำ',
+ 'พูดถึงการขยายผล แต่ยังไม่มีแผน',
+ 'ออกแบบเผื่อทำซ้ำภายในหน่วยงานตัวเอง',
+ 'ออกแบบเผื่อขยายข้ามหน่วยงาน / ข้าม RS',
+ 'มีแผนขยายระดับองค์กร หรือต่อยอดเชิงธุรกิจที่ชัดเจน']},
+{id:'A7',th:'ซื่อสัตย์',en:'Integrity',focus:'ยอมรับข้อจำกัด / ความเสี่ยงตามจริง ไม่อวดเกินจริง',s:[
+ 'ตัวเลข / คำกล่าวอ้างเกินจริง ตรวจสอบไม่ได้',
+ 'ไม่พูดถึงข้อจำกัดหรือความเสี่ยงเลย',
+ 'ระบุข้อจำกัดบางส่วนตามความเป็นจริง',
+ 'ระบุข้อจำกัด ความเสี่ยง และสมมติฐานอย่างชัดเจน',
+ 'แยกชัดว่าอะไรทำแล้ว / อะไรยังเป็นสมมติฐาน พร้อมแผนพิสูจน์']},
+{id:'A8',th:'เชื่อถือได้',en:'Reliability',focus:'สาธิตสดได้จริง ผลลัพธ์ทำซ้ำได้',s:[
+ 'ไม่มีการสาธิต มีแต่สไลด์',
+ 'สาธิตเป็นวิดีโออัดไว้ หรือเป็น mockup',
+ 'สาธิตสดได้ แต่ติดขัด / ไม่เสถียร',
+ 'สาธิตสดได้ราบรื่น ทำซ้ำได้ ผลลัพธ์เหมือนเดิม',
+ 'สาธิตสดด้วยข้อมูลจริง และมีผู้ใช้จริงยืนยันว่าใช้อยู่']},
+{id:'A9',th:'เคารพผู้อื่น',en:'Respect',focus:'ให้เครดิตทีม ออกแบบให้คนอื่นใช้ต่อได้',s:[
+ 'เป็นผลงานของคนเดียว ไม่เห็นบทบาทของทีม',
+ 'ระบุชื่อทีม แต่ไม่เห็นการแบ่งบทบาท',
+ 'เห็นบทบาทของสมาชิกแต่ละคนชัดเจน',
+ 'ให้เครดิตทีม และออกแบบให้หน่วยงานอื่นใช้ต่อได้',
+ 'ทำงานข้าม RS ได้จริง และเปิดให้คนอื่นต่อยอดได้']},
+{id:'A10',th:'พัฒนาตน',en:'Self-Upgrade',focus:'เรียนรู้ทักษะ AI ใหม่ พัฒนาขึ้นจากเดิม',s:[
+ 'ไม่มีร่องรอยการเรียนรู้สิ่งใหม่',
+ 'ใช้เฉพาะทักษะที่มีอยู่เดิมเท่านั้น',
+ 'เรียนทักษะ AI / ดิจิทัลใหม่เพื่อทำโครงการนี้',
+ 'ยกระดับทักษะชัดเจน และถ่ายทอดภายในทีมได้',
+ 'กลายเป็นผู้สอน / ต้นแบบให้หน่วยงานอื่น']}
+],
+B:[
+{id:'B1',th:'ปัญหา',en:'Problem',focus:'โจทย์เป็นปัญหาจริงและคุ้มค่าต่อองค์กรแค่ไหน',s:[
+ 'ไม่ใช่ปัญหาจริง หรือเล็กเกินกว่าจะคุ้มค่า',
+ 'เป็นปัญหาจริง แต่ขอบเขตแคบ ผลกระทบต่ำ',
+ 'ปัญหาจริงระดับหน่วยงาน มีผู้เดือดร้อนชัดเจน',
+ 'ปัญหาจริงระดับบริษัท มีตัวเลขความสูญเสียประกอบ',
+ 'ปัญหาระดับกลุ่มบริษัท กระทบ bottom line อย่างชัดเจน']},
+{id:'B2',th:'โซลูชัน',en:'Working',focus:'ระดับความสำเร็จของของจริง',s:[
+ 'ยังเป็นแนวคิดบนกระดาษ',
+ 'มีแบบร่าง / แผนโครงการ แต่ยังไม่มีของ',
+ 'มี prototype ที่ทำงานได้บางส่วน',
+ 'มีระบบที่ใช้งานได้จริงครบ flow หลัก',
+ 'ใช้งานจริงกับงานประจำแล้ว มีผู้ใช้จริงนอกทีม']}
+],
+C:[
+{id:'C1',th:'เล่าเรื่อง',en:'Clarity',focus:'อธิบายปัญหา-วิธีแก้-ผลลัพธ์ เข้าใจง่ายใน 7 นาที',s:[
+ 'ฟังจบแล้วไม่เข้าใจว่าทำอะไร',
+ 'เข้าใจบางส่วน ข้อมูลกระจัดกระจาย',
+ 'ครบ 3 ส่วน (ปัญหา-วิธีแก้-ผลลัพธ์) แต่ยืดยาวเกิน 7 นาที',
+ 'ครบ กระชับ เข้าใจได้ในครั้งเดียว จบภายในเวลา',
+ 'ครบ กระชับ และทำให้คนนอกสายงานเข้าใจได้ทันที']},
+{id:'C2',th:'ตรรกะ',en:'Logic',focus:'เหตุผลเชื่อมโยงว่าทำไม AI นี้ถึงแก้โจทย์ได้ (รวมช่วงซักถาม)',s:[
+ 'ใช้ AI เพราะเป็นกระแส ไม่เชื่อมกับโจทย์ ตอบคำถามไม่ได้',
+ 'อ้างว่า AI ช่วยได้ แต่ไม่อธิบายว่าอย่างไร',
+ 'อธิบายได้ว่า AI เข้ามาช่วยตรงจุดไหน ตอบคำถามได้พอสมควร',
+ 'เหตุผลรัดกุม มีข้อมูล / ผลทดสอบสนับสนุน ตอบคำถามได้ดี',
+ 'พิสูจน์ได้ว่าถ้าไม่ใช้ AI จะทำไม่ได้หรือไม่คุ้ม ตอบซักถามได้หนักแน่น']}
+]
+};
+var ALL_CRIT = CRIT.A.concat(CRIT.B, CRIT.C);
+
+var LS_TEAMS='comp_teams_v1', LS_JUDGES='comp_judges_v1', LS_SCORES='comp_scores_v1', LS_CURJUDGE='comp_cur_judge_v1';
+
+function loadJSON(key, fallback){
+  try{ var v=localStorage.getItem(key); return v? JSON.parse(v): fallback; }catch(e){ return fallback; }
+}
+function saveJSON(key, val){ try{ localStorage.setItem(key, JSON.stringify(val)); }catch(e){} }
+
+function defaultTeams(){
+  var arr=[];
+  for(var i=1;i<=24;i++){ arr.push({id:i,name:'',project:'',topic:0}); }
+  return arr;
+}
+function defaultJudges(){
+  var arr=[]; for(var i=1;i<=10;i++){ arr.push('กรรมการ '+i); } return arr;
+}
+
+var state = {
+  teams: loadJSON(LS_TEAMS, defaultTeams()),
+  judges: loadJSON(LS_JUDGES, defaultJudges()),
+  scores: loadJSON(LS_SCORES, {}),
+  curJudge: loadJSON(LS_CURJUDGE, ''),
+  curTeam: null
+};
+
+function saveTeams(){ saveJSON(LS_TEAMS, state.teams); }
+function saveJudges(){ saveJSON(LS_JUDGES, state.judges); }
+function saveScores(){ saveJSON(LS_SCORES, state.scores); }
+
+/* ── Nav ── */
+window.selectComp = function(id){
+  document.querySelectorAll('.comp-view').forEach(function(v){v.classList.remove('active');});
+  var t=document.getElementById('comp-'+id);
+  if(t) t.classList.add('active');
+  document.querySelectorAll('.comp-nav-item').forEach(function(el){el.classList.toggle('active', el.dataset.comp===id);});
+  if(id==='criteria') renderRubricList();
+  if(id==='teams') renderTeamsList();
+  if(id==='score') { renderJudgeSelect(); if(state.curJudge) renderTeamPicker(); }
+  if(id==='results') renderResults();
+};
+
+/* ── Criteria reference page ── */
+function scaleLabel(n){ return ['1 = ต่ำกว่าเส้น (Victim)','2 = Acknowledge','3 = Own & Embrace','4 = Find Solutions','5 = Find Solutions+'][n-1]; }
+function renderRubricList(){
+  var host=document.getElementById('rubric-list');
+  if(!host || host.dataset.rendered) return;
+  var html='';
+  html+='<div class="rubric-section-hdr">① Professionalism 10 ข้อ — น้ำหนัก 50%</div>';
+  CRIT.A.forEach(function(c){ html+=rubricCardHTML(c); });
+  html+='<div class="rubric-section-hdr">② เกณฑ์ส่วนผลงาน (Solution) — น้ำหนัก 30%</div>';
+  CRIT.B.forEach(function(c){ html+=rubricCardHTML(c); });
+  html+='<div class="rubric-section-hdr">③ เกณฑ์ส่วนการนำเสนอ — น้ำหนัก 20%</div>';
+  CRIT.C.forEach(function(c){ html+=rubricCardHTML(c); });
+  host.innerHTML=html;
+  host.dataset.rendered='1';
+}
+function rubricCardHTML(c){
+  var cells='';
+  for(var i=0;i<5;i++){
+    cells+='<div class="rubric-scale-cell rs-'+(i+1)+'"><span class="rubric-scale-num">'+(i+1)+'</span>'+c.s[i]+'</div>';
+  }
+  return '<div class="rubric-card"><div class="rubric-card-head"><div class="rubric-code">'+c.id+'</div><div><div class="rubric-title">'+c.th+' <span class="rubric-title-en">— '+c.en+'</span></div></div></div>'+
+    '<div class="rubric-focus">🔍 สิ่งที่ดูในรอบ 1: '+c.focus+'</div>'+
+    '<div class="rubric-scale-grid">'+cells+'</div></div>';
+}
+
+/* ── Teams setup ── */
+function renderTeamsList(){
+  var host=document.getElementById('teams-list');
+  if(!host) return;
+  var html='';
+  state.teams.forEach(function(t){
+    var opts='<option value="0">— เลือกหัวข้อ —</option>';
+    TOPICS.forEach(function(name,i){ opts+='<option value="'+(i+1)+'"'+(t.topic===i+1?' selected':'')+'>'+(i+1)+'. '+name+'</option>'; });
+    html+='<div class="team-setup-row">'+
+      '<div class="team-setup-num">'+t.id+'</div>'+
+      '<input class="team-input" value="'+escAttr(t.name)+'" placeholder="ชื่อทีม" oninput="updateTeamField('+t.id+',\'name\',this.value)">'+
+      '<input class="team-input" value="'+escAttr(t.project)+'" placeholder="ชื่อโครงการ" oninput="updateTeamField('+t.id+',\'project\',this.value)">'+
+      '<select class="team-select" onchange="updateTeamField('+t.id+',\'topic\',parseInt(this.value))">'+opts+'</select>'+
+      '</div>';
+  });
+  host.innerHTML=html;
+  renderTeamsSummary();
+}
+function renderTeamsSummary(){
+  var host=document.getElementById('teams-summary');
+  if(!host) return;
+  var named=state.teams.filter(function(t){return t.name.trim()!=='';}).length;
+  var withTopic=state.teams.filter(function(t){return t.topic>0;}).length;
+  host.textContent='กรอกชื่อแล้ว '+named+'/24 ทีม · ระบุหัวข้อแล้ว '+withTopic+'/24 ทีม';
+}
+window.updateTeamField=function(id, field, value){
+  var t=state.teams.find(function(x){return x.id===id;});
+  if(!t) return;
+  t[field]=value;
+  saveTeams();
+  renderTeamsSummary();
+};
+window.saveTeamsUI=function(){
+  saveTeams();
+  var btn=event.target;
+  var orig=btn.textContent;
+  btn.textContent='✅ บันทึกแล้ว';
+  setTimeout(function(){btn.textContent=orig;},1200);
+};
+window.exportTeams=function(){
+  downloadJSON('ทีมเข้าประกวด_2569.json', {teams: state.teams});
+};
+window.importTeams=function(ev){
+  var file=ev.target.files[0]; if(!file) return;
+  var reader=new FileReader();
+  reader.onload=function(e){
+    try{
+      var data=JSON.parse(e.target.result);
+      if(data.teams && Array.isArray(data.teams)){
+        state.teams=data.teams; saveTeams(); renderTeamsList();
+        alert('นำเข้ารายชื่อทีมสำเร็จ');
+      }
+    }catch(err){ alert('ไฟล์ไม่ถูกต้อง: '+err.message); }
+  };
+  reader.readAsText(file);
+  ev.target.value='';
+};
+
+/* ── Judges & Scoring ── */
+function renderJudgeSelect(){
+  var sel=document.getElementById('judge-select');
+  if(!sel) return;
+  var html='<option value="">— เลือกชื่อกรรมการ —</option>';
+  state.judges.forEach(function(j){ html+='<option value="'+escAttr(j)+'"'+(j===state.curJudge?' selected':'')+'>'+j+'</option>'; });
+  sel.innerHTML=html;
+}
+window.addJudge=function(){
+  var inp=document.getElementById('judge-new-name');
+  var name=inp.value.trim();
+  if(!name) return;
+  if(state.judges.indexOf(name)===-1){ state.judges.push(name); saveJudges(); }
+  state.curJudge=name; saveJSON(LS_CURJUDGE, name);
+  inp.value='';
+  renderJudgeSelect();
+  document.getElementById('judge-select').value=name;
+  onJudgeChange();
+};
+window.onJudgeChange=function(){
+  var sel=document.getElementById('judge-select');
+  state.curJudge=sel.value;
+  saveJSON(LS_CURJUDGE, state.curJudge);
+  state.curTeam=null;
+  document.getElementById('score-progress-wrap').style.display = state.curJudge? 'block':'none';
+  document.getElementById('score-form-wrap').style.display='none';
+  if(state.curJudge) renderTeamPicker();
+};
+
+function judgeScores(judge){
+  if(!state.scores[judge]) state.scores[judge]={};
+  return state.scores[judge];
+}
+function teamCritCount(judge, teamId){
+  var s=judgeScores(judge)[teamId];
+  if(!s) return 0;
+  var n=0; ALL_CRIT.forEach(function(c){ if(s[c.id]) n++; });
+  return n;
+}
+function isTeamDone(judge, teamId){ return teamCritCount(judge, teamId)===ALL_CRIT.length; }
+
+function renderTeamPicker(){
+  var host=document.getElementById('team-picker');
+  if(!host) return;
+  var doneCount=0;
+  var html='';
+  state.teams.forEach(function(t){
+    var done=isTeamDone(state.curJudge, t.id);
+    if(done) doneCount++;
+    var cls='team-pick-btn'+(t.id===state.curTeam?' sel':'')+(done?' done':'');
+    var label=t.name.trim()||('ทีม '+t.id);
+    html+='<button type="button" class="'+cls+'" onclick="pickTeam('+t.id+')"><div class="team-pick-num">คิว '+t.id+' · หัวข้อ '+(t.topic||'-')+'</div><div class="team-pick-name">'+escHTML(label)+'</div></button>';
+  });
+  host.innerHTML=html;
+  document.getElementById('score-progress-text').textContent='ให้คะแนนแล้ว '+doneCount+'/24 ทีม';
+  document.getElementById('score-progress-fill').style.width=Math.round(doneCount/24*100)+'%';
+}
+window.pickTeam=function(teamId){
+  state.curTeam=teamId;
+  renderTeamPicker();
+  renderScoreForm();
+  document.getElementById('score-form-wrap').style.display='block';
+  document.getElementById('score-form-wrap').scrollIntoView({behavior:'smooth',block:'start'});
+};
+
+function renderScoreForm(){
+  var t=state.teams.find(function(x){return x.id===state.curTeam;});
+  if(!t) return;
+  document.getElementById('score-team-title').textContent='คิว '+t.id+' — '+(t.name.trim()||'(ยังไม่ระบุชื่อทีม)');
+  document.getElementById('score-team-sub').textContent=(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+' · หัวข้อ '+(t.topic? t.topic+'. '+TOPICS[t.topic-1] : 'ยังไม่ระบุ');
+  renderScoreItems('score-items-A', CRIT.A);
+  renderScoreItems('score-items-B', CRIT.B);
+  renderScoreItems('score-items-C', CRIT.C);
+  var s=judgeScores(state.curJudge)[t.id]||{};
+  document.getElementById('score-note').value=s.note||'';
+  updateSummaryBar();
+}
+function renderScoreItems(hostId, list){
+  var host=document.getElementById(hostId);
+  var s=judgeScores(state.curJudge)[state.curTeam]||{};
+  var html='';
+  list.forEach(function(c){
+    var val=s[c.id]||0;
+    var btns='';
+    for(var i=1;i<=5;i++){ btns+='<button type="button" class="score-btn'+(val===i?' sel':'')+'" onclick="setScore(\''+c.id+'\','+i+')">'+i+'</button>'; }
+    html+='<div class="score-item"><div class="score-item-head">'+
+      '<div><div class="score-item-title">'+c.id+' · '+c.th+' <span style="font-weight:400;color:var(--text3);font-size:.68rem">('+c.en+')</span></div>'+
+      '<div class="score-item-focus">'+c.focus+'</div></div>'+
+      '<div class="score-btns">'+btns+'</div></div>'+
+      '<div class="score-item-toggle" onclick="this.nextElementSibling.classList.toggle(\'show\')">👁️ ดูเกณฑ์ 1–5 ของข้อนี้</div>'+
+      '<div class="score-item-desc">'+scaleDescHTML(c)+'</div></div>';
+  });
+  host.innerHTML=html;
+}
+function scaleDescHTML(c){
+  var out='';
+  for(var i=0;i<5;i++){ out+='<b>'+(i+1)+'</b> = '+c.s[i]+'<br>'; }
+  return out;
+}
+window.setScore=function(critId, val){
+  var s=judgeScores(state.curJudge);
+  if(!s[state.curTeam]) s[state.curTeam]={};
+  s[state.curTeam][critId]=val;
+  saveScores();
+  renderScoreItems('score-items-A', CRIT.A);
+  renderScoreItems('score-items-B', CRIT.B);
+  renderScoreItems('score-items-C', CRIT.C);
+  updateSummaryBar();
+  renderTeamPicker();
+};
+window.saveCurrentScore=function(){
+  if(!state.curJudge || !state.curTeam) return;
+  var s=judgeScores(state.curJudge);
+  if(!s[state.curTeam]) s[state.curTeam]={};
+  s[state.curTeam].note=document.getElementById('score-note').value;
+  saveScores();
+};
+function calcTeamTotal(judge, teamId){
+  var s=judgeScores(judge)[teamId]||{};
+  var sum1=0; CRIT.A.forEach(function(c){ sum1+=(s[c.id]||0); });
+  var sum2raw=0; CRIT.B.forEach(function(c){ sum2raw+=(s[c.id]||0); });
+  var sum3raw=0; CRIT.C.forEach(function(c){ sum3raw+=(s[c.id]||0); });
+  var sum2=sum2raw*3, sum3=sum3raw*2;
+  return {s1:sum1, s2:sum2, s3:sum3, total:sum1+sum2+sum3, complete: teamCritCount(judge,teamId)===ALL_CRIT.length};
+}
+function updateSummaryBar(){
+  var r=calcTeamTotal(state.curJudge, state.curTeam);
+  document.getElementById('sum-1').textContent=r.s1;
+  document.getElementById('sum-2').textContent=r.s2;
+  document.getElementById('sum-3').textContent=r.s3;
+  document.getElementById('sum-total').textContent=r.total;
+}
+window.nextTeam=function(){
+  saveCurrentScore();
+  var idx=state.teams.findIndex(function(t){return t.id===state.curTeam;});
+  if(idx>-1 && idx<state.teams.length-1){ pickTeam(state.teams[idx+1].id); }
+};
+window.prevTeam=function(){
+  saveCurrentScore();
+  var idx=state.teams.findIndex(function(t){return t.id===state.curTeam;});
+  if(idx>0){ pickTeam(state.teams[idx-1].id); }
+};
+
+/* ── Results / aggregation ── */
+function renderResults(){
+  renderJudgesLoaded();
+  renderResultsTable();
+  renderResultsByTopic();
+}
+function renderJudgesLoaded(){
+  var host=document.getElementById('judges-loaded');
+  var judgesWithData=Object.keys(state.scores).filter(function(j){ return Object.keys(state.scores[j]).length>0; });
+  if(judgesWithData.length===0){ host.innerHTML='<span style="color:var(--text3);font-size:.72rem">ยังไม่มีคะแนนในระบบนี้ — เริ่มให้คะแนน หรือ Import ไฟล์คะแนนกรรมการ</span>'; return; }
+  var html='';
+  judgesWithData.forEach(function(j){
+    var doneCount=0;
+    state.teams.forEach(function(t){ if(isTeamDone(j,t.id)) doneCount++; });
+    html+='<span class="comp-judge-pill">👤 '+escHTML(j)+' — '+doneCount+'/24 ทีม</span>';
+  });
+  host.innerHTML=html;
+}
+function computeTeamAverage(teamId){
+  var totals=[];
+  Object.keys(state.scores).forEach(function(j){
+    var r=calcTeamTotal(j, teamId);
+    if(r.complete) totals.push(r.total);
+  });
+  if(totals.length===0) return null;
+  var avg=totals.reduce(function(a,b){return a+b;},0)/totals.length;
+  return {avg:avg, n:totals.length};
+}
+function renderResultsTable(){
+  var tbody=document.getElementById('results-table-body');
+  var rows=state.teams.map(function(t){
+    var r=computeTeamAverage(t.id);
+    return {team:t, avg:r?r.avg:null, n:r?r.n:0};
+  });
+  var byTopic={};
+  rows.forEach(function(r){ var k=r.team.topic||0; (byTopic[k]=byTopic[k]||[]).push(r); });
+  Object.keys(byTopic).forEach(function(k){
+    byTopic[k].sort(function(a,b){ return (b.avg||-1)-(a.avg||-1); });
+    byTopic[k].forEach(function(r,i){ r.rankInTopic = r.avg!==null ? i+1 : null; });
+  });
+  rows.sort(function(a,b){ return a.team.id-b.team.id; });
+  var html='';
+  rows.forEach(function(r){
+    var topicLabel = r.team.topic? r.team.topic+'. '+TOPICS[r.team.topic-1] : '—';
+    html+='<tr><td>'+r.team.id+'</td><td>'+escHTML(r.team.name.trim()||'(ยังไม่ระบุชื่อทีม)')+'</td><td style="font-size:.68rem;color:var(--text3)">'+topicLabel+'</td>'+
+      '<td>'+r.n+' ท่าน</td><td style="font-weight:700">'+(r.avg!==null? r.avg.toFixed(1): '—')+'</td>'+
+      '<td>'+(r.rankInTopic? rankBadge(r.rankInTopic): '—')+'</td></tr>';
+  });
+  tbody.innerHTML=html;
+}
+function rankBadge(n){
+  if(n<=3) return '<span class="comp-rank-badge rank-'+n+'">'+n+'</span>';
+  return String(n);
+}
+function renderResultsByTopic(){
+  var host=document.getElementById('results-by-topic');
+  var html='';
+  TOPICS.forEach(function(name, idx){
+    var topicNum=idx+1;
+    var teamsInTopic=state.teams.filter(function(t){return t.topic===topicNum;});
+    var rows=teamsInTopic.map(function(t){
+      var r=computeTeamAverage(t.id);
+      return {team:t, avg:r?r.avg:null, n:r?r.n:0};
+    }).filter(function(r){return r.avg!==null;});
+    rows.sort(function(a,b){return b.avg-a.avg;});
+    var top3=rows.slice(0,3);
+    var awardLabels=['เข้าแข่งขันรอบ 2','10,000 บาท','8,000 บาท'];
+    html+='<div class="panel" style="margin-bottom:12px"><div style="font-size:.78rem;font-weight:700;margin-bottom:10px">'+topicNum+'. '+name+'</div>';
+    if(top3.length===0){
+      html+='<div style="font-size:.7rem;color:var(--text3)">— ยังไม่มีทีม หรือยังไม่มีคะแนนครบในหัวข้อนี้ —</div>';
+    } else {
+      html+='<table class="comp-results-table"><thead><tr><th>อันดับ</th><th>ชื่อทีม</th><th>คะแนนเฉลี่ย</th><th>รางวัล</th></tr></thead><tbody>';
+      top3.forEach(function(r, i){
+        html+='<tr><td>'+rankBadge(i+1)+'</td><td>'+escHTML(r.team.name.trim()||'(ทีม '+r.team.id+')')+'</td><td style="font-weight:700">'+r.avg.toFixed(1)+'</td>'+
+          '<td><span class="comp-award-tag '+(i===0?'award-advance':'award-cash')+'">'+awardLabels[i]+'</span></td></tr>';
+      });
+      html+='</tbody></table>';
+    }
+    html+='</div>';
+  });
+  host.innerHTML=html;
+}
+window.exportMyScores=function(){
+  if(!state.curJudge){ alert('กรุณาเลือกชื่อกรรมการที่หน้า "ให้คะแนนออนไลน์" ก่อน'); return; }
+  var payload={}; payload[state.curJudge]=judgeScores(state.curJudge);
+  downloadJSON('คะแนน_'+state.curJudge+'.json', {scores: payload});
+};
+window.importJudgeScores=function(ev){
+  var files=ev.target.files;
+  var pending=files.length;
+  Array.prototype.forEach.call(files, function(file){
+    var reader=new FileReader();
+    reader.onload=function(e){
+      try{
+        var data=JSON.parse(e.target.result);
+        if(data.scores){
+          Object.keys(data.scores).forEach(function(j){
+            if(state.judges.indexOf(j)===-1){ state.judges.push(j); }
+            state.scores[j]=data.scores[j];
+          });
+          saveJudges(); saveScores();
+        }
+      }catch(err){ alert('ไฟล์ '+file.name+' ไม่ถูกต้อง: '+err.message); }
+      pending--;
+      if(pending===0){ renderResults(); }
+    };
+    reader.readAsText(file);
+  });
+  ev.target.value='';
+};
+window.exportResultsCSV=function(){
+  var lines=['คิว,ชื่อทีม,หัวข้อ,จำนวนกรรมการ,คะแนนเฉลี่ย,อันดับในหัวข้อ'];
+  var rows=state.teams.map(function(t){
+    var r=computeTeamAverage(t.id);
+    return {team:t, avg:r?r.avg:null, n:r?r.n:0};
+  });
+  var byTopic={};
+  rows.forEach(function(r){ var k=r.team.topic||0; (byTopic[k]=byTopic[k]||[]).push(r); });
+  Object.keys(byTopic).forEach(function(k){
+    byTopic[k].sort(function(a,b){ return (b.avg||-1)-(a.avg||-1); });
+    byTopic[k].forEach(function(r,i){ r.rankInTopic = r.avg!==null ? i+1 : null; });
+  });
+  rows.sort(function(a,b){return a.team.id-b.team.id;});
+  rows.forEach(function(r){
+    var topicLabel=r.team.topic? (r.team.topic+'. '+TOPICS[r.team.topic-1]):'';
+    lines.push([r.team.id, csvEsc(r.team.name), csvEsc(topicLabel), r.n, r.avg!==null?r.avg.toFixed(1):'', r.rankInTopic||''].join(','));
+  });
+  var blob=new Blob(['﻿'+lines.join('\n')], {type:'text/csv;charset=utf-8'});
+  triggerDownload(blob, 'ผลคะแนนรวม_2569.csv');
+};
+
+/* ── Utils ── */
+function escHTML(s){ return String(s==null?'':s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function escAttr(s){ return escHTML(s); }
+function csvEsc(s){ s=String(s==null?'':s); if(s.indexOf(',')>-1||s.indexOf('"')>-1){ s='"'+s.replace(/"/g,'""')+'"'; } return s; }
+function downloadJSON(filename, obj){
+  var blob=new Blob([JSON.stringify(obj,null,2)], {type:'application/json'});
+  triggerDownload(blob, filename);
+}
+function triggerDownload(blob, filename){
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){URL.revokeObjectURL(url);}, 1000);
+}
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', function(){
+  renderJudgeSelect();
+  if(state.curJudge){
+    var sel=document.getElementById('judge-select');
+    if(sel) sel.value=state.curJudge;
+  }
+});
+
+})();
+
 </script>
 </body></html>

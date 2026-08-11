@@ -2641,10 +2641,13 @@
     <!-- ══════ HOME ══════ -->
     <div id="comp-home" class="comp-view active">
       <div class="comp-hero">
-        <div class="comp-poster-placeholder" id="comp-poster-slot">
-          <div class="comp-poster-icon">🏆</div>
-          <div style="font-size:.78rem;font-weight:700;line-height:1.6">Poster ต้นฉบับ<br>PRECISE GOT DIGITAL &amp; AI,<br>AUTOMATION TALENT</div>
-          <div style="font-size:.64rem;line-height:1.6;opacity:.75">แนบไฟล์ภาพ Poster เพื่อแสดงที่นี่<br>(รอไฟล์จากผู้ดูแลระบบ)</div>
+        <div class="comp-poster-placeholder" id="comp-poster-slot" style="position:relative;overflow:hidden">
+          <img src="assets/poster-2569.png" alt="Precise Got Digital &amp; AI, Automation Talent 2569 Poster" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:17px" onload="this.style.display='block';document.getElementById('comp-poster-fallback').style.display='none'" onerror="this.style.display='none'">
+          <div id="comp-poster-fallback" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+            <div class="comp-poster-icon">🏆</div>
+            <div style="font-size:.78rem;font-weight:700;line-height:1.6">Poster ต้นฉบับ<br>PRECISE GOT DIGITAL &amp; AI,<br>AUTOMATION TALENT</div>
+            <div style="font-size:.64rem;line-height:1.6;opacity:.75">อัปโหลดไฟล์ <code>poster-2569.png</code> ไปที่โฟลเดอร์ <code>assets/</code> ใน GitHub เพื่อแสดงที่นี่</div>
+          </div>
         </div>
         <div class="comp-hero-info">
           <div class="comp-hero-eyebrow">Precise Got Digital &amp; AI, Automation Talent · 2569</div>

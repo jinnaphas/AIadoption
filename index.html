@@ -2759,8 +2759,8 @@
       </div>
       <div class="panel" style="margin-bottom:24px">
         <div style="font-size:.76rem;color:var(--text2);line-height:1.9">
-          <strong>รอบที่ 1 (คัดเลือกรายหัวข้อ):</strong> อันดับ 1 ของแต่ละหัวข้อ ผ่านเข้ารอบ 2 (ไม่รับเงินรางวัลรอบ 1) · อันดับ 2 = 10,000 บาท · อันดับ 3 = 8,000 บาท<br>
-          <span style="color:var(--text3);font-size:.7rem">แต่ละหัวข้อไม่จำเป็นต้องได้ครบทุกรางวัล — คณะกรรมการมีสิทธิ์งดรางวัลหากคะแนนต่ำกว่ามาตรฐาน · เงินรางวัลรวมกว่า 200,000 บาท</span>
+          <strong>รอบที่ 1 (คัดเลือกรายหัวข้อ):</strong> อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ Final (ไม่รับเงินรางวัลรอบ 1) — หัวข้อที่มีทีมมาก เช่น Operation Excellence ได้โควตาผ่านมากกว่า 1 ทีมตามสัดส่วน · ทีมที่เหลือทั้งหมดนำคะแนนมาเรียงรวมกันข้ามหัวข้อ อันดับ 1 = 10,000 บาท · อันดับ 2 = 8,000 บาท<br>
+          <span style="color:var(--text3);font-size:.7rem">ทีมนอกเหนือจากนี้ไม่ได้รับรางวัลรอบที่ 1 — คณะกรรมการมีสิทธิ์งดรางวัลหากคะแนนต่ำกว่ามาตรฐาน · เงินรางวัลรวมกว่า 200,000 บาท</span>
         </div>
       </div>
 
@@ -2956,13 +2956,26 @@
         </div>
         <div style="overflow-x:auto">
           <table class="comp-results-table">
-            <thead><tr><th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th></tr></thead>
+            <thead><tr><th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th><th>ผล</th></tr></thead>
             <tbody id="results-table-body"></tbody>
           </table>
         </div>
       </div>
 
-      <div class="section-title">ผลการตัดสิน 3 อันดับต่อหัวข้อ (เทียบเท่า Sheet 5)</div>
+      <div class="panel" style="margin-bottom:18px;background:linear-gradient(135deg,var(--accent-bg),var(--surface2))">
+        <div style="font-size:.8rem;font-weight:700;margin-bottom:4px">🎯 กติการอบที่ 1 (อัปเดต)</div>
+        <div style="font-size:.72rem;color:var(--text2);line-height:1.8">
+          ① อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ Final — <strong>ยกเว้น Operation Excellence ที่มี 11 ทีม ผ่านเข้ารอบ 3 ทีม</strong> (สัดส่วนมากกว่าหัวข้ออื่นเพราะมีทีมเข้าแข่งขันมากกว่า)<br>
+          ② ทีมที่เหลือทั้งหมด (ไม่ผ่านรอบ) นำคะแนนมาเรียง<strong>รวมกันข้ามหัวข้อ</strong>เป็นอันดับเดียว — อันดับ 1 ของทีมที่เหลือ = <strong>10,000 บาท</strong> · อันดับ 2 = <strong>8,000 บาท</strong> · อันดับอื่นไม่ได้รับรางวัลรอบนี้
+        </div>
+      </div>
+
+      <div class="section-title">🏆 รางวัลลำดับ 2 ระดับรวม — ทีมที่ไม่ผ่านรอบ Final เรียงคะแนนข้ามหัวข้อ</div>
+      <div class="panel" style="margin-bottom:18px">
+        <div id="results-remainder"></div>
+      </div>
+
+      <div class="section-title">ผลการตัดสินราย หัวข้อ (เทียบเท่า Sheet 5) — จำนวนทีมผ่านรอบต่างกันตามขนาดหัวข้อ</div>
       <div id="results-by-topic"></div>
     </div>
 
@@ -2977,7 +2990,7 @@
       </div>
       <div class="rubric-card">
         <div class="rubric-title" style="margin-bottom:8px">🏅 ผลการตัดสินรอบ 1</div>
-        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">ประกาศผู้ชนะ 3 อันดับของแต่ละหัวข้อ · อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ 2 (ไม่รับเงินรางวัลรอบ 1) · อันดับ 2 = 10,000 บาท · อันดับ 3 = 8,000 บาท · แต่ละหัวข้อไม่จำเป็นต้องได้ครบทุกรางวัล</div>
+        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ Final (ไม่รับเงินรางวัลรอบ 1) — หัวข้อที่มีทีมเข้าแข่งขันมาก (เช่น Operation Excellence 11 ทีม) ผ่านเข้ารอบได้มากกว่า 1 ทีมตามสัดส่วน · ทีมที่เหลือทั้งหมดนำคะแนนมาเรียงรวมกันข้ามหัวข้อเป็น Pool เดียว — อันดับ 1 ของ Pool = 10,000 บาท · อันดับ 2 = 8,000 บาท · ทีมอื่นไม่ได้รับรางวัลรอบนี้ (คณะกรรมการมีสิทธิ์งดรางวัลหากคะแนนต่ำกว่ามาตรฐาน)</div>
       </div>
       <div class="rubric-card">
         <div class="rubric-title" style="margin-bottom:8px">🧮 โครงสร้างคะแนน</div>
@@ -3037,14 +3050,16 @@
 (function(){
 'use strict';
 
+/* slots = จำนวนทีมที่ผ่านเข้ารอบ Final จากหัวข้อนี้ — ปรับตามจำนวนทีมจริงที่สมัครแต่ละหัวข้อ
+   (อ้างอิงจำนวนทีมรอบที่ 1: Strategy 3, Revenue Stream 3, STEM 3, Operation Excellence 11, Service&Support 4 = รวม 24 ทีม) */
 var TOPICS = [
-  'Strategy / Relation / Customer Capital',
-  'Revenue Stream Type Development',
-  'Business Generation (PCF 1-6)',
-  'STEM (R&D)',
-  'Demand Satisfaction',
-  'Operation Excellence',
-  'Service and Support (PCF 7-13)'
+  {name:'Strategy / Relation / Customer Capital', slots:1},
+  {name:'Revenue Stream Type Development', slots:1},
+  {name:'Business Generation (PCF 1-6)', slots:1},
+  {name:'STEM (R&D)', slots:1},
+  {name:'Demand Satisfaction', slots:1},
+  {name:'Operation Excellence', slots:3},
+  {name:'Service and Support (PCF 7-13)', slots:1}
 ];
 
 var CRIT = {
@@ -3354,7 +3369,7 @@ function renderTeamsList(){
   var html='';
   state.teams.forEach(function(t){
     var opts='<option value="0">— เลือกหัวข้อ —</option>';
-    TOPICS.forEach(function(name,i){ opts+='<option value="'+(i+1)+'"'+(t.topic===i+1?' selected':'')+'>'+(i+1)+'. '+name+'</option>'; });
+    TOPICS.forEach(function(topic,i){ opts+='<option value="'+(i+1)+'"'+(t.topic===i+1?' selected':'')+'>'+(i+1)+'. '+topic.name+'</option>'; });
     html+='<div class="team-setup-row">'+
       '<div class="team-setup-num">'+t.id+'</div>'+
       '<input class="team-input" value="'+escAttr(t.name)+'" placeholder="ชื่อทีม" oninput="updateTeamField('+t.id+',\'name\',this.value)">'+
@@ -3495,7 +3510,7 @@ function renderScoreForm(){
   var t=state.teams.find(function(x){return x.id===state.curTeam;});
   if(!t) return;
   document.getElementById('score-team-title').textContent='คิว '+t.id+' — '+(t.name.trim()||'(ยังไม่ระบุชื่อทีม)');
-  document.getElementById('score-team-sub').textContent=(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+' · หัวข้อ '+(t.topic? t.topic+'. '+TOPICS[t.topic-1] : 'ยังไม่ระบุ');
+  document.getElementById('score-team-sub').textContent=(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+' · หัวข้อ '+(t.topic? t.topic+'. '+TOPICS[t.topic-1].name : 'ยังไม่ระบุ');
   renderScoreItems('score-items-A', CRIT.A);
   renderScoreItems('score-items-B', CRIT.B);
   renderScoreItems('score-items-C', CRIT.C);
@@ -3574,8 +3589,10 @@ window.prevTeam=function(){
 /* ── Results / aggregation ── */
 function renderResults(){
   renderJudgesLoaded();
-  renderResultsTable();
-  renderResultsByTopic();
+  var results=computeAllResults();
+  renderResultsTable(results);
+  renderResultsByTopic(results);
+  renderRemainderRanking(results);
 }
 function renderJudgesLoaded(){
   var host=document.getElementById('judges-loaded');
@@ -3599,25 +3616,50 @@ function computeTeamAverage(teamId){
   var avg=totals.reduce(function(a,b){return a+b;},0)/totals.length;
   return {avg:avg, n:totals.length};
 }
-function renderResultsTable(){
-  var tbody=document.getElementById('results-table-body');
+/* กติการอบที่ 1 (อัปเดต):
+   ① อันดับ 1..slots ของแต่ละหัวข้อ ผ่านเข้ารอบ Final (slots ต่างกันตามจำนวนทีมในหัวข้อ — ดูค่า TOPICS[i].slots)
+   ② ทีมที่เหลือทั้งหมด (ไม่ผ่านรอบ) นำคะแนนมาเรียงรวมกัน "ข้ามหัวข้อ" เป็น Pool เดียว
+      อันดับ 1 ของ Pool นี้ = 10,000 บาท · อันดับ 2 = 8,000 บาท · อันดับอื่นไม่ได้รับรางวัล */
+function computeAllResults(){
   var rows=state.teams.map(function(t){
     var r=computeTeamAverage(t.id);
-    return {team:t, avg:r?r.avg:null, n:r?r.n:0};
+    return {team:t, avg:r?r.avg:null, n:r?r.n:0, rankInTopic:null, advanced:false, globalRank:null};
   });
   var byTopic={};
   rows.forEach(function(r){ var k=r.team.topic||0; (byTopic[k]=byTopic[k]||[]).push(r); });
+  var remainder=[];
   Object.keys(byTopic).forEach(function(k){
-    byTopic[k].sort(function(a,b){ return (b.avg||-1)-(a.avg||-1); });
-    byTopic[k].forEach(function(r,i){ r.rankInTopic = r.avg!==null ? i+1 : null; });
+    var list=byTopic[k];
+    list.sort(function(a,b){ return (b.avg===null?-1:b.avg)-(a.avg===null?-1:a.avg); });
+    list.forEach(function(r,i){ if(r.avg!==null) r.rankInTopic=i+1; });
+    var topicIdx=parseInt(k,10)-1;
+    var slots=(topicIdx>=0 && TOPICS[topicIdx])? TOPICS[topicIdx].slots : 1;
+    list.forEach(function(r){
+      if(r.avg===null) return;
+      if(r.rankInTopic<=slots){ r.advanced=true; }
+      else { r.advanced=false; remainder.push(r); }
+    });
   });
+  remainder.sort(function(a,b){ return b.avg-a.avg; });
+  remainder.forEach(function(r,i){ r.globalRank=i+1; });
   rows.sort(function(a,b){ return a.team.id-b.team.id; });
+  return {rows:rows, remainder:remainder};
+}
+function awardBadgeHTML(r){
+  if(r.avg===null) return '—';
+  if(r.advanced) return '<span class="comp-award-tag award-advance">✅ ผ่านรอบ Final</span>';
+  if(r.globalRank===1) return '<span class="comp-award-tag award-cash">🥇 10,000 บาท</span>';
+  if(r.globalRank===2) return '<span class="comp-award-tag award-cash">🥈 8,000 บาท</span>';
+  return '<span style="color:var(--text3);font-size:.68rem">— ไม่ได้รับรางวัล</span>';
+}
+function renderResultsTable(results){
+  var tbody=document.getElementById('results-table-body');
   var html='';
-  rows.forEach(function(r){
-    var topicLabel = r.team.topic? r.team.topic+'. '+TOPICS[r.team.topic-1] : '—';
+  results.rows.forEach(function(r){
+    var topicLabel = r.team.topic? r.team.topic+'. '+TOPICS[r.team.topic-1].name : '—';
     html+='<tr><td>'+r.team.id+'</td><td>'+escHTML(r.team.name.trim()||'(ยังไม่ระบุชื่อทีม)')+'</td><td style="font-size:.68rem;color:var(--text3)">'+topicLabel+'</td>'+
       '<td>'+r.n+' ท่าน</td><td style="font-weight:700">'+(r.avg!==null? r.avg.toFixed(1): '—')+'</td>'+
-      '<td>'+(r.rankInTopic? rankBadge(r.rankInTopic): '—')+'</td></tr>';
+      '<td>'+(r.rankInTopic? rankBadge(r.rankInTopic): '—')+'</td><td>'+awardBadgeHTML(r)+'</td></tr>';
   });
   tbody.innerHTML=html;
 }
@@ -3625,32 +3667,45 @@ function rankBadge(n){
   if(n<=3) return '<span class="comp-rank-badge rank-'+n+'">'+n+'</span>';
   return String(n);
 }
-function renderResultsByTopic(){
+function renderResultsByTopic(results){
   var host=document.getElementById('results-by-topic');
   var html='';
-  TOPICS.forEach(function(name, idx){
+  TOPICS.forEach(function(topic, idx){
     var topicNum=idx+1;
-    var teamsInTopic=state.teams.filter(function(t){return t.topic===topicNum;});
-    var rows=teamsInTopic.map(function(t){
-      var r=computeTeamAverage(t.id);
-      return {team:t, avg:r?r.avg:null, n:r?r.n:0};
-    }).filter(function(r){return r.avg!==null;});
-    rows.sort(function(a,b){return b.avg-a.avg;});
-    var top3=rows.slice(0,3);
-    var awardLabels=['เข้าแข่งขันรอบ 2','10,000 บาท','8,000 บาท'];
-    html+='<div class="panel" style="margin-bottom:12px"><div style="font-size:.78rem;font-weight:700;margin-bottom:10px">'+topicNum+'. '+name+'</div>';
-    if(top3.length===0){
+    var rowsInTopic=results.rows.filter(function(r){return r.team.topic===topicNum && r.avg!==null;});
+    rowsInTopic.sort(function(a,b){return b.avg-a.avg;});
+    html+='<div class="panel" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">'+
+      '<div style="font-size:.78rem;font-weight:700">'+topicNum+'. '+escHTML(topic.name)+'</div>'+
+      '<div style="font-size:.63rem;color:var(--text3)">ผ่านเข้ารอบ Final '+topic.slots+' ทีม</div></div>';
+    if(rowsInTopic.length===0){
       html+='<div style="font-size:.7rem;color:var(--text3)">— ยังไม่มีทีม หรือยังไม่มีคะแนนครบในหัวข้อนี้ —</div>';
     } else {
-      html+='<table class="comp-results-table"><thead><tr><th>อันดับ</th><th>ชื่อทีม</th><th>คะแนนเฉลี่ย</th><th>รางวัล</th></tr></thead><tbody>';
-      top3.forEach(function(r, i){
+      html+='<table class="comp-results-table"><thead><tr><th>อันดับ</th><th>ชื่อทีม</th><th>คะแนนเฉลี่ย</th><th>ผล</th></tr></thead><tbody>';
+      rowsInTopic.forEach(function(r, i){
         html+='<tr><td>'+rankBadge(i+1)+'</td><td>'+escHTML(r.team.name.trim()||'(ทีม '+r.team.id+')')+'</td><td style="font-weight:700">'+r.avg.toFixed(1)+'</td>'+
-          '<td><span class="comp-award-tag '+(i===0?'award-advance':'award-cash')+'">'+awardLabels[i]+'</span></td></tr>';
+          '<td>'+awardBadgeHTML(r)+'</td></tr>';
       });
       html+='</tbody></table>';
     }
     html+='</div>';
   });
+  host.innerHTML=html;
+}
+function renderRemainderRanking(results){
+  var host=document.getElementById('results-remainder');
+  if(!host) return;
+  if(results.remainder.length===0){
+    host.innerHTML='<div style="font-size:.7rem;color:var(--text3)">— ยังไม่มีทีมที่ตกรอบ Final (หรือยังไม่มีคะแนนครบ) —</div>';
+    return;
+  }
+  var html='<table class="comp-results-table"><thead><tr><th>อันดับรวม</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>คะแนนเฉลี่ย</th><th>รางวัล</th></tr></thead><tbody>';
+  results.remainder.forEach(function(r){
+    var topicLabel = r.team.topic? (r.team.topic+'. '+TOPICS[r.team.topic-1].name) : '—';
+    html+='<tr><td>'+rankBadge(r.globalRank)+'</td><td>'+escHTML(r.team.name.trim()||'(ทีม '+r.team.id+')')+'</td>'+
+      '<td style="font-size:.68rem;color:var(--text3)">'+topicLabel+'</td><td style="font-weight:700">'+r.avg.toFixed(1)+'</td>'+
+      '<td>'+awardBadgeHTML(r)+'</td></tr>';
+  });
+  html+='</tbody></table>';
   host.innerHTML=html;
 }
 window.exportMyScores=function(){
@@ -3681,22 +3736,19 @@ window.importJudgeScores=function(ev){
   });
   ev.target.value='';
 };
+function awardLabelText(r){
+  if(r.avg===null) return '';
+  if(r.advanced) return 'ผ่านรอบ Final';
+  if(r.globalRank===1) return '10,000 บาท';
+  if(r.globalRank===2) return '8,000 บาท';
+  return 'ไม่ได้รับรางวัล';
+}
 window.exportResultsCSV=function(){
-  var lines=['คิว,ชื่อทีม,หัวข้อ,จำนวนกรรมการ,คะแนนเฉลี่ย,อันดับในหัวข้อ'];
-  var rows=state.teams.map(function(t){
-    var r=computeTeamAverage(t.id);
-    return {team:t, avg:r?r.avg:null, n:r?r.n:0};
-  });
-  var byTopic={};
-  rows.forEach(function(r){ var k=r.team.topic||0; (byTopic[k]=byTopic[k]||[]).push(r); });
-  Object.keys(byTopic).forEach(function(k){
-    byTopic[k].sort(function(a,b){ return (b.avg||-1)-(a.avg||-1); });
-    byTopic[k].forEach(function(r,i){ r.rankInTopic = r.avg!==null ? i+1 : null; });
-  });
-  rows.sort(function(a,b){return a.team.id-b.team.id;});
-  rows.forEach(function(r){
-    var topicLabel=r.team.topic? (r.team.topic+'. '+TOPICS[r.team.topic-1]):'';
-    lines.push([r.team.id, csvEsc(r.team.name), csvEsc(topicLabel), r.n, r.avg!==null?r.avg.toFixed(1):'', r.rankInTopic||''].join(','));
+  var results=computeAllResults();
+  var lines=['คิว,ชื่อทีม,หัวข้อ,จำนวนกรรมการ,คะแนนเฉลี่ย,อันดับในหัวข้อ,ผล'];
+  results.rows.forEach(function(r){
+    var topicLabel=r.team.topic? (r.team.topic+'. '+TOPICS[r.team.topic-1].name):'';
+    lines.push([r.team.id, csvEsc(r.team.name), csvEsc(topicLabel), r.n, r.avg!==null?r.avg.toFixed(1):'', r.rankInTopic||'', csvEsc(awardLabelText(r))].join(','));
   });
   var blob=new Blob(['﻿'+lines.join('\n')], {type:'text/csv;charset=utf-8'});
   triggerDownload(blob, 'ผลคะแนนรวม_2569.csv');

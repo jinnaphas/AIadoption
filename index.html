@@ -2604,6 +2604,25 @@
 </div><!-- /app-dashboard -->
 
 <div id="app-competition" class="app-panel">
+<div class="overlay" id="ov-sync"><div class="modal" style="max-width:420px">
+  <div class="modal-head"><div><h2>🔗 เชื่อมต่อออนไลน์</h2><p>ใส่ Worker URL และรหัสผ่าน (ขอจากผู้ดูแลระบบ)</p></div><button class="close-btn" onclick="closeModal('sync')">✕</button></div>
+  <div class="modal-body">
+    <div class="score-field-label">Worker URL</div>
+    <input type="text" class="team-input" id="sync-worker-url" placeholder="https://comp2569-sync.xxx.workers.dev" style="margin-bottom:14px">
+    <div class="score-field-label">รหัสผ่านกรรมการ (สำหรับให้คะแนน)</div>
+    <input type="password" class="team-input" id="sync-passcode-judge" placeholder="รหัสผ่านกรรมการ" style="margin-bottom:14px">
+    <div class="score-field-label">รหัสผ่านผู้ดูแล (เฉพาะ HR — ไม่บังคับสำหรับกรรมการ)</div>
+    <input type="password" class="team-input" id="sync-passcode-admin" placeholder="รหัสผ่านผู้ดูแล (ไม่บังคับ)" style="margin-bottom:16px">
+    <div id="sync-modal-msg" style="font-size:.7rem;margin-bottom:10px;min-height:14px"></div>
+    <div style="display:flex;gap:8px">
+      <button class="comp-btn comp-btn-primary" style="flex:1;justify-content:center" onclick="doConnect()">เชื่อมต่อ</button>
+      <button class="comp-btn comp-btn-secondary" onclick="doDisconnect()">ยกเลิกการเชื่อมต่อ</button>
+    </div>
+    <div style="font-size:.66rem;color:var(--text3);margin-top:14px;line-height:1.6">
+      ยังไม่มี Worker? ดูวิธีตั้งค่าได้ที่ไฟล์ <code>comp2569-worker/SETUP.md</code> ใน repository — ใช้เวลาประมาณ 20 นาที (ครั้งเดียว) ไม่ต้องมีความรู้เขียนโปรแกรม
+    </div>
+  </div>
+</div></div>
 <div class="comp-wrap">
   <aside class="comp-nav">
     <div class="comp-nav-head">
@@ -2711,11 +2730,19 @@
       <div class="comp-h1-sub">กรอกรายชื่อ 24 ทีมที่ผ่านการคัดเลือกเข้ารอบที่ 1 — ใช้ 1 ครั้งก่อนวันแข่งขัน (เทียบเท่า Sheet 3 คอลัมน์ C/D/E ในไฟล์เดิม)</div>
 
       <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
+          <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์</span>
+        </div>
+        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+      </div>
+
+      <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <div id="teams-summary" style="font-size:.74rem;color:var(--text2)"></div>
         <div style="display:flex;gap:8px">
           <button class="comp-btn comp-btn-secondary" onclick="exportTeams()">📤 Export รายชื่อทีม</button>
           <label class="comp-btn comp-btn-secondary" style="cursor:pointer;margin:0">📥 Import รายชื่อทีม<input type="file" accept="application/json" style="display:none" onchange="importTeams(event)"></label>
-          <button class="comp-btn comp-btn-primary" onclick="saveTeamsUI()">💾 บันทึกทั้งหมด</button>
+          <button class="comp-btn comp-btn-primary" onclick="saveTeamsUI()">💾 บันทึกทั้งหมด<span id="teams-save-hint" style="font-weight:400;font-size:.63rem"></span></button>
         </div>
       </div>
 
@@ -2728,6 +2755,14 @@
     <div id="comp-score" class="comp-view">
       <div class="comp-h1">✍️ ให้คะแนนออนไลน์</div>
       <div class="comp-h1-sub">รอบที่ 1 · 15 กันยายน 2569 · นำเสนอ ≤7 นาที + ซักถาม ≤5 นาที ต่อทีม</div>
+
+      <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
+          <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์ — คะแนนบันทึกในเครื่องนี้เท่านั้น</span>
+        </div>
+        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+      </div>
 
       <div class="score-setup-grid">
         <div>
@@ -2803,15 +2838,22 @@
       <div class="comp-h1">🏆 สรุปผล &amp; อันดับ</div>
       <div class="comp-h1-sub">รวมคะแนนจากกรรมการทุกท่าน แล้วจัดอันดับ 3 อันดับแรกของแต่ละหัวข้อโดยอัตโนมัติ</div>
 
+      <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
+          <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์</span>
+          <span id="results-live-badge" style="display:none;font-size:.63rem;color:var(--green);font-weight:700">🔄 อัปเดตอัตโนมัติทุก 20 วิ</span>
+        </div>
+        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+      </div>
+
       <div class="panel" style="margin-bottom:18px">
         <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
           <div>
-            <div style="font-size:.8rem;font-weight:700;margin-bottom:3px">ขั้นตอนรวมคะแนน (Online)</div>
+            <div style="font-size:.8rem;font-weight:700;margin-bottom:3px">ขั้นตอนรวมคะแนน</div>
             <div style="font-size:.7rem;color:var(--text2);line-height:1.7">
-              1) กรรมการแต่ละท่านให้คะแนนครบ 24 ทีมในหน้า "ให้คะแนนออนไลน์" บนอุปกรณ์ของตัวเอง →
-              2) กด Export คะแนนของฉัน ด้านล่างนี้ (ดาวน์โหลดไฟล์ .json) →
-              3) ผู้ดูแล (HR) รวบรวมไฟล์จากกรรมการทุกท่าน แล้ว Import เข้าที่นี่ทีละไฟล์ →
-              4) ตารางผลลัพธ์ด้านล่างคำนวณอันดับให้อัตโนมัติ
+              <strong>ถ้าเชื่อมต่อออนไลน์แล้ว:</strong> หน้านี้ดึงคะแนนจากกรรมการทุกท่านให้อัตโนมัติทุก ~20 วินาที ไม่ต้องทำอะไรเพิ่ม<br>
+              <strong>ถ้ายังไม่ได้เชื่อมต่อ (สำรอง):</strong> 1) กรรมการให้คะแนนครบแล้วกด Export คะแนนของฉัน → 2) ผู้ดูแลรวบรวมไฟล์แล้ว Import เข้าที่นี่ทีละไฟล์ → 3) ตารางด้านล่างคำนวณอันดับอัตโนมัติ
             </div>
           </div>
           <div style="display:flex;gap:8px;flex-shrink:0">
@@ -3046,16 +3088,157 @@ function saveTeams(){ saveJSON(LS_TEAMS, state.teams); }
 function saveJudges(){ saveJSON(LS_JUDGES, state.judges); }
 function saveScores(){ saveJSON(LS_SCORES, state.scores); }
 
+/* ── Online Sync (Cloudflare Worker + GitHub, optional) ── */
+var LS_SYNC='comp_sync_v1';
+var resultsPollTimer=null;
+var savePushTimer=null;
+
+function getSync(){ return loadJSON(LS_SYNC, null); }
+function apiUrl(path){ var s=getSync(); return s? s.url.replace(/\/$/,'')+path : null; }
+function updateSyncStatus(){
+  var s=getSync();
+  document.querySelectorAll('.sync-dot').forEach(function(d){ d.style.background = s? 'var(--green)':'#cbd5e1'; });
+  document.querySelectorAll('.sync-status-text').forEach(function(t){
+    t.textContent = s? ('● ออนไลน์ — '+s.url.replace(/^https?:\/\//,'')) : 'ยังไม่ได้เชื่อมต่อออนไลน์ — คะแนนบันทึกในเครื่องนี้เท่านั้น';
+  });
+  var liveBadge=document.getElementById('results-live-badge');
+  if(liveBadge) liveBadge.style.display = s? 'inline':'none';
+}
+window.openSyncModal=function(){
+  var s=getSync();
+  if(s){
+    document.getElementById('sync-worker-url').value=s.url;
+    document.getElementById('sync-passcode-judge').value=s.passJudge||'';
+    document.getElementById('sync-passcode-admin').value=s.passAdmin||'';
+  }
+  document.getElementById('sync-modal-msg').textContent='';
+  openModal('sync');
+};
+window.doConnect=function(){
+  var url=document.getElementById('sync-worker-url').value.trim().replace(/\/$/,'');
+  var passJudge=document.getElementById('sync-passcode-judge').value;
+  var passAdmin=document.getElementById('sync-passcode-admin').value;
+  var msg=document.getElementById('sync-modal-msg');
+  if(!url){ msg.textContent='⚠️ กรุณาใส่ Worker URL'; msg.style.color='#dc2626'; return; }
+  msg.textContent='กำลังทดสอบการเชื่อมต่อ...'; msg.style.color='var(--text3)';
+  fetch(url+'/load-teams').then(function(r){
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r.json();
+  }).then(function(){
+    saveJSON(LS_SYNC, {url:url, passJudge:passJudge, passAdmin:passAdmin});
+    msg.textContent='✅ เชื่อมต่อสำเร็จ'; msg.style.color='var(--green)';
+    updateSyncStatus();
+    pullTeamsFromServer();
+    var activeView=document.querySelector('.comp-view.active');
+    var activeId=activeView? activeView.id.replace('comp-','') : '';
+    if(activeId==='results'){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
+    if(activeId==='score' && state.curJudge){ pullScoresForJudge(state.curJudge).then(function(){ renderTeamPicker(); if(state.curTeam) renderScoreForm(); }); }
+    setTimeout(function(){ closeModal('sync'); }, 700);
+  }).catch(function(e){
+    msg.textContent='❌ เชื่อมต่อไม่สำเร็จ — ตรวจสอบ URL: '+e.message; msg.style.color='#dc2626';
+  });
+};
+window.doDisconnect=function(){
+  localStorage.removeItem(LS_SYNC);
+  updateSyncStatus();
+  document.getElementById('sync-modal-msg').textContent='ยกเลิกการเชื่อมต่อแล้ว — คะแนนยังอยู่ในเครื่องนี้ตามปกติ';
+  document.getElementById('sync-modal-msg').style.color='var(--text3)';
+};
+function pullTeamsFromServer(){
+  var s=getSync(); if(!s) return;
+  fetch(apiUrl('/load-teams')).then(function(r){return r.json();}).then(function(res){
+    if(res.teams && res.teams.teams){
+      state.teams=res.teams.teams;
+      state._teamsSha=res.sha;
+      saveTeams();
+      var host=document.getElementById('teams-list');
+      if(host) renderTeamsList();
+      var host2=document.getElementById('team-picker');
+      if(host2) renderTeamPicker();
+    }
+  }).catch(function(){});
+}
+function pushTeamsToServer(passcode){
+  var s=getSync();
+  var url=apiUrl('/save-teams');
+  if(!url) return Promise.resolve({skipped:true});
+  return fetch(url, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({passcode: passcode, teams: {teams: state.teams}, sha: state._teamsSha})
+  }).then(function(r){return r.json().then(function(j){return {status:r.status, body:j};});})
+    .then(function(res){
+      if(res.status===200){ state._teamsSha=res.body.sha; }
+      return res;
+    });
+}
+function pullScoresForJudge(judge){
+  var s=getSync(); if(!s || !judge) return Promise.resolve();
+  return fetch(apiUrl('/load-scores?judge='+encodeURIComponent(judge))).then(function(r){return r.json();}).then(function(res){
+    if(res.scores){
+      state.scores[judge]=res.scores;
+      state._scoreSha=state._scoreSha||{};
+      state._scoreSha[judge]=res.sha;
+      saveScores();
+    }
+  }).catch(function(){});
+}
+function pushScoresForJudge(judge){
+  var s=getSync(); if(!s || !judge) return;
+  var passcode=s.passJudge;
+  state._scoreSha=state._scoreSha||{};
+  fetch(apiUrl('/save-scores'), {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({judge:judge, passcode:passcode, scores: judgeScores(judge), sha: state._scoreSha[judge], editor: judge})
+  }).then(function(r){return r.json().then(function(j){return {status:r.status, body:j};});})
+    .then(function(res){
+      if(res.status===200){ state._scoreSha[judge]=res.body.sha; }
+      else if(res.status===409){
+        /* มีคนบันทึกตัดหน้า (ไม่ควรเกิดเพราะ 1 กรรมการ = 1 ไฟล์ แต่กันไว้) — ดึงเวอร์ชันล่าสุดมาทับ */
+        if(res.body.scores){ state.scores[judge]=res.body.scores; state._scoreSha[judge]=res.body.sha; saveScores(); }
+      }
+    }).catch(function(){});
+}
+function schedulePushScore(judge){
+  if(savePushTimer) clearTimeout(savePushTimer);
+  savePushTimer=setTimeout(function(){ pushScoresForJudge(judge); }, 600);
+}
+function startResultsPolling(){
+  stopResultsPolling();
+  var s=getSync(); if(!s) return;
+  resultsPollTimer=setInterval(function(){
+    pullAllScoresFromServer(function(){ renderResults(); });
+  }, 20000);
+}
+function stopResultsPolling(){ if(resultsPollTimer){ clearInterval(resultsPollTimer); resultsPollTimer=null; } }
+function pullAllScoresFromServer(cb){
+  var s=getSync(); if(!s){ if(cb) cb(); return; }
+  fetch(apiUrl('/load-all-scores')).then(function(r){return r.json();}).then(function(res){
+    if(res.all){
+      Object.keys(res.all).forEach(function(j){
+        if(state.judges.indexOf(j)===-1) state.judges.push(j);
+        state.scores[j]=res.all[j];
+      });
+      saveJudges(); saveScores();
+    }
+    if(cb) cb();
+  }).catch(function(){ if(cb) cb(); });
+}
+
 /* ── Nav ── */
 window.selectComp = function(id){
   document.querySelectorAll('.comp-view').forEach(function(v){v.classList.remove('active');});
   var t=document.getElementById('comp-'+id);
   if(t) t.classList.add('active');
   document.querySelectorAll('.comp-nav-item').forEach(function(el){el.classList.toggle('active', el.dataset.comp===id);});
+  updateSyncStatus();
+  if(id!=='results') stopResultsPolling();
   if(id==='criteria') renderRubricList();
-  if(id==='teams') renderTeamsList();
-  if(id==='score') { renderJudgeSelect(); if(state.curJudge) renderTeamPicker(); }
-  if(id==='results') renderResults();
+  if(id==='teams') { renderTeamsList(); pullTeamsFromServer(); }
+  if(id==='score') { renderJudgeSelect(); pullTeamsFromServer(); if(state.curJudge) renderTeamPicker(); }
+  if(id==='results') {
+    if(getSync()){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
+    else renderResults();
+  }
 };
 
 /* ── Criteria reference page ── */
@@ -3118,9 +3301,25 @@ window.updateTeamField=function(id, field, value){
 window.saveTeamsUI=function(){
   saveTeams();
   var btn=event.target;
-  var orig=btn.textContent;
-  btn.textContent='✅ บันทึกแล้ว';
-  setTimeout(function(){btn.textContent=orig;},1200);
+  var orig=btn.innerHTML;
+  var hint=document.getElementById('teams-save-hint');
+  var s=getSync();
+  if(!s){
+    btn.innerHTML='✅ บันทึกแล้ว (ในเครื่องนี้)';
+    setTimeout(function(){btn.innerHTML=orig;},1400);
+    return;
+  }
+  if(!s.passAdmin){
+    if(hint) hint.textContent=' — บันทึกในเครื่องนี้แล้ว แต่ยังไม่ Sync ขึ้นกลาง (ยังไม่ได้ใส่รหัสผ่านผู้ดูแลตอนเชื่อมต่อ)';
+    return;
+  }
+  btn.innerHTML='⏳ กำลัง Sync...';
+  pushTeamsToServer(s.passAdmin).then(function(res){
+    if(res.status===200){ btn.innerHTML='✅ บันทึก + Sync ขึ้นกลางแล้ว'; if(hint) hint.textContent=''; }
+    else if(res.status===401){ btn.innerHTML=orig; if(hint) hint.textContent=' — รหัสผ่านผู้ดูแลไม่ถูกต้อง'; }
+    else { btn.innerHTML='✅ บันทึกในเครื่องนี้ (Sync ไม่สำเร็จ)'; }
+    setTimeout(function(){btn.innerHTML=orig;},1800);
+  });
 };
 window.exportTeams=function(){
   downloadJSON('ทีมเข้าประกวด_2569.json', {teams: state.teams});
@@ -3167,7 +3366,12 @@ window.onJudgeChange=function(){
   state.curTeam=null;
   document.getElementById('score-progress-wrap').style.display = state.curJudge? 'block':'none';
   document.getElementById('score-form-wrap').style.display='none';
-  if(state.curJudge) renderTeamPicker();
+  if(state.curJudge){
+    if(getSync()){
+      pullScoresForJudge(state.curJudge).then(function(){ renderTeamPicker(); });
+    }
+    renderTeamPicker();
+  }
 };
 
 function judgeScores(judge){
@@ -3250,6 +3454,7 @@ window.setScore=function(critId, val){
   renderScoreItems('score-items-C', CRIT.C);
   updateSummaryBar();
   renderTeamPicker();
+  schedulePushScore(state.curJudge);
 };
 window.saveCurrentScore=function(){
   if(!state.curJudge || !state.curTeam) return;
@@ -3257,6 +3462,7 @@ window.saveCurrentScore=function(){
   if(!s[state.curTeam]) s[state.curTeam]={};
   s[state.curTeam].note=document.getElementById('score-note').value;
   saveScores();
+  schedulePushScore(state.curJudge);
 };
 function calcTeamTotal(judge, teamId){
   var s=judgeScores(judge)[teamId]||{};
@@ -3438,6 +3644,7 @@ document.addEventListener('DOMContentLoaded', function(){
     var sel=document.getElementById('judge-select');
     if(sel) sel.value=state.curJudge;
   }
+  updateSyncStatus();
 });
 
 })();

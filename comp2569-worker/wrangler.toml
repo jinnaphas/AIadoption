@@ -1,0 +1,14 @@
+# สำหรับคนที่ deploy ผ่าน CLI (wrangler) — ถ้า deploy ผ่านหน้าเว็บ Cloudflare ไม่ต้องใช้ไฟล์นี้
+name = "digital-ai-talent-2569-sync"
+main = "worker.js"
+compatibility_date = "2026-07-01"
+
+[vars]
+GITHUB_REPO = "jinnaphas/AIadoption"
+GITHUB_BRANCH = "main"
+DATA_DIR = "data/comp2569"
+
+# secrets — ห้ามใส่ค่าในไฟล์นี้ ให้ตั้งผ่านคำสั่ง:
+#   wrangler secret put GITHUB_TOKEN
+#   wrangler secret put PASSCODE_JUDGE
+#   wrangler secret put PASSCODE_ADMIN

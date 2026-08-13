@@ -3216,6 +3216,10 @@ window.doConnect=function(){
   var passAdmin=document.getElementById('sync-passcode-admin').value;
   var msg=document.getElementById('sync-modal-msg');
   if(!url){ msg.textContent='⚠️ กรุณาใส่ Worker URL'; msg.style.color='#dc2626'; return; }
+  if(!/^https?:\/\//i.test(url)){
+    url='https://'+url;
+    document.getElementById('sync-worker-url').value=url;
+  }
   msg.textContent='กำลังทดสอบการเชื่อมต่อ...'; msg.style.color='var(--text3)';
   fetch(url+'/load-teams').then(function(r){
     if(!r.ok) throw new Error('HTTP '+r.status);
@@ -3231,7 +3235,12 @@ window.doConnect=function(){
     if(activeId==='score' && state.curJudge){ pullScoresForJudge(state.curJudge).then(function(){ renderTeamPicker(); if(state.curTeam) renderScoreForm(); }); }
     setTimeout(function(){ closeModal('sync'); }, 700);
   }).catch(function(e){
-    msg.textContent='❌ เชื่อมต่อไม่สำเร็จ — ตรวจสอบ URL: '+e.message; msg.style.color='#dc2626';
+    var hint='';
+    if(/HTTP 404/i.test(e.message)) hint=' (404 = URL อาจพิมพ์ผิด หรือยังไม่ได้ Deploy Worker)';
+    else if(/HTTP 401|HTTP 403/i.test(e.message)) hint=' (ตรวจสอบค่า GITHUB_TOKEN ใน Worker)';
+    else if(/HTTP 5\d\d/i.test(e.message)) hint=' (ตรวจสอบตัวแปร GITHUB_REPO/GITHUB_TOKEN ใน Worker — ดู SETUP.md)';
+    else hint=' (เช็คว่าพิมพ์ URL ครบและถูกต้อง หรือลองเปิด URL นี้ตรงๆ ในเบราว์เซอร์ดูว่าเชื่อมเน็ตได้ปกติไหม)';
+    msg.textContent='❌ เชื่อมต่อไม่สำเร็จ — '+e.message+hint; msg.style.color='#dc2626';
   });
 };
 window.doDisconnect=function(){

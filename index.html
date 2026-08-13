@@ -2862,7 +2862,7 @@
       </div>
 
       <div style="margin-bottom:20px">
-        <div class="score-field-label">รายชื่อกรรมการทั้งหมด — คลิก ✕ เพื่อลบ</div>
+        <div class="score-field-label">รายชื่อกรรมการทั้งหมด — คลิก ✕ เพื่อลบ<span id="judge-sync-hint" style="font-weight:400;font-size:.63rem;color:var(--text3)"></span></div>
         <div id="judge-list-chips" style="display:flex;flex-wrap:wrap;gap:6px"></div>
       </div>
 
@@ -3250,6 +3250,7 @@ window.doLogin=function(){
     checkLoginGate();
     updateSyncStatus();
     pullTeamsFromServer();
+    pullJudgesFromServer();
     renderJudgeSelect();
   }).catch(function(e){
     msg.textContent='❌ '+e.message; msg.style.color='#dc2626';
@@ -3306,6 +3307,29 @@ function pushTeamsToServer(passcode){
       if(res.status===200){ state._teamsSha=res.body.sha; }
       return res;
     });
+}
+function pullJudgesFromServer(){
+  var s=getSync(); if(!s) return Promise.resolve();
+  return fetch(apiUrl('/load-judges')).then(function(r){return r.json();}).then(function(res){
+    if(res.judges && res.judges.judges){
+      state.judges=res.judges.judges;
+      state._judgesSha=res.sha;
+      saveJudges();
+      renderJudgeSelect();
+    }
+  }).catch(function(){});
+}
+function pushJudgesToServer(passcode){
+  var url=apiUrl('/save-judges');
+  if(!url) return Promise.resolve({skipped:true});
+  return fetch(url, {
+    method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({passcode: passcode, judges: {judges: state.judges}, sha: state._judgesSha})
+  }).then(function(r){return r.json().then(function(j){return {status:r.status, body:j};});})
+    .then(function(res){
+      if(res.status===200){ state._judgesSha=res.body.sha; }
+      return res;
+    }).catch(function(){ return {status:0}; });
 }
 function pullScoresForJudge(judge){
   var s=getSync(); if(!s || !judge) return Promise.resolve();
@@ -3370,7 +3394,7 @@ window.selectComp = function(id){
   if(id!=='results') stopResultsPolling();
   if(id==='criteria') renderRubricList();
   if(id==='teams') { renderTeamsList(); pullTeamsFromServer(); }
-  if(id==='score') { renderJudgeSelect(); pullTeamsFromServer(); if(state.curJudge) renderTeamPicker(); }
+  if(id==='score') { renderJudgeSelect(); pullTeamsFromServer(); pullJudgesFromServer(); if(state.curJudge) renderTeamPicker(); }
   if(id==='results') {
     if(getSync()){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
     else renderResults();
@@ -3499,11 +3523,24 @@ function renderJudgeChips(){
   });
   host.innerHTML=html;
 }
+function syncJudgesAfterEdit(){
+  var hint=document.getElementById('judge-sync-hint');
+  var s=getSync();
+  if(!s){ if(hint) hint.textContent=''; return; }
+  if(hint) hint.textContent=' — กำลัง Sync...';
+  pushJudgesToServer(s.passAdmin).then(function(res){
+    if(!hint) return;
+    if(res.status===200) hint.textContent=' — ✅ Sync ขึ้นกลางแล้ว (อุปกรณ์อื่นจะเห็นเมื่อรีเฟรช)';
+    else if(res.status===401) hint.textContent=' — ⚠️ ต้อง Login ด้วยรหัสผ่านผู้ดูแลถึงจะ Sync ขึ้นกลางได้ (ตอนนี้บันทึกแค่ในเครื่องนี้)';
+    else hint.textContent=' — Sync ไม่สำเร็จ (บันทึกในเครื่องนี้แล้ว)';
+    setTimeout(function(){ if(hint) hint.textContent=''; }, 3000);
+  });
+}
 window.addJudge=function(){
   var inp=document.getElementById('judge-new-name');
   var name=inp.value.trim();
   if(!name) return;
-  if(state.judges.indexOf(name)===-1){ state.judges.push(name); saveJudges(); }
+  if(state.judges.indexOf(name)===-1){ state.judges.push(name); saveJudges(); syncJudgesAfterEdit(); }
   state.curJudge=name; saveJSON(LS_CURJUDGE, name);
   inp.value='';
   renderJudgeSelect();
@@ -3521,6 +3558,7 @@ window.removeJudge=function(btn){
   if(idx>-1) state.judges.splice(idx,1);
   delete state.scores[name];
   saveJudges(); saveScores();
+  syncJudgesAfterEdit();
   if(state.curJudge===name){
     state.curJudge='';
     saveJSON(LS_CURJUDGE, '');

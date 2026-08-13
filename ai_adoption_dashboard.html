@@ -2867,7 +2867,10 @@
       </div>
 
       <div id="score-progress-wrap" style="display:none">
-        <div class="score-field-label">🎯 เลือกทีมที่จะให้คะแนน — <span id="score-progress-text"></span></div>
+        <div class="score-field-label" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+          <span>🎯 เลือกทีมที่จะให้คะแนน — <span id="score-progress-text"></span></span>
+          <button type="button" class="comp-btn comp-btn-secondary" style="font-size:.68rem;padding:4px 10px" onclick="clearMyScores()">🗑️ ล้างคะแนนทั้งหมดของฉัน</button>
+        </div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
           <div class="comp-progress-track"><div class="comp-progress-fill" id="score-progress-fill" style="width:0%"></div></div>
         </div>
@@ -2882,7 +2885,8 @@
               <div style="font-size:.7rem;color:var(--text3);margin-top:2px" id="score-team-sub"></div>
             </div>
             <div style="font-size:.68rem;color:var(--text3);text-align:right">
-              💡 คลิก "ดูเกณฑ์" เพื่ออ่านรายละเอียดแต่ละระดับ
+              💡 คลิก "ดูเกณฑ์" เพื่ออ่านรายละเอียดแต่ละระดับ<br>
+              <button type="button" class="comp-btn comp-btn-secondary" style="font-size:.65rem;padding:3px 9px;margin-top:6px" onclick="clearTeamScore()">🗑️ ล้างคะแนนทีมนี้</button>
             </div>
           </div>
         </div>
@@ -3199,7 +3203,21 @@ function defaultTeams(){
   ];
 }
 function defaultJudges(){
-  var arr=[]; for(var i=1;i<=10;i++){ arr.push('กรรมการ '+i); } return arr;
+  return [
+    'คุณอมร แดงโชติ',
+    'คุณวิชัย ยิ่งจอหอ',
+    'คุณเกดินาท สัมฤทธิ์',
+    'คุณอุมาพร สุเมธกิจการ',
+    'คุณณรงค์ จันทร์สร้อย',
+    'คุณณิชา ณัฐชยางกูล',
+    'คุณภาสกร นราบริรักษ์',
+    'คุณภัทราวุธ ศักดา',
+    'คุณเศกสรร ปรีชา',
+    'คุณอนุศาสน์ วรรณโท',
+    'คุณทิพย์สุดา ทองใหญ่',
+    'คุณจันจิรา ปิ่นเขียว',
+    'คุณจิณนภัสฐ์ ภัสฐาพงษ์'
+  ];
 }
 
 var state = {
@@ -3671,6 +3689,32 @@ window.saveCurrentScore=function(){
   s[state.curTeam].note=document.getElementById('score-note').value;
   saveScores();
   schedulePushScore(state.curJudge);
+};
+window.clearTeamScore=function(){
+  if(!state.curJudge || !state.curTeam) return;
+  var t=state.teams.find(function(x){return x.id===state.curTeam;});
+  var label=t? (t.name.trim()||('ทีม '+t.id)) : ('ทีม '+state.curTeam);
+  if(!confirm('ล้างคะแนนทีม "'+label+'" ที่ให้ไปแล้วใช่หรือไม่? การกระทำนี้ย้อนกลับไม่ได้')) return;
+  delete judgeScores(state.curJudge)[state.curTeam];
+  saveScores();
+  renderScoreItems('score-items-A', CRIT.A);
+  renderScoreItems('score-items-B', CRIT.B);
+  renderScoreItems('score-items-C', CRIT.C);
+  document.getElementById('score-note').value='';
+  updateSummaryBar();
+  renderTeamPicker();
+  schedulePushScore(state.curJudge);
+};
+window.clearMyScores=function(){
+  if(!state.curJudge) return;
+  var n=Object.keys(judgeScores(state.curJudge)).length;
+  if(!confirm('ล้างคะแนนที่ให้ไปแล้วทั้งหมดของ "'+state.curJudge+'" ('+n+' ทีม) ใช่หรือไม่?\n\nการกระทำนี้ย้อนกลับไม่ได้ — คะแนนจะถูกลบทั้งในเครื่องนี้ และบน Server ถ้าเชื่อมต่ออยู่')) return;
+  state.scores[state.curJudge]={};
+  saveScores();
+  state.curTeam=null;
+  document.getElementById('score-form-wrap').style.display='none';
+  renderTeamPicker();
+  if(getSync()) pushScoresForJudge(state.curJudge);
 };
 function calcTeamTotal(judge, teamId){
   var s=judgeScores(judge)[teamId]||{};

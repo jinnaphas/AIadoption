@@ -352,6 +352,9 @@
   .award-cash{background:var(--gold-bg);color:var(--gold)}
   .comp-upload-zone{border:2px dashed var(--border2);border-radius:14px;padding:24px;text-align:center;background:var(--surface2);margin-bottom:16px}
   .comp-judge-pill{display:inline-flex;align-items:center;gap:6px;background:var(--accent-bg);color:var(--accent);border-radius:20px;padding:5px 12px;font-size:.68rem;font-weight:600;margin:3px}
+  .judge-chip{display:inline-flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:5px 6px 5px 13px;font-size:.72rem;font-weight:600;color:var(--text)}
+  .judge-chip-del{width:18px;height:18px;border-radius:50%;background:var(--surface3);border:none;color:var(--text2);font-size:.68rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;font-family:'Outfit',sans-serif}
+  .judge-chip-del:hover{background:#fecaca;color:#dc2626}
 
 </style>
 </head>
@@ -2853,12 +2856,17 @@
           </select>
         </div>
         <div>
-          <div class="score-field-label">➕ เพิ่ม/แก้ชื่อกรรมการ</div>
+          <div class="score-field-label">➕ เพิ่ม/ลบชื่อกรรมการ</div>
           <div style="display:flex;gap:8px">
-            <input type="text" class="team-input" id="judge-new-name" placeholder="พิมพ์ชื่อกรรมการใหม่...">
+            <input type="text" class="team-input" id="judge-new-name" placeholder="พิมพ์ชื่อกรรมการใหม่..." onkeydown="if(event.key==='Enter'){event.preventDefault();addJudge();}">
             <button class="comp-btn comp-btn-secondary" style="flex-shrink:0" onclick="addJudge()">เพิ่ม</button>
           </div>
         </div>
+      </div>
+
+      <div style="margin-bottom:20px">
+        <div class="score-field-label">รายชื่อกรรมการทั้งหมด — คลิก ✕ เพื่อลบ</div>
+        <div id="judge-list-chips" style="display:flex;flex-wrap:wrap;gap:6px"></div>
       </div>
 
       <div id="score-progress-wrap" style="display:none">
@@ -3472,10 +3480,25 @@ window.importTeams=function(ev){
 /* ── Judges & Scoring ── */
 function renderJudgeSelect(){
   var sel=document.getElementById('judge-select');
-  if(!sel) return;
-  var html='<option value="">— เลือกชื่อกรรมการ —</option>';
-  state.judges.forEach(function(j){ html+='<option value="'+escAttr(j)+'"'+(j===state.curJudge?' selected':'')+'>'+j+'</option>'; });
-  sel.innerHTML=html;
+  if(sel){
+    var html='<option value="">— เลือกชื่อกรรมการ —</option>';
+    state.judges.forEach(function(j){ html+='<option value="'+escAttr(j)+'"'+(j===state.curJudge?' selected':'')+'>'+j+'</option>'; });
+    sel.innerHTML=html;
+  }
+  renderJudgeChips();
+}
+function renderJudgeChips(){
+  var host=document.getElementById('judge-list-chips');
+  if(!host) return;
+  if(state.judges.length===0){
+    host.innerHTML='<span style="color:var(--text3);font-size:.7rem">ยังไม่มีรายชื่อกรรมการ — พิมพ์ชื่อแล้วกด "เพิ่ม" ด้านบน</span>';
+    return;
+  }
+  var html='';
+  state.judges.forEach(function(j){
+    html+='<span class="judge-chip">👤 '+escHTML(j)+' <button type="button" class="judge-chip-del" onclick="removeJudge(this)" data-name="'+escAttr(j)+'" title="ลบกรรมการท่านนี้">✕</button></span>';
+  });
+  host.innerHTML=html;
 }
 window.addJudge=function(){
   var inp=document.getElementById('judge-new-name');
@@ -3487,6 +3510,25 @@ window.addJudge=function(){
   renderJudgeSelect();
   document.getElementById('judge-select').value=name;
   onJudgeChange();
+};
+window.removeJudge=function(btn){
+  var name=btn.getAttribute('data-name');
+  var hasScores=state.scores[name] && Object.keys(state.scores[name]).length>0;
+  var msg=hasScores
+    ? 'กรรมการ "'+name+'" มีคะแนนบันทึกไว้ในเครื่องนี้แล้ว\n\nลบชื่อนี้จะลบคะแนนที่บันทึกไว้ในเบราว์เซอร์นี้ด้วย (ถ้าเคย Sync ขึ้น Server แล้ว ไฟล์บน Server จะยังอยู่ ต้องลบผ่าน GitHub เอง)\n\nต้องการลบหรือไม่?'
+    : 'ต้องการลบกรรมการ "'+name+'" ออกจากรายการหรือไม่?';
+  if(!confirm(msg)) return;
+  var idx=state.judges.indexOf(name);
+  if(idx>-1) state.judges.splice(idx,1);
+  delete state.scores[name];
+  saveJudges(); saveScores();
+  if(state.curJudge===name){
+    state.curJudge='';
+    saveJSON(LS_CURJUDGE, '');
+    var pw=document.getElementById('score-progress-wrap'); if(pw) pw.style.display='none';
+    var fw=document.getElementById('score-form-wrap'); if(fw) fw.style.display='none';
+  }
+  renderJudgeSelect();
 };
 window.onJudgeChange=function(){
   var sel=document.getElementById('judge-select');

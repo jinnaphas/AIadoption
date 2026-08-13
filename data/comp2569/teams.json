@@ -1,0 +1,28 @@
+{
+  "teams": [
+    {"id": 1, "name": "STREAMLINE", "project": "Customer and Dealer Experience Platform (CDX)", "topic": 1},
+    {"id": 2, "name": "ฝันร้าย AI", "project": "Customer Insight Platform", "topic": 1},
+    {"id": 3, "name": "PerformAI", "project": "Individual Performance & Skill Intelligence Platform", "topic": 1},
+    {"id": 4, "name": "XYZ", "project": "Smart Vendoring", "topic": 2},
+    {"id": 5, "name": "Investment", "project": "Investment Co-Pilot", "topic": 2},
+    {"id": 6, "name": "Pentu", "project": "Tendering Platform", "topic": 2},
+    {"id": 7, "name": "P-Synergy Clean Energy", "project": "Energy Storage Hub & Energy Logistics Platform", "topic": 4},
+    {"id": 8, "name": "Loop Lab", "project": "LoopVision: Earth Analytics & AI Tracking", "topic": 4},
+    {"id": 9, "name": "TOPP HERO Ai", "project": "Design Pricing by Ai", "topic": 4},
+    {"id": 10, "name": "The Pulse", "project": "Agentic AI Project Command Center", "topic": 6},
+    {"id": 11, "name": "PowerHub", "project": "PowerHub: แพลตฟอร์มดิจิทัลเพื่อการบริหารจัดการและควบคุมต้นทุนงานวิศวกรรมไฟฟ้าครบวงจร", "topic": 6},
+    {"id": 12, "name": "บริษัท สงขลาไบโอเพาเวอร์", "project": "AIoT-based Auxiliary Power Optimization & Vibration monitoring (ระบบ AIoT เพื่อติดตามและลดการใช้ไฟฟ้าภายใน (Auxiliary Power) โรงไฟฟ้าสงขลาไบโอเพาเวอร์)", "topic": 6},
+    {"id": 13, "name": "Convergence Team", "project": "Inventory Stock PPE PRECISE", "topic": 6},
+    {"id": 14, "name": "ทีมชั่งหรอย", "project": "แพลตฟอร์ม AI อัตโนมัติสำหรับสถานีชั่งไม้ซุงอัจฉริยะ (Automated AI Platform for Intelligent Weighbridge)", "topic": 6},
+    {"id": 15, "name": "Revenue Nexus", "project": "AI Tender Intelligence Platform", "topic": 6},
+    {"id": 16, "name": "BambooSpark", "project": "Zero-touch bamboo fiber bundle production smart system", "topic": 6},
+    {"id": 17, "name": "Fusion Five", "project": "ระบบ Smart Operations สร้างงานประมาณราคาและออกแบบตู้ควบคุมไฟฟ้าอัตโนมัติแบบครบวงจร (Smart Operations: End-to-End Cabinet Estimation & Design Automation System)", "topic": 6},
+    {"id": 18, "name": "NEXTCAL", "project": "Smart Calibration System: จาก Excel สู่ AI", "topic": 6},
+    {"id": 19, "name": "Count On Us", "project": "ZeroDeadStock", "topic": 6},
+    {"id": 20, "name": "AI SMART WIRING", "project": "ระบบ AI ช่วยทำแบบผลิตตู้ควบคุมไฟฟ้าอัตโนมัติ (AI-Assisted Create Drawing Automation)", "topic": 6},
+    {"id": 21, "name": "AR Transformation", "project": "SMART AR Hub", "topic": 7},
+    {"id": 22, "name": "Infinity Account Tech", "project": "ระบบตรวจนับทรัพย์สิน", "topic": 7},
+    {"id": 23, "name": "CyberX", "project": "ServiceMS", "topic": 7},
+    {"id": 24, "name": "People Power Hub", "project": "People Intelligent Hub", "topic": 7}
+  ]
+}

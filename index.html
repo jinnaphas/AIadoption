@@ -303,12 +303,23 @@
   .rubric-scale-num{font-weight:800;font-family:'JetBrains Mono',monospace;margin-bottom:3px;display:block}
 
   /* Team setup */
-  .team-setup-head{display:grid;grid-template-columns:44px 1fr 1fr 200px;gap:10px;padding:8px 10px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3)}
-  .team-setup-row{display:grid;grid-template-columns:44px 1fr 1fr 200px;gap:10px;padding:7px 10px;align-items:center;border-radius:8px}
+  .team-setup-head{display:grid;grid-template-columns:44px 1fr 1fr 200px 1fr;gap:10px;padding:8px 10px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3)}
+  .team-setup-row{display:grid;grid-template-columns:44px 1fr 1fr 200px 1fr;gap:10px;padding:7px 10px;align-items:center;border-radius:8px}
   .team-setup-row:nth-child(even){background:var(--surface2)}
   .team-setup-num{font-weight:800;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:.76rem}
   .team-input,.team-select{padding:8px 10px;border:1px solid var(--border2);border-radius:8px;font-size:.76rem;font-family:'Outfit',sans-serif;width:100%;background:var(--surface)}
   .team-input:focus,.team-select:focus{outline:none;border-color:var(--accent)}
+
+  /* Roster */
+  .roster-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:4px}
+  .roster-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;display:flex;flex-direction:column}
+  .roster-card-topic{display:inline-block;align-self:flex-start;font-size:.6rem;font-weight:700;color:var(--accent);background:var(--accent-bg);padding:3px 9px;border-radius:20px;margin-bottom:8px}
+  .roster-card-num{font-family:'JetBrains Mono',monospace;font-size:.64rem;color:var(--text3);font-weight:800}
+  .roster-card-name{font-size:.9rem;font-weight:800;margin:2px 0 4px;color:var(--text)}
+  .roster-card-project{font-size:.72rem;color:var(--text2);line-height:1.5;margin-bottom:12px;flex:1}
+  .roster-video-link{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#dc2626,#b91c1c);padding:7px 12px;border-radius:8px;text-decoration:none}
+  .roster-video-link:hover{filter:brightness(1.08)}
+  .roster-video-empty{font-size:.68rem;color:var(--text3);text-align:center;padding:7px 12px;border:1px dashed var(--border2);border-radius:8px}
 
   /* Scoring form */
   .score-setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
@@ -2710,6 +2721,7 @@
     <div class="comp-nav-item active" data-comp="home" onclick="selectComp('home')">🏠 หน้าแรก — ประจำปี 2569</div>
     <div class="comp-nav-item" data-comp="criteria" onclick="selectComp('criteria')">📋 เกณฑ์การให้คะแนน</div>
     <div class="comp-nav-item" data-comp="teams" onclick="selectComp('teams')">👥 ทีมเข้าประกวด (24 ทีม)</div>
+    <div class="comp-nav-item" data-comp="roster" onclick="selectComp('roster')">🎬 Roster ทีม (24 ทีม)</div>
     <div class="comp-nav-item" data-comp="score" onclick="selectComp('score')">✍️ ให้คะแนนออนไลน์</div>
     <div class="comp-nav-item" data-comp="results" onclick="selectComp('results')">🏆 สรุปผล &amp; อันดับ</div>
     <div class="comp-nav-item" data-comp="howto" onclick="selectComp('howto')">ℹ️ วิธีใช้งานระบบ</div>
@@ -2828,9 +2840,24 @@
       </div>
 
       <div class="panel">
-        <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div></div>
+        <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div></div>
         <div id="teams-list"></div>
       </div>
+    </div>
+    <!-- ══════ ROSTER ══════ -->
+    <div id="comp-roster" class="comp-view">
+      <div class="comp-h1">🎬 Roster ทีมเข้าประกวด</div>
+      <div class="comp-h1-sub">รายชื่อ 24 ทีมพร้อมลิงก์วิดีโอแนะนำทีม (ถ้ามี) — กรรมการดูล่วงหน้าก่อนวันแข่งขันได้ · แก้ไข/เพิ่มลิงก์วิดีโอได้ที่หน้า "👥 ทีมเข้าประกวด"</div>
+
+      <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
+          <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์</span>
+        </div>
+        <button class="comp-btn comp-btn-secondary" onclick="doLogout()">🔒 ออกจากระบบ</button>
+      </div>
+
+      <div id="roster-grid" class="roster-grid"></div>
     </div>
     <!-- ══════ SCORING ══════ -->
     <div id="comp-score" class="comp-view">
@@ -3310,6 +3337,8 @@ function pullTeamsFromServer(){
       if(host) renderTeamsList();
       var host2=document.getElementById('team-picker');
       if(host2) renderTeamPicker();
+      var host3=document.getElementById('roster-grid');
+      if(host3) renderRoster();
     }
   }).catch(function(){});
 }
@@ -3412,6 +3441,7 @@ window.selectComp = function(id){
   if(id!=='results') stopResultsPolling();
   if(id==='criteria') renderRubricList();
   if(id==='teams') { renderTeamsList(); pullTeamsFromServer(); }
+  if(id==='roster') { renderRoster(); pullTeamsFromServer(); }
   if(id==='score') { renderJudgeSelect(); pullTeamsFromServer(); pullJudgesFromServer(); if(state.curJudge) renderTeamPicker(); }
   if(id==='results') {
     if(getSync()){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
@@ -3457,6 +3487,7 @@ function renderTeamsList(){
       '<input class="team-input" value="'+escAttr(t.name)+'" placeholder="ชื่อทีม" oninput="updateTeamField('+t.id+',\'name\',this.value)">'+
       '<input class="team-input" value="'+escAttr(t.project)+'" placeholder="ชื่อโครงการ" oninput="updateTeamField('+t.id+',\'project\',this.value)">'+
       '<select class="team-select" onchange="updateTeamField('+t.id+',\'topic\',parseInt(this.value))">'+opts+'</select>'+
+      '<input class="team-input" value="'+escAttr(t.video||'')+'" placeholder="วาง Link วิดีโอ (YouTube/Drive ฯลฯ)" oninput="updateTeamField('+t.id+',\'video\',this.value)">'+
       '</div>';
   });
   host.innerHTML=html;
@@ -3468,6 +3499,26 @@ function renderTeamsSummary(){
   var named=state.teams.filter(function(t){return t.name.trim()!=='';}).length;
   var withTopic=state.teams.filter(function(t){return t.topic>0;}).length;
   host.textContent='กรอกชื่อแล้ว '+named+'/24 ทีม · ระบุหัวข้อแล้ว '+withTopic+'/24 ทีม';
+}
+function renderRoster(){
+  var host=document.getElementById('roster-grid');
+  if(!host) return;
+  var html='';
+  state.teams.forEach(function(t){
+    var topicLabel = t.topic? (t.topic+'. '+(TOPICS[t.topic-1]? TOPICS[t.topic-1].name : '')) : 'ยังไม่ระบุหัวข้อ';
+    var video=(t.video||'').trim();
+    var videoHTML = /^https?:\/\//i.test(video)
+      ? '<a class="roster-video-link" href="'+escAttr(video)+'" target="_blank" rel="noopener noreferrer">▶️ ดูวิดีโอแนะนำทีม</a>'
+      : '<span class="roster-video-empty">ยังไม่มีวิดีโอ</span>';
+    html+='<div class="roster-card">'+
+      '<span class="roster-card-topic">'+escHTML(topicLabel)+'</span>'+
+      '<div class="roster-card-num">คิว '+t.id+'</div>'+
+      '<div class="roster-card-name">'+escHTML(t.name.trim()||('ทีม '+t.id))+'</div>'+
+      '<div class="roster-card-project">'+escHTML(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+'</div>'+
+      videoHTML+
+      '</div>';
+  });
+  host.innerHTML=html;
 }
 window.updateTeamField=function(id, field, value){
   var t=state.teams.find(function(x){return x.id===id;});

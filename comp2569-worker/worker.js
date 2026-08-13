@@ -17,6 +17,8 @@
  *   GET  /load-all-scores                 → { all: { [judge]: scores } }   (รวมทุกกรรมการ — หน้าสรุปผล)
  *   GET  /load-teams                      → { teams, sha }
  *   POST /save-teams                      → body { passcode, teams, sha }  (ต้องรหัสผู้ดูแลเท่านั้น)
+ *   GET  /load-judges                     → { judges, sha }
+ *   POST /save-judges                     → body { passcode, judges, sha } (ต้องรหัสผู้ดูแลเท่านั้น — Sync รายชื่อกรรมการข้ามเครื่อง)
  *
  * ตัวแปรที่ต้องตั้งค่า (Settings → Variables and Secrets):
  *   GITHUB_TOKEN     (secret)  fine-grained PAT สิทธิ์ Contents R/W เฉพาะ repo นี้
@@ -188,6 +190,25 @@ export default {
         }
         if (!teams || typeof teams !== "object") return json({ error: "invalid teams" }, 400);
         const result = await putFile(`${dir}/teams.json`, teams, sha, "teams: update roster");
+        if (result.conflict) return json(result.latest, 409);
+        if (result.error) return json({ error: result.error }, result.status);
+        return json({ sha: result.sha });
+      }
+
+      /* ── รายชื่อกรรมการ (ไฟล์เดียวใช้ร่วมกัน — Sync ข้ามเครื่องเมื่อผู้ดูแลเพิ่ม/ลบชื่อ) ── */
+      if (url.pathname === "/load-judges" && req.method === "GET") {
+        const r = await getFile(`${dir}/judges.json`);
+        return json({ judges: r.data, sha: r.sha });
+      }
+
+      if (url.pathname === "/save-judges" && req.method === "POST") {
+        const body = await req.json().catch(() => null);
+        const { passcode, judges, sha } = body || {};
+        if (!passcode || passcode !== env.PASSCODE_ADMIN) {
+          return json({ error: "bad admin passcode" }, 401);
+        }
+        if (!judges || typeof judges !== "object") return json({ error: "invalid judges" }, 400);
+        const result = await putFile(`${dir}/judges.json`, judges, sha, "judges: update roster");
         if (result.conflict) return json(result.latest, 409);
         if (result.error) return json({ error: result.error }, result.status);
         return json({ sha: result.sha });

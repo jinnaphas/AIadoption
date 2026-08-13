@@ -7,12 +7,16 @@
  * แยกต่างหากสำหรับแก้รายชื่อทีม
  *
  * Endpoints:
+ *   POST /verify-login                    → body { passcode }
+ *                                            200 { ok:true, role:"judge"|"admin" } | 401 { ok:false }
+ *                                            (ใช้เปิดหน้า Login ฝั่งเว็บ — ไม่แตะข้อมูลใดๆ)
  *   GET  /load-scores?judge=<slug>        → { scores, sha }         (คะแนนของกรรมการ 1 ท่าน)
  *   POST /save-scores                     → body { judge, passcode, scores, sha, editor }
  *                                            200 { sha } | 401 รหัสผิด | 409 มีคนบันทึกตัดหน้า
+ *                                            (passcode ใช้รหัสกรรมการหรือรหัสผู้ดูแลก็ได้)
  *   GET  /load-all-scores                 → { all: { [judge]: scores } }   (รวมทุกกรรมการ — หน้าสรุปผล)
  *   GET  /load-teams                      → { teams, sha }
- *   POST /save-teams                      → body { passcode, teams, sha }  (ต้องรหัสผู้ดูแล)
+ *   POST /save-teams                      → body { passcode, teams, sha }  (ต้องรหัสผู้ดูแลเท่านั้น)
  *
  * ตัวแปรที่ต้องตั้งค่า (Settings → Variables and Secrets):
  *   GITHUB_TOKEN     (secret)  fine-grained PAT สิทธิ์ Contents R/W เฉพาะ repo นี้
@@ -104,6 +108,19 @@ export default {
 
     const url = new URL(req.url);
     try {
+      /* ── Login: ตรวจรหัสผ่านเฉยๆ ไม่แตะข้อมูล — ใช้เปิดหน้า Login ฝั่งเว็บ ── */
+      if (url.pathname === "/verify-login" && req.method === "POST") {
+        const body = await req.json().catch(() => null);
+        const { passcode } = body || {};
+        if (passcode && env.PASSCODE_ADMIN && passcode === env.PASSCODE_ADMIN) {
+          return json({ ok: true, role: "admin" });
+        }
+        if (passcode && env.PASSCODE_JUDGE && passcode === env.PASSCODE_JUDGE) {
+          return json({ ok: true, role: "judge" });
+        }
+        return json({ ok: false }, 401);
+      }
+
       /* ── Scores: 1 ไฟล์ต่อกรรมการ 1 ท่าน ── */
       if (url.pathname === "/load-scores" && req.method === "GET") {
         const judge = slugify(url.searchParams.get("judge"));
@@ -115,7 +132,8 @@ export default {
         const body = await req.json().catch(() => null);
         const { judge, passcode, scores, sha, editor } = body || {};
         if (!judge) return json({ error: "missing judge" }, 400);
-        if (!passcode || passcode !== env.PASSCODE_JUDGE) {
+        /* รหัสผ่านผู้ดูแลใช้ให้คะแนนได้ด้วย (สิทธิ์ครอบคลุมกว่ากรรมการ) */
+        if (!passcode || (passcode !== env.PASSCODE_JUDGE && passcode !== env.PASSCODE_ADMIN)) {
           return json({ error: "bad passcode" }, 401);
         }
         if (!scores || typeof scores !== "object") return json({ error: "invalid scores" }, 400);

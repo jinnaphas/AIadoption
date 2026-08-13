@@ -223,6 +223,12 @@
 
   /* ── Competition App: Digital & AI Talent 2569 ── */
   .comp-wrap{display:flex;min-height:calc(100vh - 47px)}
+  .comp-login-gate{display:none;min-height:calc(100vh - 47px);align-items:center;justify-content:center;background:linear-gradient(160deg,#0a1628,#152238 55%,#1c2f4d);padding:20px}
+  .comp-login-gate.show{display:flex}
+  .comp-login-box{background:var(--surface);border-radius:20px;padding:40px 34px;max-width:380px;width:100%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
+  .comp-login-icon{font-size:2.3rem;margin-bottom:10px}
+  .comp-login-box h2{font-size:1.1rem;font-weight:800;margin-bottom:6px;color:var(--text)}
+  .comp-login-box p{font-size:.73rem;color:var(--text2);margin-bottom:22px;line-height:1.6}
   .comp-nav{width:236px;flex-shrink:0;background:#0f1e2e;color:#fff;padding:18px 0;position:sticky;top:47px;height:calc(100vh - 47px);overflow-y:auto}
   .comp-nav-head{padding:0 18px 16px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:8px}
   .comp-nav-title{font-size:.86rem;font-weight:800;line-height:1.3}
@@ -2685,26 +2691,17 @@
 </div><!-- /app-dashboard -->
 
 <div id="app-competition" class="app-panel">
-<div class="overlay" id="ov-sync"><div class="modal" style="max-width:420px">
-  <div class="modal-head"><div><h2>🔗 เชื่อมต่อออนไลน์</h2><p>ใส่ Worker URL และรหัสผ่าน (ขอจากผู้ดูแลระบบ)</p></div><button class="close-btn" onclick="closeModal('sync')">✕</button></div>
-  <div class="modal-body">
-    <div class="score-field-label">Worker URL</div>
-    <input type="text" class="team-input" id="sync-worker-url" placeholder="https://comp2569-sync.xxx.workers.dev" style="margin-bottom:14px">
-    <div class="score-field-label">รหัสผ่านกรรมการ (สำหรับให้คะแนน)</div>
-    <input type="password" class="team-input" id="sync-passcode-judge" placeholder="รหัสผ่านกรรมการ" style="margin-bottom:14px">
-    <div class="score-field-label">รหัสผ่านผู้ดูแล (เฉพาะ HR — ไม่บังคับสำหรับกรรมการ)</div>
-    <input type="password" class="team-input" id="sync-passcode-admin" placeholder="รหัสผ่านผู้ดูแล (ไม่บังคับ)" style="margin-bottom:16px">
-    <div id="sync-modal-msg" style="font-size:.7rem;margin-bottom:10px;min-height:14px"></div>
-    <div style="display:flex;gap:8px">
-      <button class="comp-btn comp-btn-primary" style="flex:1;justify-content:center" onclick="doConnect()">เชื่อมต่อ</button>
-      <button class="comp-btn comp-btn-secondary" onclick="doDisconnect()">ยกเลิกการเชื่อมต่อ</button>
-    </div>
-    <div style="font-size:.66rem;color:var(--text3);margin-top:14px;line-height:1.6">
-      ยังไม่มี Worker? ดูวิธีตั้งค่าได้ที่ไฟล์ <code>comp2569-worker/SETUP.md</code> ใน repository — ใช้เวลาประมาณ 20 นาที (ครั้งเดียว) ไม่ต้องมีความรู้เขียนโปรแกรม
-    </div>
+<div id="comp-login-gate" class="comp-login-gate">
+  <div class="comp-login-box">
+    <div class="comp-login-icon">🔒</div>
+    <h2>เข้าสู่ระบบกรรมการ</h2>
+    <p>Digital &amp; AI Talent 2569 — สำหรับกรรมการและผู้ดูแลระบบเท่านั้น</p>
+    <input type="password" id="login-passcode-input" class="team-input" placeholder="ใส่รหัสผ่าน" style="text-align:center;margin-bottom:12px" onkeydown="if(event.key==='Enter'){event.preventDefault();doLogin();}">
+    <button class="comp-btn comp-btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">เข้าสู่ระบบ</button>
+    <div id="login-msg" style="font-size:.72rem;margin-top:12px;min-height:16px"></div>
   </div>
-</div></div>
-<div class="comp-wrap">
+</div>
+<div class="comp-wrap" id="comp-wrap-content" style="display:none">
   <aside class="comp-nav">
     <div class="comp-nav-head">
       <div class="comp-nav-title">🏆 Digital &amp; AI Talent</div>
@@ -2818,7 +2815,7 @@
           <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
           <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์</span>
         </div>
-        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+        <button class="comp-btn comp-btn-secondary" onclick="doLogout()">🔒 ออกจากระบบ</button>
       </div>
 
       <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
@@ -2845,7 +2842,7 @@
           <span class="sync-dot" style="width:9px;height:9px;border-radius:50%;background:#cbd5e1;flex-shrink:0;display:inline-block"></span>
           <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์ — คะแนนบันทึกในเครื่องนี้เท่านั้น</span>
         </div>
-        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+        <button class="comp-btn comp-btn-secondary" onclick="doLogout()">🔒 ออกจากระบบ</button>
       </div>
 
       <div class="score-setup-grid">
@@ -2933,7 +2930,7 @@
           <span class="sync-status-text" style="font-size:.72rem;color:var(--text2);font-weight:600">ยังไม่ได้เชื่อมต่อออนไลน์</span>
           <span id="results-live-badge" style="display:none;font-size:.63rem;color:var(--green);font-weight:700">🔄 อัปเดตอัตโนมัติทุก 20 วิ</span>
         </div>
-        <button class="comp-btn comp-btn-secondary" onclick="openSyncModal()">🔗 เชื่อมต่อออนไลน์</button>
+        <button class="comp-btn comp-btn-secondary" onclick="doLogout()">🔒 ออกจากระบบ</button>
       </div>
 
       <div class="panel" style="margin-bottom:18px">
@@ -3050,6 +3047,7 @@
     document.getElementById('app-'+id).classList.add('active');
     document.querySelectorAll('.app-tab').forEach(function(t){t.classList.toggle('active',t.dataset.app===id);});
     window.scrollTo(0,0);
+    if(id==='competition' && typeof checkLoginGate==='function') checkLoginGate();
   }
 
 /* ══════════════════════════════════════════════
@@ -3216,6 +3214,55 @@ function saveTeams(){ saveJSON(LS_TEAMS, state.teams); }
 function saveJudges(){ saveJSON(LS_JUDGES, state.judges); }
 function saveScores(){ saveJSON(LS_SCORES, state.scores); }
 
+/* ── Login Gate (Cloudflare Worker URL ฝังไว้ในโค้ด — กรรมการไม่ต้องตั้งค่าเอง) ── */
+var DEFAULT_WORKER_URL='https://nameless-wildflower-f9f5.jinnaphas-phas.workers.dev';
+var LS_AUTH='comp_auth_v1';
+function getAuth(){ return loadJSON(LS_AUTH, null); }
+window.checkLoginGate=function checkLoginGate(){
+  var gate=document.getElementById('comp-login-gate');
+  var content=document.getElementById('comp-wrap-content');
+  if(!gate || !content) return;
+  var auth=getAuth();
+  if(auth && auth.passcode){
+    gate.classList.remove('show');
+    content.style.display='flex';
+  } else {
+    gate.classList.add('show');
+    content.style.display='none';
+  }
+}
+window.doLogin=function(){
+  var inp=document.getElementById('login-passcode-input');
+  var pass=inp.value.trim();
+  var msg=document.getElementById('login-msg');
+  if(!pass){ msg.textContent='⚠️ กรุณาใส่รหัสผ่าน'; msg.style.color='#dc2626'; return; }
+  msg.textContent='กำลังตรวจสอบ...'; msg.style.color='var(--text3)';
+  fetch(DEFAULT_WORKER_URL+'/verify-login', {
+    method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({passcode:pass})
+  }).then(function(r){
+    if(!r.ok) throw new Error('รหัสผ่านไม่ถูกต้อง');
+    return r.json();
+  }).then(function(res){
+    saveJSON(LS_AUTH, {passcode:pass, role:res.role});
+    /* ตั้งค่า Sync แบบเดิมให้อัตโนมัติ — ฟังก์ชัน sync เดิมทั้งหมดใช้ต่อได้โดยไม่ต้องแก้ */
+    saveJSON(LS_SYNC, {url:DEFAULT_WORKER_URL, passJudge:pass, passAdmin:pass});
+    inp.value='';
+    checkLoginGate();
+    updateSyncStatus();
+    pullTeamsFromServer();
+    renderJudgeSelect();
+  }).catch(function(e){
+    msg.textContent='❌ '+e.message; msg.style.color='#dc2626';
+  });
+};
+window.doLogout=function(){
+  if(!confirm('ออกจากระบบกรรมการ?')) return;
+  localStorage.removeItem(LS_AUTH);
+  localStorage.removeItem(LS_SYNC);
+  stopResultsPolling();
+  checkLoginGate();
+};
+
 /* ── Online Sync (Cloudflare Worker + GitHub, optional) ── */
 var LS_SYNC='comp_sync_v1';
 var resultsPollTimer=null;
@@ -3225,62 +3272,14 @@ function getSync(){ return loadJSON(LS_SYNC, null); }
 function apiUrl(path){ var s=getSync(); return s? s.url.replace(/\/$/,'')+path : null; }
 function updateSyncStatus(){
   var s=getSync();
+  var auth=getAuth();
   document.querySelectorAll('.sync-dot').forEach(function(d){ d.style.background = s? 'var(--green)':'#cbd5e1'; });
   document.querySelectorAll('.sync-status-text').forEach(function(t){
-    t.textContent = s? ('● ออนไลน์ — '+s.url.replace(/^https?:\/\//,'')) : 'ยังไม่ได้เชื่อมต่อออนไลน์ — คะแนนบันทึกในเครื่องนี้เท่านั้น';
+    t.textContent = s? ('● ออนไลน์ — เข้าสู่ระบบเป็น'+(auth && auth.role==='admin'?'ผู้ดูแลระบบ':'กรรมการ')) : 'ยังไม่ได้เชื่อมต่อออนไลน์ — คะแนนบันทึกในเครื่องนี้เท่านั้น';
   });
   var liveBadge=document.getElementById('results-live-badge');
   if(liveBadge) liveBadge.style.display = s? 'inline':'none';
 }
-window.openSyncModal=function(){
-  var s=getSync();
-  if(s){
-    document.getElementById('sync-worker-url').value=s.url;
-    document.getElementById('sync-passcode-judge').value=s.passJudge||'';
-    document.getElementById('sync-passcode-admin').value=s.passAdmin||'';
-  }
-  document.getElementById('sync-modal-msg').textContent='';
-  openModal('sync');
-};
-window.doConnect=function(){
-  var url=document.getElementById('sync-worker-url').value.trim().replace(/\/$/,'');
-  var passJudge=document.getElementById('sync-passcode-judge').value;
-  var passAdmin=document.getElementById('sync-passcode-admin').value;
-  var msg=document.getElementById('sync-modal-msg');
-  if(!url){ msg.textContent='⚠️ กรุณาใส่ Worker URL'; msg.style.color='#dc2626'; return; }
-  if(!/^https?:\/\//i.test(url)){
-    url='https://'+url;
-    document.getElementById('sync-worker-url').value=url;
-  }
-  msg.textContent='กำลังทดสอบการเชื่อมต่อ...'; msg.style.color='var(--text3)';
-  fetch(url+'/load-teams').then(function(r){
-    if(!r.ok) throw new Error('HTTP '+r.status);
-    return r.json();
-  }).then(function(){
-    saveJSON(LS_SYNC, {url:url, passJudge:passJudge, passAdmin:passAdmin});
-    msg.textContent='✅ เชื่อมต่อสำเร็จ'; msg.style.color='var(--green)';
-    updateSyncStatus();
-    pullTeamsFromServer();
-    var activeView=document.querySelector('.comp-view.active');
-    var activeId=activeView? activeView.id.replace('comp-','') : '';
-    if(activeId==='results'){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
-    if(activeId==='score' && state.curJudge){ pullScoresForJudge(state.curJudge).then(function(){ renderTeamPicker(); if(state.curTeam) renderScoreForm(); }); }
-    setTimeout(function(){ closeModal('sync'); }, 700);
-  }).catch(function(e){
-    var hint='';
-    if(/HTTP 404/i.test(e.message)) hint=' (404 = URL อาจพิมพ์ผิด หรือยังไม่ได้ Deploy Worker)';
-    else if(/HTTP 401|HTTP 403/i.test(e.message)) hint=' (ตรวจสอบค่า GITHUB_TOKEN ใน Worker)';
-    else if(/HTTP 5\d\d/i.test(e.message)) hint=' (ตรวจสอบตัวแปร GITHUB_REPO/GITHUB_TOKEN ใน Worker — ดู SETUP.md)';
-    else hint=' (เช็คว่าพิมพ์ URL ครบและถูกต้อง หรือลองเปิด URL นี้ตรงๆ ในเบราว์เซอร์ดูว่าเชื่อมเน็ตได้ปกติไหม)';
-    msg.textContent='❌ เชื่อมต่อไม่สำเร็จ — '+e.message+hint; msg.style.color='#dc2626';
-  });
-};
-window.doDisconnect=function(){
-  localStorage.removeItem(LS_SYNC);
-  updateSyncStatus();
-  document.getElementById('sync-modal-msg').textContent='ยกเลิกการเชื่อมต่อแล้ว — คะแนนยังอยู่ในเครื่องนี้ตามปกติ';
-  document.getElementById('sync-modal-msg').style.color='var(--text3)';
-};
 function pullTeamsFromServer(){
   var s=getSync(); if(!s) return;
   fetch(apiUrl('/load-teams')).then(function(r){return r.json();}).then(function(res){
@@ -3847,6 +3846,7 @@ function triggerDownload(blob, filename){
 
 /* ── Init ── */
 document.addEventListener('DOMContentLoaded', function(){
+  checkLoginGate();
   renderJudgeSelect();
   if(state.curJudge){
     var sel=document.getElementById('judge-select');

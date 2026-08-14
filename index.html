@@ -372,6 +372,30 @@
   .judge-chip{display:inline-flex;align-items:center;gap:7px;background:var(--surface2);border:1px solid var(--border2);border-radius:20px;padding:5px 6px 5px 13px;font-size:.72rem;font-weight:600;color:var(--text)}
   .judge-chip-del{width:18px;height:18px;border-radius:50%;background:var(--surface3);border:none;color:var(--text2);font-size:.68rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;font-family:'Outfit',sans-serif}
   .judge-chip-del:hover{background:#fecaca;color:#dc2626}
+  .team-setup-scroll{overflow-x:auto}
+
+  /* ── Mobile responsive ── */
+  @media (max-width:860px){
+    body{overflow-x:hidden}
+    .app-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .app-tab{flex-shrink:0;padding:12px 16px;font-size:.74rem}
+
+    .page-wrap{flex-direction:column}
+    .lib-left{width:100%;height:auto;max-height:none;position:relative;top:auto}
+
+    .comp-wrap{flex-direction:column}
+    .comp-nav{width:100%;height:auto;position:relative;top:auto}
+    .comp-main{padding:18px 16px 40px}
+
+    .stats-row,.view-vstats,.comp-topic-grid,.team-picker-grid{grid-template-columns:repeat(2,1fr)}
+    .cards-grid{grid-template-columns:1fr!important}
+    .bottom-grid,.timeline-grid,.alert-grid,.impact-row,.comp-hero,.comp-prize-row,.score-setup-grid{grid-template-columns:1fr}
+
+    .team-setup-head,.team-setup-row{min-width:640px}
+  }
+  @media (max-width:480px){
+    .stats-row,.view-vstats,.comp-topic-grid,.team-picker-grid{grid-template-columns:1fr}
+  }
 
 </style>
 </head>
@@ -2840,8 +2864,10 @@
       </div>
 
       <div class="panel">
-        <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div></div>
-        <div id="teams-list"></div>
+        <div class="team-setup-scroll">
+          <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div></div>
+          <div id="teams-list"></div>
+        </div>
       </div>
     </div>
     <!-- ══════ ROSTER ══════ -->

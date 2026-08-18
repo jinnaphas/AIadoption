@@ -320,6 +320,9 @@
   .roster-video-link{display:inline-flex;align-items:center;justify-content:center;gap:5px;font-size:.72rem;font-weight:700;color:#fff;background:linear-gradient(135deg,#dc2626,#b91c1c);padding:7px 12px;border-radius:8px;text-decoration:none}
   .roster-video-link:hover{filter:brightness(1.08)}
   .roster-video-empty{font-size:.68rem;color:var(--text3);text-align:center;padding:7px 12px;border:1px dashed var(--border2);border-radius:8px}
+  .team-group-hdr{font-size:.8rem;font-weight:800;color:var(--accent);margin:22px 0 10px;padding-bottom:7px;border-bottom:2px solid var(--accent-bg);display:flex;align-items:center;gap:8px}
+  .team-group-hdr:first-child{margin-top:0}
+  .team-group-count{font-size:.63rem;font-weight:600;color:var(--text3);background:var(--surface2);border-radius:20px;padding:2px 9px}
 
   /* Scoring form */
   .score-setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px}
@@ -3253,7 +3256,7 @@
         <button class="comp-btn comp-btn-secondary" onclick="doLogout()">🔒 ออกจากระบบ</button>
       </div>
 
-      <div id="roster-grid" class="roster-grid"></div>
+      <div id="roster-grid"></div>
     </div>
     <!-- ══════ SCORING ══════ -->
     <div id="comp-score" class="comp-view">
@@ -3297,7 +3300,7 @@
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
           <div class="comp-progress-track"><div class="comp-progress-fill" id="score-progress-fill" style="width:0%"></div></div>
         </div>
-        <div class="team-picker-grid" id="team-picker"></div>
+        <div id="team-picker"></div>
       </div>
 
       <div id="score-form-wrap" style="display:none;margin-top:22px">
@@ -3598,31 +3601,32 @@ function saveJSON(key, val){ try{ localStorage.setItem(key, JSON.stringify(val))
 
 /* รายชื่อ 24 ทีมจริงที่สมัครรอบที่ 1 (อัปเดต 2026-08-13) — topic: 1=Strategy 2=RevenueStream 4=STEM 6=OperationExcellence 7=Service&Support */
 function defaultTeams(){
+  /* เรียงตามคิวการนำเสนอจริงรอบที่ 1 (15 ก.ย. 2569) — id คงเดิมเสมอ (ผูกกับคะแนนที่บันทึกไว้แล้ว), queue = ลำดับนำเสนอ */
   return [
-    {id:1, name:'STREAMLINE', project:'Customer and Dealer Experience Platform (CDX)', topic:1},
-    {id:2, name:'ฝันร้าย AI', project:'Customer Insight Platform', topic:1},
-    {id:3, name:'PerformAI', project:'Individual Performance & Skill Intelligence Platform', topic:1},
-    {id:4, name:'XYZ', project:'Smart Vendoring', topic:2},
-    {id:5, name:'Investment', project:'Investment Co-Pilot', topic:2},
-    {id:6, name:'Pentu', project:'Tendering Platform', topic:2},
-    {id:7, name:'P-Synergy Clean Energy', project:'Energy Storage Hub & Energy Logistics Platform', topic:4},
-    {id:8, name:'Loop Lab', project:'LoopVision: Earth Analytics & AI Tracking', topic:4},
-    {id:9, name:'TOPP HERO Ai', project:'Design Pricing by Ai', topic:4},
-    {id:10, name:'The Pulse', project:'Agentic AI Project Command Center', topic:6},
-    {id:11, name:'PowerHub', project:'PowerHub: แพลตฟอร์มดิจิทัลเพื่อการบริหารจัดการและควบคุมต้นทุนงานวิศวกรรมไฟฟ้าครบวงจร', topic:6},
-    {id:12, name:'บริษัท สงขลาไบโอเพาเวอร์', project:'AIoT-based Auxiliary Power Optimization & Vibration monitoring (ระบบ AIoT เพื่อติดตามและลดการใช้ไฟฟ้าภายใน (Auxiliary Power) โรงไฟฟ้าสงขลาไบโอเพาเวอร์)', topic:6},
-    {id:13, name:'Convergence Team', project:'Inventory Stock PPE PRECISE', topic:6},
-    {id:14, name:'ทีมชั่งหรอย', project:'แพลตฟอร์ม AI อัตโนมัติสำหรับสถานีชั่งไม้ซุงอัจฉริยะ (Automated AI Platform for Intelligent Weighbridge)', topic:6},
-    {id:15, name:'Revenue Nexus', project:'AI Tender Intelligence Platform', topic:6},
-    {id:16, name:'BambooSpark', project:'Zero-touch bamboo fiber bundle production smart system', topic:6},
-    {id:17, name:'Fusion Five', project:'ระบบ Smart Operations สร้างงานประมาณราคาและออกแบบตู้ควบคุมไฟฟ้าอัตโนมัติแบบครบวงจร (Smart Operations: End-to-End Cabinet Estimation & Design Automation System)', topic:6},
-    {id:18, name:'NEXTCAL', project:'Smart Calibration System: จาก Excel สู่ AI', topic:6},
-    {id:19, name:'Count On Us', project:'ZeroDeadStock', topic:6},
-    {id:20, name:'AI SMART WIRING', project:'ระบบ AI ช่วยทำแบบผลิตตู้ควบคุมไฟฟ้าอัตโนมัติ (AI-Assisted Create Drawing Automation)', topic:6},
-    {id:21, name:'AR Transformation', project:'SMART AR Hub', topic:7},
-    {id:22, name:'Infinity Account Tech', project:'ระบบตรวจนับทรัพย์สิน', topic:7},
-    {id:23, name:'CyberX', project:'ServiceMS', topic:7},
-    {id:24, name:'People Power Hub', project:'People Intelligent Hub', topic:7}
+    {id:3, queue:1, name:'PerformAI', project:'Individual Performance & Skill Intelligence Platform', topic:1},
+    {id:2, queue:2, name:'ฝันร้าย AI', project:'Customer Insight Platform', topic:1},
+    {id:1, queue:3, name:'STREAMLINE', project:'Customer and Dealer Experience Platform (CDX)', topic:1},
+    {id:4, queue:4, name:'XYZ', project:'Smart Vendoring', topic:2},
+    {id:5, queue:5, name:'Investment', project:'Investment Co-Pilot', topic:2},
+    {id:6, queue:6, name:'Pentu', project:'Tendering Platform', topic:2},
+    {id:7, queue:7, name:'P-Synergy Clean Energy', project:'Energy Storage Hub & Energy Logistics Platform', topic:4},
+    {id:8, queue:8, name:'Loop Lab', project:'LoopVision: Earth Analytics & AI Tracking', topic:4},
+    {id:9, queue:9, name:'TOPP HERO Ai', project:'Design Pricing by Ai', topic:4},
+    {id:15, queue:10, name:'Revenue Nexus', project:'AI Tender Intelligence Platform', topic:6},
+    {id:12, queue:11, name:'บริษัท สงขลาไบโอเพาเวอร์', project:'AIoT-based Auxiliary Power Optimization & Vibration monitoring (ระบบ AIoT เพื่อติดตามและลดการใช้ไฟฟ้าภายใน (Auxiliary Power) โรงไฟฟ้าสงขลาไบโอเพาเวอร์)', topic:6},
+    {id:17, queue:12, name:'Fusion Five', project:'ระบบ Smart Operations สร้างงานประมาณราคาและออกแบบตู้ควบคุมไฟฟ้าอัตโนมัติแบบครบวงจร (Smart Operations: End-to-End Cabinet Estimation & Design Automation System)', topic:6},
+    {id:20, queue:13, name:'AI SMART WIRING', project:'ระบบ AI ช่วยทำแบบผลิตตู้ควบคุมไฟฟ้าอัตโนมัติ (AI-Assisted Create Drawing Automation)', topic:6},
+    {id:19, queue:14, name:'Count On Us', project:'ZeroDeadStock', topic:6},
+    {id:11, queue:15, name:'PowerHub', project:'PowerHub: แพลตฟอร์มดิจิทัลเพื่อการบริหารจัดการและควบคุมต้นทุนงานวิศวกรรมไฟฟ้าครบวงจร', topic:6},
+    {id:14, queue:16, name:'ทีมชั่งหรอย', project:'แพลตฟอร์ม AI อัตโนมัติสำหรับสถานีชั่งไม้ซุงอัจฉริยะ (Automated AI Platform for Intelligent Weighbridge)', topic:6},
+    {id:10, queue:17, name:'The Pulse', project:'Agentic AI Project Command Center', topic:6},
+    {id:18, queue:18, name:'NEXTCAL', project:'Smart Calibration System: จาก Excel สู่ AI', topic:6},
+    {id:16, queue:19, name:'BambooSpark', project:'Zero-touch bamboo fiber bundle production smart system', topic:6},
+    {id:13, queue:20, name:'Convergence Team', project:'Inventory Stock PPE PRECISE', topic:6},
+    {id:21, queue:21, name:'AR Transformation', project:'SMART AR Hub', topic:7},
+    {id:23, queue:22, name:'CyberX', project:'ServiceMS', topic:7},
+    {id:22, queue:23, name:'Infinity Account Tech', project:'ระบบตรวจนับทรัพย์สิน', topic:7},
+    {id:24, queue:24, name:'People Power Hub', project:'People Intelligent Hub', topic:7}
   ];
 }
 function defaultJudges(){
@@ -3879,7 +3883,7 @@ function renderTeamsList(){
     var opts='<option value="0">— เลือกหัวข้อ —</option>';
     TOPICS.forEach(function(topic,i){ opts+='<option value="'+(i+1)+'"'+(t.topic===i+1?' selected':'')+'>'+(i+1)+'. '+topic.name+'</option>'; });
     html+='<div class="team-setup-row">'+
-      '<div class="team-setup-num">'+t.id+'</div>'+
+      '<div class="team-setup-num">'+(t.queue||t.id)+'</div>'+
       '<input class="team-input" value="'+escAttr(t.name)+'" placeholder="ชื่อทีม" oninput="updateTeamField('+t.id+',\'name\',this.value)">'+
       '<input class="team-input" value="'+escAttr(t.project)+'" placeholder="ชื่อโครงการ" oninput="updateTeamField('+t.id+',\'project\',this.value)">'+
       '<select class="team-select" onchange="updateTeamField('+t.id+',\'topic\',parseInt(this.value))">'+opts+'</select>'+
@@ -3896,25 +3900,41 @@ function renderTeamsSummary(){
   var withTopic=state.teams.filter(function(t){return t.topic>0;}).length;
   host.textContent='กรอกชื่อแล้ว '+named+'/24 ทีม · ระบุหัวข้อแล้ว '+withTopic+'/24 ทีม';
 }
+/* จัดกลุ่มทีมตามหัวข้อ (ตามลำดับที่ปรากฏใน state.teams — ให้ state.teams เรียงตามคิวการนำเสนอไว้ก่อนเรียกใช้)
+   เว้นแต่คิว/กลุ่มจะถูกปรับใหม่ ไม่ต้อง sort ซ้ำที่นี่ เพื่อให้ปุ่ม "ทีมถัดไป/ก่อนหน้า" เดินตามคิวจริงหน้างานด้วย */
+function renderGroupedTeamsHTML(cardFn, gridClass){
+  var html='';
+  var lastTopic, groupNum=0, groupCount=0;
+  state.teams.forEach(function(t){
+    if(t.topic!==lastTopic){
+      if(groupNum>0) html+='</div>';
+      groupNum++;
+      lastTopic=t.topic;
+      var topicName = t.topic? (TOPICS[t.topic-1]? TOPICS[t.topic-1].name : '') : 'ยังไม่ระบุหัวข้อ';
+      var teamsInGroup=state.teams.filter(function(x){return x.topic===t.topic;}).length;
+      html+='<div class="team-group-hdr">กลุ่มที่ '+groupNum+' — '+(t.topic||'-')+'. '+escHTML(topicName)+'<span class="team-group-count">'+teamsInGroup+' ทีม</span></div>';
+      html+='<div class="'+gridClass+'">';
+    }
+    html+=cardFn(t);
+  });
+  if(groupNum>0) html+='</div>';
+  return html;
+}
 function renderRoster(){
   var host=document.getElementById('roster-grid');
   if(!host) return;
-  var html='';
-  state.teams.forEach(function(t){
-    var topicLabel = t.topic? (t.topic+'. '+(TOPICS[t.topic-1]? TOPICS[t.topic-1].name : '')) : 'ยังไม่ระบุหัวข้อ';
+  host.innerHTML=renderGroupedTeamsHTML(function(t){
     var video=(t.video||'').trim();
     var videoHTML = /^https?:\/\//i.test(video)
       ? '<a class="roster-video-link" href="'+escAttr(video)+'" target="_blank" rel="noopener noreferrer">▶️ ดูวิดีโอแนะนำทีม</a>'
       : '<span class="roster-video-empty">ยังไม่มีวิดีโอ</span>';
-    html+='<div class="roster-card">'+
-      '<span class="roster-card-topic">'+escHTML(topicLabel)+'</span>'+
-      '<div class="roster-card-num">คิว '+t.id+'</div>'+
-      '<div class="roster-card-name">'+escHTML(t.name.trim()||('ทีม '+t.id))+'</div>'+
+    return '<div class="roster-card">'+
+      '<div class="roster-card-num">คิว '+(t.queue||t.id)+'</div>'+
+      '<div class="roster-card-name">'+escHTML(t.name.trim()||('ทีม '+(t.queue||t.id)))+'</div>'+
       '<div class="roster-card-project">'+escHTML(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+'</div>'+
       videoHTML+
       '</div>';
-  });
-  host.innerHTML=html;
+  }, 'roster-grid');
 }
 window.updateTeamField=function(id, field, value){
   var t=state.teams.find(function(x){return x.id===id;});
@@ -4063,15 +4083,13 @@ function renderTeamPicker(){
   var host=document.getElementById('team-picker');
   if(!host) return;
   var doneCount=0;
-  var html='';
-  state.teams.forEach(function(t){
+  host.innerHTML=renderGroupedTeamsHTML(function(t){
     var done=isTeamDone(state.curJudge, t.id);
     if(done) doneCount++;
     var cls='team-pick-btn'+(t.id===state.curTeam?' sel':'')+(done?' done':'');
-    var label=t.name.trim()||('ทีม '+t.id);
-    html+='<button type="button" class="'+cls+'" onclick="pickTeam('+t.id+')"><div class="team-pick-num">คิว '+t.id+' · หัวข้อ '+(t.topic||'-')+'</div><div class="team-pick-name">'+escHTML(label)+'</div></button>';
-  });
-  host.innerHTML=html;
+    var label=t.name.trim()||('ทีม '+(t.queue||t.id));
+    return '<button type="button" class="'+cls+'" onclick="pickTeam('+t.id+')"><div class="team-pick-num">คิว '+(t.queue||t.id)+'</div><div class="team-pick-name">'+escHTML(label)+'</div></button>';
+  }, 'team-picker-grid');
   document.getElementById('score-progress-text').textContent='ให้คะแนนแล้ว '+doneCount+'/24 ทีม';
   document.getElementById('score-progress-fill').style.width=Math.round(doneCount/24*100)+'%';
 }
@@ -4086,7 +4104,7 @@ window.pickTeam=function(teamId){
 function renderScoreForm(){
   var t=state.teams.find(function(x){return x.id===state.curTeam;});
   if(!t) return;
-  document.getElementById('score-team-title').textContent='คิว '+t.id+' — '+(t.name.trim()||'(ยังไม่ระบุชื่อทีม)');
+  document.getElementById('score-team-title').textContent='คิว '+(t.queue||t.id)+' — '+(t.name.trim()||'(ยังไม่ระบุชื่อทีม)');
   document.getElementById('score-team-sub').textContent=(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+' · หัวข้อ '+(t.topic? t.topic+'. '+TOPICS[t.topic-1].name : 'ยังไม่ระบุ');
   renderScoreItems('score-items-A', CRIT.A);
   renderScoreItems('score-items-B', CRIT.B);

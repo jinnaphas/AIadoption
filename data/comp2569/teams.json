@@ -1,28 +1,32 @@
 {
   "teams": [
     {
-      "id": 1,
-      "name": "STREAMLINE",
-      "project": "Customer and Dealer Experience Platform (CDX)",
-      "topic": 1,
-      "video": "https://drive.google.com/file/d/1o8U5Gbmp5Qs1NWbX68IQ417xE5poQvS-/view?usp=sharing"
-    },
-    {
-      "id": 2,
-      "name": "ฝันร้าย AI",
-      "project": "Customer Insight Platform",
-      "topic": 1,
-      "video": "https://drive.google.com/file/d/1-H7wtwDRD2d3FLPggSRimp7wDeYhCASQ/view?usp=sharing"
-    },
-    {
       "id": 3,
+      "queue": 1,
       "name": "PerformAI",
       "project": "Individual Performance & Skill Intelligence Platform",
       "topic": 1,
       "video": "https://drive.google.com/file/d/1_WSEbABlpkc_hrFgPa3ldaPBFZjGWGn_/view?usp=sharing"
     },
     {
+      "id": 2,
+      "queue": 2,
+      "name": "ฝันร้าย AI",
+      "project": "Customer Insight Platform",
+      "topic": 1,
+      "video": "https://drive.google.com/file/d/1-H7wtwDRD2d3FLPggSRimp7wDeYhCASQ/view?usp=sharing"
+    },
+    {
+      "id": 1,
+      "queue": 3,
+      "name": "STREAMLINE",
+      "project": "Customer and Dealer Experience Platform (CDX)",
+      "topic": 1,
+      "video": "https://drive.google.com/file/d/1o8U5Gbmp5Qs1NWbX68IQ417xE5poQvS-/view?usp=sharing"
+    },
+    {
       "id": 4,
+      "queue": 4,
       "name": "XYZ",
       "project": "Smart Vendoring",
       "topic": 2,
@@ -30,6 +34,7 @@
     },
     {
       "id": 5,
+      "queue": 5,
       "name": "Investment",
       "project": "Investment Co-Pilot",
       "topic": 2,
@@ -37,6 +42,7 @@
     },
     {
       "id": 6,
+      "queue": 6,
       "name": "Pentu",
       "project": "Tendering Platform",
       "topic": 2,
@@ -44,6 +50,7 @@
     },
     {
       "id": 7,
+      "queue": 7,
       "name": "P-Synergy Clean Energy",
       "project": "Energy Storage Hub & Energy Logistics Platform",
       "topic": 4,
@@ -51,6 +58,7 @@
     },
     {
       "id": 8,
+      "queue": 8,
       "name": "Loop Lab",
       "project": "LoopVision: Earth Analytics & AI Tracking",
       "topic": 4,
@@ -58,111 +66,127 @@
     },
     {
       "id": 9,
+      "queue": 9,
       "name": "TOPP HERO Ai",
       "project": "Design Pricing by Ai",
       "topic": 4,
       "video": "https://drive.google.com/file/d/1SAW6TQPhPOh8LYRZFspDnZczV1PwSSXp/view?usp=sharing"
     },
     {
-      "id": 10,
-      "name": "The Pulse",
-      "project": "Agentic AI Project Command Center",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1ndF89zhK2ij1rYQwexWeedauOmi9dU9o/view?usp=sharing"
-    },
-    {
-      "id": 11,
-      "name": "PowerHub",
-      "project": "PowerHub: แพลตฟอร์มดิจิทัลเพื่อการบริหารจัดการและควบคุมต้นทุนงานวิศวกรรมไฟฟ้าครบวงจร",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1ogqWHqRzVCZWBl5SU9ioPoV0-3FDQ7EE/view?usp=sharing"
-    },
-    {
-      "id": 12,
-      "name": "บริษัท สงขลาไบโอเพาเวอร์",
-      "project": "AIoT-based Auxiliary Power Optimization & Vibration monitoring (ระบบ AIoT เพื่อติดตามและลดการใช้ไฟฟ้าภายใน (Auxiliary Power) โรงไฟฟ้าสงขลาไบโอเพาเวอร์)",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/13mS6r6KD2FIpkVV-dBZbH2NC9LstvDoC/view?usp=sharing"
-    },
-    {
-      "id": 13,
-      "name": "Convergence Team",
-      "project": "Inventory Stock PPE PRECISE",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1ts5xwaLxzxxAE89e-Dk8tV40PSUelySf/view?usp=sharing"
-    },
-    {
-      "id": 14,
-      "name": "ทีมชั่งหรอย",
-      "project": "แพลตฟอร์ม AI อัตโนมัติสำหรับสถานีชั่งไม้ซุงอัจฉริยะ (Automated AI Platform for Intelligent Weighbridge)",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1F1D15rH24FUtMl25KT61iACxeyFKKx9d/view?usp=sharing"
-    },
-    {
       "id": 15,
+      "queue": 10,
       "name": "Revenue Nexus",
       "project": "AI Tender Intelligence Platform",
       "topic": 6,
       "video": "https://drive.google.com/file/d/1FbVguVbxVfXjA7GGBxfpnuMZBrm2E6be/view?usp=sharing"
     },
     {
-      "id": 16,
-      "name": "BambooSpark",
-      "project": "Zero-touch bamboo fiber bundle production smart system",
+      "id": 12,
+      "queue": 11,
+      "name": "บริษัท สงขลาไบโอเพาเวอร์",
+      "project": "AIoT-based Auxiliary Power Optimization & Vibration monitoring (ระบบ AIoT เพื่อติดตามและลดการใช้ไฟฟ้าภายใน (Auxiliary Power) โรงไฟฟ้าสงขลาไบโอเพาเวอร์)",
       "topic": 6,
-      "video": "https://drive.google.com/file/d/1V03rbMgl8HaGW4Vmowb6gdveCMytjIkf/view?usp=sharing"
+      "video": "https://drive.google.com/file/d/13mS6r6KD2FIpkVV-dBZbH2NC9LstvDoC/view?usp=sharing"
     },
     {
       "id": 17,
+      "queue": 12,
       "name": "Fusion Five",
       "project": "ระบบ Smart Operations สร้างงานประมาณราคาและออกแบบตู้ควบคุมไฟฟ้าอัตโนมัติแบบครบวงจร (Smart Operations: End-to-End Cabinet Estimation & Design Automation System)",
       "topic": 6,
       "video": "https://drive.google.com/drive/folders/1f3rM2F8ICqhGOrr-0gGOfa2kO-qUS6qC?usp=sharing"
     },
     {
-      "id": 18,
-      "name": "NEXTCAL",
-      "project": "Smart Calibration System: จาก Excel สู่ AI",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1UBEscSNqTFoJUChYbNcKeARDpqNVw0PK/view?usp=sharing"
-    },
-    {
-      "id": 19,
-      "name": "Count On Us",
-      "project": "ZeroDeadStock",
-      "topic": 6,
-      "video": "https://drive.google.com/file/d/1mhBz-NtZbUINMTPGhspeh5o9lR3bI7Ez/view?usp=sharing"
-    },
-    {
       "id": 20,
+      "queue": 13,
       "name": "AI SMART WIRING",
       "project": "ระบบ AI ช่วยทำแบบผลิตตู้ควบคุมไฟฟ้าอัตโนมัติ (AI-Assisted Create Drawing Automation)",
       "topic": 6,
       "video": "https://drive.google.com/file/d/18Hux-Q3swKvVR025_9tnkyDnyoHiAXLz/view?usp=sharing"
     },
     {
+      "id": 19,
+      "queue": 14,
+      "name": "Count On Us",
+      "project": "ZeroDeadStock",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1mhBz-NtZbUINMTPGhspeh5o9lR3bI7Ez/view?usp=sharing"
+    },
+    {
+      "id": 11,
+      "queue": 15,
+      "name": "PowerHub",
+      "project": "PowerHub: แพลตฟอร์มดิจิทัลเพื่อการบริหารจัดการและควบคุมต้นทุนงานวิศวกรรมไฟฟ้าครบวงจร",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1ogqWHqRzVCZWBl5SU9ioPoV0-3FDQ7EE/view?usp=sharing"
+    },
+    {
+      "id": 14,
+      "queue": 16,
+      "name": "ทีมชั่งหรอย",
+      "project": "แพลตฟอร์ม AI อัตโนมัติสำหรับสถานีชั่งไม้ซุงอัจฉริยะ (Automated AI Platform for Intelligent Weighbridge)",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1F1D15rH24FUtMl25KT61iACxeyFKKx9d/view?usp=sharing"
+    },
+    {
+      "id": 10,
+      "queue": 17,
+      "name": "The Pulse",
+      "project": "Agentic AI Project Command Center",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1ndF89zhK2ij1rYQwexWeedauOmi9dU9o/view?usp=sharing"
+    },
+    {
+      "id": 18,
+      "queue": 18,
+      "name": "NEXTCAL",
+      "project": "Smart Calibration System: จาก Excel สู่ AI",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1UBEscSNqTFoJUChYbNcKeARDpqNVw0PK/view?usp=sharing"
+    },
+    {
+      "id": 16,
+      "queue": 19,
+      "name": "BambooSpark",
+      "project": "Zero-touch bamboo fiber bundle production smart system",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1V03rbMgl8HaGW4Vmowb6gdveCMytjIkf/view?usp=sharing"
+    },
+    {
+      "id": 13,
+      "queue": 20,
+      "name": "Convergence Team",
+      "project": "Inventory Stock PPE PRECISE",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1ts5xwaLxzxxAE89e-Dk8tV40PSUelySf/view?usp=sharing"
+    },
+    {
       "id": 21,
+      "queue": 21,
       "name": "AR Transformation",
       "project": "SMART AR Hub",
       "topic": 7,
       "video": "https://drive.google.com/file/d/158fBt0hq0rF5L15Ja5Xn8P5l8vIXMI3B/view?usp=sharing"
     },
     {
-      "id": 22,
-      "name": "Infinity Account Tech",
-      "project": "ระบบตรวจนับทรัพย์สิน",
-      "topic": 7,
-      "video": "https://drive.google.com/drive/folders/1a46NSHE8_4iECVMX8WWHscDzGKmSE2yn?usp=sharing"
-    },
-    {
       "id": 23,
+      "queue": 22,
       "name": "CyberX",
       "project": "ServiceMS",
       "topic": 7,
       "video": "https://drive.google.com/file/d/1UsVRpydlPRitbH-9LZOml4YMkP6HVCd1/view?usp=sharing"
     },
     {
+      "id": 22,
+      "queue": 23,
+      "name": "Infinity Account Tech",
+      "project": "ระบบตรวจนับทรัพย์สิน",
+      "topic": 7,
+      "video": "https://drive.google.com/drive/folders/1a46NSHE8_4iECVMX8WWHscDzGKmSE2yn?usp=sharing"
+    },
+    {
       "id": 24,
+      "queue": 24,
       "name": "People Power Hub",
       "project": "People Intelligent Hub",
       "topic": 7,

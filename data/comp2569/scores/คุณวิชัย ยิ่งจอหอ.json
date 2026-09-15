@@ -218,7 +218,7 @@
     "B2": 2,
     "C1": 4,
     "C2": 3,
-    "note": "ให้ Sync กับ Odoo ก่อน ยังไม่ต้องพัฒนา Full Platform"
+    "note": "ให้ Sync กับ Odoo ก่อน ไม่แนะนำพัฒนา Full Platform"
   },
   "14": {
     "A1": 4,

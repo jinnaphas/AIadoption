@@ -20,6 +20,10 @@
  *   GET  /load-judges                     → { judges, sha }
  *   POST /save-judges                     → body { passcode, judges, sha } (ต้องรหัสผู้ดูแลเท่านั้น — Sync รายชื่อกรรมการข้ามเครื่อง)
  *
+ *   ทุก endpoint ด้านบนรับ query string ?round=2 เพิ่มได้ (GET ต่อท้าย URL, POST ก็ต่อท้าย URL เดียวกัน
+ *   เพราะฝั่งเว็บสร้าง URL ผ่าน apiUrl() จุดเดียว) — เมื่อมี round=2 จะอ่าน/เขียนที่ DATA_DIR/round2/ แทน
+ *   ไม่ส่ง round หรือ round=1 = พฤติกรรมเดิมทุกประการ (ข้อมูลรอบที่ 1 ของจริงอยู่ที่ DATA_DIR เดิม ไม่ถูกแตะ)
+ *
  * ตัวแปรที่ต้องตั้งค่า (Settings → Variables and Secrets):
  *   GITHUB_TOKEN     (secret)  fine-grained PAT สิทธิ์ Contents R/W เฉพาะ repo นี้
  *   PASSCODE_JUDGE   (secret)  รหัสผ่านกรรมการ (รหัสเดียวแจกทุกท่าน) เช่น "TALENT-2569-J"
@@ -109,6 +113,8 @@ export default {
     }
 
     const url = new URL(req.url);
+    /* round=2 → อ่าน/เขียนที่ DATA_DIR/round2/ แทน DATA_DIR เดิม — ไม่ส่ง round หรือ round=1 = พฤติกรรมเดิม */
+    const baseDir = url.searchParams.get("round") === "2" ? `${dir}/round2` : dir;
     try {
       /* ── Login: ตรวจรหัสผ่านเฉยๆ ไม่แตะข้อมูล — ใช้เปิดหน้า Login ฝั่งเว็บ ── */
       if (url.pathname === "/verify-login" && req.method === "POST") {
@@ -126,7 +132,7 @@ export default {
       /* ── Scores: 1 ไฟล์ต่อกรรมการ 1 ท่าน ── */
       if (url.pathname === "/load-scores" && req.method === "GET") {
         const judge = slugify(url.searchParams.get("judge"));
-        const r = await getFile(`${dir}/scores/${judge}.json`);
+        const r = await getFile(`${baseDir}/scores/${judge}.json`);
         return json({ scores: r.data || {}, sha: r.sha });
       }
 
@@ -143,7 +149,7 @@ export default {
         const slug = slugify(judge);
         const who = String(editor || judge).slice(0, 60).replace(/[\r\n]/g, " ");
         const result = await putFile(
-          `${dir}/scores/${slug}.json`,
+          `${baseDir}/scores/${slug}.json`,
           scores,
           sha,
           `scores: update ${slug} by ${who}`
@@ -155,7 +161,7 @@ export default {
 
       /* ── รวมคะแนนทุกกรรมการ (สำหรับหน้าสรุปผล) ── */
       if (url.pathname === "/load-all-scores" && req.method === "GET") {
-        const listRes = await gh(`${dir}/scores?ref=${branch}`);
+        const listRes = await gh(`${baseDir}/scores?ref=${branch}`);
         if (listRes.status === 404) return json({ all: {} });
         if (!listRes.ok) return json({ error: "GitHub " + listRes.status }, 502);
         const files = await listRes.json();
@@ -166,7 +172,7 @@ export default {
             .map(async (f) => {
               const judgeSlug = f.name.replace(/\.json$/, "");
               try {
-                const r = await getFile(`${dir}/scores/${f.name}`);
+                const r = await getFile(`${baseDir}/scores/${f.name}`);
                 if (r.data) all[judgeSlug] = r.data;
               } catch (e) {
                 /* ข้ามไฟล์เสีย ไม่ให้ล้มทั้งคำขอ */
@@ -178,7 +184,7 @@ export default {
 
       /* ── รายชื่อทีม (ไฟล์เดียวใช้ร่วมกัน) ── */
       if (url.pathname === "/load-teams" && req.method === "GET") {
-        const r = await getFile(`${dir}/teams.json`);
+        const r = await getFile(`${baseDir}/teams.json`);
         return json({ teams: r.data, sha: r.sha });
       }
 
@@ -189,7 +195,7 @@ export default {
           return json({ error: "bad admin passcode" }, 401);
         }
         if (!teams || typeof teams !== "object") return json({ error: "invalid teams" }, 400);
-        const result = await putFile(`${dir}/teams.json`, teams, sha, "teams: update roster");
+        const result = await putFile(`${baseDir}/teams.json`, teams, sha, "teams: update roster");
         if (result.conflict) return json(result.latest, 409);
         if (result.error) return json({ error: result.error }, result.status);
         return json({ sha: result.sha });
@@ -197,7 +203,7 @@ export default {
 
       /* ── รายชื่อกรรมการ (ไฟล์เดียวใช้ร่วมกัน — Sync ข้ามเครื่องเมื่อผู้ดูแลเพิ่ม/ลบชื่อ) ── */
       if (url.pathname === "/load-judges" && req.method === "GET") {
-        const r = await getFile(`${dir}/judges.json`);
+        const r = await getFile(`${baseDir}/judges.json`);
         return json({ judges: r.data, sha: r.sha });
       }
 
@@ -208,7 +214,7 @@ export default {
           return json({ error: "bad admin passcode" }, 401);
         }
         if (!judges || typeof judges !== "object") return json({ error: "invalid judges" }, 400);
-        const result = await putFile(`${dir}/judges.json`, judges, sha, "judges: update roster");
+        const result = await putFile(`${baseDir}/judges.json`, judges, sha, "judges: update roster");
         if (result.conflict) return json(result.latest, 409);
         if (result.error) return json({ error: result.error }, result.status);
         return json({ sha: result.sha });

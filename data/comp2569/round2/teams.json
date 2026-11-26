@@ -1,0 +1,74 @@
+{
+  "teams": [
+    {
+      "id": 2,
+      "queue": 1,
+      "name": "ฝันร้าย AI",
+      "project": "Customer Insight Platform",
+      "topic": 1,
+      "video": "https://drive.google.com/file/d/1-H7wtwDRD2d3FLPggSRimp7wDeYhCASQ/view?usp=sharing",
+      "vote": 0,
+      "members": ["โชคดี ศรีเรือง", "สุธิมา ทับทิมดี", "กาญจนา นวลผ่อง", "ปรารถนา ศรีวิไล", "ธิติยา สุดป้อม"]
+    },
+    {
+      "id": 4,
+      "queue": 2,
+      "name": "XYZ",
+      "project": "Smart Vendoring",
+      "topic": 2,
+      "video": "https://drive.google.com/file/d/1G8ukOkJYYeaMA_-aqvco4fY0Hpe1gE_F/view?usp=sharing",
+      "vote": 0,
+      "members": ["แพรวรุ่ง ประทีป", "เทวฤทธิ์ คงแก้ว", "กัลยกร สุริย์"]
+    },
+    {
+      "id": 8,
+      "queue": 3,
+      "name": "Loop Lab",
+      "project": "LoopVision: Earth Analytics & AI Tracking",
+      "topic": 4,
+      "video": "https://drive.google.com/file/d/1ENIar3kj4K4Xz1yS2ah2kvPtW-ocCOaU/view?usp=sharing",
+      "vote": 0,
+      "members": ["นราวิชญ์ สมนา", "ฐาปกรณ์ รัตนวารินทร์ชัย", "พงศกร นิลมงคล", "ภัทรงค์ สมบัติแก้ว", "อภิสิทธิ์ วงศ์วิศิษฐ์"]
+    },
+    {
+      "id": 15,
+      "queue": 4,
+      "name": "Revenue Nexus",
+      "project": "AI Tender Intelligence Platform",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1FbVguVbxVfXjA7GGBxfpnuMZBrm2E6be/view?usp=sharing",
+      "vote": 0,
+      "members": ["ปิยณัฐ วิวรรณพงษ์", "ละมัย เอี่ยมทองแดง", "ฐิติชญาณ์ เดชา"]
+    },
+    {
+      "id": 18,
+      "queue": 5,
+      "name": "NEXTCAL",
+      "project": "Smart Calibration System: จาก Excel สู่ AI",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1UBEscSNqTFoJUChYbNcKeARDpqNVw0PK/view?usp=sharing",
+      "vote": 0,
+      "members": ["วรวัฒน์ ดวงแก้วมณี", "ปัทมนันท์ สุขปรุง", "รัฐกูร ปั้นจันทร์", "Nirorn Kong"]
+    },
+    {
+      "id": 19,
+      "queue": 6,
+      "name": "Count On Us",
+      "project": "ZeroDeadStock",
+      "topic": 6,
+      "video": "https://drive.google.com/file/d/1mhBz-NtZbUINMTPGhspeh5o9lR3bI7Ez/view?usp=sharing",
+      "vote": 0,
+      "members": ["จิราภรณ์ ใจวันดี", "จิรดา ชัยสงค์", "ยุวรี ประสพมงคล", "คุณัญญา โกวาปี"]
+    },
+    {
+      "id": 23,
+      "queue": 7,
+      "name": "CyberX",
+      "project": "ServiceMS",
+      "topic": 7,
+      "video": "https://drive.google.com/file/d/1UsVRpydlPRitbH-9LZOml4YMkP6HVCd1/view?usp=sharing",
+      "vote": 0,
+      "members": ["พรชัย อินทะโก", "สิรดนัย ศิริสุนทร", "พลากร กล่อมสวน", "วีรยุทธ แสนสัมฤทธิ์", "อำนวย เต็มปิยพล"]
+    }
+  ]
+}

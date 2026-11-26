@@ -4132,6 +4132,9 @@
       <button type="button" class="comp-btn comp-btn-primary" id="nav-round-btn-1" style="flex:1;justify-content:center;font-size:.68rem;padding:6px 8px" onclick="setCompRound(1)">รอบ 1</button>
       <button type="button" class="comp-btn comp-btn-secondary" id="nav-round-btn-2" style="flex:1;justify-content:center;font-size:.68rem;padding:6px 8px" onclick="setCompRound(2)">รอบ 2 🏆</button>
     </div>
+    <div id="round-sync-warning" style="display:none;margin:0 14px 14px;padding:8px 10px;background:var(--gold-bg);border:1px solid var(--gold);border-radius:8px;font-size:.62rem;color:var(--gold);line-height:1.6">
+      ⚠️ Worker ยังไม่ redeploy ให้รองรับรอบ 2 — ข้อมูลรอบ 2 ยัง Sync ขึ้น/ลงเซิร์ฟเวอร์ไม่ได้ (ข้อมูลในเครื่องนี้ปลอดภัย ไม่ถูกเขียนทับ) ดูวิธี redeploy ที่ <code>comp2569-worker/SETUP.md</code>
+    </div>
     <div class="comp-nav-item active" data-comp="home" onclick="selectComp('home')">🏠 หน้าแรก — ประจำปี 2569</div>
     <div class="comp-nav-item" data-comp="criteria" onclick="selectComp('criteria')">📋 เกณฑ์การให้คะแนน</div>
     <div class="comp-nav-item" data-comp="teams" onclick="selectComp('teams')">👥 ทีมเข้าประกวด <span id="nav-teams-count">(24 ทีม)</span></div>
@@ -4897,10 +4900,21 @@ function updateSyncStatus(){
   var liveBadge=document.getElementById('results-live-badge');
   if(liveBadge) liveBadge.style.display = s? 'inline':'none';
 }
+/* รอบ 2 ต้อง redeploy Worker ก่อนถึงจะรู้จัก ?round=2 — ถ้า Worker เก่ายังไม่รู้จัก มันจะเงียบๆคืนข้อมูลรอบ 1 กลับมาแทน
+   (เพราะ Worker เก่าไม่รู้จัก query param นี้เลย) จึงต้องแปะ _round ไว้ในตัวข้อมูลเองตอน push แล้วตรวจตอน pull
+   ถ้า tag ไม่ตรงกับ state.round ที่ต้องการ = เซิร์ฟเวอร์ยังไม่ redeploy → ไม่เอามาทับข้อมูลในเครื่องนี้เด็ดขาด */
+function showRoundSyncWarning(){ var el=document.getElementById('round-sync-warning'); if(el) el.style.display='block'; }
+function hideRoundSyncWarning(){ var el=document.getElementById('round-sync-warning'); if(el) el.style.display='none'; }
+function roundTagOK(payloadRound){
+  if(state.round!==2) return true; /* รอบ 1 ของจริงไม่มี _round เลย — ไม่ต้องตรวจ ไม่กระทบพฤติกรรมเดิม */
+  return payloadRound===2;
+}
 function pullTeamsFromServer(){
   var s=getSync(); if(!s) return;
   fetch(apiUrl('/load-teams')).then(function(r){return r.json();}).then(function(res){
     if(res.teams && res.teams.teams){
+      if(!roundTagOK(res.teams._round)){ showRoundSyncWarning(); return; }
+      if(state.round===2) hideRoundSyncWarning();
       state.teams=res.teams.teams;
       state._teamsSha=res.sha;
       saveTeams();
@@ -4919,7 +4933,7 @@ function pushTeamsToServer(passcode){
   if(!url) return Promise.resolve({skipped:true});
   return fetch(url, {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({passcode: passcode, teams: {teams: state.teams}, sha: state._teamsSha})
+    body: JSON.stringify({passcode: passcode, teams: {teams: state.teams, _round: state.round}, sha: state._teamsSha})
   }).then(function(r){return r.json().then(function(j){return {status:r.status, body:j};});})
     .then(function(res){
       if(res.status===200){ state._teamsSha=res.body.sha; }
@@ -4930,6 +4944,8 @@ function pullJudgesFromServer(){
   var s=getSync(); if(!s) return Promise.resolve();
   return fetch(apiUrl('/load-judges')).then(function(r){return r.json();}).then(function(res){
     if(res.judges && res.judges.judges){
+      if(!roundTagOK(res.judges._round)){ showRoundSyncWarning(); return; }
+      if(state.round===2) hideRoundSyncWarning();
       state.judges=res.judges.judges;
       state._judgesSha=res.sha;
       saveJudges();
@@ -4942,7 +4958,7 @@ function pushJudgesToServer(passcode){
   if(!url) return Promise.resolve({skipped:true});
   return fetch(url, {
     method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({passcode: passcode, judges: {judges: state.judges}, sha: state._judgesSha})
+    body: JSON.stringify({passcode: passcode, judges: {judges: state.judges, _round: state.round}, sha: state._judgesSha})
   }).then(function(r){return r.json().then(function(j){return {status:r.status, body:j};});})
     .then(function(res){
       if(res.status===200){ state._judgesSha=res.body.sha; }
@@ -5050,6 +5066,7 @@ window.setCompRound=function(n){
   if(n===state.round) return;
   state.round=n;
   saveJSON(LS_ROUND, n);
+  if(n===1) hideRoundSyncWarning();
   state.teams=loadJSON(teamsKey(), defaultTeamsFor(n));
   state.judges=loadJSON(judgesKey(), defaultJudgesFor(n));
   state.scores=loadJSON(scoresKey(), {});

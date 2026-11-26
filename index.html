@@ -4210,21 +4210,49 @@
     <!-- ══════ CRITERIA ══════ -->
     <div id="comp-criteria" class="comp-view">
       <div class="comp-h1">📋 เกณฑ์การให้คะแนน</div>
-      <div class="comp-h1-sub">การแข่งขันรอบที่ 1 (Build → Find Solutions) · มาตรวัด 1–5 อิงบันได Accountability ของ Precise</div>
-
-      <div class="rubric-weight-bar">
-        <div class="rubric-weight-chip rw-1"><div class="rubric-weight-pct">50%</div><div class="rubric-weight-lbl">① Professionalism<br>10 ข้อ (A1–A10)</div></div>
-        <div class="rubric-weight-chip rw-2"><div class="rubric-weight-pct">30%</div><div class="rubric-weight-lbl">② ผลงาน (Solution)<br>2 ข้อ (B1–B2)</div></div>
-        <div class="rubric-weight-chip rw-3"><div class="rubric-weight-pct">20%</div><div class="rubric-weight-lbl">③ การนำเสนอ<br>2 ข้อ (C1–C2)</div></div>
+      <div style="display:flex;gap:8px;margin-bottom:16px">
+        <button type="button" class="comp-btn comp-btn-primary" id="crit-round-btn-1" onclick="selectCritRound(1)">รอบที่ 1 (Build)</button>
+        <button type="button" class="comp-btn comp-btn-secondary" id="crit-round-btn-2" onclick="selectCritRound(2)">รอบที่ 2 (Final) 🏆</button>
       </div>
-      <div class="panel" style="margin-bottom:20px">
-        <div style="font-size:.74rem;color:var(--text2);line-height:1.8">
-          รวม <strong>100 คะแนน</strong> — เกณฑ์ Deploy / Measurement / Scale / Inspire / Replicate สงวนไว้ใช้ในรอบ 2 ตามเอกสารโครงการ · รอบ 1 ยังไม่มี Vote จากผู้เข้าฟัง (Vote 20% ใช้เฉพาะรอบ 2)<br>
-          <span style="color:var(--text3)">1 = ต่ำกว่าเส้น (Victim) แค่บ่นปัญหา &nbsp;|&nbsp; 2 = Acknowledge เห็นปัญหาแต่เป็นไอเดีย &nbsp;|&nbsp; 3 = Own &amp; Embrace ลงมือแล้ว มี prototype &nbsp;|&nbsp; 4 = Find Solutions มีของที่ใช้ได้จริง &nbsp;|&nbsp; 5 = Find Solutions+ โดดเด่น พร้อมเข้ารอบ</span>
+
+      <div id="crit-r1">
+        <div class="comp-h1-sub">การแข่งขันรอบที่ 1 (Build → Find Solutions) · มาตรวัด 1–5 อิงบันได Accountability ของ Precise</div>
+
+        <div class="rubric-weight-bar">
+          <div class="rubric-weight-chip rw-1"><div class="rubric-weight-pct">50%</div><div class="rubric-weight-lbl">① Professionalism<br>10 ข้อ (A1–A10)</div></div>
+          <div class="rubric-weight-chip rw-2"><div class="rubric-weight-pct">30%</div><div class="rubric-weight-lbl">② ผลงาน (Solution)<br>2 ข้อ (B1–B2)</div></div>
+          <div class="rubric-weight-chip rw-3"><div class="rubric-weight-pct">20%</div><div class="rubric-weight-lbl">③ การนำเสนอ<br>2 ข้อ (C1–C2)</div></div>
         </div>
+        <div class="panel" style="margin-bottom:20px">
+          <div style="font-size:.74rem;color:var(--text2);line-height:1.8">
+            รวม <strong>100 คะแนน</strong> — รอบ 1 ยังไม่มี Vote จากผู้เข้าฟัง (Vote 20% ใช้เฉพาะรอบ 2)<br>
+            <span style="color:var(--text3)">1 = ต่ำกว่าเส้น (Victim) แค่บ่นปัญหา &nbsp;|&nbsp; 2 = Acknowledge เห็นปัญหาแต่เป็นไอเดีย &nbsp;|&nbsp; 3 = Own &amp; Embrace ลงมือแล้ว มี prototype &nbsp;|&nbsp; 4 = Find Solutions มีของที่ใช้ได้จริง &nbsp;|&nbsp; 5 = Find Solutions+ โดดเด่น พร้อมเข้ารอบ</span>
+          </div>
+        </div>
+
+        <div id="rubric-list"></div>
       </div>
 
-      <div id="rubric-list"></div>
+      <div id="crit-r2" style="display:none">
+        <div class="comp-h1-sub">รอบชิงชนะเลิศ (→ Make it Happen) · ฉบับรวบหัวข้อ 19 → 9 ข้อ · มาตรวัด 1–5: Find Solutions → Piloted → Adopted → Measurable → Make it Happen</div>
+
+        <div class="rubric-weight-bar">
+          <div class="rubric-weight-chip rw-1"><div class="rubric-weight-pct">50%</div><div class="rubric-weight-lbl">① Professionalism<br>4 ข้อ (A1–A4)</div></div>
+          <div class="rubric-weight-chip rw-2"><div class="rubric-weight-pct">30%</div><div class="rubric-weight-lbl">② Make it Happen<br>3 ข้อ (B1–B3)</div></div>
+          <div class="rubric-weight-chip rw-3"><div class="rubric-weight-pct">20%</div><div class="rubric-weight-lbl">③ การนำเสนอ<br>2 ข้อ (C1–C2)</div></div>
+        </div>
+        <div class="panel" style="margin-bottom:20px">
+          <div style="font-size:.74rem;color:var(--text2);line-height:1.8">
+            คะแนนกรรมการ (9 ข้อด้านล่าง) <strong>80%</strong> + Vote จากผู้เข้าฟัง <strong>20%</strong> = คะแนนรวมรอบ 2<br>
+            <span style="color:var(--text3)">1 = Find Solutions มีของแต่ยังไม่ deploy &nbsp;|&nbsp; 2 = Piloted เริ่มใช้กับงานตัวเอง &nbsp;|&nbsp; 3 = Adopted ทีม/คนอื่นใช้จริง &nbsp;|&nbsp; 4 = Measurable มีตัวเลขผลลัพธ์ชัด &nbsp;|&nbsp; 5 = Make it Happen กระทบ bottom line/เป็นระบบ</span>
+          </div>
+        </div>
+
+        <div id="rubric-list-r2"></div>
+
+        <div class="section-title" style="margin-top:24px">🏆 7 ทีมที่ผ่านเข้ารอบ 2 (ผู้ชนะแต่ละหัวข้อจากรอบที่ 1)</div>
+        <div id="round2-teams-ref"></div>
+      </div>
     </div>
     <!-- ══════ TEAMS SETUP ══════ -->
     <div id="comp-teams" class="comp-view">
@@ -4604,6 +4632,81 @@ C:[
 };
 var ALL_CRIT = CRIT.A.concat(CRIT.B, CRIT.C);
 
+/* ── เกณฑ์รอบ 2 (Final) — ฉบับรวบหัวข้อ 19 → 9 ข้อ ยังเน้น Make it Happen + ใช้งานจริงต่อเนื่องเหมือนเดิม ── */
+var CRIT2 = {
+A:[
+{id:'A1',th:'ขับเคลื่อนสู่ผลจริง',en:'Drive to Make it Happen',focus:'รวมจาก เชิงรุก + มุ่งมั่น + รับฟัง + คิดไปข้างหน้า',s:[
+ 'มี Prototype จากรอบ 1 แต่ยังไม่มีแรงผลักดันให้ใช้งานต่อ',
+ 'เริ่มใช้งานต่อเนื่องกับงานตัวเอง',
+ 'ผลักดันจนทีม/หน่วยงานอื่นเริ่มใช้งานจริง',
+ 'ปรับตาม Feedback ผู้ใช้จริงจนเห็นผลลัพธ์ชัดเจน',
+ 'มีแผนขยายผลระดับองค์กรที่เป็นระบบและยั่งยืน']},
+{id:'A2',th:'คุณภาพและความเสถียร',en:'Execution Quality & Reliability',focus:'รวมจาก ความสามารถ + เชื่อถือได้',s:[
+ 'ใช้งานได้เฉพาะ Demo ยังไม่เสถียรในสภาพแวดล้อมจริง',
+ 'ใช้งานได้จริงแต่ยังต้องแก้ไข/ดูแลบ่อย',
+ 'เชื่อมต่อระบบอื่นได้ ทำงานซ้ำได้ผลเหมือนเดิม',
+ 'Automate การทำงานหลักได้ ลดการพึ่งพาผู้สร้าง',
+ 'เสถียรในการใช้งานจริงต่อเนื่อง พึ่งพาได้เหมือนระบบมาตรฐาน']},
+{id:'A3',th:'ความน่าเชื่อถือของผลลัพธ์',en:'Integrity & Enablement',focus:'รวมจาก ซื่อสัตย์ + เคารพผู้อื่น',s:[
+ 'ยังไม่มีการเปิดเผยข้อจำกัด/ที่มาตัวเลขอย่างชัดเจน',
+ 'ระบุข้อจำกัดได้ แต่ยังใช้งานเฉพาะผู้สร้าง',
+ 'มีผู้อื่นเริ่มใช้งานต่อโดยไม่ต้องพึ่งผู้สร้างทุกครั้ง',
+ 'ตัวเลขผลลัพธ์ตรวจสอบย้อนกลับได้ จัดการข้อมูล/Privacy ถูกต้อง',
+ 'Enable ให้คนอื่นทำเป็นและดูแลต่อได้เองอย่างเต็มรูป']},
+{id:'A4',th:'การเติบโตและความคิดสร้างสรรค์',en:'Growth & Creativity',focus:'รวมจาก สร้างสรรค์ + พัฒนาตน',s:[
+ 'ยังเป็นแนวทางเดิมจากรอบ 1 ไม่มีการพัฒนาต่อ',
+ 'ปรับปรุงวิธีแก้ปัญหาให้ดีขึ้นจากรอบที่แล้ว',
+ 'ต่อยอดเป็นรูปแบบงาน/โมเดลสร้างคุณค่าใหม่',
+ 'ทีมเลื่อนระดับทักษะ AI ของตัวเองอย่างเห็นได้ชัด',
+ 'ยกระดับทั้งทักษะทีมและแนวคิดขององค์กรไปพร้อมกัน']}
+],
+B:[
+{id:'B1',th:'การใช้งานจริง',en:'Deploy',focus:'ความกว้างของการนำไปใช้งานจริง',s:[
+ 'มีของที่ทำงานได้ แต่ยังไม่ได้ Deploy ใช้งานจริง',
+ 'เริ่มใช้งานกับงานของตัวเอง (Piloted)',
+ 'ทีม/หน่วยงานอื่นรับไปใช้งานจริงแล้ว (Adopted)',
+ 'ใช้งานจริงในหลายหน่วยงาน/ข้าม RS พร้อมผลลัพธ์วัดได้',
+ 'เป็นส่วนหนึ่งของกระบวนการทำงานปกติขององค์กรแล้ว (Make it Happen)']},
+{id:'B2',th:'การวัดผล',en:'Measurement',focus:'ผลลัพธ์เป็นตัวเลขที่กระทบ bottom line',s:[
+ 'ยังไม่มีตัวเลขผลลัพธ์ที่วัดได้',
+ 'มีตัวเลขเบื้องต้นจากการทดลองใช้ของตัวเอง',
+ 'มีตัวเลขจากการใช้งานจริงของผู้อื่น',
+ 'ตัวเลขผลลัพธ์ชัดเจน วัดซ้ำได้ (Measurable)',
+ 'ตัวเลขกระทบ Bottom Line ขององค์กรอย่างมีนัยสำคัญ']},
+{id:'B3',th:'การขยายผล',en:'Scale',focus:'ความต่อเนื่อง & ความสามารถในการขยาย',s:[
+ 'ใช้ได้เฉพาะ Use Case เดียวที่ทดสอบ',
+ 'เริ่มเห็นแนวทางขยายไปงานอื่นที่คล้ายกัน',
+ 'ขยายไปใช้ในหน่วยงาน/บริบทอื่นได้แล้วจริง',
+ 'ใช้งานต่อเนื่องสม่ำเสมอ ไม่ใช่ใช้ครั้งเดียวแล้วเลิก',
+ 'ขยายผลเป็นระบบ พร้อม Scale ข้ามองค์กร/RS ได้จริง']}
+],
+C:[
+{id:'C1',th:'การเล่าเรื่องและตรรกะ',en:'Storytelling & Logic',focus:'รวมจาก เล่าเรื่อง + ตรรกะ',s:[
+ 'อธิบายปัญหา-วิธีแก้-ผลลัพธ์ไม่ชัดเจนในเวลาที่กำหนด',
+ 'อธิบายได้ครบแต่เหตุผลเชื่อมโยงกันไม่แน่น',
+ 'อธิบายชัดเจน มีตรรกะว่าทำไม AI นี้ถึงแก้โจทย์ได้',
+ 'เชื่อมโยงปัญหา-วิธีแก้-ผลลัพธ์-ตัวเลขได้อย่างเป็นเหตุเป็นผล',
+ 'เล่าเรื่องได้กระชับ ชัดเจน น่าเชื่อถือ แม้ในเวลาจำกัด']},
+{id:'C2',th:'พลังโน้มน้าวและการทำซ้ำ',en:'Inspire & Replicate',focus:'รวมจาก การโน้มน้าว + การทำซ้ำ',s:[
+ 'ยังไม่สร้างแรงจูงใจให้ผู้ฟังอยากนำไปใช้ต่อ',
+ 'ผู้ฟังเห็นประโยชน์แต่ยังไม่ชัดว่าจะทำตามอย่างไร',
+ 'อธิบายขั้นตอนชัดจนผู้ฟังพอทำตามได้',
+ 'สร้างแรงบันดาลใจให้องค์กรอยากนำไปต่อยอดจริง',
+ 'ชัดเจนจนคนอื่นนำไปทำซ้ำได้ทันทีโดยไม่ต้องตีความเพิ่ม']}
+]
+};
+
+/* ── 7 ทีมที่ผ่านเข้ารอบ 2 (ผู้ชนะแต่ละหัวข้อ/กลุ่มจากรอบที่ 1) — ข้อมูลอ้างอิงเท่านั้น ยังไม่ผูกกับระบบให้คะแนนออนไลน์ ── */
+var ROUND2_TEAMS=[
+ {teamNo:1, name:'ฝันร้าย AI', topic:'1. Strategy / Relation / Customer Capital', members:['โชคดี ศรีเรือง','สุธิมา ทับทิมดี','กาญจนา นวลผ่อง','ปรารถนา ศรีวิไล','ธิติยา สุดป้อม']},
+ {teamNo:2, name:'XYZ', topic:'2. Revenue Stream Type Development', members:['แพรวรุ่ง ประทีป','เทวฤทธิ์ คงแก้ว','กัลยกร สุริย์']},
+ {teamNo:3, name:'Loop Lab', topic:'4. STEM (R&D)', members:['นราวิชญ์ สมนา','ฐาปกรณ์ รัตนวารินทร์ชัย','พงศกร นิลมงคล','ภัทรงค์ สมบัติแก้ว','อภิสิทธิ์ วงศ์วิศิษฐ์']},
+ {teamNo:4, name:'Revenue Nexus', topic:'6. Operation Excellence', members:['ปิยณัฐ วิวรรณพงษ์','ละมัย เอี่ยมทองแดง','ฐิติชญาณ์ เดชา']},
+ {teamNo:5, name:'NEXTCAL', topic:'6. Operation Excellence', members:['วรวัฒน์ ดวงแก้วมณี','ปัทมนันท์ สุขปรุง','รัฐกูร ปั้นจันทร์','Nirorn Kong']},
+ {teamNo:6, name:'Count On Us', topic:'6. Operation Excellence', members:['จิราภรณ์ ใจวันดี','จิรดา ชัยสงค์','ยุวรี ประสพมงคล','คุณัญญา โกวาปี']},
+ {teamNo:7, name:'Cyber X', topic:'7. Service and Support', members:['พรชัย อินทะโก','สิรดนัย ศิริสุนทร','พลากร กล่อมสวน','วีรยุทธ แสนสัมฤทธิ์','อำนวย เต็มปิยพล']}
+];
+
 var LS_TEAMS='comp_teams_v1', LS_JUDGES='comp_judges_v1', LS_SCORES='comp_scores_v1', LS_CURJUDGE='comp_cur_judge_v1';
 
 function loadJSON(key, fallback){
@@ -4885,6 +4988,53 @@ function rubricCardHTML(c){
     '<div class="rubric-focus">🔍 สิ่งที่ดูในรอบ 1: '+c.focus+'</div>'+
     '<div class="rubric-scale-grid">'+cells+'</div></div>';
 }
+
+/* ── Criteria reference page — รอบ 2 ── */
+function renderRubricList2(){
+  var host=document.getElementById('rubric-list-r2');
+  if(!host || host.dataset.rendered) return;
+  var html='';
+  html+='<div class="rubric-section-hdr">① Professionalism 4 ข้อ (รวบจาก 10 ข้อเดิม) — น้ำหนัก 50%</div>';
+  CRIT2.A.forEach(function(c){ html+=rubricCardHTML2(c); });
+  html+='<div class="rubric-section-hdr">② Make it Happen 3 ข้อ (Deploy / Measurement / Scale) — น้ำหนัก 30%</div>';
+  CRIT2.B.forEach(function(c){ html+=rubricCardHTML2(c); });
+  html+='<div class="rubric-section-hdr">③ การนำเสนอ 2 ข้อ (รวบจาก 4 ข้อเดิม) — น้ำหนัก 20%</div>';
+  CRIT2.C.forEach(function(c){ html+=rubricCardHTML2(c); });
+  host.innerHTML=html;
+  host.dataset.rendered='1';
+}
+function rubricCardHTML2(c){
+  var cells='';
+  for(var i=0;i<5;i++){
+    cells+='<div class="rubric-scale-cell rs-'+(i+1)+'"><span class="rubric-scale-num">'+(i+1)+'</span>'+c.s[i]+'</div>';
+  }
+  return '<div class="rubric-card"><div class="rubric-card-head"><div class="rubric-code">'+c.id+'</div><div><div class="rubric-title">'+c.th+' <span class="rubric-title-en">— '+c.en+'</span></div></div></div>'+
+    '<div class="rubric-focus">🔍 สิ่งที่ดูในรอบ 2: '+c.focus+'</div>'+
+    '<div class="rubric-scale-grid">'+cells+'</div></div>';
+}
+function renderRound2TeamsRef(){
+  var host=document.getElementById('round2-teams-ref');
+  if(!host || host.dataset.rendered) return;
+  var html='<div class="roster-grid">';
+  ROUND2_TEAMS.forEach(function(t){
+    html+='<div class="roster-card">'+
+      '<div class="roster-card-num">ทีมที่ '+t.teamNo+'</div>'+
+      '<div class="roster-card-name">'+escHTML(t.name)+'</div>'+
+      '<div class="roster-card-project">หัวข้อ: '+escHTML(t.topic)+'</div>'+
+      '<div style="font-size:.68rem;color:var(--text2);line-height:1.8">'+t.members.map(function(m,i){return (i+1)+'. '+escHTML(m);}).join('<br>')+'</div>'+
+      '</div>';
+  });
+  html+='</div><div style="font-size:.66rem;color:var(--text3);margin-top:10px">รายชื่อกรรมการรอบ 2 รอผู้ดูแลเพิ่มเติม — ยังไม่ผูกกับระบบให้คะแนนออนไลน์ (หน้า "ทีมเข้าประกวด"/"ให้คะแนนออนไลน์" ยังเป็นข้อมูลรอบที่ 1)</div>';
+  host.innerHTML=html;
+  host.dataset.rendered='1';
+}
+window.selectCritRound=function(n){
+  document.getElementById('crit-r1').style.display = n===1? 'block':'none';
+  document.getElementById('crit-r2').style.display = n===2? 'block':'none';
+  document.getElementById('crit-round-btn-1').className = 'comp-btn '+(n===1?'comp-btn-primary':'comp-btn-secondary');
+  document.getElementById('crit-round-btn-2').className = 'comp-btn '+(n===2?'comp-btn-primary':'comp-btn-secondary');
+  if(n===1) renderRubricList(); else { renderRubricList2(); renderRound2TeamsRef(); }
+};
 
 /* ── Teams setup ── */
 function renderTeamsList(){

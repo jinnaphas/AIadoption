@@ -305,6 +305,7 @@
   /* Team setup */
   .team-setup-head{display:grid;grid-template-columns:44px 1fr 1fr 200px 1fr;gap:10px;padding:8px 10px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3)}
   .team-setup-row{display:grid;grid-template-columns:44px 1fr 1fr 200px 1fr;gap:10px;padding:7px 10px;align-items:center;border-radius:8px}
+  .team-setup-head.r2,.team-setup-row.r2{grid-template-columns:44px 1fr 1fr 200px 1fr 110px}
   .team-setup-row:nth-child(even){background:var(--surface2)}
   .team-setup-num{font-weight:800;color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:.76rem}
   .team-input,.team-select{padding:8px 10px;border:1px solid var(--border2);border-radius:8px;font-size:.76rem;font-family:'Outfit',sans-serif;width:100%;background:var(--surface)}
@@ -4127,10 +4128,14 @@
       <div class="comp-nav-title">🏆 Digital &amp; AI Talent</div>
       <div class="comp-nav-sub">Precise Got Digital &amp; AI, Automation Talent 2569</div>
     </div>
+    <div style="display:flex;gap:6px;padding:0 14px 14px">
+      <button type="button" class="comp-btn comp-btn-primary" id="nav-round-btn-1" style="flex:1;justify-content:center;font-size:.68rem;padding:6px 8px" onclick="setCompRound(1)">รอบ 1</button>
+      <button type="button" class="comp-btn comp-btn-secondary" id="nav-round-btn-2" style="flex:1;justify-content:center;font-size:.68rem;padding:6px 8px" onclick="setCompRound(2)">รอบ 2 🏆</button>
+    </div>
     <div class="comp-nav-item active" data-comp="home" onclick="selectComp('home')">🏠 หน้าแรก — ประจำปี 2569</div>
     <div class="comp-nav-item" data-comp="criteria" onclick="selectComp('criteria')">📋 เกณฑ์การให้คะแนน</div>
-    <div class="comp-nav-item" data-comp="teams" onclick="selectComp('teams')">👥 ทีมเข้าประกวด (24 ทีม)</div>
-    <div class="comp-nav-item" data-comp="roster" onclick="selectComp('roster')">🎬 Roster ทีม (24 ทีม)</div>
+    <div class="comp-nav-item" data-comp="teams" onclick="selectComp('teams')">👥 ทีมเข้าประกวด <span id="nav-teams-count">(24 ทีม)</span></div>
+    <div class="comp-nav-item" data-comp="roster" onclick="selectComp('roster')">🎬 Roster ทีม <span id="nav-roster-count">(24 ทีม)</span></div>
     <div class="comp-nav-item" data-comp="score" onclick="selectComp('score')">✍️ ให้คะแนนออนไลน์</div>
     <div class="comp-nav-item" data-comp="results" onclick="selectComp('results')">🏆 สรุปผล &amp; อันดับ</div>
     <div class="comp-nav-item" data-comp="howto" onclick="selectComp('howto')">ℹ️ วิธีใช้งานระบบ</div>
@@ -4257,7 +4262,7 @@
     <!-- ══════ TEAMS SETUP ══════ -->
     <div id="comp-teams" class="comp-view">
       <div class="comp-h1">👥 ทีมเข้าประกวด</div>
-      <div class="comp-h1-sub">กรอกรายชื่อ 24 ทีมที่ผ่านการคัดเลือกเข้ารอบที่ 1 — ใช้ 1 ครั้งก่อนวันแข่งขัน (เทียบเท่า Sheet 3 คอลัมน์ C/D/E ในไฟล์เดิม)</div>
+      <div class="comp-h1-sub" id="teams-h1-sub">กรอกรายชื่อ 24 ทีมที่ผ่านการคัดเลือกเข้ารอบที่ 1 — ใช้ 1 ครั้งก่อนวันแข่งขัน (เทียบเท่า Sheet 3 คอลัมน์ C/D/E ในไฟล์เดิม)</div>
 
       <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <div style="display:flex;align-items:center;gap:8px">
@@ -4278,7 +4283,7 @@
 
       <div class="panel">
         <div class="team-setup-scroll">
-          <div class="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div></div>
+          <div class="team-setup-head" id="team-setup-head"><div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div></div>
           <div id="teams-list"></div>
         </div>
       </div>
@@ -4286,7 +4291,7 @@
     <!-- ══════ ROSTER ══════ -->
     <div id="comp-roster" class="comp-view">
       <div class="comp-h1">🎬 Roster ทีมเข้าประกวด</div>
-      <div class="comp-h1-sub">รายชื่อ 24 ทีมพร้อมลิงก์วิดีโอแนะนำทีม (ถ้ามี) — กรรมการดูล่วงหน้าก่อนวันแข่งขันได้ · แก้ไข/เพิ่มลิงก์วิดีโอได้ที่หน้า "👥 ทีมเข้าประกวด"</div>
+      <div class="comp-h1-sub" id="roster-h1-sub">รายชื่อ 24 ทีมพร้อมลิงก์วิดีโอแนะนำทีม (ถ้ามี) — กรรมการดูล่วงหน้าก่อนวันแข่งขันได้ · แก้ไข/เพิ่มลิงก์วิดีโอได้ที่หน้า "👥 ทีมเข้าประกวด"</div>
 
       <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <div style="display:flex;align-items:center;gap:8px">
@@ -4301,7 +4306,7 @@
     <!-- ══════ SCORING ══════ -->
     <div id="comp-score" class="comp-view">
       <div class="comp-h1">✍️ ให้คะแนนออนไลน์</div>
-      <div class="comp-h1-sub">รอบที่ 1 · 15 กันยายน 2569 · นำเสนอ ≤7 นาที + ซักถาม ≤5 นาที ต่อทีม</div>
+      <div class="comp-h1-sub" id="score-h1-sub">รอบที่ 1 · 15 กันยายน 2569 · นำเสนอ ≤7 นาที + ซักถาม ≤5 นาที ต่อทีม</div>
 
       <div class="panel" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px">
         <div style="display:flex;align-items:center;gap:8px">
@@ -4431,27 +4436,39 @@
         </div>
         <div style="overflow-x:auto">
           <table class="comp-results-table">
-            <thead><tr><th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th><th>ผล</th></tr></thead>
+            <thead><tr id="results-table-head"><th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th><th>ผล</th></tr></thead>
             <tbody id="results-table-body"></tbody>
           </table>
         </div>
       </div>
 
-      <div class="panel" style="margin-bottom:18px;background:linear-gradient(135deg,var(--accent-bg),var(--surface2))">
-        <div style="font-size:.8rem;font-weight:700;margin-bottom:4px">🎯 กติการอบที่ 1 (อัปเดต)</div>
-        <div style="font-size:.72rem;color:var(--text2);line-height:1.8">
-          ① อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ Final — <strong>ยกเว้น Operation Excellence ที่มี 11 ทีม ผ่านเข้ารอบ 3 ทีม</strong> (สัดส่วนมากกว่าหัวข้ออื่นเพราะมีทีมเข้าแข่งขันมากกว่า)<br>
-          ② ทีมที่เหลือทั้งหมด (ไม่ผ่านรอบ) นำคะแนนมาเรียง<strong>รวมกันข้ามหัวข้อ</strong>เป็นอันดับเดียว — อันดับ 1 ของทีมที่เหลือ = <strong>10,000 บาท</strong> · อันดับ 2 = <strong>8,000 บาท</strong> · อันดับอื่นไม่ได้รับรางวัลรอบนี้
+      <div id="results-r2-extra" style="display:none">
+        <div class="panel" style="margin-bottom:18px;background:linear-gradient(135deg,var(--accent-bg),var(--surface2))">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:4px">🎯 กติการอบที่ 2 (Final)</div>
+          <div style="font-size:.72rem;color:var(--text2);line-height:1.8">
+            อันดับเดียวจาก 7 ทีม — ไม่มีการจัดกลุ่มตามหัวข้อ · คะแนนรวม = คะแนนกรรมการเฉลี่ย (9 ข้อ) <strong>80%</strong> + Vote ผู้เข้าฟัง (กรอกที่หน้า "ทีมเข้าประกวด") <strong>20%</strong><br>
+            🥇 อันดับ 1 = <strong>60,000 บาท</strong> · 🥈 อันดับ 2 = <strong>40,000 บาท</strong> · 🥉 อันดับ 3 = <strong>30,000 บาท</strong> · อันดับอื่นไม่ได้รับรางวัลรอบนี้
+          </div>
         </div>
       </div>
 
-      <div class="section-title">🏆 รางวัลลำดับ 2 ระดับรวม — ทีมที่ไม่ผ่านรอบ Final เรียงคะแนนข้ามหัวข้อ</div>
-      <div class="panel" style="margin-bottom:18px">
-        <div id="results-remainder"></div>
-      </div>
+      <div id="results-r1-extra">
+        <div class="panel" style="margin-bottom:18px;background:linear-gradient(135deg,var(--accent-bg),var(--surface2))">
+          <div style="font-size:.8rem;font-weight:700;margin-bottom:4px">🎯 กติการอบที่ 1 (อัปเดต)</div>
+          <div style="font-size:.72rem;color:var(--text2);line-height:1.8">
+            ① อันดับ 1 ของแต่ละหัวข้อผ่านเข้ารอบ Final — <strong>ยกเว้น Operation Excellence ที่มี 11 ทีม ผ่านเข้ารอบ 3 ทีม</strong> (สัดส่วนมากกว่าหัวข้ออื่นเพราะมีทีมเข้าแข่งขันมากกว่า)<br>
+            ② ทีมที่เหลือทั้งหมด (ไม่ผ่านรอบ) นำคะแนนมาเรียง<strong>รวมกันข้ามหัวข้อ</strong>เป็นอันดับเดียว — อันดับ 1 ของทีมที่เหลือ = <strong>10,000 บาท</strong> · อันดับ 2 = <strong>8,000 บาท</strong> · อันดับอื่นไม่ได้รับรางวัลรอบนี้
+          </div>
+        </div>
 
-      <div class="section-title">ผลการตัดสินราย หัวข้อ (เทียบเท่า Sheet 5) — จำนวนทีมผ่านรอบต่างกันตามขนาดหัวข้อ</div>
-      <div id="results-by-topic"></div>
+        <div class="section-title">🏆 รางวัลลำดับ 2 ระดับรวม — ทีมที่ไม่ผ่านรอบ Final เรียงคะแนนข้ามหัวข้อ</div>
+        <div class="panel" style="margin-bottom:18px">
+          <div id="results-remainder"></div>
+        </div>
+
+        <div class="section-title">ผลการตัดสินราย หัวข้อ (เทียบเท่า Sheet 5) — จำนวนทีมผ่านรอบต่างกันตามขนาดหัวข้อ</div>
+        <div id="results-by-topic"></div>
+      </div>
     </div>
 
     <!-- ══════ HOW TO ══════ -->
@@ -4695,8 +4712,9 @@ C:[
  'ชัดเจนจนคนอื่นนำไปทำซ้ำได้ทันทีโดยไม่ต้องตีความเพิ่ม']}
 ]
 };
+var ALL_CRIT2 = CRIT2.A.concat(CRIT2.B, CRIT2.C);
 
-/* ── 7 ทีมที่ผ่านเข้ารอบ 2 (ผู้ชนะแต่ละหัวข้อ/กลุ่มจากรอบที่ 1) — ข้อมูลอ้างอิงเท่านั้น ยังไม่ผูกกับระบบให้คะแนนออนไลน์ ── */
+/* ── 7 ทีมที่ผ่านเข้ารอบ 2 (ผู้ชนะแต่ละหัวข้อ/กลุ่มจากรอบที่ 1) — ใช้แสดงในหน้าเกณฑ์อ้างอิง ── */
 var ROUND2_TEAMS=[
  {teamNo:1, name:'ฝันร้าย AI', topic:'1. Strategy / Relation / Customer Capital', members:['โชคดี ศรีเรือง','สุธิมา ทับทิมดี','กาญจนา นวลผ่อง','ปรารถนา ศรีวิไล','ธิติยา สุดป้อม']},
  {teamNo:2, name:'XYZ', topic:'2. Revenue Stream Type Development', members:['แพรวรุ่ง ประทีป','เทวฤทธิ์ คงแก้ว','กัลยกร สุริย์']},
@@ -4708,6 +4726,8 @@ var ROUND2_TEAMS=[
 ];
 
 var LS_TEAMS='comp_teams_v1', LS_JUDGES='comp_judges_v1', LS_SCORES='comp_scores_v1', LS_CURJUDGE='comp_cur_judge_v1';
+var LS_TEAMS2='comp_teams_v1_r2', LS_JUDGES2='comp_judges_v1_r2', LS_SCORES2='comp_scores_v1_r2', LS_CURJUDGE2='comp_cur_judge_v1_r2';
+var LS_ROUND='comp_round_v1';
 
 function loadJSON(key, fallback){
   try{ var v=localStorage.getItem(key); return v? JSON.parse(v): fallback; }catch(e){ return fallback; }
@@ -4761,18 +4781,49 @@ function defaultJudges(){
     'คุณจิณนภัสฐ์ ภัสฐาพงษ์'
   ];
 }
+/* รายชื่อ 7 ทีมที่ผ่านเข้ารอบ 2 (Final) — project/video สืบมาจากรอบที่ 1, members จากภาพรายชื่อทีมที่ผ่านเข้ารอบ 2, vote = คะแนน Vote ผู้เข้าฟัง (0–100) ผู้ดูแลกรอกทีหลัง */
+function defaultTeams2(){
+  return [
+    {id:2, queue:1, name:'ฝันร้าย AI', project:'Customer Insight Platform', topic:1, video:'https://drive.google.com/file/d/1-H7wtwDRD2d3FLPggSRimp7wDeYhCASQ/view?usp=sharing', vote:0,
+      members:['โชคดี ศรีเรือง','สุธิมา ทับทิมดี','กาญจนา นวลผ่อง','ปรารถนา ศรีวิไล','ธิติยา สุดป้อม']},
+    {id:4, queue:2, name:'XYZ', project:'Smart Vendoring', topic:2, video:'https://drive.google.com/file/d/1G8ukOkJYYeaMA_-aqvco4fY0Hpe1gE_F/view?usp=sharing', vote:0,
+      members:['แพรวรุ่ง ประทีป','เทวฤทธิ์ คงแก้ว','กัลยกร สุริย์']},
+    {id:8, queue:3, name:'Loop Lab', project:'LoopVision: Earth Analytics & AI Tracking', topic:4, video:'https://drive.google.com/file/d/1ENIar3kj4K4Xz1yS2ah2kvPtW-ocCOaU/view?usp=sharing', vote:0,
+      members:['นราวิชญ์ สมนา','ฐาปกรณ์ รัตนวารินทร์ชัย','พงศกร นิลมงคล','ภัทรงค์ สมบัติแก้ว','อภิสิทธิ์ วงศ์วิศิษฐ์']},
+    {id:15, queue:4, name:'Revenue Nexus', project:'AI Tender Intelligence Platform', topic:6, video:'https://drive.google.com/file/d/1FbVguVbxVfXjA7GGBxfpnuMZBrm2E6be/view?usp=sharing', vote:0,
+      members:['ปิยณัฐ วิวรรณพงษ์','ละมัย เอี่ยมทองแดง','ฐิติชญาณ์ เดชา']},
+    {id:18, queue:5, name:'NEXTCAL', project:'Smart Calibration System: จาก Excel สู่ AI', topic:6, video:'https://drive.google.com/file/d/1UBEscSNqTFoJUChYbNcKeARDpqNVw0PK/view?usp=sharing', vote:0,
+      members:['วรวัฒน์ ดวงแก้วมณี','ปัทมนันท์ สุขปรุง','รัฐกูร ปั้นจันทร์','Nirorn Kong']},
+    {id:19, queue:6, name:'Count On Us', project:'ZeroDeadStock', topic:6, video:'https://drive.google.com/file/d/1mhBz-NtZbUINMTPGhspeh5o9lR3bI7Ez/view?usp=sharing', vote:0,
+      members:['จิราภรณ์ ใจวันดี','จิรดา ชัยสงค์','ยุวรี ประสพมงคล','คุณัญญา โกวาปี']},
+    {id:23, queue:7, name:'CyberX', project:'ServiceMS', topic:7, video:'https://drive.google.com/file/d/1UsVRpydlPRitbH-9LZOml4YMkP6HVCd1/view?usp=sharing', vote:0,
+      members:['พรชัย อินทะโก','สิรดนัย ศิริสุนทร','พลากร กล่อมสวน','วีรยุทธ แสนสัมฤทธิ์','อำนวย เต็มปิยพล']}
+  ];
+}
+function defaultJudges2(){ return []; } /* รายชื่อกรรมการรอบ 2 ผู้ดูแลจะเพิ่มทีหลัง — ไม่สมมติชื่อ */
+
+/* ── รอบ 1 / รอบ 2: ข้อมูลแยกชุดกันคนละ localStorage key — สลับรอบ = สลับชุดข้อมูลที่ state ชี้ไปเท่านั้น ── */
+function teamsKey(){ return state.round===2 ? LS_TEAMS2 : LS_TEAMS; }
+function judgesKey(){ return state.round===2 ? LS_JUDGES2 : LS_JUDGES; }
+function scoresKey(){ return state.round===2 ? LS_SCORES2 : LS_SCORES; }
+function curJudgeKey(){ return state.round===2 ? LS_CURJUDGE2 : LS_CURJUDGE; }
+function defaultTeamsFor(round){ return round===2 ? defaultTeams2() : defaultTeams(); }
+function defaultJudgesFor(round){ return round===2 ? defaultJudges2() : defaultJudges(); }
+function activeCrit(){ return state.round===2 ? CRIT2 : CRIT; }
+function activeAllCrit(){ return state.round===2 ? ALL_CRIT2 : ALL_CRIT; }
 
 var state = {
-  teams: loadJSON(LS_TEAMS, defaultTeams()),
-  judges: loadJSON(LS_JUDGES, defaultJudges()),
-  scores: loadJSON(LS_SCORES, {}),
-  curJudge: loadJSON(LS_CURJUDGE, ''),
-  curTeam: null
+  round: loadJSON(LS_ROUND, 1),
+  teams: null, judges: null, scores: null, curJudge: null, curTeam: null
 };
+state.teams = loadJSON(teamsKey(), defaultTeamsFor(state.round));
+state.judges = loadJSON(judgesKey(), defaultJudgesFor(state.round));
+state.scores = loadJSON(scoresKey(), {});
+state.curJudge = loadJSON(curJudgeKey(), '');
 
-function saveTeams(){ saveJSON(LS_TEAMS, state.teams); }
-function saveJudges(){ saveJSON(LS_JUDGES, state.judges); }
-function saveScores(){ saveJSON(LS_SCORES, state.scores); }
+function saveTeams(){ saveJSON(teamsKey(), state.teams); }
+function saveJudges(){ saveJSON(judgesKey(), state.judges); }
+function saveScores(){ saveJSON(scoresKey(), state.scores); }
 
 /* ── Login Gate (Cloudflare Worker URL ฝังไว้ในโค้ด — กรรมการไม่ต้องตั้งค่าเอง) ── */
 var DEFAULT_WORKER_URL='https://nameless-wildflower-f9f5.jinnaphas-phas.workers.dev';
@@ -4830,7 +4881,12 @@ var resultsPollTimer=null;
 var savePushTimer=null;
 
 function getSync(){ return loadJSON(LS_SYNC, null); }
-function apiUrl(path){ var s=getSync(); return s? s.url.replace(/\/$/,'')+path : null; }
+function apiUrl(path){
+  var s=getSync(); if(!s) return null;
+  var full=s.url.replace(/\/$/,'')+path;
+  if(state.round===2) full += (path.indexOf('?')>-1?'&':'?')+'round=2';
+  return full;
+}
 function updateSyncStatus(){
   var s=getSync();
   var auth=getAuth();
@@ -4953,12 +5009,68 @@ window.selectComp = function(id){
   if(t) t.classList.add('active');
   document.querySelectorAll('.comp-nav-item').forEach(function(el){el.classList.toggle('active', el.dataset.comp===id);});
   updateSyncStatus();
+  updateRoundUI();
   if(id!=='results') stopResultsPolling();
-  if(id==='criteria') renderRubricList();
+  if(id==='criteria') { renderRubricList(); renderRubricList2(); renderRound2TeamsRef(); }
   if(id==='teams') { renderTeamsList(); pullTeamsFromServer(); }
   if(id==='roster') { renderRoster(); pullTeamsFromServer(); }
   if(id==='score') { renderJudgeSelect(); pullTeamsFromServer(); pullJudgesFromServer(); if(state.curJudge) renderTeamPicker(); }
   if(id==='results') {
+    if(getSync()){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
+    else renderResults();
+  }
+};
+
+/* ── สลับรอบ 1 / รอบ 2 — สลับ "ชุดข้อมูล" ที่ state ชี้ไปเท่านั้น ไม่กระทบข้อมูลอีกรอบ ── */
+function updateNavCounts(){
+  var n=state.teams.length;
+  var a=document.getElementById('nav-teams-count'); if(a) a.textContent='('+n+' ทีม)';
+  var b=document.getElementById('nav-roster-count'); if(b) b.textContent='('+n+' ทีม)';
+}
+function updateRoundUI(){
+  var n=state.round;
+  var b1=document.getElementById('nav-round-btn-1'), b2=document.getElementById('nav-round-btn-2');
+  if(b1) b1.className='comp-btn '+(n===1?'comp-btn-primary':'comp-btn-secondary');
+  if(b2) b2.className='comp-btn '+(n===2?'comp-btn-primary':'comp-btn-secondary');
+  updateNavCounts();
+  var th=document.getElementById('teams-h1-sub');
+  if(th) th.textContent = n===2
+    ? 'กรอกข้อมูล 7 ทีมที่ผ่านเข้ารอบชิงชนะเลิศ — ใส่คะแนน Vote ผู้เข้าฟัง (0–100) ได้ที่คอลัมน์ขวาสุด'
+    : 'กรอกรายชื่อ 24 ทีมที่ผ่านการคัดเลือกเข้ารอบที่ 1 — ใช้ 1 ครั้งก่อนวันแข่งขัน (เทียบเท่า Sheet 3 คอลัมน์ C/D/E ในไฟล์เดิม)';
+  var rh=document.getElementById('roster-h1-sub');
+  if(rh) rh.textContent = n===2
+    ? 'รายชื่อ 7 ทีมที่ผ่านเข้ารอบชิงชนะเลิศ พร้อมรายชื่อสมาชิกทีม — แก้ไข/เพิ่มลิงก์วิดีโอได้ที่หน้า "👥 ทีมเข้าประกวด"'
+    : 'รายชื่อ 24 ทีมพร้อมลิงก์วิดีโอแนะนำทีม (ถ้ามี) — กรรมการดูล่วงหน้าก่อนวันแข่งขันได้ · แก้ไข/เพิ่มลิงก์วิดีโอได้ที่หน้า "👥 ทีมเข้าประกวด"';
+  var sh=document.getElementById('score-h1-sub');
+  if(sh) sh.textContent = n===2
+    ? 'รอบชิงชนะเลิศ (Final) · ให้คะแนน 9 ข้อ = 80% ของคะแนนรวม — Vote ผู้เข้าฟัง (20%) กรอกที่หน้า "ทีมเข้าประกวด"'
+    : 'รอบที่ 1 · 15 กันยายน 2569 · นำเสนอ ≤7 นาที + ซักถาม ≤5 นาที ต่อทีม';
+}
+window.setCompRound=function(n){
+  if(n===state.round) return;
+  state.round=n;
+  saveJSON(LS_ROUND, n);
+  state.teams=loadJSON(teamsKey(), defaultTeamsFor(n));
+  state.judges=loadJSON(judgesKey(), defaultJudgesFor(n));
+  state.scores=loadJSON(scoresKey(), {});
+  state.curJudge=loadJSON(curJudgeKey(), '');
+  state.curTeam=null;
+  updateRoundUI();
+  var pw=document.getElementById('score-progress-wrap'); if(pw) pw.style.display = state.curJudge? 'block':'none';
+  var fw=document.getElementById('score-form-wrap'); if(fw) fw.style.display='none';
+  renderJudgeSelect();
+  if(getSync()){
+    pullTeamsFromServer();
+    pullJudgesFromServer();
+    if(state.curJudge) pullScoresForJudge(state.curJudge).then(function(){ renderTeamPicker(); });
+  }
+  var activeEl=document.querySelector('.comp-view.active');
+  var activeId=activeEl? activeEl.id.replace('comp-',''):'home';
+  if(activeId==='teams') renderTeamsList();
+  if(activeId==='roster') renderRoster();
+  if(activeId==='score' && state.curJudge) renderTeamPicker();
+  if(activeId==='results'){
+    stopResultsPolling();
     if(getSync()){ pullAllScoresFromServer(function(){ renderResults(); }); startResultsPolling(); }
     else renderResults();
   }
@@ -5040,16 +5152,25 @@ window.selectCritRound=function(n){
 function renderTeamsList(){
   var host=document.getElementById('teams-list');
   if(!host) return;
+  var voteCol = state.round===2;
+  var head=document.getElementById('team-setup-head');
+  if(head){
+    head.className='team-setup-head'+(voteCol?' r2':'');
+    head.innerHTML = voteCol
+      ? '<div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div><div>Vote ผู้ชม (0–100)</div>'
+      : '<div>คิว</div><div>ชื่อทีม</div><div>ชื่อโครงการ</div><div>หัวข้อ (1–7)</div><div>Link วิดีโอแนะนำทีม</div>';
+  }
   var html='';
   state.teams.forEach(function(t){
     var opts='<option value="0">— เลือกหัวข้อ —</option>';
     TOPICS.forEach(function(topic,i){ opts+='<option value="'+(i+1)+'"'+(t.topic===i+1?' selected':'')+'>'+(i+1)+'. '+topic.name+'</option>'; });
-    html+='<div class="team-setup-row">'+
+    html+='<div class="team-setup-row'+(voteCol?' r2':'')+'">'+
       '<div class="team-setup-num">'+(t.queue||t.id)+'</div>'+
       '<input class="team-input" value="'+escAttr(t.name)+'" placeholder="ชื่อทีม" oninput="updateTeamField('+t.id+',\'name\',this.value)">'+
       '<input class="team-input" value="'+escAttr(t.project)+'" placeholder="ชื่อโครงการ" oninput="updateTeamField('+t.id+',\'project\',this.value)">'+
       '<select class="team-select" onchange="updateTeamField('+t.id+',\'topic\',parseInt(this.value))">'+opts+'</select>'+
       '<input class="team-input" value="'+escAttr(t.video||'')+'" placeholder="วาง Link วิดีโอ (YouTube/Drive ฯลฯ)" oninput="updateTeamField('+t.id+',\'video\',this.value)">'+
+      (voteCol? '<input class="team-input" type="number" min="0" max="100" step="0.1" value="'+escAttr(t.vote||0)+'" placeholder="0–100" oninput="updateTeamField('+t.id+',\'vote\',parseFloat(this.value)||0)">' : '')+
       '</div>';
   });
   host.innerHTML=html;
@@ -5058,9 +5179,10 @@ function renderTeamsList(){
 function renderTeamsSummary(){
   var host=document.getElementById('teams-summary');
   if(!host) return;
+  var total=state.teams.length;
   var named=state.teams.filter(function(t){return t.name.trim()!=='';}).length;
   var withTopic=state.teams.filter(function(t){return t.topic>0;}).length;
-  host.textContent='กรอกชื่อแล้ว '+named+'/24 ทีม · ระบุหัวข้อแล้ว '+withTopic+'/24 ทีม';
+  host.textContent='กรอกชื่อแล้ว '+named+'/'+total+' ทีม · ระบุหัวข้อแล้ว '+withTopic+'/'+total+' ทีม';
 }
 /* จัดกลุ่มทีมตามหัวข้อ (ตามลำดับที่ปรากฏใน state.teams — ให้ state.teams เรียงตามคิวการนำเสนอไว้ก่อนเรียกใช้)
    เว้นแต่คิว/กลุ่มจะถูกปรับใหม่ ไม่ต้อง sort ซ้ำที่นี่ เพื่อให้ปุ่ม "ทีมถัดไป/ก่อนหน้า" เดินตามคิวจริงหน้างานด้วย */
@@ -5090,10 +5212,14 @@ function renderRoster(){
     var videoHTML = /^https?:\/\//i.test(video)
       ? '<a class="roster-video-link" href="'+escAttr(video)+'" target="_blank" rel="noopener noreferrer">▶️ ดูวิดีโอแนะนำทีม</a>'
       : '<span class="roster-video-empty">ยังไม่มีวิดีโอ</span>';
+    var membersHTML = (t.members && t.members.length)
+      ? '<div style="font-size:.66rem;color:var(--text2);line-height:1.7;margin:4px 0">'+t.members.map(function(m,i){return (i+1)+'. '+escHTML(m);}).join('<br>')+'</div>'
+      : '';
     return '<div class="roster-card">'+
       '<div class="roster-card-num">คิว '+(t.queue||t.id)+'</div>'+
       '<div class="roster-card-name">'+escHTML(t.name.trim()||('ทีม '+(t.queue||t.id)))+'</div>'+
       '<div class="roster-card-project">'+escHTML(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+'</div>'+
+      membersHTML+
       videoHTML+
       '</div>';
   }, 'roster-grid');
@@ -5129,7 +5255,7 @@ window.saveTeamsUI=function(){
   });
 };
 window.exportTeams=function(){
-  downloadJSON('ทีมเข้าประกวด_2569.json', {teams: state.teams});
+  downloadJSON('ทีมเข้าประกวด_'+(state.round===2?'รอบ2_':'')+'2569.json', {teams: state.teams});
 };
 window.importTeams=function(ev){
   var file=ev.target.files[0]; if(!file) return;
@@ -5188,7 +5314,7 @@ window.addJudge=function(){
   var name=inp.value.trim();
   if(!name) return;
   if(state.judges.indexOf(name)===-1){ state.judges.push(name); saveJudges(); syncJudgesAfterEdit(); }
-  state.curJudge=name; saveJSON(LS_CURJUDGE, name);
+  state.curJudge=name; saveJSON(curJudgeKey(), name);
   inp.value='';
   renderJudgeSelect();
   document.getElementById('judge-select').value=name;
@@ -5208,7 +5334,7 @@ window.removeJudge=function(btn){
   syncJudgesAfterEdit();
   if(state.curJudge===name){
     state.curJudge='';
-    saveJSON(LS_CURJUDGE, '');
+    saveJSON(curJudgeKey(), '');
     var pw=document.getElementById('score-progress-wrap'); if(pw) pw.style.display='none';
     var fw=document.getElementById('score-form-wrap'); if(fw) fw.style.display='none';
   }
@@ -5217,7 +5343,7 @@ window.removeJudge=function(btn){
 window.onJudgeChange=function(){
   var sel=document.getElementById('judge-select');
   state.curJudge=sel.value;
-  saveJSON(LS_CURJUDGE, state.curJudge);
+  saveJSON(curJudgeKey(), state.curJudge);
   state.curTeam=null;
   document.getElementById('score-progress-wrap').style.display = state.curJudge? 'block':'none';
   document.getElementById('score-form-wrap').style.display='none';
@@ -5236,10 +5362,10 @@ function judgeScores(judge){
 function teamCritCount(judge, teamId){
   var s=judgeScores(judge)[teamId];
   if(!s) return 0;
-  var n=0; ALL_CRIT.forEach(function(c){ if(s[c.id]) n++; });
+  var n=0; activeAllCrit().forEach(function(c){ if(s[c.id]) n++; });
   return n;
 }
-function isTeamDone(judge, teamId){ return teamCritCount(judge, teamId)===ALL_CRIT.length; }
+function isTeamDone(judge, teamId){ return teamCritCount(judge, teamId)===activeAllCrit().length; }
 
 function renderTeamPicker(){
   var host=document.getElementById('team-picker');
@@ -5252,8 +5378,9 @@ function renderTeamPicker(){
     var label=t.name.trim()||('ทีม '+(t.queue||t.id));
     return '<button type="button" class="'+cls+'" onclick="pickTeam('+t.id+')"><div class="team-pick-num">คิว '+(t.queue||t.id)+'</div><div class="team-pick-name">'+escHTML(label)+'</div></button>';
   }, 'team-picker-grid');
-  document.getElementById('score-progress-text').textContent='ให้คะแนนแล้ว '+doneCount+'/24 ทีม';
-  document.getElementById('score-progress-fill').style.width=Math.round(doneCount/24*100)+'%';
+  var totalTeams=state.teams.length||1;
+  document.getElementById('score-progress-text').textContent='ให้คะแนนแล้ว '+doneCount+'/'+state.teams.length+' ทีม';
+  document.getElementById('score-progress-fill').style.width=Math.round(doneCount/totalTeams*100)+'%';
 }
 window.pickTeam=function(teamId){
   state.curTeam=teamId;
@@ -5268,9 +5395,10 @@ function renderScoreForm(){
   if(!t) return;
   document.getElementById('score-team-title').textContent='คิว '+(t.queue||t.id)+' — '+(t.name.trim()||'(ยังไม่ระบุชื่อทีม)');
   document.getElementById('score-team-sub').textContent=(t.project.trim()||'(ยังไม่ระบุชื่อโครงการ)')+' · หัวข้อ '+(t.topic? t.topic+'. '+TOPICS[t.topic-1].name : 'ยังไม่ระบุ');
-  renderScoreItems('score-items-A', CRIT.A);
-  renderScoreItems('score-items-B', CRIT.B);
-  renderScoreItems('score-items-C', CRIT.C);
+  var crit=activeCrit();
+  renderScoreItems('score-items-A', crit.A);
+  renderScoreItems('score-items-B', crit.B);
+  renderScoreItems('score-items-C', crit.C);
   var s=judgeScores(state.curJudge)[t.id]||{};
   document.getElementById('score-note').value=s.note||'';
   updateSummaryBar();
@@ -5302,9 +5430,10 @@ window.setScore=function(critId, val){
   if(!s[state.curTeam]) s[state.curTeam]={};
   s[state.curTeam][critId]=val;
   saveScores();
-  renderScoreItems('score-items-A', CRIT.A);
-  renderScoreItems('score-items-B', CRIT.B);
-  renderScoreItems('score-items-C', CRIT.C);
+  var crit=activeCrit();
+  renderScoreItems('score-items-A', crit.A);
+  renderScoreItems('score-items-B', crit.B);
+  renderScoreItems('score-items-C', crit.C);
   updateSummaryBar();
   renderTeamPicker();
   schedulePushScore(state.curJudge);
@@ -5324,9 +5453,10 @@ window.clearTeamScore=function(){
   if(!confirm('ล้างคะแนนทีม "'+label+'" ที่ให้ไปแล้วใช่หรือไม่? การกระทำนี้ย้อนกลับไม่ได้')) return;
   delete judgeScores(state.curJudge)[state.curTeam];
   saveScores();
-  renderScoreItems('score-items-A', CRIT.A);
-  renderScoreItems('score-items-B', CRIT.B);
-  renderScoreItems('score-items-C', CRIT.C);
+  var crit=activeCrit();
+  renderScoreItems('score-items-A', crit.A);
+  renderScoreItems('score-items-B', crit.B);
+  renderScoreItems('score-items-C', crit.C);
   document.getElementById('score-note').value='';
   updateSummaryBar();
   renderTeamPicker();
@@ -5344,12 +5474,17 @@ window.clearMyScores=function(){
   if(getSync()) pushScoresForJudge(state.curJudge);
 };
 function calcTeamTotal(judge, teamId){
+  var crit=activeCrit();
   var s=judgeScores(judge)[teamId]||{};
-  var sum1=0; CRIT.A.forEach(function(c){ sum1+=(s[c.id]||0); });
-  var sum2raw=0; CRIT.B.forEach(function(c){ sum2raw+=(s[c.id]||0); });
-  var sum3raw=0; CRIT.C.forEach(function(c){ sum3raw+=(s[c.id]||0); });
-  var sum2=sum2raw*3, sum3=sum3raw*2;
-  return {s1:sum1, s2:sum2, s3:sum3, total:sum1+sum2+sum3, complete: teamCritCount(judge,teamId)===ALL_CRIT.length};
+  /* สูตรทั่วไป: น้ำหนัก% / (จำนวนข้อ×5) — รอบ 1 (10/2/2 ข้อ) ให้ผล ×1/×3/×2 เท่าของเดิมเป๊ะ */
+  var r1=function(n){ return Math.round(n*10)/10; };
+  var sum1raw=0; crit.A.forEach(function(c){ sum1raw+=(s[c.id]||0); });
+  var sum2raw=0; crit.B.forEach(function(c){ sum2raw+=(s[c.id]||0); });
+  var sum3raw=0; crit.C.forEach(function(c){ sum3raw+=(s[c.id]||0); });
+  var sum1=r1(sum1raw*(50/(crit.A.length*5)));
+  var sum2=r1(sum2raw*(30/(crit.B.length*5)));
+  var sum3=r1(sum3raw*(20/(crit.C.length*5)));
+  return {s1:sum1, s2:sum2, s3:sum3, total:r1(sum1+sum2+sum3), complete: teamCritCount(judge,teamId)===activeAllCrit().length};
 }
 function updateSummaryBar(){
   var r=calcTeamTotal(state.curJudge, state.curTeam);
@@ -5372,10 +5507,23 @@ window.prevTeam=function(){
 /* ── Results / aggregation ── */
 function renderResults(){
   renderJudgesLoaded();
-  var results=computeAllResults();
-  renderResultsTable(results);
-  renderResultsByTopic(results);
-  renderRemainderRanking(results);
+  var r1extra=document.getElementById('results-r1-extra');
+  var r2extra=document.getElementById('results-r2-extra');
+  var thead=document.getElementById('results-table-head');
+  if(state.round===2){
+    if(r1extra) r1extra.style.display='none';
+    if(r2extra) r2extra.style.display='block';
+    if(thead) thead.innerHTML='<th>อันดับ</th><th>ชื่อทีม</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนกรรมการ (80%)</th><th>Vote ผู้ชม (20%)</th><th>คะแนนรวม</th><th>รางวัล</th>';
+    renderResultsTable2(computeAllResults2());
+  } else {
+    if(r1extra) r1extra.style.display='block';
+    if(r2extra) r2extra.style.display='none';
+    if(thead) thead.innerHTML='<th>คิว</th><th>ชื่อทีม</th><th>หัวข้อ</th><th>จำนวนกรรมการให้คะแนน</th><th>คะแนนเฉลี่ย</th><th>อันดับในหัวข้อ</th><th>ผล</th>';
+    var results=computeAllResults();
+    renderResultsTable(results);
+    renderResultsByTopic(results);
+    renderRemainderRanking(results);
+  }
 }
 function renderJudgesLoaded(){
   var host=document.getElementById('judges-loaded');
@@ -5385,7 +5533,7 @@ function renderJudgesLoaded(){
   judgesWithData.forEach(function(j){
     var doneCount=0;
     state.teams.forEach(function(t){ if(isTeamDone(j,t.id)) doneCount++; });
-    html+='<span class="comp-judge-pill">👤 '+escHTML(j)+' — '+doneCount+'/24 ทีม</span>';
+    html+='<span class="comp-judge-pill">👤 '+escHTML(j)+' — '+doneCount+'/'+state.teams.length+' ทีม</span>';
   });
   host.innerHTML=html;
 }
@@ -5491,10 +5639,54 @@ function renderRemainderRanking(results){
   html+='</tbody></table>';
   host.innerHTML=html;
 }
+
+/* ── กติการอบที่ 2 (Final): อันดับเดียวจาก 7 ทีม = คะแนนกรรมการ(80%) + Vote ผู้เข้าฟัง(20%) ไม่มีการจัดกลุ่มตามหัวข้อ/ไม่มี advance ── */
+function computeAllResults2(){
+  var rows=state.teams.map(function(t){
+    var r=computeTeamAverage(t.id);
+    var judgeAvg = r? r.avg : null;
+    var vote = typeof t.vote==='number' ? t.vote : 0;
+    var final = judgeAvg!==null ? Math.round((judgeAvg*0.8 + vote*0.2)*10)/10 : null;
+    return {team:t, judgeAvg:judgeAvg, n:r?r.n:0, vote:vote, final:final, rank:null};
+  });
+  rows.sort(function(a,b){
+    if(a.final===null && b.final===null) return 0;
+    if(a.final===null) return 1;
+    if(b.final===null) return -1;
+    return b.final-a.final;
+  });
+  rows.forEach(function(r,i){ if(r.final!==null) r.rank=i+1; });
+  return {rows:rows};
+}
+function awardBadgeHTML2(r){
+  if(r.final===null) return '—';
+  if(r.rank===1) return '<span class="comp-award-tag award-cash">🥇 60,000 บาท</span>';
+  if(r.rank===2) return '<span class="comp-award-tag award-cash">🥈 40,000 บาท</span>';
+  if(r.rank===3) return '<span class="comp-award-tag award-cash">🥉 30,000 บาท</span>';
+  return '<span style="color:var(--text3);font-size:.68rem">— ไม่ได้รับรางวัล</span>';
+}
+function awardLabelText2(r){
+  if(r.final===null) return '';
+  if(r.rank===1) return '60,000 บาท';
+  if(r.rank===2) return '40,000 บาท';
+  if(r.rank===3) return '30,000 บาท';
+  return 'ไม่ได้รับรางวัล';
+}
+function renderResultsTable2(results){
+  var tbody=document.getElementById('results-table-body');
+  var html='';
+  results.rows.forEach(function(r){
+    html+='<tr><td>'+(r.rank? rankBadge(r.rank): '—')+'</td><td>'+escHTML(r.team.name.trim()||'(ยังไม่ระบุชื่อทีม)')+'</td>'+
+      '<td>'+r.n+' ท่าน</td><td style="font-weight:700">'+(r.judgeAvg!==null? r.judgeAvg.toFixed(1): '—')+'</td>'+
+      '<td>'+r.vote.toFixed(1)+'</td><td style="font-weight:800;color:var(--green)">'+(r.final!==null? r.final.toFixed(1): '—')+'</td>'+
+      '<td>'+awardBadgeHTML2(r)+'</td></tr>';
+  });
+  tbody.innerHTML=html;
+}
 window.exportMyScores=function(){
   if(!state.curJudge){ alert('กรุณาเลือกชื่อกรรมการที่หน้า "ให้คะแนนออนไลน์" ก่อน'); return; }
   var payload={}; payload[state.curJudge]=judgeScores(state.curJudge);
-  downloadJSON('คะแนน_'+state.curJudge+'.json', {scores: payload});
+  downloadJSON('คะแนน_'+(state.round===2?'รอบ2_':'')+state.curJudge+'.json', {scores: payload});
 };
 window.importJudgeScores=function(ev){
   var files=ev.target.files;
@@ -5527,6 +5719,16 @@ function awardLabelText(r){
   return 'ไม่ได้รับรางวัล';
 }
 window.exportResultsCSV=function(){
+  if(state.round===2){
+    var results2=computeAllResults2();
+    var lines2=['อันดับ,ชื่อทีม,จำนวนกรรมการ,คะแนนกรรมการ(80%),Vote ผู้ชม(20%),คะแนนรวม,รางวัล'];
+    results2.rows.forEach(function(r){
+      lines2.push([r.rank||'', csvEsc(r.team.name), r.n, r.judgeAvg!==null?r.judgeAvg.toFixed(1):'', r.vote.toFixed(1), r.final!==null?r.final.toFixed(1):'', csvEsc(awardLabelText2(r))].join(','));
+    });
+    var blob2=new Blob(['﻿'+lines2.join('\n')], {type:'text/csv;charset=utf-8'});
+    triggerDownload(blob2, 'ผลคะแนนรอบ2_2569.csv');
+    return;
+  }
   var results=computeAllResults();
   var lines=['คิว,ชื่อทีม,หัวข้อ,จำนวนกรรมการ,คะแนนเฉลี่ย,อันดับในหัวข้อ,ผล'];
   results.rows.forEach(function(r){
@@ -5562,6 +5764,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if(sel) sel.value=state.curJudge;
   }
   updateSyncStatus();
+  updateRoundUI();
 });
 
 })();
